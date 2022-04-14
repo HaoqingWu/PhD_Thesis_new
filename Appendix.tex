@@ -1,0 +1,1026 @@
+\chapter{Higher Algebra Backgrounds}
+
+In this appendix, we recall some notions and results from \cite{HTT} and \cite{HA} that are used repeatedly in this thesis.
+
+
+\section{Monoids and Groups in $\infty$-Categories}
+We recall that a \emph{monoid object} in an $\infty$-category $\CC$ is a simplicial object $X: \Delta^{op}\to \CC$ satisfying the Segal condition:
+the collection of face maps $X([n])\to X(\{i-1,i\})$ for $1\leq i \leq n$ exhibits $X([n])$ as a product of $\{X(\{i-1,i\})\}_{1\leq i \leq n}$. 
+We will denote the full subcategory of monoids in $\CC$ by $\Mon(\CC)$.
+
+Under the identification of $\Mon(\CC)\simeq \Mon_{\Ass}(\CC)$ (see \cite{HA}[Proposition 4.1.2.10.]), a monoid $X$ is equipped with a (homotopy coherently) associative multiplication:
+$$
+m: X\times X\to X;
+$$
+we say that $X$ is a \emph{group} in $\CC$ if both shearing maps
+\begin{align*}
+			(p_1, m):X\times X\to X\times X\\
+	(m,p_2):X\times X\to X\times X
+\end{align*}
+are equivalences.
+
+We first observe that if the underlying $\infty$-category is stable, then the category of groups is equivalent to the category of monoids.
+\begin{proposition}
+	Let $\CC$ be a stable $\infty$-category. Then the forgetful functor 
+$\Grp(\CC)\to \Mon(\CC)$ is an equivalence of $\infty$-categories.
+\end{proposition}
+\begin{proof}
+	It suffices to show every monoid object $X\in \CC$ is a group object; that is, we have to show the shearing maps
+	\begin{align*}
+			(p_1, \mu):X\times X\to X\times X\\
+	(\mu,p_2):X\times X\to X\times X
+	\end{align*}
+	are equivalences. Note that a morphism $Y\xrightarrow{f} Z$ is an equivalence in a pointed $\infty$-category $\CC$ if and only if $Y\times_{Z}*\to *$ is an equivalence. This is indeed the case for both $(p_1,\mu)$ and $(\mu,p_2)$.
+	
+	% this is true because the map * \to * is a retract of Y \to Z and the claim follows from the pasting law of pullback squares.
+\end{proof}
+
+\begin{proposition}
+\label{induced fully faithfulness on group objects}
+Let $\CC$ and $\CD$ be $\infty$-categories with finite products. Suppose $F:\CC \hookrightarrow \CD$ is a fully faithful, product-preserving functor, then
+	\begin{enumerate}[(1)]
+		\item the functor $F$ induces a fully faithful embedding $\Mon(F):\Mon(\CC)\to \Mon(\CD)$ between the category of associative monoids.
+		\item the functor $F$ induces a fully faithful embedding $\Grp(F):\Grp(\CC)\to \Grp(\CD)$ between the category of group objects.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	Observe first that the functor $F$ induces a fully faithful embedding 
+	$$
+	\Fun(\Delta^{op},\CC)\to \Fun(\Delta^{op},\CD)
+	$$ between the $\infty$-categories of simplicial objects.
+	Then $(1)$ follows from the fact that $F$ send monoids to monoids and $\Mon(\CC)$ is a full subcategory of $\Fun(\Delta^{op},\CC)$; and $(2)$ follows from the fact that $\Grp(\CC)$ is a full subcategory of $\Mon(\CC)$.
+	
+\end{proof}
+
+
+\begin{proposition}
+\label{Restrict adjoints to full subcategory}
+	Let $\adj{F}{\CC}{\CD}{G}$ be a pair of adjoint functors between $\infty$-categories.
+	Let $\CC^0$ be a full subcategory of $\CC$ so that the essential image of $G$ is contained in $\CC^0$. Then $F^0:=F|_{\CC^0}$ restricts to an adjoint pair 
+	$$
+	\adj{F^0}{\CC^0}{\CD}{G}.
+	$$
+\end{proposition}
+\begin{proof}
+    By Proposition 5.2.2.8 of \cite{HTT}, the pair of adjoint functors gives a unit natural transformation
+    \[
+    id_{\CC} \to G\circ F
+    \]
+    such that for every pair of objects $c\in \CC$ and $d\in \CD$ the composite
+    \[
+    \map_{\CD}(F(c),d) \to \map_\CC(G\circ F(c),G(d)) \to \map_{\CC}(c,G(d))
+    \]
+    is an equivalence .
+	The assumptions then give a natural transformation $id_{\CC^{0}}\to G\circ F$.
+	For every $c'\in \CC^0$ and $d\in \CD$, the composite 
+	\[
+	\map_{\CD}(F(c'),d) \to \map_{\CC^0}(G\circ F(c'),G(d)) \to \map_{\CC^{0}}(c',G(d))
+	\] 
+	is an equivalence, since one observe that
+	$$
+	\map_{\CC^0}(G\circ F(c'),G(d))\simeq \map_{\CC}(G\circ F(c'),G(d))
+	$$
+	and 
+	$$
+	\map_{\CC^0}(c',G(d))\simeq \map_{\CC}(G\circ F(c'),G(d)).
+	$$
+	\end{proof}
+
+
+We consider now the category $\Sp^{\geq r}_{\text{$r$-tame}}$ of $r$-tame spectra.
+Let $\Sigma$ and $\Omega$ denote the suspension and looping functor in $\Sp$ respectively.
+Note that the category $\Sp^{\geq r}_{\text{$r$-tame}}$ is not closed under $\Sigma$, so it's not an inverse of $\Omega$.
+However, it's easy to see we have the following lemma.
+\begin{lemma}
+\label{Relations between different tameness}
+	The adjunction
+	\[
+	\adj{\Sigma}{\Sp^{\geq r-1}_{\text{$(r-1)$-tame}}}{\Sp^{\geq r}_{\text{$r$-tame}}}{\Omega}
+	\]
+	are mutally inverses.
+\end{lemma} 
+
+Since $\Alg_{\Lie}(\Sp^{\geq r}_{\text{$r$-tame}})$ is Cartesian symmetric monoidal, the loop functor 
+$$
+\Omega: \Sp^{\geq r}_{\text{$r$-tame}}
+\to 
+\Sp^{\geq r-1}_{\text{$(r-1)$-tame}}
+$$
+induces a functor
+\[
+\Omega_{\Lie}':\Alg_{\Lie}(\Sp^{\geq r}_{\text{$r$-tame}}) \to \Grp( \Alg_{\Lie}(\Sp^{\geq r-1}_{\text{$(r-1)$-tame}}) )
+\]
+which takes a $r$-tame Lie algebra $X$ to a $(r-1)$-tame Lie algebra $\Omega_{\Lie}X$ whose underlying spectrum is $\Omega X$.
+\begin{proposition}
+	\label{B and Omega are mutally inverses}
+	The functor 
+	\[
+	\Omega_{\Lie}': 
+	\Alg_{\Lie}(\Sp^{\geq r}_{\text{$r$-tame}}) \to \Grp( \Alg_{\Lie}(\Sp^{\geq r-1}_{\text{$(r-1)$-tame}}) )
+	\]
+	is an equivalence.
+\end{proposition}
+\begin{proof}
+	Let $B_{\Lie}$ denote the bar construction functor that is left adjoint to $\Omega_{\Lie}'$. Since the forgetful functor 	
+	$\Alg_{\Lie}(\Sp^{\geq r}_{\text{$r$-tame}}) \to \Sp^{\geq r}_{\text{$r$-tame}}$ preserves sifted colimits, the bar construction is computed in the underlying category $\Sp^{\geq r}_{\text{$(r)$-tame}}$ of $r$-tame spectra;
+	Let $X_{\bullet}$ be a simplicial object in $\Sp^{\geq r-1}_{\text{$(r-1)$-tame}}$, the geometric realization of is computed by first taking the geometric realization of $X_{\bullet}$ in $\Sp$ then applying the $r$-tame localization functor $L_{\text{$r$-tame}}$, but $|X_{\bullet}|\simeq \Sigma X$ which is already $r$-tame, hence we have $B_{\Lie}X\simeq \Sigma X$.
+	Therefore we have a commuting diagram
+	\[
+	\begin{tikzcd}
+		\Grp( \Alg_{\Lie}(\Sp^{\geq r-1}_{\text{$(r-1)$-tame}}) ) & \Alg_{\Lie}(\Sp^{\geq r}_{\text{$r$-tame}})\\
+		\Sp^{\geq r-1}_{\text{$(r-1)$-tame}} &
+		\Sp^{\geq r}_{\text{$r$-tame}};
+		\arrow[from=1-1, to=1-2, "B_{\Lie}", shift left]
+		\arrow[from=1-2, to=1-1, "\Omega_{\Lie}'", shift left]
+		\arrow[from=1-1, to=2-1]
+		\arrow[from=1-2, to=2-2]
+		\arrow[from=2-1, to=2-2, "\Sigma", shift left]
+		\arrow[from=2-2, to=2-1, "\Omega", shift left]
+	\end{tikzcd}
+	\]
+	Hence $B_{\Lie}$ and $\Omega_{\Lie}'$ are mutally inverses because $\Sigma$ and $\Omega$ are mutually inverses.
+\end{proof}
+
+%$$
+%\Omega_{\Lie}:\Alg_{\Lie}(\Sp^{\geq r}_{\text{$r$-tame}}) \to \Grp(\Alg_{\Lie}(\Sp^{\geq r}_{\text{$r$-tame}}))
+%$$
+%factors through $\Grp(\Alg_{\Lie}(\Sp^{\geq r-1}_{\text{$(r-1)$-tame}}))$.
+%Let 
+%$$
+%B_{\Lie}:\Grp(\Alg_{\Lie}(\Sp^{\geq r-1}_{\text{$(r-1)$-tame}})) \to
+%\Alg_{\Lie}(\Sp^{\geq r-1}_{\text{$(r-1)$-tame}})
+%$$
+%be the bar construction functor.
+%We claim the following
+%\begin{lemma}
+%	The composition
+%	\[
+%	U:
+%	\Grp(\Alg_{\Lie}(\Sp^{\geq r-1}_{\text{$(r-1)$-tame}})) 
+%	\xrightarrow{B_{\Lie}}
+%\Alg_{\Lie}(\Sp^{\geq r-1}_{\text{$(r-1)$-tame}})
+%\to 
+%\Sp^{\geq r-1}_{\text{$(r-1)$-tame}}
+%\to 
+%\Sp
+%\]
+%can be identified with the suspension $\Sigma X$ of the underlying spectrum of $X\in \Grp(\Alg_{\Lie}(\Sp^{\geq r-1}_{\text{$(r-1)$-tame}}))$. Hence, $U$ factors over $\Sp^{\geq r}_{\text{$r$-tame}}$.
+%\end{lemma}
+%\begin{proof}
+%	
+%\end{proof}
+%
+
+\section{Filtered and Graded Objects in $\infty$-Categories}
+In this section, we introduce the notion of filtered and graded objects in a symmetric monoidal $\infty$-category $\CC$.
+
+\begin{definition}
+	Let $\BZ$ denote the poset of the integers and let $\CC$ be an $\infty$-category.
+	The $\infty$-category of \emph{filtered objects in $\CC$} is defined as the functor category 
+	$$
+	\CC^{\operatorname{Fil}}:=\Fun(\BZ, \CC).
+	$$
+\end{definition}
+
+Let $\BZ^{\operatorname{disc}}$ denote the groupoid with objects the integers and morphisms with auto-isomorphisms.
+\begin{definition}
+	The $\infty$-category of \emph{graded objects in $\CC$} is defined as the functor category 
+	$$
+	\CC^{\operatorname{gr}}:=\Fun(\BZ^{\operatorname{disc}}, \CC).
+	$$
+\end{definition}
+
+\begin{remark}
+	We can also extend the definitions above to the category $\CC^{\Fil, \geq 0}$ (resp. $\CC^{\gr, \geq 0}$) of \emph{non-negatively filtered} (resp. \emph{non-negatively graded}) objects.
+\end{remark}
+
+The natural inclusion $ \BZ^{\operatorname{disc}}\hookrightarrow \BZ$ induces a forgetful functor
+$
+\CC^{\operatorname{Fil}} \to \CC^{\operatorname{gr}}. 
+$
+We denote $(-)_*: \CC^{\operatorname{gr}} \to \CC^{\operatorname{Fil}}$ the left Kan extension along the inclusion $ \BZ^{\operatorname{disc}}\hookrightarrow \BZ$; explicitly, we have
+$X_*$ evaluated at $n$ is given by $\bigoplus_{k\leq n} X_k$.
+
+We consider the functor 
+$$
+\gr(-):
+\CC^{\operatorname{Fil}}
+\to 
+\CC^{\operatorname{gr}}
+$$
+given by $X_* \mapsto (n \mapsto \cofib(X_{n-1} \to X_{n}))$.
+
+The following lemma follows immediately from an inductive argument.
+\begin{lemma}
+	The functor $$\gr(-):
+\CC^{\operatorname{Fil, \geq 0}}
+\to 
+\CC^{\operatorname{gr, \geq 0}}
+$$
+is conservative.
+\end{lemma}
+
+We also have the following obvious observation.
+\begin{lemma}
+	The composite 
+	\[
+	\CC^{\gr} \xrightarrow{(-)_*} 
+	\CC^{\Fil}
+	\xrightarrow{\gr(-)} \CC^{\gr}
+	\]
+	is equivalent to the identity functor.
+\end{lemma}
+
+
+
+Consider now an $\infty$-operad $\CO$ in $\CC$, the rest of this section is to show that every $\CO$-algebra admits a canonical filtration so that its associated graded is trivial.
+
+We let $A = \BS \oplus \BS$ and view it as an augmented filtered commutative algebra with $A_0=\BS$ and 
+$A_n=\BS \oplus \BS$ for $n\geq 1$.
+For any $\CO$-algebra $X$, we obtain a filtered $\CO$-algebra $(\iota_0X)_*$ where $\iota_0$ is the functor that inserts an object to a graded object concentrated in degree $0$.
+Consider now the functor
+\begin{align*}
+	\CAlg(\CC^{\Fil, \geq 0}) \times \Alg_{\CO}(\CC) 
+	& \to 
+	\Alg_{\CO}(\CC^{\Fil, \geq 0})\\
+	(A, X) & \mapsto A\otimes (\iota_0X)_*.
+\end{align*}
+Note that $A$ is augmented, hence we have a natural morphism 
+\[
+\epsilon: A\otimes (\iota_0X)_* 
+\to 
+(\iota_0X)_* .
+\]
+
+\begin{definition}
+	The \emph{canonical filtration} is a functor 
+	$$
+	(-)^{\Fil}: \Alg_{\CO}(\CC)\to \Alg_{\CO}(\CC^{\Fil,\geq 0})
+	$$ 
+	given by
+	$X\mapsto   \fib(A\otimes (\iota_0X)_* \to (\iota_0X)_*)$.
+\end{definition}
+
+\begin{proposition}
+	\label{canonical filtration}
+	The associated graded $\gr(X^{\Fil})$ of the canonical filtration on $X$ is the trivial graded $\CO$-algebra, i.e. 
+	$$
+	\gr(X^{\Fil}) \simeq \trivial^{\gr}_{\CO}(\iota_{1} \circ \oblv_{\CO}X).
+	$$
+% Is the following even true?
+%\begin{enumerate}
+%	\item \todo{do we really need this?} the direct colimit of $X^{\Fil}$ is equivalent to $X$, i.e. $$\colim X^{\Fil} \simeq X.$$
+%\end{enumerate}
+\end{proposition}
+\begin{proof}
+%	We abuse notation by writing $(\iota_0X)_*\in \CC^{\Fil, \geq 0}$ as $X$ in the following.
+	Note that $\gr(X^{\Fil})$ is a graded $\CO$-algebra with $X$ concentrated in degree $1$, hence it is a trivial $\CO$-algebra by degree reason.
+	
+	
+	
+	
+\end{proof}
+	
+
+
+%\begin{lemma}
+%\label{Algebras lifted to filtered algebras}
+%	The composite
+%	$$
+%	\Alg_{\CO}(\CC) \xrightarrow{(-)^{\Fil}}
+%	\Alg_{\CO}(\CC^{\Fil,\geq 0})
+%	\xrightarrow{\oblv_{\Fil}}
+%	\Alg_{\CO}(\CC)
+%	$$
+%	is equivalent to the identity functor on $\Alg_{\CO}(\CC)$.
+%\end{lemma}
+%\begin{proof}
+%	Since the forgetful functor $\oblv_{\CO}: \Alg_{\CO}(\CC)\to \CC$ is conservative, it suffices to show
+%	$$
+%	\oblv_{\CO}\circ \oblv_{\Fil}(X^{\Fil}) \simeq X,
+%	$$
+%	which follows from the equivalence $\fib(X\times X \to  X)\simeq X$. 
+%\end{proof}
+
+
+
+
+
+
+%One can also extend the definitions above to the category $\gr(\CC)$ of \emph{non-negatively graded} objects
+
+
+\clearpage
+
+
+
+
+
+
+
+\section{The Barr-Beck-Lurie Theorem}
+\begin{theorem}
+\label{Barr-Beck-Lurie theorem}
+	[Theorem 4.7.3.5. \cite{HA}]
+	Let $\adj{F}{\CC}{\CD}{G}$ be an adjoint pair of $\infty$-categories. Then $G$ is monadic if and only if 
+	\begin{enumerate}
+		\item $G$ is conservative.
+		\item If $X_\bullet$ is a $G$-split simplicial object in $\CD$, then its geometric realization exists in $\CD$ and $G$ preserves geometric realization of $X_{\bullet}$.
+	\end{enumerate}
+\end{theorem}
+
+In practice, the category $\CD$ often admits all geometric realizations for simplicial objects. In this case, we have a technically convenient criteria for determining monadicity of a functor.
+\begin{corollary}[\cite{HeutsSurvey}]
+\label{Cor of Barr-Beck-Lurie theorem}
+Suppose $\adj{F}{\CC}{\CD}{G}$ an adjoint pair and that $\CD$ admits colimits of $G$-split simplicial objects. Then this pair is monadic if and only if for every object $X$ of $\CD$, the map
+$$
+\abs{(FG)^{\bullet+1}X} \to X
+$$
+arising from the simplicial resolution described above is an equivalence.
+\end{corollary}
+\begin{proof}
+	Suppose this pair is monadic, then it satisfies the conditions of Theorem \ref{Barr-Beck-Lurie theorem}. For an object $X$ in $\CD$, the simplicial object $(FG)^{\bullet+1}X$ is a $G$-split. Indeed, the simplicial object $G((FG)^{\bullet+1}X)$ admits a contracting homotopy via the unit natural transformation $X \to GF(X)$.
+	Now consider the map 
+	$$
+	\abs{(FG)^{\bullet+1}X} \to X
+	$$
+	and apply $G$ to it, one has
+	\begin{align*}
+		G(\abs{(FG)^{\bullet+1}X}) & \simeq \abs{G(FG)^{\bullet+1}X}\\
+		& \simeq G(X)
+	\end{align*}
+	where the first equivalence is due to the fact that $G$ preserves geometric realization of $G$-split objects and the second equivalence is due to the assumption that $(FG)^{\bullet+1}X$ is $G$-split.  
+	Since $G$ is conservative, we conclude that $\abs{(FG)^{\bullet+1}X} \to X$ is an equivalence.
+	
+	Suppose now $\abs{(FG)^{\bullet+1}X} \to X$ is an equivalence for every $X$ in $\CD$ and $G(f): G(X) \to G(Y)$ is an equivalence in $\CC$ for some morphism $f:X \to Y$, then $(FG)^{\bullet+1} X \to (FG)^{\bullet+1}Y$ is an equivalence of simplicial objects in $\CD$. Therefore, 
+	$$
+	\abs{(FG)^{\bullet+1} X} \to \abs{(FG)^{\bullet+1} Y}
+	$$
+	is an equivalence and hence is $f: X\to Y$. So $G$ is conservative.
+	We now claim that $G$ preserves geometric realization of $G$-split objects.
+	Let $X_{\bullet}$ be a $G$-split simplicial object and consider the following commuting diagram
+	\[
+	\begin{tikzcd}
+		\abs{(FG)^{\bullet+1} \abs{X_{\bullet}}} \ar[r] \ar[d]& \abs{(FG)^{\bullet+1} X_{-1} \ar[d]}     \\
+		\abs{X_{\bullet}} \ar[r] & X_{-1}  .
+	\end{tikzcd}
+	\]
+	We claim the bottom horizontal arrow is an equivalence.
+	Note that two vertical morphisms are equivalences by our assumption. We claim that the top horizontal map is an equivalence as well. Indeed, if we view $(FG)^{p+1} X_{q}$ is an bisimplicial set then 
+	$$
+	\abs{(FG)^{\bullet+1} \abs{X_{\bullet}}} 
+	\simeq 
+	\colim_{p} \colim_q (FG)^{q+1}X_{p} .
+	$$
+	For fixed $q$, the simplicial object $(FG)^{q+1}X_{\bullet}$ is split since it's a composite of functors starting with $G$, hence one has 
+	$$
+	\colim_{p}(FG)^{q+1}X_{p}\simeq (FG)^{q+1}X_{-1}
+	$$
+	and $\colim_{q} (FG)^{q+1} X_{-1} \to X_{-1}$  is an equivalence by the assumption.
+	Therefore, we conclude that 
+	$$
+	G(\abs{X_{\bullet}}) \simeq G(X_{-1}) \simeq \abs{G(X_{\bullet})}
+	$$
+	where the last equivalence follows from the fact that $X_{\bullet}$ is $G$-split.
+\end{proof}
+
+\section{Stuff I don't need anymoree...}
+
+\subsection{Smashing localization}
+Let $\CC^{\otimes}$ be a symmetric monoidal $\infty$-category. We say a localization functor $L:\CC\to\CC$ is \emph{smashing} if it is given by $L(-)\simeq (-)\otimes X$ for some object $X\in\CC$.
+The aim of this section is to prove the following result concerning localization in $\Sp$.
+
+\begin{proposition}
+\label{HR is smashing}
+	Let $R$ be a localization of the integers $\BZ$. Then the loacalization $L_R:\Sp\to \Sp$ with respect to the homology theory with coefficient in $R$ is smashing.
+\end{proposition}
+
+\begin{remark}
+	The statement above is \cite[Proposition 2.4]{BousfieldSpectra}.
+\end{remark}
+
+Let $A$ be an abelian group and let $SA$ denote the Moore spectrum associated to $A$. 
+\begin{theorem}
+	[Universal coefficient theorem]
+%	\cite{Adams' blue book}
+	Let $X$ be any spectrum. Then we have a short exact sequence:
+	\[
+	0\to 
+	\pi_{*}X\otimes A \to
+	\pi_{*}(X\otimes S A)
+	\to
+	\Tor_{\BZ}(\pi_{*-1}X, A)\to 
+	0.
+	\]
+	More generally, let $E$ be another spectrum, we have a short exact sequence:
+	\[
+	0\to 
+	E_n(X)\otimes A 
+	\to
+	(EA)_n(X)
+	\to
+	\Tor_\BZ(E_{n-1}(X),A)
+	\to
+	0
+	\]
+	where $EA:= E\otimes SA$.
+\end{theorem}
+
+\begin{corollary}
+	For any abelian group $A$, we have 
+	\[
+	HA\simeq H\BZ\otimes SA.
+	\]
+\end{corollary}
+\begin{proof}
+	Let $X=H\BZ$ in the Universal coefficient theorem.
+\end{proof}
+
+\begin{corollary}
+Let $R$ be a localization of $\BZ$.
+	Then the map
+	\[
+	SR\to SR\otimes SR
+	\]
+	induced from the unit map $\BS \to SR$ is an equivalence.
+\end{corollary}
+\begin{proof}
+	Let $E=H\BZ$ and $X=SR$ in the universal coefficient theorem. We obtain at $n=0$
+	an isomorphism
+	$$
+	R\otimes R \cong H\BZ_0(SR \otimes SR)
+	$$
+	When $n= 1$, we have
+	\[
+	H\BZ_1(SR \otimes SR) \cong \Tor_\BZ(H\BZ_{0}(SR),R)=\Tor_\BZ(R,R).
+	\]
+	Note that $R$ has two important properties
+	\begin{enumerate}
+		\item $R\cong R\otimes R$;
+		\item $\Tor_{\BZ}(R,R)=0$.
+	\end{enumerate}
+	Therefore, we conclude that $SR\otimes SR\simeq SR$. 
+\end{proof}
+
+
+%\begin{lemma}
+%\label{conservativity of forgetful functor}
+%	The forgetful functor 
+%	\[
+%	\Grp(\CS^{\geq r-1}_{\text{($r-1$)-tame}}) \xrightarrow{\oblv_{\Grp}} 
+%	\CS^{\geq r-1}_{\text{($r-1$)-tame}}
+%	\]
+%	is a conservative functor.
+%\end{lemma}
+%\begin{proof}
+%	Since $\Grp(\CS^{\geq r-1}_{\text{($r-1$)-tame}})$ is a full subcategory of $\Mon(\CS^{\geq r-1}_{\text{($r-1$)-tame}})$, it suffices to show the forgetful functor $\oblv_{\Mon}: \Mon(\CS^{\geq r-1}_{\text{($r-1$)-tame}})
+%	\to
+%	\CS^{\geq r-1}_{\text{($r-1$)-tame}}$ is conservative.
+%	Note that we have a commutative diagram
+%	\[
+%\begin{tikzcd}
+%	\Mon(\CS^{\geq r-1}_{\text{($r-1$)-tame}}) & \CS^{\geq r-1}_{\text{($r-1$)-tame}}\\
+%	\Mon(\CS^{\geq r-1}_{*}) & 
+%	\CS^{\geq r-1}_{*}
+%	\arrow[from=1-1, to= 1-2, "\oblv_{\Mon}"]
+%%	\arrow[from=1-2, to= 1-1, shift left, "R"]
+%	\arrow[from=1-1, to=2-1]
+%	\arrow[from=1-2, to=2-2]
+%	\arrow[from=2-1, to= 2-2, "\oblv_{\Mon}"]
+%%	\arrow[from=2-2, to= 2-1, shift left, "R'"]
+%\end{tikzcd}
+%\]
+%where both horizontal arrows are fully faithful and the bottom arrow is conservative by \cite{HA}[Corollary 5.2.6.18.]. Hence the top arrow is conservative as well.
+%\end{proof}
+
+
+
+
+
+
+
+
+
+
+%
+%
+%
+%
+
+%
+%
+%
+%
+%
+%
+%
+%
+%The theory of associative monoid objects in a symmetric monoidal $\infty$-category is developed in great generality in \cite[chapter 4.1]{HA}. 
+%An \textit{ad hoc} way to define the composition product in $\SSeq(\CC)$ (in the one-object case) is explained in  Brantner's thesis  \cite[Section 4.1.2.]{BrantnerPhD}. The general approach was elaborated by Haugseng \cite{Haugsengsymseq}. 
+%
+%
+
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%\subsection{Other coalgebras}
+%There are three more different notions of coalgebras over a cooperad $\CP$, see section 3.5 of \cite{Francis-Gaitsgory}.
+%
+%\todo[inline]{More background to be put in this section.}
+%
+%\subsection{Gaitsgory's conjectures}
+%
+%\begin{conjecture}
+%	The restriction functor 
+%	$$
+%	\resstriction: \coAlg_{\Com^{\vee}}^{nil,dp}(\CC) \rightarrow  \coAlg_{\Com^{\vee}}^{dp}(\CC)
+%	$$
+%	is fully faithful.
+%\end{conjecture}
+%
+%\todo{The proof will be in an upcoming paper by Heuts. Now I will also give a sketch here.}
+%
+%Let $\Opd_{\infty}$ denote the $\infty$-category of $\infty$-operads. We let $(\Opd_{\infty})_{\leq n}$ be the full subcategory spanned by those $\infty$-operads for which $\CO(k)\simeq 0$ for $k>n$.
+% Since the inclusion $(\Opd_{\infty})_{\leq n}\hookrightarrow \Opd_{\infty}$ preserves limits and filtered colimits, there is a localization functor 
+% $$
+% \tau_{n}: \Opd_{\infty}\rightarrow (\Opd_{\infty})_{\leq n}.
+% $$
+% We will refer to $\tau_n \CO$ the \textit{$n$-truncation} of $\CO$. Informally, we can think of $\tau_n \CO$ as an $\infty$-operad with 
+% \[
+% \tau_n \CO (k)= \left.
+%  \begin{cases}
+%    \CO(k), & \text{for } k \leq n \\
+%   0. & \text{for } k > n          \\
+%  \end{cases}
+%  \right.
+%\] 
+%
+%The unit map $\CO\rightarrow \tau_n\CO$ then induces a pair of adjoint functors: 
+%\[
+%\begin{tikzcd}
+%	\Alg_{\CO} \arrow[r,shift left=1,"\tau_n"] & \Alg_{\tau_n\CO(\CC)}(\CC) \arrow[l,shift left=1]
+%\end{tikzcd}
+%\]
+%where the left adjoint is given by $X\mapsto \tau_n\CO\circ_{\CO}X$. We denote the unit of this adjunction by $t_n$.
+%\begin{definition}
+%	We say an $\infty$-operad $\CO$ in $\CC$ has \emph{good completion} if for every object $X\in \CC$, there is an equivalence
+%	\[
+%	\trivial_{\CO}X\simeq \lim t_n(\trivial_{\CO} X).
+%	\]
+%\end{definition}
+%
+%\begin{proposition}
+%	If $\CO$ has good completion in $\CC$, then the restriction functor
+%	$$
+%	\resstriction: \coAlg_{\Com^{\vee}}^{nil,dp}(\CC) \rightarrow  \coAlg_{\Com^{\vee}}^{dp}(\CC)
+%	$$
+%	is fully faithful with essential image the full subcategory generated by colimits of trivial coalgebras.
+%\end{proposition}
+%
+%
+%
+%Our goal in this section is then to endow $\coAlg_{\Com^{\vee}}^{nil,dp}(\CC)$ with a Cartesian symmetric monoidal structure. Recall that the functor induced from the norm map:
+%$$
+%\norm:\coAlg_{\Com^{\vee}}^{dp}(\CC) 
+%\rightarrow
+%\coAlg_{\Com^{\vee}}(\CC).
+%$$
+%
+%
+%
+%Let $\coCAlg(\CC):=\CAlg(\CC^{op})^{op}$ denote the $\infty$-category of cocommutative coalgebra objects in $\CC$.
+%\begin{lemma}[Heuts]
+%	There is an equivalence of $\infty$-categories:
+%	$$
+%	\coAlg_{\Com^{\vee}}(\CC)\simeq \coCAlg(\CC)
+%	$$
+%\end{lemma}
+%
+%\begin{corollary}
+%	Under the assumption that $\CC$ is $1$-semiadditive, there is a fully faithful embedding $\coAlg_{\Com^{\vee}}^{nil,dp}\hookrightarrow \coCAlg(\CC)$. Moreover, $\coAlg_{\Com^{\vee}}^{nil,dp}$ is a Cartesian symmetric monoidal $\infty$-category.
+%\end{corollary}
+%\section{The Higher Enveloping Algebra Functor}
+% Knudsen \cite{KnudsenHEA} introduced a higher enveloping algebra functor in the $\infty$-categorical setting
+%$$
+%U_n:\Alg_{\Lie}(\CC)\rightarrow \Alg_{\E_n}(\CC) 
+%$$
+%where $\Alg_{\Lie}(\CC)$ is the $\infty$-category of algebras over the $\Lie$ operad in $\CC$ and $\Alg_{\E_n}(\CC)$ is the $\infty$-category of $\E_n$-algebras in $\CC$. 
+%The main work lies in the construction of a forgetful functor $\Alg_{\E_n}(\CC)\rightarrow \Alg_{\Lie}(\CC)$; the higher enveloping algebra functor $U_n$ is then defined as the left adjoint of the forgetful functor. Moreover, there is a Poincare-Birkhoff-Witt theorem:
+%$$
+%U_n(L)\oplus 1_{\CC}\simeq B_{\Lie}(\Omega^nL).
+%$$
+%
+%Motivated by the PBW theorem, we give a direct definition of the higher enveloping algebra functor $U_n$. We first show the Lie algebras inherits a Cartesian symmetric monoidal structure from its underlying category.
+%
+%\begin{proposition}
+%	The $\infty$-category $\Alg_{\Lie}(\CC)$ of Lie algebras in $\CC$  admits a Cartesian symmetric monoidal structure. Moreover, the categorical product in $\Alg_{\Lie}(\CC)$ is computed in the underlying $\infty$-category $\CC$.
+%\end{proposition}
+%\begin{proof}
+%	Since the $\infty$-category $\CC$ admits finite products, the $\infty$-category $\Alg_{\Lie}(\CC)$ of Lie algebras in $\CC$ also admits finite products and they are computed in $\CC$ by \cite{HA} proposition 3.2.2.1.
+%Let $\Alg_{\Lie}(\CC)^{\times}$ be the simplicial set obtained by applying \cite{HA} construction 2.4.1.4 to $\Alg_{\Lie}(\CC)$. As $\Alg_{\Lie}(\CC)$ admits finite products, it admits a Cartesian symmetric monoidal structure by \cite{HA} proposition 2.4.1.5.
+%\end{proof}
+%
+%\begin{remark}
+%	We let $\Alg_{\Lie}(\CC)^{\times}$ denote the Cartesian symmetric monoidal $\infty$-category on $\Alg_{\Lie}(\CC)$.
+%\end{remark}
+%
+%Since limits in $\Alg_{\Lie}(\CC)$ are computed in the underlying $\infty$-category $\CC$, it follows that $\Alg_{\Lie}(\CC)$ also admits totalizations of cosimplicial objects. 
+%
+%
+%
+%
+%
+%
+%
+%
+%By Corollary \ref{n-fold loop objects are E_n-algebras}, the $n$-fold loop functor induces a functor
+%$$
+%\Alg_{\Lie}(\CC)\xrightarrow{\Omega^{n}} \Alg_{\E_n}(\Alg_{\Lie}(\CC)).
+%$$
+%Post-compose with the functor $B_{\Lie}$, we then obtain the following composite
+%\begin{align*}
+%	\Alg_{\Lie}(\CC) & \xrightarrow{\Omega^n}
+%\Alg_{\E_n}\big(\Alg_{\Lie}(\CC)\big) \subseteq \Fun\big(\E_n^{\otimes},\Alg_{\Lie}(\CC)^{\times}\big)\\
+%&\xrightarrow{(B_{\Lie})_{*}}
+%\Fun\big(\E_n^{\otimes},\coAlg_{\Com^{\vee}}^{nil,dp}(\CC)^{\times}\big).
+%\end{align*}
+%where we let $\coAlg_{\Com^{\vee}}^{nil,dp}(\CC)^{\times}$ denote the Cartesian symmtric monoidal structure on $\coAlg_{\Com^{\vee}}^{nil,dp}(\CC)$.
+%
+%\begin{lemma}
+%	Let $\CC^{\times}$ and $\CD^{\times}$ be Cartesian symmetric monoidal $\infty$-categories. Any functor $F:\CC\rightarrow \CD$ can be lifted to a oplax monoidal functor $F^{\times}:\CC^{\times}\rightarrow \CD^{\times}$.
+%\end{lemma}
+%\begin{proof}
+%	\todo{to do}
+%\end{proof}
+%
+%Our next goal is to show that the induced functor $B_{\Lie}^{\times}:\Alg_{\Lie}(\CC)^{\times}\rightarrow \coAlg_{\Com^{\vee}}^{nil,dp}(\CC)^{\times}$ is symmetric monoidal.
+%
+%\begin{proposition}
+%	The functor $B_{\Lie}^{\times}:\Alg_{\Lie}(\CC)^{\times}\rightarrow \coAlg_{\Com^{\vee}}^{nil,dp}(\CC)^{\times}$ is symmetric monoidal.
+%\end{proposition}
+%\begin{proof}
+%	\todo{todo}
+%\end{proof}
+%
+%
+%
+%
+%\begin{definition}
+%	We define the higher enveloping algebra functor $U_n$ as 
+%	\begin{align*}
+%		U_n:\Alg_{\Lie}(\CC) & \rightarrow \Alg_{\E_n}(\CC)\\
+%		L                    & \mapsto \oblv^{nil,dp}_{\Com^{\vee}}\circ B_{\Lie}(\Omega^n L).
+%	\end{align*}
+%
+%\end{definition}
+%
+%\begin{remark}
+%The higher enveloping algebra functor defined here is equivalent to the one in \cite{KnudsenHEA} by the PBW theorem.	
+%\end{remark}
+%
+%
+%\begin{definition}
+%	Let $\CD$ be an $\infty$-category. An $\E_n$-Hopf algebra object in $\CD$ is a grouplike $\E_n$-algebra object in $\coCAlg(\CC)$. We let $\Hopfalgebra_{\E_n}(\CC)$ denote the $\infty$-category of $\E_n$-Hopf algebra objects in $\CD$.
+%\end{definition}
+%
+%\begin{corollary}
+%We have a commutative diagram:
+%\[
+%\begin{tikzcd}
+%	\Alg_{\Lie}(\CC) \arrow[rr,"U_n"] \arrow[dr,"B_{\Lie}\circ \Omega^n"]& &\Alg_{\E_n}(\CC)\\
+%	& \Hopfalgebra_{\E_n}(\CC) \arrow[ur] &
+%\end{tikzcd}
+%\]
+%In other words,	the universal enveloping algebra functor $U_n$ factors through the $\infty$-category of $E_n$-Hopf algebras in $\CC$. 
+%\end{corollary}
+%
+%\begin{remark}
+%	More precisely, $U_n$ factors through the $\infty$-category of conilpotent cocommutative $\E_n$-Hopf algebras. 
+%\end{remark}
+%
+%
+%\begin{conjecture}
+%The functor $B_{\Lie}\circ \Omega:\Alg_{\Lie}(\CC) \rightarrow \Hopfalgebra_{\E_1}(\CC)$ is an equivalence of $\infty$-categories.
+%\end{conjecture}
+%
+%\section{Appendix}
+%
+%In this section, we will provide some background, and prove some results of higher algebra which we used in this paper.
+%\subsection{Backgroud on higher algebra}
+%Our first goal is to show under certain assumptions of the underlying $\infty$-category $\CD$, the loop functor $\Omega$ sends an arbitrary object $X$ to an monoid object in $\CD$. Then by Dunn's additivity theorem, this implies that the $k$-fold loop object $\Omega^k X$ is an $\E_k$-monoid object in $\CD$. Then we will further show that the loop functor lands in the full subcategor of grouplike associative monoids.
+%\begin{definition}
+%	A simplicial object in an $\CD$ is a functor of $\infty$-categories
+%$$
+%U_{\bullet}: \nerve (\Delta)^{op}\rightarrow \CD.
+%$$
+%An augmented simplicial object in an $\infty$-category $\CD$ is a functor of $\infty$-categories 
+%$$
+%U_{\bullet}^{+}: \nerve (\Delta_{+})^{op}\rightarrow \CD.
+%$$
+%We let $\CD_{\Delta}:=\Fun(\nerve (\Delta)^{op}, \CD)$, resp. $\CD_{\Delta_+}:=\Fun(\nerve (\Delta_+)^{op}, \CD)$, denote the $\infty$-category of (resp. augmented ) simplicial objects in $\CD$. 
+%\end{definition}
+%
+%\begin{definition}
+%	[Definition 4.1.2.5. \cite{HA}]
+%	Let $\CD$ be an $\infty$-category. A \textit{monoid object} of $\CC$ is a simplicial object $X:\nerve (\Delta)^{op}\rightarrow \CD$ with the property that, for each $n\geq 0$, the collection of face maps induced from the inclusions $[1]\simeq\{i-1,i\} \hookrightarrow [n]$, exhibits $X_n$ as a $n$-fold product of $X_1$.
+%	We let $\Mon(\CD)$ be the full subcategory of $\Fun(\nerve(\Delta)^{op},\CD)$ spanned by monoid objects of $\CD$.
+%\end{definition}
+%
+%Let $\CD$ be a pointed $\infty$-category which admits pullbacks. 
+%Recall the loop object $\Omega Y$ of an object $Y\in \CD$ is defined as:
+%$$
+%\Omega Y:=0 \underset { Y }{\times } 0.
+%$$
+%There is "concatenation" map
+%$$
+%0 \underset { Y }{\times } 0 \underset { Y }{\times } 0
+%\simeq\Omega Y\times \Omega Y\rightarrow \Omega Y\simeq 0\underset{Y}{\times}Y\underset{Y}{\times} 0 
+%$$
+%which is unique up to a contractible ambiguity. We can define a simplicial object $(Y^{S^1})_{\bullet}$ in $\CD$ as $(Y^{S^1})_{n}:=(\Omega Y)^{\times n}$, for which inner face maps are given by concatenation map, outer face maps are given by projection to zero object, and degeneracy maps are given by insertion of zero object. Therefore, we obtain the following proposition:
+%\begin{proposition}
+%	Let $\CD$ be a pointed $\infty$-category which admits pullbacks. For any object $X\in \CD$, the simplicial object $(X^{S^1})_{\bullet}$ is a monoid object of $\CD$.
+%\end{proposition}
+%
+%\begin{remark}
+%	We will abuse notation by writing the simplicial object $(X^{S^1})_{\bullet}$ as $\Omega X$; note this is not harmful at all, as the value of $X^{S^1}$ on $\Delta^{op}$ entirely depends on objects of $(X^{S^1})_{1}\simeq \Omega X$.
+%\end{remark}
+%
+%\begin{proposition}
+%	 \cite[Proposition~4.1.2.10.]{HA}
+%	For every $\infty$-category $\CD$ which admits finite products, there is an equivalence of $\infty$-categories $\theta:\Mon_{\Ass}(\CD)\rightarrow \Mon(\CD)$.
+%\end{proposition}
+%
+%Moreover, since there is an equivalence of $\infty$-operads
+%\todo{references to be added from higher algebra}
+%$$
+%\E_1^{\otimes} \simeq \Ass^{\otimes},
+%$$
+%we conclude that $\Mon_{\E_1}(\CD)\simeq \Mon_{\Ass}(\CD)\simeq \Mon(\CD)$. Therefore, we can view $\Omega Y$ as an $\E_1$-monoid in $\CD$.
+%
+%\begin{corollary}
+%	Let $\CD$ be a pointed $\infty$-category which admits pullbacks. For any object $X\in \CD$, the loop space object $\Omega X$ is an $\E_1$-monoid object of $\CD$.
+%\end{corollary}
+%
+%The following corollary uses Dunn's additivity theorem \cite[Proposition 5.1.2.2.]{HA}.
+%\begin{corollary}
+%\label{n-fold loop objects are E_n-algebras}
+%	Let $\CD$ be a pointed Cartesian symmetric monoidal $\infty$-category which admits finite limits. For any object $X\in \CD$, the $n$-fold loop object $\Omega^n X$ is an $\E_n$-algebra object in $\CD$.
+%\end{corollary}
+%
+%\begin{proof}
+%	Since $\CD^{\otimes}$ is a Cartesian symmetric monoidal $\infty$-category, we have an equivalence 
+%	$\Alg_{E_{1}}(\CD)\rightarrow \Mon_{\E_1}(\CD)$
+%	by \cite[Proposition 2.4.2.5.]{HA}. Therefore, we can identify $\Omega X$ as an $\E_1$-algebra of $\CD$. The additivity theorem (Theorem 5.1.2.2. \cite{HA}) then allows us to iterate the process
+%	$$
+%	\Alg_{\E_{k+1}}(\CD)\simeq \Alg_{\E_1}(\Alg_{\E_k}(\CD)),
+%	$$
+%	which induces an equivalence of $\infty$-categories
+%	$$
+%	\Alg_{\E_n}(\CD)\simeq \Alg_{\E_1}(\Alg_{E_1}(\cdots (\Alg_{E_1}(\CD))\cdots)
+%	$$, hence $\Omega^n X$ is an $\E_n$-algebra object in $\CD$.
+%\end{proof}
+%
+%Next, we state the definition of grouplike monoid objects as stated in \cite{HA} and show $\Omega X$ is a grouplike $\E_1$-monoid.
+%
+%\begin{definition}
+%\cite[Definition 5.2.6.2.]{HA}
+%	Let $\CD$ be an $\infty$-category which admits finite products and let $G$ be an associative monoid object of $\CC$. Let $m:G\times G\rightarrow G$ be the multiplication maps, and let $p_1,p_2:G\times G\rightarrow G$ be the projection maps onto the first and second factors, respectively. We will say that $G$ is \textit{grouplike} if the maps
+%	$$
+%	(p_1,m):G\times G\rightarrow G
+%	$$
+%	$$
+%	(m,p_2):G\times G\rightarrow G
+%	$$
+%	are isomorphisms. 
+%\end{definition}
+%
+%\begin{definition}
+%	\cite[Definition 6.1.2.7.]{HTT}
+%	A simplicial object $U_{\bullet}$ in $\CD$ is a \textit{groupoid object} if for every $n\geq 0$ and every partition $[n]=S\cup S'$ such that $S\cap S'=\{s\}$, the diagram
+%	\[
+%	\begin{tikzcd}
+%		U([n]) \arrow[r] \arrow[d] & U(S) \arrow[d]\\
+%		U(S') \arrow[r]    & U(\{s\}) 
+%	\end{tikzcd}
+%	\]
+%	is a pullback square in the $\infty$-category $\CC$.
+%\end{definition}
+%
+%\begin{lemma}
+%	\cite[Remark 5.2.6.5.]{HA}
+%	\label{Char of grouplike objects}
+%	Let $\CD$ be an $\infty$-category with finite products. Let $G$ be a monoid object in $\CD$, then $G$ is a grouplike if and only if its underlying simplicial object is a groupoid object in $\CD$.
+%\end{lemma}
+%
+%\begin{corollary}
+%\label{loop objects are grouplike monoid objects}
+%	Let $\CD$ be an $\infty$-category with finite limits. For any object $X\in \CD$, its loop object $\Omega X$ is a grouplike monoid object.
+%\end{corollary}
+%\begin{proof}
+%	Since we have defined the underlying monoid object of the associative monoid $\Omega X$ as the simplicial object
+%	$$
+%	(X^{S^1})_n=(\Omega X)^{\times n},
+%	$$
+%	which is automatically a groupoid object. The claim then follows immediately by Lemma \ref{Char of grouplike objects}.
+%\end{proof}
+%
+%\subsection{Symmetric Sequences}
+%We recall the foundation of the theory of $\infty$-operads in $\CC$ in this section. 
+%
+%\begin{definition}
+%	 The $\infty$-category of \textit{symmetric sequences} $\SSeq(\CS)$ in spaces is defined as the functor category 
+%	 $$
+%	 \Fun(\Fin^{\simeq},\Space),
+%	 $$
+%	 where $\Fin^{\simeq}$ denotes the (nerve of) the category of finite sets with bijections.
+%	 
+%	 More generally, let $\CD$ be an arbitrary symmetric monoidal $\infty$-category. We define the $\infty$-category $\SSeq(\CD)$ of \textit{symmetric sequences in $\CD$} as the functor category $\Fun(\Fin^{\simeq},\CD)$.
+%\end{definition}
+%
+%
+%
+%
+%\begin{comment}
+%% It turns out I don't need these notions...
+%\begin{definition}
+%	\cite[Definition 7.2.2.1]{HTT}
+%	Let $\CD$ be an $\infty$-category which admits a final object.
+%	A \textit{group object} of $\CD$ is a groupoid object $U_{\bullet}:\nerve\Delta^{op}\rightarrow \CD$ for which $U_0$ is a final object of $\CD$.
+%\end{definition}
+%
+%
+%
+%\begin{definition}
+%	An augmented simplicial object $U^{+}_{\bullet}$ in $\CD$ is a \textit{\v{C}ech nerve} if $U^{+}_{\bullet}$ is a right Kan extension of 
+%		$
+%		U^{+}_{\bullet}|_{\nerve (\Delta^{\leq 0}_{+})^{op}}.
+%		$
+%\end{definition}
+%
+%\begin{proposition}
+%	\cite[Proposition 6.1.2.11.]{HTT}
+%	Let $\CD$ be an $\infty$-category and let $U^{+}_{\bullet}:\nerve(\Delta_{+})^{op}\rightarrow \CD$ be an augmented simplicial object of $\CD$. Then $U^{+}_{\bullet}$ is a \v{C}ech nerve	 if and only if 
+%the underlying simplicial object $U_{\bullet}$ is a groupoid object of $\CD$ and the diagram 
+%		\[
+%		\begin{tikzcd}
+%		U_{2} \arrow[r] \arrow[d] & U_{1} \arrow[d]\\
+%		U_{1} \arrow[r]           & U_{0}
+%		\end{tikzcd}
+%		\]
+%		is a pullback diagram in $\CD$.
+%\end{proposition}
+%\end{comment}
+%
+%
+%
+%
+%\section{Appendix}
+%\todo[inline]{Things below will be in appendix...}
+%A functor bewteen $\infty$-topos $F:\CX\to \CX'$ is said to \emph{preserve connectivity} if for any $n$-conncective object $X\in \CX$, $F(X)$ is also $n$-connective.
+%\todo[inline]{The lemma below is definitely true for any $\infty$-topos, but I don't think we need to do things that general here.}
+%\begin{lemma}
+%\label{products commute with products of Eilenberg-Maclane spaces}
+%Let $F: \CS_*^{\geq 1} \to \CS_*^{\geq 1}$ be an endofunctor on the $\infty$-category of pointed spaces. Suppose $F$ preserves finite products and connectivity, and let $X$ be a space that is equivalent to a product of Eilenberg-Maclane spaces, i.e.
+%$$
+%X\simeq \prod_{i} K(\pi_i X, i),
+%$$ then 
+%$$F(X)\simeq \prod_i F(K(\pi_i X, i)).$$
+%\end{lemma}
+%\begin{proof}
+%	Since $F$ preserves finite products, for a fixed $n$, we have 
+%	$$
+%	F(X) \simeq F\big (\prod_{i}^n K(\pi_i X, i)\big)\times  F\big(\prod_{i\geq n+1}K(\pi_i X, i) \big).
+%	$$
+%	Since $F$ preserves finite products and connectivity, if we take $n$-truncation on both side, we get
+%	\begin{align*}
+%	\tau_{\leq n}F(X) & \simeq \tau_{\leq n} F \big( \prod_{i}^n K(\pi_i X, i) \big)		\\
+%					  & \simeq \tau_{\leq n} \prod_{i}^n F\big( K(\pi_i X, i) \big)\\
+%					  & \simeq \tau_{\leq n} \prod_{i} F\big( K(\pi_i X, i) \big),
+%	\end{align*}
+%	which means that the canonical map $F(X)\to \prod_{i} F\big( K(\pi_i X, i) \big)$ is an $n$-equivalence. The lemma then follows from the convergence of Postnikov tower.
+%	
+%	\end{proof}
+%	
+%	
+%	
+%\subsection{Results from higher algebra}
+%	Let $\adj{F}{\CC}{\CD}{G}$ be an adjunction between $\infty$-categories. 
+%	Let $T:=GF$ denote the endomorphism monad induced by the adjunction and we let $\Alg_{T}(\CC)$ denote the $\infty$-category of $T$-modules in $\CD$.
+%	Then $F$ factors as a commutative diagram of $\infty$-categories:
+%	\[
+%\begin{tikzcd}
+%C \arrow[rr, shift left, "F"] \arrow[rd, shift left] &                                                 & D \arrow[ll, shift left, "G"] \arrow[ld, shift left,"G'"] \\
+%                                                & \Alg_{T}(\CC) \arrow[lu, shift left] \arrow[ru, shift left] &                                                
+%\end{tikzcd}
+%	\] 
+%	
+%	
+%	
+%The following result can be extracted from the proof of \cite{HA}[Lemma 4.7.3.13.].
+%\begin{lemma}
+%	Suppose every $G$-split object in $\CD$ admits a colimit in $\CD$ and is preserved by $G$. Then the functor $G'$ admits a left adjoint $F'$. Moreover, $F'G'X$ can be resolved by the geometric realization of the simplicial object $(FG)^{\bullet+1}X$, i.e.
+%	$$
+%	F'G'X \simeq  \abs{(FG)^{\bullet+1}X}
+%	$$
+%	for any object $X\in \CD$. 
+%\end{lemma}
+%
+%The following proposition can be easily deduced by dualizing \cite{HA}[Proposition 3.2.4.7.].
+%\begin{proposition}
+%	 Let $\CC$ be a symmetric monoidal $\infty$-category, then the symmetric monoidal structure on the category $\coCAlg(\CC)$ of commutative coalgebras is Cartesian.
+%\end{proposition}
+%
+%Let $\CC$ be the $\infty$-category $\Sp$ of spectra in the previous proposition, then we can conclude that the Cartesian symmetric monoidal structure on $\coCAlg(\Sp)$ is given by the smash product $\otimes$ in $\Sp$.
+%It is a well-known fact that the functor 
+%$$
+%\Sigma^{\infty}_+: \CS \to \Sp
+%$$
+%sends products in $\CS$ to smash product in $\Sp$.
+%Hence, the factorization $C: \CS \to \coCAlg(\Sp)$ preserves finite products.
+%In the case of tame spaces and tame coalgebras, we have the following lemma.
+%
+%\begin{lemma}
+%	[Finite products lemma]
+%	The functor 
+%	$$
+%	C_{tame}: \CS^{\geq r-1}_{\text{($r-1$)-tame}}  
+%	\to 
+%	\coCAlg(\Sp^{\geq r-1}_{\text{($r-1$)-tame}})
+%	$$
+%	preserves finite products.
+%\end{lemma}
+%\begin{proof}
+%	Since the forgetful functor $\oblv:\coCAlg(\Sp^{\geq r-1}_{\text{($r-1$)-tame}}) 
+%	\to
+%	\Sp^{\geq r-1}_{\text{($r-1$)-tame}}$ is conservative, it suffices to show the composite $\Sigma^{\infty}_{tame}$ preserves finite products. Recall that $\Sigma^{\infty}_{tame}$ is by definition the composite $L_{tame}\circ \Sigma^{\infty}_{+}$. The lemma then follows from the fact that the symmetric monoidal product of $X, Y$ in $\Sp^{\geq r-1}_{\text{($r-1$)-tame}}$ is given by $L_{tame}(X\otimes Y)$.
+%\end{proof}
+%
+%
+%\begin{proposition}
+%The unit of $RC_{tame}$ preserves connectivity and finite products. 
+%\end{proposition}
+%\begin{proof}
+%	For any tame space $X\in \CS^{\geq r-1}_{\text{($r-1$)-tame}}$, we have 
+%	$$
+%	RC_{tame}X \simeq  \Tot (\Omega^{\infty}\Sigma^{\infty}_{tame})^{\bullet+1}X.
+%	$$ 
+%	The first part of the proposition now follows from ??, because both $\Sigma^{\infty}_{tame}$ and $\Omega^{\infty}$ preserve connectivity. 
+%	Since $C_{tame}$ preserves finite products and $R$ is a right adjoint, their composition also preserves finite products.
+%	\end{proof}
+%
+%
+%
+%\begin{proposition}
+%	\cite{HA}[Proposition 2.4.2.5.]
+%	 Let $\mathcal{C}^{\otimes}$ be a symmetric monoidal $\infty$-category, $\pi: \mathcal{C}^{\otimes} \rightarrow \mathcal{D}$ a Cartesian structure, and $\mathcal{O}^{\otimes}$ an $\infty$-operad. Then composition with $\pi$ induces an equivalence of $\infty$-categories $\operatorname{Alg}_{\mathcal{O}}(\mathcal{C}) \rightarrow \operatorname{Mon}_{\mathcal{O}}(\mathcal{D})$.
+%\end{proposition}
+%
+%\begin{lemma}
+%\cite{HA}[Lemma 3.2.2.6.]
+%Let $p: \mathcal{C}^{\otimes} \rightarrow \mathcal{O}^{\otimes}$ be a fibration of $\infty$-operads, and let $\gamma: A \rightarrow A^{\prime}$ be a morphism in $\operatorname{Alg}_{/ \mathcal{O}}(\mathcal{C})$. The following conditions are equivalent:
+%\begin{enumerate}[(1)]
+%	\item The morphism $\gamma$ is an equivalence in $\operatorname{Alg}_{/ 0}(\mathcal{C})$.
+%	\item For every object $X \in \mathcal{O}$, the morphism $\gamma(X): A(X) \rightarrow A^{\prime}(X)$ is an equivalence in $\mathcal{C}$.
+%\end{enumerate}
+%\end{lemma}
+%
+%
+%
+%
+%\subsection{Background on H-spaces}
+%Let $H$ be an associative $H$-space, then precomposing with the cross-product gives a multiplication, the \emph{Pontryagin product}, on the homology $H_*(X;R)$:
+%$$
+%H_*(X;R)\otimes H_*(X;R) \xrightarrow{\times} H_*(X\times X;R)\xrightarrow{\mu_*} H_*(X;R).
+%$$
+%Since the diagonal of $X$ induces a cocommutative multiplication on $H_*(X;R)$, hence $H_*(X;R)$ is a Hopf algebra. 
+%Dually, the cohomology $H^*(X;R)$ of the H-space $X$ is a commutative Hopf algebra with the multiplication induced by diagonal and comultiplication induced by the product of H-spaces.
+%
+%
+%
+%
+%\begin{lemma}
+%	If the cohomology class $[\alpha]\in H^n(X;R)$ is a $k$-invariant that represents a map
+%	$$
+%	\alpha: X \to K(R,n)
+%	$$
+%	of H-spaces. Then $[\alpha]$ is a primitive element in the Hopf algebra $H^n(X;R)$.
+%\end{lemma}
+%
+%
+%
+%\begin{proof}
+%	Note the comultiplication $\psi:H^*(X;R)\to H^*(X;R)\otimes H^*(X;R)$ is induced by the multiplication $\mu: X\times X\to X$, hence $\psi([\alpha])$ is represented by the following composition:
+%	\[
+%	
+%	\]
+%\end{proof}
+%
+
+

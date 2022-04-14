@@ -1,0 +1,45 @@
+\documentclass[a4paper, 11pt]{book}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage{sfmath}
+\usepackage{amsmath}
+% \usepackage{notation}
+\usepackage{verbatim}
+\usepackage{bbm}
+\input{WHQ.tex}
+
+\usepackage{hyperref}
+\renewcommand{\familydefault}{\sfdefault}
+
+\title{Hopf Algebra model for tame spaces}
+\author{Haoqing Wu}
+\date{\today}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\input{Introduction}
+\input{Tame}
+\input{Koszul_Duality}
+\input{Proof_of_the_Main_theorems.tex}
+
+
+\appendix
+
+\input{Appendix}
+
+
+Seems the coalgebra model doesn't work, since the functor $\Sigma^{\infty}_{tame}$ is not necessarily conservative.
+However, there seems to be a Hopf algebra model for this.
+
+
+
+
+
+
+
+\clearpage
+\bibliography{bibliography}
+\bibliographystyle{alpha}
+\end{document}
