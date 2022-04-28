@@ -4,36 +4,57 @@ In this appendix, we recall some notions and results from \cite{HTT} and \cite{H
 
 
 \section{Monoids and Groups in $\infty$-Categories}
-We recall that a \emph{monoid object} in an $\infty$-category $\CC$ is a simplicial object $X: \Delta^{op}\to \CC$ satisfying the Segal condition:
+Let $\CC$ be a pointed $\infty$-category with finite limits. 
+We recall that a \emph{monoid object} in an $\infty$-category $\CC$ \cite[
+Definition 4.1.2.5.]{HA} is a simplicial object $X: \Delta^{op}\to \CC$ satisfying the Segal condition:
 the collection of face maps $X([n])\to X(\{i-1,i\})$ for $1\leq i \leq n$ exhibits $X([n])$ as a product of $\{X(\{i-1,i\})\}_{1\leq i \leq n}$. 
 We will denote the full subcategory of monoids in $\CC$ by $\Mon(\CC)$.
 
-Under the identification of $\Mon(\CC)\simeq \Mon_{\Ass}(\CC)$ (see \cite{HA}[Proposition 4.1.2.10.]), a monoid $X$ is equipped with a (homotopy coherently) associative multiplication:
+Under the identification $\Mon(\CC)\simeq \Mon_{\Ass}(\CC)$ (see \cite[Proposition 4.1.2.10.]{HA}), a monoid $X$ is equipped with a (homotopy coherently) associative multiplication:
 $$
 m: X\times X\to X;
 $$
-we say that $X$ is a \emph{group} in $\CC$ if both shearing maps
+we say that $X$ is a \emph{group} in $\CC$ \cite[Definition 5.2.6.2.]{HA} if both shearing maps
 \begin{align*}
 			(p_1, m):X\times X\to X\times X\\
 	(m,p_2):X\times X\to X\times X
 \end{align*}
-are equivalences.
+are equivalences. 
+We will denote the $\infty$-category of groups in $\CC$ as $\Grp(\CC)$.
+By \cite[Remark 5.2.6.5.]{HA}, this is equivalent to the definition of \emph{groupoid objects} in \cite[Definition 6.1.2.7.]{HTT}.
 
-We first observe that if the underlying $\infty$-category is stable, then the category of groups is equivalent to the category of monoids.
-\begin{proposition}
-	Let $\CC$ be a stable $\infty$-category. Then the forgetful functor 
-$\Grp(\CC)\to \Mon(\CC)$ is an equivalence of $\infty$-categories.
-\end{proposition}
+We now give another characterization of group objects in terms of presheaves on $\CC$.
+Since the Yoneda embedding preserves limits, it induces a functor
+$$
+\Grp(\CC) \to  \Grp(\Fun(\CC^{op}, \Space)) \simeq \Fun(\CC^{op}, \Grp(\Space)).
+$$
+Hence we can identify group objects in $\CC$ as those representable presheaves that factor through $\Grp(\Space)$. 
+
+The \emph{loop object} $\Omega Y$ of an object $Y\in \CC$ is defined as
+$$
+\Omega Y:=0 \underset { Y }{\times } 0.
+$$
+We want to show that $\Omega Y$ is a group object of $\CC$. 
+\begin{lemma}
+\label{Loop of an object is a group}
+    Let $\CC$ be a pointed $\infty$-category with finite limits, then $\Omega Y$ is a group object for any $Y\in \CC$.
+\end{lemma}
 \begin{proof}
-	It suffices to show every monoid object $X\in \CC$ is a group object; that is, we have to show the shearing maps
-	\begin{align*}
-			(p_1, \mu):X\times X\to X\times X\\
-	(\mu,p_2):X\times X\to X\times X
-	\end{align*}
-	are equivalences. Note that a morphism $Y\xrightarrow{f} Z$ is an equivalence in a pointed $\infty$-category $\CC$ if and only if $Y\times_{Z}*\to *$ is an equivalence. This is indeed the case for both $(p_1,\mu)$ and $(\mu,p_2)$.
-	
-	% this is true because the map * \to * is a retract of Y \to Z and the claim follows from the pasting law of pullback squares.
+    The image of the Yoneda embedding of $\Omega Y$ is given by 
+    $$
+    X \mapsto \map_{\CC}(X, \Omega Y)\simeq \Omega \map_{\CC}(X, Y),
+    $$
+    where latter is in $\Grp(\Space)$ for any $X\in \CC$.
 \end{proof}
+\begin{remark}
+In particular, $\Omega Y$ is a monoid in $\CC$. The multiplication map is given by the "concatenation" map
+$$
+0 \underset { Y }{\times } 0 \underset { Y }{\times } 0
+\simeq\Omega Y\times \Omega Y\rightarrow \Omega Y\simeq 0\underset{Y}{\times}Y\underset{Y}{\times} 0 
+$$
+which is unique up to contractible ambiguity. 
+\end{remark}
+
 
 \begin{proposition}
 \label{induced fully faithfulness on group objects}
@@ -49,8 +70,27 @@ Let $\CC$ and $\CD$ be $\infty$-categories with finite products. Suppose $F:\CC 
 	\Fun(\Delta^{op},\CC)\to \Fun(\Delta^{op},\CD)
 	$$ between the $\infty$-categories of simplicial objects.
 	Then $(1)$ follows from the fact that $F$ send monoids to monoids and $\Mon(\CC)$ is a full subcategory of $\Fun(\Delta^{op},\CC)$; and $(2)$ follows from the fact that $\Grp(\CC)$ is a full subcategory of $\Mon(\CC)$.
-	
 \end{proof}
+%%%%
+
+
+\begin{definition}
+	\cite[Definition 6.1.2.7.]{HTT}
+	A simplicial object $U_{\bullet}$ in $\CD$ is a \textit{groupoid object} if for every $n\geq 0$ and every partition $[n]=S\cup S'$ such that $S\cap S'=\{s\}$, the diagram
+	\[
+	\begin{tikzcd}
+		U([n]) \arrow[r] \arrow[d] & U(S) \arrow[d]\\
+		U(S') \arrow[r]    & U(\{s\}) 
+	\end{tikzcd}
+	\]
+	is a pullback square in the $\infty$-category $\CC$.
+\end{definition}
+
+
+%%%%
+
+
+
 
 
 \begin{proposition}
@@ -463,6 +503,60 @@ Let $R$ be a localization of $\BZ$.
 \end{proof}
 
 
+\begin{proposition}
+	Let $\CO$ be a connected operad, the following map 
+	$$
+	\tau_{\leq n}\CO \rightarrow 
+	\Cobar(\Barconstruction(\tau_{\leq n}\CO,\CO,\mathds{1}),\Barconstruction(\CO),\mathds{1})
+	$$
+	is an isomorphism for $n\geq 1$.
+\end{proposition}
+\begin{proof}
+	We prove this by induction on $n$.
+	For $n=1$, the map $\triv\simeq \tau_{\leq 1}\CO \rightarrow \Cobar(\Barconstruction(\CO),\Barconstruction(\CO),\triv)$ is clearly an isomorphism.
+	For $n>0$, we first consider the following diagram in $\Opd^{aug}(\CC)$.
+	\[
+	\begin{tikzcd}
+	\tau_{\leq n}\CO \ar[d]\ar[r] & \Cobar \big(\Barconstruction(\tau_{\leq n}\CO,\CO,\triv),\Barconstruction (\CO), \triv	 \big) \ar[d]  \\
+	\tau_{\leq n-1}\CO \ar[r]    & 
+	\Cobar \big(\Barconstruction(\tau_{\leq n-1}\CO,\CO,\triv),\Barconstruction (\CO), \triv	 \big)
+	\end{tikzcd}
+	\]
+	Taking the fibers of the vertical maps, we obtain another diagram
+		\[
+	\begin{tikzcd}
+	\CO_n \arrow[d] \arrow[r] & 
+	\Cobar \big(\Barconstruction(\CO_n,\CO,\triv),\Barconstruction (\CO), \triv	 \big) \ar[d] \\
+	\tau_{\leq n}\CO \ar[d]\ar[r] & \Cobar \big(\Barconstruction(\tau_{\leq n}\CO,\CO,\triv),\Barconstruction (\CO), \triv	 \big) \ar[d]  \\
+	\tau_{\leq n-1}\CO \ar[r]    & 
+	\Cobar \big(\Barconstruction(\tau_{\leq n-1}\CO,\CO,\triv),\Barconstruction (\CO), \triv	 \big)
+	\end{tikzcd}
+	\]
+	where $\CO_n$ is the operad whose underlying symmetric sequence is 
+	$$
+	 \CO_n:= \begin{cases}
+    \CO(n), & \text{for } k = n \\
+   0, & \text{otherwise. }         \\
+  \end{cases}
+	$$
+	Observe that 
+	\begin{align*}
+			\Cobar \big(\Barconstruction(\CO_n,\CO,\triv),\Barconstruction (\CO), \triv \big) &
+			\simeq \Cobar \big(\CO_n\circ \Barconstruction(\CO),\Barconstruction (\CO), \triv	 \big)\\
+			& \simeq \CO_n,
+	\end{align*}
+	which implies that the top horizontal map is an equivalence. The bottom horizontal map is an equivalence by induction hypothesis. Therefore, the mid-horizontal map is an equivalence as well. This concludes the proposition.
+	
+\end{proof}
+\begin{corollary}
+		If an operad $\CO$ is connected, then $\CO$ is a Koszul operad.
+\end{corollary}
+\begin{proof}
+	
+\end{proof}
+
+
+
 %\begin{lemma}
 %\label{conservativity of forgetful functor}
 %	The forgetful functor 
@@ -495,9 +589,132 @@ Let $R$ be a localization of $\BZ$.
 
 
 
+\subsection{Ching-Harper}
+\begin{theorem}
+\cite{Ching-Harper}
+\label{Ching-Harper's Koszul duality}
+	Let $R$ be an $\E_{\infty}$-ring spectrum and $\CO$ an operad in the $\infty$-category $\Mod_R$ of $R$-module spectra with $\CO(1)=R$. Suppose $R$ and all $\CO(n)$ are connective. Then the restriction 
+	\[
+	\indec_{\CO}: \Alg_{\CO}(\Mod_R)^{\geq 1} \to \coAlg^{nil, dp}_{\Barconstruction(\CO)}(\Mod_R)^{\geq 1}
+	\]
+	 is an equivalence on the full subcategory of $1$-connective objects.
+\end{theorem}
+
+Take $R=H\BZ$, we then obtain the following corollary.
+\begin{corollary}
+	For $r\geq 1$, the Chevalley-Eilenberg functor 
+	\[
+	\widetilde{\operatorname{CE}}: \Alg_{\spLie}(\Mod_{H\BZ})^{\geq r} \to \coAlg^{nil, dp}_{\Com}(\Mod_{H\BZ})^{\geq r}
+	\]
+	restricts to an equivalence of $\infty$-categories on the full subcategory of $r$-connective objects.
+\end{corollary}
+
+
+% For our purpose, we are interested in the case when $F:\CC \to \CD$ is a localization functor.
+% The identification of $\Alg_{\spLie}(\Sp^{\geq r}_{\operatorname{tame}})$ as a localization of $\Alg_{\spLie}(\Sp^{\geq r})$ will be a direct consequence of a more general result below.
 
 
 
+
+
+
+
+The following proposition allows us to identify $\Alg_{\Lie}(\Sp^{\geq r}_{tame})$ as a full subcategory of Lie algebras in $Mod_{H\BZ}$.
+
+
+
+% By a dual argument, we can also identify the category of tame coalgebras as a full subcategory of $\coAlg^{nil, dp}_{\Com}(\Mod_{H\BZ}^{\geq r})$.
+% \begin{proposition}
+% 	The $\infty$-category $\coAlg^{nil, dp}_{\Com}(\Sp^{\geq r}_{tame})$ can be identified as the full subcategory of $\coAlg^{nil, dp}_{\Com}(\Mod_{H\BZ}^{\geq r})$ spanned by coalgebras whose underlying $H\BZ$-modules are tame.	
+% \end{proposition}
+
+We want to show the functor 
+$$
+B_{\Lie}: \Alg_{\Lie}(\Mod_{H\BZ})^{\geq r} \to \coAlg^{nil, dp}_{\Com}(\Mod_{H\BZ}^{\geq r+1})
+$$ 
+restricts to a functor:
+$$
+B_{tame}: \Alg_{\Lie}(\Sp^{\geq r}_{tame})\to \coAlg^{nil, dp}_{\Com}(\Sp^{\geq r+1}_{tame})
+$$
+and it is an equivalence if we precompose $B_{tame}$ with the functor $\Omega_{\Lie}$. We claim that the composition $B_{tame}\circ \Omega_{\Lie}$ is an equivalence of $\infty$-categories.
+
+\begin{remark}
+\label{symmetric monoidal structure on Mod_Z tame}
+	Note that $\Sp^{\geq r}_{tame}$ admits a symmetric monoidal structure with the tensor product $X\hat{\otimes} Y$ given by the tame localization $L_{tame}(X\otimes Y)$ of the smash product of $X$ and $Y$. 
+	Moreover, the functor $L_{tame}:\Mod_{H\BZ}^{\geq r}\to (\Mod_{H\BZ}^{\geq r})_{tame}$ is symmetric monoidal; this follows from the fact that the composite map $M \otimes_{\BZ} N \to L_{tame}M\otimes_{\BZ} N \to L_{tame}M\otimes_{\BZ} L_{tame}N$ is a tame equivalence for any $M,N\in \Mod_{H\BZ}^{\geq r}$.
+\end{remark}
+
+\subsubsection{Group objects}
+Consider $\CC$ as a Cartesian symmetric monoidal $\infty$-category, then by the dual argument of \cite[Proposition 2.4.3.9.]{HA}, the forgetful functor $\coCAlg(\CC)\to \CC$ is an equivalence.
+In particular, for every $Y\in \coCAlg(\CC)\simeq \CC$, the totalization of the cobar construction $\Cobar(0,X,0)^{\bullet}$ can be identified with $0\times_X 0 \simeq \Omega Y$.
+Therefore, we can identify $\Omega Y \simeq \Tot \Cobar(0,Y,0)^{\bullet}$ as an associative monoid in $\CC$.
+
+
+We can then define a simplicial object $(Y^{S^1})_{\bullet}$ in $\CD$ 
+$$
+(Y^{S^1})_{n}:=(\Omega Y)^{\times n},
+$$ for which inner face maps are given by concatenation maps, outer face maps are given by projection to zero object, and degeneracy maps are given by insertion of zero object. Therefore, we obtain the following proposition.
+\begin{proposition}
+	Let $\CC$ be a pointed $\infty$-category with finite limits. For any object $Y\in \CC$, the simplicial object $(Y^{S^1})_{\bullet}$ is a group object of $\CC$.
+\end{proposition}
+\begin{proof}
+    
+\end{proof}
+
+\begin{lemma}
+\label{loop objects are grouplike monoid objects}
+	Let $\CC$ be a pointed $\infty$-category with finite limits. For any object $X\in \CC$, its loop object $\Omega X$ is a group object.
+\end{lemma}
+\begin{proof}
+	Since we have defined the underlying monoid object of the associative monoid $\Omega X$ as the simplicial object
+	$$
+	(X^{S^1})_n=(\Omega X)^{n}.
+	$$
+	We claim this is indeed a groupoid object $\CC$.
+    Let $S\cup S'$ be a partition of $[n]$ with $S\cap S'=\{s\}$, then the following commutative diagram
+    \[
+\begin{tikzcd}
+	(\Omega X)^{ n} & (\Omega X)^{|S|-1} \\
+	(\Omega X)^{ |S'|-1}   &  0
+	\arrow[from=1-1, to= 1-2]
+%	\arrow[from=1-2, to= 1-1, shift left, "R"]
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-2, to=2-2]
+	\arrow[from=2-1, to= 2-2]
+%	\arrow[from=2-2, to= 2-1, shift left, "R'"]
+\end{tikzcd}
+    \]
+	is a pullback diagram, since all the maps involved are projections.
+	The claim then follows immediately by \cite[Remark 5.2.6.5.]{HA}.
+\end{proof}
+
+
+We first show that if the underlying $\infty$-category is pointed with finite limits, then the category of groups is equivalent to the category of monoids.
+\begin{lemma}
+    Let $\CC$ be a pointed $\infty$-category with finite limits.
+    Then a morphism $f:Y \to Z$ is an equivalence if and only if $Y\times_Z 0\to 0$ is an equivalence.
+\end{lemma}
+\begin{proof}
+    The "only if " part is clear. 
+    We now prove the "if" part. We claim that
+    $$
+    \map_{\CC}(X, Y)
+    \xrightarrow{f_*}
+    \map_{\CC}(X, Z)
+    $$
+    is an equivalence for any $X\in \CC$. Since $Y\times_Z 0\to 0$ is an equivalence, 
+    $$
+    \map_{\CC}(X,Y\times_Z 0) 
+    \simeq
+    \map_{\CC}(X,Y) \times_{\map_{\CC}(X,Z)} \{*\} 
+    $$
+     is contractible. The long exact sequence for the fiber sequence 
+    $$
+    \map_{\CC}(X,Y\times_Z 0)  \to \map_{\CC}(X, Y ) \to \map_{\CC}(X, Z)
+    $$
+    then implies $\map_{\CC}(X, Y ) \to \map_{\CC}(X, Z)$ is an equivalence.
+    
+\end{proof}
 
 
 

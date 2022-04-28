@@ -5,16 +5,16 @@ In this last chapter, we will give the proof second main main theorem stated in 
 %\begin{theorem}
 %	The universal enveloping algebra functor
 %	$$
-%	U: \Alg_{\Lie}(\Sp^{\geq r-1}_{\text{($r-1$)-tame}})
+%	U: \Alg_{\Lie}(\Sp^{\geq r-1}_{(r-1)\text{-}\tame})
 %	\to
-%	\Hopfalgebra(\Sp^{\geq r-1}_{\text{($r-1$)-tame}})
+%	\Hopfalgebra(\Sp^{\geq r-1}_{(r-1)\text{-}\tame})
 %	$$
 %	is an equivalence of $\infty$-categories.
 %\end{theorem}
 %\begin{remark}
 %\begin{enumerate}
-%	\item Here $\Hopfalgebra(\Sp^{\geq r-1}_{\text{($r-1$)-tame}})$ denotes the $\infty$-category of Hopf algebra objects in $(r-1)$-tame spectra as defined in \todo{previous section}. 
-%	\item By Proposition \ref{Identification of tame Lie algebras}, the $\infty$-category $\Alg_{\Lie}(\Sp^{\geq r-1}_{\text{($r-1$)-tame}})$ of tame Lie algebras can be identified with the full subcategory of $\Alg_{\Lie}(\Mod_{H\BZ})^{\geq r-1}$ spanned by Lie algebras whose underlying $H\BZ$-modules are tame.
+%	\item Here $\Hopfalgebra(\Sp^{\geq r-1}_{(r-1)\text{-}\tame})$ denotes the $\infty$-category of Hopf algebra objects in $(r-1)$-tame spectra as defined in \todo{previous section}. 
+%	\item By Proposition \ref{Identification of tame Lie algebras}, the $\infty$-category $\Alg_{\Lie}(\Sp^{\geq r-1}_{(r-1)\text{-}\tame})$ of tame Lie algebras can be identified with the full subcategory of $\Alg_{\Lie}(\Mod_{H\BZ})^{\geq r-1}$ spanned by Lie algebras whose underlying $H\BZ$-modules are tame.
 %\end{enumerate}
 %\end{remark}
 Our second result concerns a new Hopf algebra model for $r$-tame spaces. 
@@ -23,9 +23,9 @@ Our second result concerns a new Hopf algebra model for $r$-tame spaces.
 The following composition 
 $$
 \CS^{\geq r}_{tame} \xrightarrow{\Omega}
-\Grp(\CS^{\geq r-1}_{\text{($r-1$)-tame}})
+\Grp(\CS^{\geq r-1}_{(r-1)\text{-}\tame})
 \xrightarrow{\Grp(C_{tame})}
-\Hopfalgebra(\Sp^{\geq r-1}_{\text{($r-1$)-tame}})
+\Hopfalgebra(\Sp^{\geq r-1}_{(r-1)\text{-}\tame})
 $$
 is an equivalence of $\infty$-categories.
 \end{theorem}
@@ -36,7 +36,7 @@ Combinging Theorem \ref{first main theorem} and Theorem \ref{2nd Main Theorem}, 
 	\[
 	\CS^{\geq r}_{tame} 
 	\to
-	\Alg_{\Lie}(\Sp^{\geq r-1}_{\text{($r-1$)-tame}}).
+	\Alg_{\Lie}(\Sp^{\geq r-1}_{(r-1)\text{-}\tame}).
 	\]
 \end{theorem}
 
@@ -192,7 +192,7 @@ Hence we conclude the following.
 	\[
 	H^{*}(K(\BZ/p,n);\BZ)\otimes R_{*-r}\cong
 	\begin{cases}
-		$R_{k-r}\otimes \BZ/p$,  & \text{ for $k$ a multiple of $n+1$ in $[r, r+2p-3]$;} \\
+		$R_{k-r}\otimes\BZ/p$,  & \text{ for $k$ a multiple of $n+1$ in $[r, r+2p-3]$;} \\
 		$0$,        &\text{ otherwise.}
 	\end{cases}
 	\]
@@ -283,6 +283,7 @@ The theorem now follows from the fact that the collection of tame equivalences i
 
 To conclude, we record the following corollary, which completes the proof of Proposition \ref{Fully faithfulness of C_tame on EM spaces}.
 \begin{corollary}
+\label{Suspension of Eilenberg-Maclane spaces are symmetric algebra}
 	For any $R_k$-module $V$, the map 
 	$$\Sigma^{\infty}K(V,r+k) \to 
 	\Sym \Sigma^{r+k}HV$$ is a tame equivalence for any $k\geq 1$.
@@ -383,14 +384,14 @@ To conclude, we record the following corollary, which completes the proof of Pro
 \begin{proposition}
 \label{tame recognition theorem}
 For $r\geq 4$,
-	the loop functor $\Omega: \CS^{\geq r}_{\text{$r$-tame}}\to \Grp(\CS^{\geq r-1}_{\text{($r-1$)-tame}})$ is an equivalence. 
+	the loop functor $\Omega: \CS^{\geq r}_{\text{$r$-tame}}\to \Grp(\CS^{\geq r-1}_{(r-1)\text{-}\tame})$ is an equivalence. 
 \end{proposition}
 
 \begin{proof}
 	We have a commutative diagram 
 	\[
 	\begin{tikzcd}
-		\CS^{\geq r}_{\text{$r$-tame}} & \Grp(\CS^{\geq r-1}_{\text{($r-1$)-tame}})\\
+		\CS^{\geq r}_{\text{$r$-tame}} & \Grp(\CS^{\geq r-1}_{(r-1)\text{-}\tame})\\
 		\CS^{\geq r}_*   &  \Grp(\CS^{\geq r-1}_{*})  	
 	\arrow[from=1-1, to=1-2,"\Omega"]
 	\arrow[from=2-1, to=2-2, "\Omega","\simeq" below]
@@ -399,7 +400,7 @@ For $r\geq 4$,
 	\end{tikzcd}
 	\]
 	where the left vertical functor is fully faithful and the right vertical functor is also fully faithful by Proposition \ref{induced fully faithfulness on group objects}. The bottom arrow is an equivalence by May's recognition theorem (e.g. see \cite{HA}[Theorem 5.2.6.10.]). Hence the top loop functor $\CS^{\geq r}_{\text{$r$-tame}} \to \Grp(\CS^{\geq r-1})$ is fully faithful.
-	For the essential surjectivity, we know that any $X\in \Grp(\CS^{\geq r-1}_{\text{($r-1$)-tame}})$ is equivalent to $\Omega Y$ for some $Y\in \CS^{\geq r}_*$, while $Y$ has to be $r$-tame since $X$ is $(r-1)$-tame.
+	For the essential surjectivity, we know that any $X\in \Grp(\CS^{\geq r-1}_{(r-1)\text{-}\tame})$ is equivalent to $\Omega Y$ for some $Y\in \CS^{\geq r}_*$, while $Y$ has to be $r$-tame since $X$ is $(r-1)$-tame.
 	
 \end{proof}
 
@@ -447,20 +448,20 @@ Apply Lemma \ref{conservativity of forgetful functor (general)} to the case of t
 \label{conservativity of forgetful functor}
 	The forgetful functor 
 	\[
-	\Grp(\CS^{\geq r-1}_{\text{($r-1$)-tame}}) \xrightarrow{\oblv_{\Grp}} 
-	\CS^{\geq r-1}_{\text{($r-1$)-tame}}
+	\Grp(\CS^{\geq r-1}_{(r-1)\text{-}\tame}) \xrightarrow{\oblv_{\Grp}} 
+	\CS^{\geq r-1}_{(r-1)\text{-}\tame}
 	\]
 	is a conservative functor.
 \end{corollary}
 
-Since the underlying product of $\coCAlg(\Sp^{\geq r-1}_{\text{($r-1$)-tame}})$ is given by the smash product in $\Sp^{\geq r-1}_{\text{($r-1$)-tame}}$, we can identify $\coCAlg(\Sp^{\geq r-1}_{\text{($r-1$)-tame}})$ with a Cartesian symmetric monoidal $\infty$-category. Moreover, the functor 
-$$C_{tame}: \CS^{\geq r-1}_{\text{($r-1$)-tame}} \to
-\coCAlg(\Sp^{\geq r-1}_{\text{($r-1$)-tame}})$$
+Since the underlying product of $\coCAlg(\Sp^{\geq r-1}_{(r-1)\text{-}\tame})$ is given by the smash product in $\Sp^{\geq r-1}_{(r-1)\text{-}\tame}$, we can identify $\coCAlg(\Sp^{\geq r-1}_{(r-1)\text{-}\tame})$ with a Cartesian symmetric monoidal $\infty$-category. Moreover, the functor 
+$$C_{tame}: \CS^{\geq r-1}_{(r-1)\text{-}\tame} \to
+\coCAlg(\Sp^{\geq r-1}_{(r-1)\text{-}\tame})$$
 sends products to smash products, therefore it induces a functor
 $$
-G_{tame}:\Grp(\CS^{\geq r-1}_{\text{($r-1$)-tame}})
+G_{tame}:\Grp(\CS^{\geq r-1}_{(r-1)\text{-}\tame})
 \to
-\Grp(\coCAlg(\Sp^{\geq r-1}_{\text{($r-1$)-tame}})),
+\Grp(\coCAlg(\Sp^{\geq r-1}_{(r-1)\text{-}\tame})),
 $$
 where we identify the latter as the $\infty$-category of cocommutative Hopf algebras in $(r-1)$-tame spectra.
 
@@ -478,13 +479,13 @@ Apply Lemma \ref{conservativity of forgetful functor (general)} again, we have t
 \label{conservativity of the forgetful functor for Hopf algebras}
 		The forgetful functor 
 	\[
-	\Hopfalgebra(\Sp^{\geq r-1}_{\text{($r-1$)-tame}}) \xrightarrow{\oblv_{\Grp}} 
-	\coCAlg(\Sp^{\geq r-1}_{\text{($r-1$)-tame}})
+	\Hopfalgebra(\Sp^{\geq r-1}_{(r-1)\text{-}\tame}) \xrightarrow{\oblv_{\Grp}} 
+	\coCAlg(\Sp^{\geq r-1}_{(r-1)\text{-}\tame})
 	\]
 	is a conservative functor.
 \end{corollary}
 \begin{proof}
-	This follows from the fact that $\coCAlg(\Sp^{\geq r-1}_{\text{($r-1$)-tame}})$ is a Cartesian symmetric monoidal $\infty$-category and Lemma \ref{conservativity of forgetful functor (general)}.
+	This follows from the fact that $\coCAlg(\Sp^{\geq r-1}_{(r-1)\text{-}\tame})$ is a Cartesian symmetric monoidal $\infty$-category and Lemma \ref{conservativity of forgetful functor (general)}.
 \end{proof}
 
 Recall that in rational homotopy theory, any rational H-space splits as a product of Eilenberg-Maclane spaces.
@@ -513,7 +514,7 @@ Since $X$ is of finite type, we are reduced to prove the case for $X$ being $p$-
 	K(\pi_{n+1}X,n+2),
 	$$
 	and we want to show the $k$-invariant $[k_n]\in H^{n+2}(\tau_{\leq n}X; \pi_{n+1}X)$ vanishes. 
-	Note that $k_n$ is a map of $H$-spaces, hence it represents a primitive element in the $p$-local Hopf algebra $H^*(\tau_{\leq n}X; \pi_{n+1}X)$. Let $H$ be a commutative $p$-local Hopf algebra, the kernel of the natural map $\Prim(H)\to \Indec(H)$ consists of elements of $p^k$-th power by a variant of \cite{Milnor-Moore}[Proposition 4.21]. However, this cannot happen because of degree reason, as
+	Note that $k_n$ is a map of $H$-spaces, hence it represents a primitive element in the $p$-local Hopf algebra $H^*(\tau_{\leq n}X; \pi_{n+1}X)$. Let $H$ be a commutative $p$-local Hopf algebra and the denote $P(H)$ and $Q(H)$ the primitives and indecomposables of $H$ respectively; the kernel of the natural map $P(H)\to Q(H)$ consists of elements of $p^k$-th power by a variant of \cite{Milnor-Moore}[Proposition 4.21]. However, this cannot happen because of degree reason, as
 	$n<r+2p-3$ but
 	\[
 	n-rp<r+2p-3-rp= (2-r)(p-1)<0.
@@ -532,20 +533,20 @@ Theorem \ref{2nd Main Theorem} would follow if we can show every group-like $(r-
 
 We are now ready to state and prove the second main theorem in this paper.
 \begin{theorem}
-	The functor $G_{tame}: \Grp(\CS^{\geq r-1}_{\text{($r-1$)-tame}})\to \Hopfalgebra(\Sp^{\geq r-1}_{\text{($r-1$)-tame}})$ is an equivalence of $\infty$-categories.
+	The functor $G_{tame}: \Grp(\CS^{\geq r-1}_{(r-1)\text{-}\tame})\to \Hopfalgebra(\Sp^{\geq r-1}_{(r-1)\text{-}\tame})$ is an equivalence of $\infty$-categories.
 \end{theorem}
 \begin{proof}
 Since both $C_{tame}$ and $R$ preserve finite products, there is a pair of adjunctions
 \begin{equation}
 \label{adj on grps}
-	\adj{G_{tame}}{\Grp(\CS^{\geq r-1}_{\text{($r-1$)-tame}})}{\Hopfalgebra(\Sp^{\geq r-1}_{\text{($r-1$)-tame}})}{R'}.
+	\adj{G_{tame}}{\Grp(\CS^{\geq r-1}_{(r-1)\text{-}\tame})}{\Hopfalgebra(\Sp^{\geq r-1}_{(r-1)\text{-}\tame})}{R'}.
 \end{equation}
 We observe that there are commutative diagrams of $\infty$-categories
 \[
 \begin{tikzcd}
-	\Grp(\CS^{\geq r-1}_{\text{($r-1$)-tame}}) & \Hopfalgebra(\Sp^{\geq r-1}_{\text{($r-1$)-tame}})\\
-	\CS^{\geq r-1}_{\text{($r-1$)-tame}}  & 
-	\coCAlg(\Sp^{\geq r-1}_{\text{($r-1$)-tame}})
+	\Grp(\CS^{\geq r-1}_{(r-1)\text{-}\tame}) & \Hopfalgebra(\Sp^{\geq r-1}_{(r-1)\text{-}\tame})\\
+	\CS^{\geq r-1}_{(r-1)\text{-}\tame}  & 
+	\coCAlg(\Sp^{\geq r-1}_{(r-1)\text{-}\tame})
 	\arrow[from=1-1, to= 1-2, "G_{tame}"]
 %	\arrow[from=1-2, to= 1-1, shift left, "R"]
 	\arrow[from=1-1, to=2-1, "\oblv" left]
@@ -557,9 +558,9 @@ We observe that there are commutative diagrams of $\infty$-categories
 and 
 \[
 \begin{tikzcd}
-	\Grp(\CS^{\geq r-1}_{\text{($r-1$)-tame}}) & \Hopfalgebra(\Sp^{\geq r-1}_{\text{($r-1$)-tame}})\\
-	\CS^{\geq r-1}_{\text{($r-1$)-tame}}  & 
-	\coCAlg(\Sp^{\geq r-1}_{\text{($r-1$)-tame}})
+	\Grp(\CS^{\geq r-1}_{(r-1)\text{-}\tame}) & \Hopfalgebra(\Sp^{\geq r-1}_{(r-1)\text{-}\tame})\\
+	\CS^{\geq r-1}_{(r-1)\text{-}\tame}  & 
+	\coCAlg(\Sp^{\geq r-1}_{(r-1)\text{-}\tame})
 %	\arrow[from=1-1, to= 1-2, "G_{tame}"]
 	\arrow[from=1-2, to= 1-1, "R'"]
 	\arrow[from=1-1, to=2-1, "\oblv" left]
@@ -568,9 +569,9 @@ and
 	\arrow[from=2-2, to= 2-1, "R"]
 \end{tikzcd}
 \]
-where $\oblv$ and $\oblv'$ denote the forgetful functor from the category of groups in $\CS^{\geq r-1}_{\text{($r-1$)-tame}}$ (resp. $\Hopfalgebra(\Sp^{\geq r-1}_{\text{($r-1$)-tame}})$ ) to the underlying categories.
+where $\oblv$ and $\oblv'$ denote the forgetful functor from the category of groups in $\CS^{\geq r-1}_{(r-1)\text{-}\tame}$ (resp. $\Hopfalgebra(\Sp^{\geq r-1}_{(r-1)\text{-}\tame})$ ) to the underlying categories.
 
-We want to show the unit map $X \to R' G_{tame}X$ is an equivalence for any $X\in \Grp(\CS^{\geq r-1}_{\text{($r-1$)-tame}})$.
+We want to show the unit map $X \to R' G_{tame}X$ is an equivalence for any $X\in \Grp(\CS^{\geq r-1}_{(r-1)\text{-}\tame})$.
 Since the functor $\oblv$ is conservative by Lemma \ref{conservativity of forgetful functor}, it suffices to show the map $\oblv(X) \to \oblv(R'G_{tame}X)$ is an equivalence.
 By the commutativity of the diagrams above, we have
 $$
@@ -589,21 +590,21 @@ $$
 	To finish the proof, it suffices to show the right adjoint $R'$ is conservative. 
 	Since both $\oblv$ and $\oblv'$ are conservative by Corollary \ref{conservativity of forgetful functor} and Corollary \ref{conservativity of the forgetful functor for Hopf algebras}, we are reduced to show the functor 
 	\[
-	R: \coCAlg(\Sp^{\geq r-1}_{\text{($r-1$)-tame}}) \to 
-	\CS^{\geq r-1}_{\text{($r-1$)-tame}}
+	R: \coCAlg(\Sp^{\geq r-1}_{(r-1)\text{-}\tame}) \to 
+	\CS^{\geq r-1}_{(r-1)\text{-}\tame}
 	\]
-	is conservative. Let $f:U\to V$ be a morphism in $\coCAlg(\Sp^{\geq r-1}_{\text{($r-1$)-tame}})$ and suppose that $R(f): RU\to RV$ is an equivalence.
-	For any coalgebra $X\in \coCAlg(\Sp^{\geq r-1}_{\text{($r-1$)-tame}})$, we claim that the induced map on the mapping space
+	is conservative. Let $f:U\to V$ be a morphism in $\coCAlg(\Sp^{\geq r-1}_{(r-1)\text{-}\tame})$ and suppose that $R(f): RU\to RV$ is an equivalence.
+	For any coalgebra $X\in \coCAlg(\Sp^{\geq r-1}_{(r-1)\text{-}\tame})$, we claim that the induced map on the mapping space
 	$$
-	\map_{\coCAlg(\Sp^{\geq r-1}_{\text{($r-1$)-tame}})}(X, U)\to 
-	\map_{\coCAlg(\Sp^{\geq r-1}_{\text{($r-1$)-tame}})}(X, V)
+	\map_{\coCAlg(\Sp^{\geq r-1}_{(r-1)\text{-}\tame})}(X, U)\to 
+	\map_{\coCAlg(\Sp^{\geq r-1}_{(r-1)\text{-}\tame})}(X, V)
 	$$
 	is an equivalence.
 	Note that if $X$ lies in the essential image of $C_{tame}$, then the proof is complete. Hence, it is reduced show the functor
 	$$
-	C_{tame}: \CS^{\geq r-1}_{\text{($r-1$)-tame}}  
+	C_{tame}: \CS^{\geq r-1}_{(r-1)\text{-}\tame}  
 	\to 
-	\coCAlg(\Sp^{\geq r-1}_{\text{($r-1$)-tame}})
+	\coCAlg(\Sp^{\geq r-1}_{(r-1)\text{-}\tame})
 	$$
 	is essentially surjective, which we will prove in Lemma \ref{Essential Surjectivity of C_tame}.
 	
@@ -611,16 +612,11 @@ $$
 
 
 
-
-
-
-\clearpage
-Note that the composite $L_{tame}\circ \Sigma^{\infty}: \Space_{*}^{\geq r-1}\to \Sp^{\geq r-1}_{\text{($r-1$)-tame}}$ factorizes as $C'_{tame}: \Space_{*}^{\geq r-1}\to \coCAlg(\Sp^{\geq r-1}_{\text{($r-1$)-tame}})$ followed by a forgetful functor. The lemma below would be crucial to establish the essential surjectivity of $C_{tame}$.
+Note that the composite $L_{\operatorname{tame}}\circ \Sigma^{\infty}: \Space_{*}^{\geq r-1}\to \Sp^{\geq r-1}_{(r-1)\text{-}\tame}$ factorizes as $C'_{tame}: \Space_{*}^{\geq r-1}\to \coCAlg(\Sp^{\geq r-1}_{(r-1)\text{-}\tame})$ followed by a forgetful functor. The lemma below would be crucial to establish the essential surjectivity of $C_{tame}$.
 
 \begin{lemma}
-
 	\label{Sigma S^n is a trivial coalgebra}
-	$C'_{tame} S^{r-1}$ is a trivial coalgebra in $\coCAlg(\Sp^{\geq r-1}_{\text{($r-1$)-tame}})$.
+	$C'_{\tame} S^{r-1}$ is a trivial coalgebra in $\coCAlg(\Sp^{\geq r-1}_{(r-1)\text{-}\tame})$.
 \end{lemma}
 \begin{proof}
 %	We need to show all the coalgebra structure maps 
@@ -662,9 +658,9 @@ Note that the composite $L_{tame}\circ \Sigma^{\infty}: \Space_{*}^{\geq r-1}\to
 \label{Essential Surjectivity of C_tame}
 	The functor 
 	$$
-	C_{tame}: \CS^{\geq r-1}_{\text{($r-1$)-tame}}  
+	C_{tame}: \CS^{\geq r-1}_{(r-1)\text{-}\tame}  
 	\to 
-	\coAlg^{nil, dp}_{\Com}(\Sp^{\geq r-1}_{\text{($r-1$)-tame}})
+	\coAlg^{nil, dp}_{\Com}(\Sp^{\geq r-1}_{(r-1)\text{-}\tame})
 	$$
 	is essentially surjective.
 \end{lemma}
@@ -679,7 +675,7 @@ of $\infty$-categories. The $\infty$-category $\Alg_{\Lie}(\Mod_{H\BZ})^{\geq r-
 $$
 B_{\Lie}\circ \Free_{\Lie} \simeq \trivial_{\Com}.
 $$
-Since $\coAlg^{nil, dp}_{\Com}(\Sp^{\geq r-1}_{\text{($r-1$)-tame}})$ is a full subcategory of $\coAlg^{nil, dp}_{\Com}(\Mod_{H\BZ}^{\geq r-1})$,
+Since $\coAlg^{nil, dp}_{\Com}(\Sp^{\geq r-1}_{(r-1)\text{-}\tame})$ is a full subcategory of $\coAlg^{nil, dp}_{\Com}(\Mod_{H\BZ}^{\geq r-1})$,
 it suffices to show the essential image of $K(\BZ, r-1)$ is equivalent to the trivial coalgebra $\trivial_{\Com,tame}(\Sigma^{r-1}H \BZ)$.
 
 Since $S^{r-1}\to K(\BZ,r-1)$ is a tame equivalence, we have that

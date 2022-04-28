@@ -5,17 +5,19 @@
 \ProvidesPackage{WHQ-math}[2019/06/30]
 
 % Commonly used math-related packages.
+\newcommand\bmmax{2}
 \RequirePackage{amsfonts}
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
-\RequirePackage{mathabx}
+% \RequirePackage{mathabx}
 \RequirePackage{stmaryrd}
 \RequirePackage{faktor}
 \RequirePackage{mathtools}
 \RequirePackage{tikz-cd}
-\usepackage[all]{xy}
 \RequirePackage{todonotes}
 \RequirePackage{dsfont}
+
+\usepackage[all]{xy}
 \usepackage{enumerate}
 \usepackage{lipsum} % for filler text
 \usepackage{hyperref} % link
@@ -126,6 +128,7 @@
 % Some "number domain"s.
 \newcommand{\padicinteger}{\hat{\mathbb{Z}}_{p}}
 \newcommand{\BC}{\mathbb{C}}
+\newcommand{\BD}{{\mathbb{D}}}
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\BF}{{\mathbb{F}}}
 \newcommand{\BL}{{\mathbb{L}}}
@@ -284,8 +287,8 @@
 
 \newcommand{\operad}{\operatorname{Op}} % 1-category of ordinary operads
 \newcommand{\nsinfoperad}{\operatorname{Opd^{ns}_{\infty}}} % infinity category of nonsymmetric operads
-\newcommand{\Opd}{\operatorname{Op_{\infty}}} % infinity category of inftyoperads
-\newcommand{\Coop}{\operatorname{coOp_{\infty}}} % infinity category of cooperads
+\newcommand{\Opd}{\operatorname{Op}} % infinity category of inftyoperads
+\newcommand{\Coop}{\operatorname{coOp}} % infinity category of cooperads
 
 
 \newcommand{\SimplexCat}{\mathbf{\Delta}}
@@ -332,16 +335,16 @@
 %%%%%%%%%%%%%%%%
 %%% Functors %%%
 %%%%%%%%%%%%%%%%
-\newcommand{\Free}{Free} % the free algebra functor
-\newcommand{\cofree}{cofree} % the cofree coalgebra functor
-\newcommand{\trivial}{Triv} % the trivial algebra/coalgebra functor
-\newcommand{\oblv}{oblv} % the forgetful functor
-
+\newcommand{\Free}{\operatorname{free}} % the free algebra functor
+\newcommand{\cofree}{\operatorname{cofree}} % the cofree coalgebra functor
+\newcommand{\trivial}{\operatorname{triv}} % the trivial algebra/coalgebra functor
+\newcommand{\oblv}{\operatorname{oblv}} % the forgetful functor
 \newcommand{\TAQ}{TAQ} % the TAQ functor
-\newcommand{\Prim}{Prim} % the Prim functor
+\newcommand{\Prim}{\operatorname{prim}} % the Prim functor
 \newcommand{\Chev}{\widetilde{\operatorname{CE}}}
-\newcommand{\Indec}{Indec} % the Indec functor
-
+\newcommand{\indec}{\operatorname{indec}} % the Indec functor
+\newcommand{\nil}{\operatorname{nil}}
+\newcommand{\divpow}{\operatorname{dp}}
 
 %%%%%%%%%%%%%%%%%%
 %%% Diagrams %%%
@@ -404,8 +407,8 @@
 \DeclareMathOperator{\psh}{Psh} % presheaves on something
 \DeclareMathOperator{\red}{Red} % reduction of a functor F:C\rightarrow D, from an infinity category with finite colimits and final objects to an infinity category with finite limits.
 \DeclareMathOperator{\resstriction}{res^{\circ\rightarrow \star}} % restriction functor
-\DeclareMathOperator{\Tot}{Tot} 
-\DeclareMathOperator{\norm}{Nm}
+\DeclareMathOperator{\Tot}{\operatorname{Tot}}
+\DeclareMathOperator{\norm}{\operatorname{Nm}}
 \DeclareMathOperator{\res}{res^{G}_{H}} % restriction functor from G to H
 \DeclareMathOperator{\nerve}{N}  % The ordinary nerve functor
 \DeclareMathOperator{\snerve}{N_{\bullet}^{hc}}  % The simplicial or homotopy coherent nerve functor going from the cat of simpliicial cats to the cat of sSet.
@@ -419,5 +422,6 @@
 \DeclareMathOperator{\nSymfun}{SymFun^{n}} % infinity category of symmetric n-ary functors
 \DeclareMathOperator{\Symfun}{SymFun} % infinity category of symmetric n-ary functors
 \DeclareMathOperator{\Poly}{Poly}
+\DeclareMathOperator{\tame}{\operatorname{tame}} % tame 
 \DeclareMathOperator{\suspension}{\Sigma^{\infty}}
 \endinput
