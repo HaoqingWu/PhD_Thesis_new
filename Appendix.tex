@@ -155,30 +155,30 @@ which takes a $r$-tame Lie algebra $X$ to a $(r-1)$-tame Lie algebra $\Omega_{\L
 	\label{B and Omega are mutally inverses}
 	The functor 
 	\[
-	\Omega_{\Lie}': 
-	\Alg_{\Lie}(\Sp^{\geq r}_{\text{$r$-tame}}) \to \Grp( \Alg_{\Lie}(\Sp^{\geq r-1}_{\text{$(r-1)$-tame}}) )
+	\Omega_{\spLie}': 
+	\Alg_{\spLie}(\Sp^{\geq r}_{\text{$r$-tame}}) \to \Grp( \Alg_{\spLie}(\Sp^{\geq r-1}_{\text{$(r-1)$-tame}}) )
 	\]
 	is an equivalence.
 \end{proposition}
 \begin{proof}
-	Let $B_{\Lie}$ denote the bar construction functor that is left adjoint to $\Omega_{\Lie}'$. Since the forgetful functor 	
-	$\Alg_{\Lie}(\Sp^{\geq r}_{\text{$r$-tame}}) \to \Sp^{\geq r}_{\text{$r$-tame}}$ preserves sifted colimits, the bar construction is computed in the underlying category $\Sp^{\geq r}_{\text{$(r)$-tame}}$ of $r$-tame spectra;
-	Let $X_{\bullet}$ be a simplicial object in $\Sp^{\geq r-1}_{\text{$(r-1)$-tame}}$, the geometric realization of is computed by first taking the geometric realization of $X_{\bullet}$ in $\Sp$ then applying the $r$-tame localization functor $L_{\text{$r$-tame}}$, but $|X_{\bullet}|\simeq \Sigma X$ which is already $r$-tame, hence we have $B_{\Lie}X\simeq \Sigma X$.
+	Let $B_{\spLie}$ denote the bar construction functor that is left adjoint to $\Omega_{\spLie}'$. Since the forgetful functor 	
+	$\Alg_{\spLie}(\Sp^{\geq r}_{\text{$r$-tame}}) \to \Sp^{\geq r}_{\text{$r$-tame}}$ preserves sifted colimits, the bar construction is computed in the underlying category $\Sp^{\geq r}_{\text{$(r)$-tame}}$ of $r$-tame spectra;
+	Let $X_{\bullet}$ be a simplicial object in $\Sp^{\geq r-1}_{\text{$(r-1)$-tame}}$, the geometric realization of is computed by first taking the geometric realization of $X_{\bullet}$ in $\Sp$ then applying the $r$-tame localization functor $L_{\text{$r$-tame}}$, but $|X_{\bullet}|\simeq \Sigma X$ which is already $r$-tame, hence we have $B_{\spLie}X\simeq \Sigma X$.
 	Therefore we have a commuting diagram
 	\[
 	\begin{tikzcd}
-		\Grp( \Alg_{\Lie}(\Sp^{\geq r-1}_{\text{$(r-1)$-tame}}) ) & \Alg_{\Lie}(\Sp^{\geq r}_{\text{$r$-tame}})\\
+		\Grp( \Alg_{\spLie}(\Sp^{\geq r-1}_{\text{$(r-1)$-tame}}) ) & \Alg_{\spLie}(\Sp^{\geq r}_{\text{$r$-tame}})\\
 		\Sp^{\geq r-1}_{\text{$(r-1)$-tame}} &
 		\Sp^{\geq r}_{\text{$r$-tame}};
-		\arrow[from=1-1, to=1-2, "B_{\Lie}", shift left]
-		\arrow[from=1-2, to=1-1, "\Omega_{\Lie}'", shift left]
+		\arrow[from=1-1, to=1-2, "B_{\spLie}", shift left]
+		\arrow[from=1-2, to=1-1, "\Omega_{\spLie}'", shift left]
 		\arrow[from=1-1, to=2-1]
 		\arrow[from=1-2, to=2-2]
 		\arrow[from=2-1, to=2-2, "\Sigma", shift left]
 		\arrow[from=2-2, to=2-1, "\Omega", shift left]
 	\end{tikzcd}
 	\]
-	Hence $B_{\Lie}$ and $\Omega_{\Lie}'$ are mutally inverses because $\Sigma$ and $\Omega$ are mutually inverses.
+	Hence $B_{\spLie}$ and $\Omega_{\spLie}'$ are mutally inverses because $\Sigma$ and $\Omega$ are mutually inverses.
 \end{proof}
 
 %$$
@@ -211,51 +211,52 @@ which takes a $r$-tame Lie algebra $X$ to a $(r-1)$-tame Lie algebra $\Omega_{\L
 %\end{proof}
 %
 
-\section{Filtered and Graded Objects in $\infty$-Categories}
+\section{Filtered and Graded Objects in Infinity-Categories}
 In this section, we introduce the notion of filtered and graded objects in a symmetric monoidal $\infty$-category $\CC$.
-
+The main reference for this section is \cite{Brantner-Mathew}.
 \begin{definition}
 	Let $\BZ$ denote the poset of the integers and let $\CC$ be an $\infty$-category.
 	The $\infty$-category of \emph{filtered objects in $\CC$} is defined as the functor category 
 	$$
-	\CC^{\operatorname{Fil}}:=\Fun(\BZ, \CC).
+	\Fil(\CC) :=\Fun(\BZ, \CC).
 	$$
 \end{definition}
 
-Let $\BZ^{\operatorname{disc}}$ denote the groupoid with objects the integers and morphisms with auto-isomorphisms.
+Let $\BZ^{\operatorname{disc}}$ denote the groupoid with objects the integers and isomorphisms.
 \begin{definition}
 	The $\infty$-category of \emph{graded objects in $\CC$} is defined as the functor category 
 	$$
-	\CC^{\operatorname{gr}}:=\Fun(\BZ^{\operatorname{disc}}, \CC).
+	\Graded(\CC):=\Fun(\BZ^{\operatorname{disc}}, \CC).
 	$$
 \end{definition}
 
 \begin{remark}
-	We can also extend the definitions above to the category $\CC^{\Fil, \geq 0}$ (resp. $\CC^{\gr, \geq 0}$) of \emph{non-negatively filtered} (resp. \emph{non-negatively graded}) objects.
+	We can also extend the definitions above to the category $\Fil^{+}(\CC)$ (resp. $\Gr^{+}(\CC)$) of \emph{non-negatively filtered} (resp. \emph{non-negatively graded}) objects.
 \end{remark}
 
 The natural inclusion $ \BZ^{\operatorname{disc}}\hookrightarrow \BZ$ induces a forgetful functor
 $
-\CC^{\operatorname{Fil}} \to \CC^{\operatorname{gr}}. 
+\Fil(\CC) \to \Gr(\CC). 
 $
-We denote $(-)_*: \CC^{\operatorname{gr}} \to \CC^{\operatorname{Fil}}$ the left Kan extension along the inclusion $ \BZ^{\operatorname{disc}}\hookrightarrow \BZ$; explicitly, we have
-$X_*$ evaluated at $n$ is given by $\bigoplus_{k\leq n} X_k$.
+We denote $$
+(-)_*: \Graded(\CC) \to \Fil(\CC)
+$$ the left Kan extension along the inclusion $ \BZ^{\operatorname{disc}}\hookrightarrow \BZ$; explicitly, the filtered object $X_*$ evaluated at $n$ is given by $\bigoplus_{k\leq n} X_k$.
 
-We consider the functor 
+We can also define the \emph{associated graded} of a filtered object 
 $$
-\gr(-):
-\CC^{\operatorname{Fil}}
+\Graded(-):
+\Fil(\CC)
 \to 
-\CC^{\operatorname{gr}}
+\Graded(\CC)
 $$
-given by $X_* \mapsto (n \mapsto \cofib(X_{n-1} \to X_{n}))$.
-
+to be $X_* \mapsto (n \mapsto \cofib(X_{n-1} \to X_{n}))$.
 The following lemma follows immediately from an inductive argument.
 \begin{lemma}
-	The functor $$\gr(-):
-\CC^{\operatorname{Fil, \geq 0}}
+\label{Ass-gr is conservative}
+	The associated graded functor $$\Graded(-):
+\Fil^{+}(\CC)
 \to 
-\CC^{\operatorname{gr, \geq 0}}
+\Gr^{+}(\CC)
 $$
 is conservative.
 \end{lemma}
@@ -264,62 +265,87 @@ We also have the following obvious observation.
 \begin{lemma}
 	The composite 
 	\[
-	\CC^{\gr} \xrightarrow{(-)_*} 
-	\CC^{\Fil}
-	\xrightarrow{\gr(-)} \CC^{\gr}
+	\Graded(\CC) \xrightarrow{(-)_*} 
+	\Fil(\CC)
+	\xrightarrow{\Graded(-)} 
+	\Graded(\CC) 
 	\]
 	is equivalent to the identity functor.
 \end{lemma}
 
+The following remark from \cite{Brantner-Mathew} equips both the category of filtered objects and graded objects symmetric monoidal structure.
+\begin{remark}
+\cite[Definition 2.5]{Brantner-Mathew}
+Suppose that $\CC$ is (nonunital) presentably symmetric monoidal $\infty$-category in which tensor product commuts with colimits.
+Using Day convolution, one can equip both $\Fil(\CC)$ and $\Graded(\CC)$ with the structure of presentably (nonunital) symmetric monoidal $\infty$-categories. Furthermore, the associated graded functor $\Graded : \Fil(\CC) \to \Graded(\CC)$ is (nonunital) symmetric monoidal (cf. \cite[Sec. 2.23]{Glasman}).
+\end{remark}
+
+Consider now an $\infty$-operad $\CO$ in $\CC$, we can now state a theorem in \cite{Heuts_Koszul} which says that every $\CO$-algebra admits a canonical filtration so that its associated graded is trivial.
+\begin{theorem}
+\label{Canonical grading on an O-algebra}
+\cite[Theorem 5.2 (2)]{Heuts_Koszul}
+For an $\CO$-algebra $X$, there exists a canonical canonical filtered object $X_{*}$ so that 
+\begin{enumerate}
+    \item The filtration is \emph{exhaustive}, i.e. there is an equivalence
+    $$
+    \colim X_{*} \to X.
+    $$
+    \item The filtered $\CO$-algebra has associated graded
+    $$
+    \Graded(X_*)\simeq \Free_{\CO}(B\CO(n)\otimes X^{\otimes n })_{h\Sigma_n}.
+    $$
+\end{enumerate}
 
 
-Consider now an $\infty$-operad $\CO$ in $\CC$, the rest of this section is to show that every $\CO$-algebra admits a canonical filtration so that its associated graded is trivial.
+\end{theorem}
 
-We let $A = \BS \oplus \BS$ and view it as an augmented filtered commutative algebra with $A_0=\BS$ and 
-$A_n=\BS \oplus \BS$ for $n\geq 1$.
-For any $\CO$-algebra $X$, we obtain a filtered $\CO$-algebra $(\iota_0X)_*$ where $\iota_0$ is the functor that inserts an object to a graded object concentrated in degree $0$.
-Consider now the functor
-\begin{align*}
-	\CAlg(\CC^{\Fil, \geq 0}) \times \Alg_{\CO}(\CC) 
-	& \to 
-	\Alg_{\CO}(\CC^{\Fil, \geq 0})\\
-	(A, X) & \mapsto A\otimes (\iota_0X)_*.
-\end{align*}
-Note that $A$ is augmented, hence we have a natural morphism 
-\[
-\epsilon: A\otimes (\iota_0X)_* 
-\to 
-(\iota_0X)_* .
-\]
 
-\begin{definition}
-	The \emph{canonical filtration} is a functor 
-	$$
-	(-)^{\Fil}: \Alg_{\CO}(\CC)\to \Alg_{\CO}(\CC^{\Fil,\geq 0})
-	$$ 
-	given by
-	$X\mapsto   \fib(A\otimes (\iota_0X)_* \to (\iota_0X)_*)$.
-\end{definition}
 
-\begin{proposition}
-	\label{canonical filtration}
-	The associated graded $\gr(X^{\Fil})$ of the canonical filtration on $X$ is the trivial graded $\CO$-algebra, i.e. 
-	$$
-	\gr(X^{\Fil}) \simeq \trivial^{\gr}_{\CO}(\iota_{1} \circ \oblv_{\CO}X).
-	$$
-% Is the following even true?
-%\begin{enumerate}
-%	\item \todo{do we really need this?} the direct colimit of $X^{\Fil}$ is equivalent to $X$, i.e. $$\colim X^{\Fil} \simeq X.$$
-%\end{enumerate}
-\end{proposition}
-\begin{proof}
-%	We abuse notation by writing $(\iota_0X)_*\in \CC^{\Fil, \geq 0}$ as $X$ in the following.
-	Note that $\gr(X^{\Fil})$ is a graded $\CO$-algebra with $X$ concentrated in degree $1$, hence it is a trivial $\CO$-algebra by degree reason.
+% We let $A = \BS \oplus \BS$ and view it as an augmented filtered commutative algebra with $A_0=\BS$ and 
+% $A_n=\BS \oplus \BS$ for $n\geq 1$.
+% For any $\CO$-algebra $X$, we obtain a filtered $\CO$-algebra $(\iota_0X)_*$ where $\iota_0$ is the functor that inserts an object to a graded object concentrated in degree $0$.
+% Consider now the functor
+% \begin{align*}
+% 	\CAlg(\CC^{\Fil, \geq 0}) \times \Alg_{\CO}(\CC) 
+% 	& \to 
+% 	\Alg_{\CO}(\CC^{\Fil, \geq 0})\\
+% 	(A, X) & \mapsto A\otimes (\iota_0X)_*.
+% \end{align*}
+% Note that $A$ is augmented, hence we have a natural morphism 
+% \[
+% \epsilon: A\otimes (\iota_0X)_* 
+% \to 
+% (\iota_0X)_* .
+% \]
+
+% \begin{definition}
+% 	The \emph{canonical filtration} is a functor 
+% 	$$
+% 	(-)^{\Fil}: \Alg_{\CO}(\CC)\to \Alg_{\CO}(\CC^{\Fil,\geq 0})
+% 	$$ 
+% 	given by
+% 	$X\mapsto   \fib(A\otimes (\iota_0X)_* \to (\iota_0X)_*)$.
+% \end{definition}
+
+% \begin{proposition}
+% 	\label{canonical filtration}
+% 	The associated graded $\gr(X^{\Fil})$ of the canonical filtration on $X$ is the trivial graded $\CO$-algebra, i.e. 
+% 	$$
+% 	\gr(X^{\Fil}) \simeq \trivial^{\gr}_{\CO}(\iota_{1} \circ \oblv_{\CO}X).
+% 	$$
+% % Is the following even true?
+% %\begin{enumerate}
+% %	\item \todo{do we really need this?} the direct colimit of $X^{\Fil}$ is equivalent to $X$, i.e. $$\colim X^{\Fil} \simeq X.$$
+% %\end{enumerate}
+% \end{proposition}
+% \begin{proof}
+% %	We abuse notation by writing $(\iota_0X)_*\in \CC^{\Fil, \geq 0}$ as $X$ in the following.
+% 	Note that $\gr(X^{\Fil})$ is a graded $\CO$-algebra with $X$ concentrated in degree $1$, hence it is a trivial $\CO$-algebra by degree reason.
 	
 	
 	
 	
-\end{proof}
+% \end{proof}
 	
 
 
@@ -423,6 +449,123 @@ arising from the simplicial resolution described above is an equivalence.
 	$$
 	where the last equivalence follows from the fact that $X_{\bullet}$ is $G$-split.
 \end{proof}
+
+\section{Construction of the Comparison Functor}
+In this section, we construct the comparison functor from divided power conilpotent commutative coalgebras in tame spectra to commutative coalgebras in tame spectra.
+$$
+\zeta:\coCAlg^{\divpow,\nil}(\Sp^{\geq r}_{\tame}) \to
+\coCAlg(\Sp^{\geq r}_{\tame}).
+$$
+We will explain this in a more general setting.
+First, we need a result from Heine.
+\begin{theorem}
+\label{Monads-Alg correspondence}
+\cite[Theorem 5.1]{Heine_Monads}
+Let $\CC$ be a presentable $\infty$-category, then the $\infty$-category of comonads on $\CC$ is a localization of the over category $\Pr^{L}_{/\CC}$ that assigns a comonad $Q$ to $\LcoMod_{Q}(\CC)$.
+\end{theorem}
+
+Our strategy is to use Heine's theorem to construct the comparison functor $\zeta$ by producing a map of their comonads.
+Let $\CC$ be a presentable symmetric monoidal $\infty$-category whose tensor product is compatible with colimits.
+Suppose $L:\CC \to \CD$ is a symmetric monoidal localization.
+and we let $j:\CD \to \CC$ denote the embedding that is right adjoint to $L$.
+We then have an adjunction on the following functor categories.
+\begin{proposition}
+There is an adjunction
+$$
+    \adj{L\circ (-)\circ j}{\Fun(\CC, \CC)}{\Fun(\CD, \CD)}{j\circ (-)\circ L}.
+$$
+\end{proposition}
+\begin{proof}
+    We need to show there are two pairs of adjunctions
+    $$
+    \adj{L_{*}}{\Fun(\CC, \CC)}{\Fun(\CC, \CD)}{j^*}
+    $$
+    and
+    $$
+    \adj{j_{*}}{\Fun(\CC, \CD)}{\Fun(\CD, \CD)}{L^*}.
+    $$
+    It is then an easy exercise to check the triangle identities of both.
+\end{proof}
+Let $Q_{\CD}$ denote the comonad arising from the forgetfull-cofree adjunction 
+$$\adj{\oblv}{\coCAlg(\CD)}{\CD}{\cofree_{\CD}}.$$
+We observe the functor $j_*L^*: \Fun(\CD,\CD) \to \Fun(\CC,\CC)$ is monoidal; indeed, for two endofunctors $F,G$ on $\CC$ we have
+\begin{align*}
+    j_*L^*(F\circ G) & \simeq j\circ F \circ G \circ L\\
+                     & \simeq j\circ F \circ L \circ j \circ  G \circ L \\
+                     & \simeq j_*L^*(F)\circ j_*L^*(G)
+\end{align*}
+where the second last equivalence follows from $ L \circ j \simeq \id_{\CD}$.
+Hence $j_*L^*$ preserves monads and comonads. Furthermore, the left adjoint $j*L_*$ is oplax monoidal so it also preserves comnads. 
+There is an obvious equivalence
+$
+j^*L_*j_*L^*Q_{\CD}\simeq Q_{\CD}
+$
+which induces a functor $\LcoMod_{j_*L^*Q_\CD}(\CC) \to \LcoMod_{Q_\CD}(\CD)$.
+
+\begin{proposition}
+\label{Pullback diagram in Prop A4.2}
+The following diagram of $\infty$-categories
+\[
+\begin{tikzcd}
+	\LcoMod_{j_*L^*Q_\CD}(\CC) & \LcoMod_{Q_\CD}(\CD)\\
+    \CC & \CD
+	\arrow[from=1-1, to= 1-2]
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-2, to=2-2, "\oblv"]
+	\arrow[from=2-1, to= 2-2, "L"]
+\end{tikzcd}
+\]
+is a pullback diagram.
+\end{proposition}
+
+Now suppose there is a functor
+$$
+\theta': \coCAlg^{\divpow, \nil}(\CC) \to \coCAlg(\CC),
+$$
+then postcomposes with the localization functor gives
+$$
+\theta: \coCAlg^{\divpow, \nil}(\CC) \to \coCAlg(\CD).
+$$
+Therefore, we obtain a functor 
+$$
+\LcoMod_{F_{\Com}}(\CC) \to
+\LcoMod_{j_*L^*Q_\CD}(\CC)
+$$
+as the canonical functor into the pullback in the diagram of Proposition \ref{Pullback diagram in Prop A4.2}. 
+Then by Theorem \ref{Monads-Alg correspondence}, there is a map of comonads
+$F_{\Com}\to j_*L^*Q_\CD$ on $\CC$, which corresponds to a map of comonads 
+$\Gamma:L\circ F_{\Com}\circ j \to Q_{\CD}$ by adjunction.
+\begin{definition}
+    We define the comparison functor
+    \[
+    \zeta: \coCAlg^{\divpow,\nil}(\CD) :=\LcoMod_{L_{\tame}\circ F_{\Com}}(\CD) \to \coCAlg(\CD):=\LcoMod_{Q_{\CD}}
+    \]
+    to be the functor corresponding to $\Gamma$.
+\end{definition}
+
+To construct the comparison functor in our case, take $\CC=\Sp^{\geq r}$ and $\CD=\Sp^{\geq r}_{\tame}$. There is a comparison functor 
+$$
+\coCAlg^{\divpow, \nil}(\Sp) \to \coCAlg(\Sp)
+$$
+which restricts to a comparison functor on coalgebras in $r$-connective spectra
+$$
+\theta': \coCAlg^{\divpow, \nil}(\Sp) \to \coCAlg(\Sp).
+$$
+Combining with the above discussion, we obtain the comparison functor
+\[
+\zeta:\coCAlg^{\divpow,\nil}(\Sp^{\geq r}_{\tame}) \to
+\coCAlg(\Sp^{\geq r}_{\tame}).
+\]
+
+
+
+
+
+
+
+
+
+
 
 \section{Stuff I don't need anymoree...}
 
@@ -555,6 +698,36 @@ Let $R$ be a localization of $\BZ$.
 	
 \end{proof}
 
+\subsection{The Universal Enveloping Algebra Functor}
+Let $k$ be a field of characteristc $0$. Denote the category of $k$-vector spaces by $\vectk$.
+If $A$ is a unital associative algebra over $k$, then the commutator operation endows $A$ with a Lie algebra structure. This construction is functorial so that it determines a functor from the category $\Alg_{\Ass}(\vect_k)$ of unital associative algebras to the category $\Alg_{\Lie}(\vect_k)$ of Lie algebras. 
+Conversely, given a Lie algebra $L$ one can define its universal enveloping algebra $U(L)$; as a vector space, one can construct it as the tensor algebra $T(L)$ modulo the ideal $I$ generated by 
+ elements of the form $x\otimes y - y\otimes x-[x,y]$. 
+This construction is functorial and one check it defines a functor
+$$
+U:\Alg_{\Lie}(\vect_k) \rightarrow \Alg_{\Ass}(\vect_k),
+$$
+which is left adjoint to the forgetful functor.
+We'll refer the functor $U$ as the \emph{enveloping algebra functor}. 
+
+The enveloping algebra functor is well studied both in algebra and topology. We state two results concerning the enveloping algebra functor $U$ that will be relevant later.
+\begin{itemize}
+	\item The enveloping algebra functor $U$ is symmetric monoidal; that is, if we endow the category of Lie algebras $\Alg_{\Lie}(\vect_k)$ with the Cartesian symmetric monoidal structure and $\Alg_{\Ass}(\vect_k)$ with the usual symmetric monoidal structure with tensor product as monoidal product, then $U$ sends categorical products to tensor products. As a consequence, $U(L)$ has a canonical coalgebra structure for any Lie algebra $L\in \Alg_{\Lie}(\vect_k)$.
+	\item Over a field of characteristic, the Poincare-Witt-Birkhoff theorem has a strong form that gives a simple description of the universal enveloping algebra $U(L)$. 
+	\begin{theorem}
+		[Poincare-Birkhoff-Witt]
+		\cite{Quillen_RHT}[Appendix B Theorem 2.3]
+		Let $L$ be a Lie algebra over $k$ and let $i:L\to U(L)$ denote the unit map of. Then the "averaging" map
+		\begin{align*}
+			S(L) & \to U(L) \\
+			x_1\cdots x_n & \mapsto \frac{1}{n!}\sum_{\sigma\in \Sigma_n} i(x_{\sigma(1)})\cdots i(x_{\sigma(n)})
+		\end{align*}	
+		is an isomorphism of coalgebras.
+	\end{theorem}
+	
+\end{itemize}
+
+The goal of this paper is to discuss coalgebras and the enveloping algebra functor in a more general context. 
 
 
 %\begin{lemma}
