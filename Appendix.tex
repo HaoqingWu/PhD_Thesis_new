@@ -116,7 +116,7 @@ Let $\CC$ and $\CD$ be $\infty$-categories with finite products. Suppose $F:\CC 
 	\[
 	\map_{\CD}(F(c'),d) \to \map_{\CC^0}(G\circ F(c'),G(d)) \to \map_{\CC^{0}}(c',G(d))
 	\] 
-	is an equivalence, since one observe that
+	is an equivalence, since one observes that
 	$$
 	\map_{\CC^0}(G\circ F(c'),G(d))\simeq \map_{\CC}(G\circ F(c'),G(d))
 	$$
@@ -126,50 +126,161 @@ Let $\CC$ and $\CD$ be $\infty$-categories with finite products. Suppose $F:\CC 
 	$$
 	\end{proof}
 
+\begin{definition}
+\cite[Definition 2.1]{Gepner-Moritz-Nikolaus}
+\label{preadditive}
+    An $\infty$-category is \emph{preadditive} if the canonical morphism 
+    $$
+    X\coprod Y \to X\times Y
+    $$
+    is an equivalence for any pair of objects $X,Y \in \CC$.
+\end{definition}
 
-We consider now the category $\Sp^{\geq r}_{\text{$r$-tame}}$ of $r$-tame spectra.
-Let $\Sigma$ and $\Omega$ denote the suspension and looping functor in $\Sp$ respectively.
-Note that the category $\Sp^{\geq r}_{\text{$r$-tame}}$ is not closed under $\Sigma$, so it's not an inverse of $\Omega$.
+Let $\CMon(\CC)$ denote the $\infty$-category of commutative monoids in $\CC$.
+\begin{proposition}
+\label{Prop 2.3 GMN}
+\cite[Proposition 2.3]{Gepner-Moritz-Nikolaus}
+Let $\CC$ be an $\infty$-category with finite products and finite coproducts, 
+    then the following are equivalent:
+    \begin{enumerate}
+        \item The $\infty$-category $\CC$ is preadditive.
+        \item The homotopy category $h\CC$ is preadditive.
+        \item The forgetful functor $\CMon(\CC) \to \CC$ is an equivalence.
+    \end{enumerate}
+\end{proposition}
+
+If $M\in \CC$ is an object in a preadditive $\infty$-category $\CC$, then it $M$ can be equipped with a commutativee monoid structure by Proposition \ref{Prop 2.3 GMN}.
+We will call the monoid structure map $\nabla:M\oplus M \to M$ the \emph{fold map}. 
+The \emph{shearing map} defined as
+$$
+s: M\oplus M \xrightarrow{(pr_1, \nabla)} M\oplus M,
+$$
+where $pr_1$ denotes the projection to the first factor.
+
+\begin{definition}
+\cite[Definition 2.6]{Gepner-Moritz-Nikolaus}
+    \label{additive}
+    A preadditive $\infty$-category $\CC$ is \emph{additive} if the shearing map $s$ is an equivalence.
+\end{definition}
+
+\begin{proposition}
+\label{Prop 2.8 GMN}
+\cite[Proposition 2.8]{Gepner-Moritz-Nikolaus}
+Let $\CC$ be an $\infty$-category with finite products and finite coproducts, 
+    then the following are equivalent:
+    \begin{enumerate}
+      \item The $\infty$-category $\CC$ is additive.
+      \item The homotopy category $h\CC$ is additive.
+      \item The forgetful functor $\Grp(\CC)\to \CC$ is an equivalence.
+    \end{enumerate}
+\end{proposition}
+
+Proposition \ref{Prop 2.3 GMN} and Proposition \ref{Prop 2.8 GMN} then imply that 
+there are equivalences
+$$
+\Grp(\CC)\simeq\CMon(\CC) \simeq \CC
+$$
+if $\CC$ is additive. Moreover, if $\CC$ is stable, we have the following corollary regarding the $\infty$-category $\Alg_{\CO}(\CC)$ of $\CO$-algebras in $\CC$.
+\begin{corollary}
+    Let $\CC$ be a presentably stable $\infty$-category.
+    Let $B_{\CO}(M)$ denote the bar construction of a monoid $M$ in $\Alg_{\CO}(\CC)$.
+    Then the pair of adjoint functors
+$$
+\adj{B_{\CO}}{\Grp(\Alg_{\CO}(\CC))}{\Alg_{\CO}(\CC)}{\Omega_{\CO}}
+$$
+are mutually inverses.
+\end{corollary}
+\label{Alg(C) equivalent to groups in Alg(C)}
+\begin{proof}
+    Since both of the functors $B_{\CO}$ and $\oblv_{\CO}$ preserves sifted colimits, the bar construction $B(M)$ of $M\in \Grp(\Alg_{\CO}(\CC))$ is computed in $\CC$.
+    Since $\CC$ is stable, the bar complex $\Barconstruction(0, M, 0)_{\bullet}$ comes from the \v{C}ech nerve $0 \to \Sigma M$, which implies that
+    $B_{\CO}M \simeq \Sigma M$.
+    Therefore we have a commuting diagram
+	\[
+	\begin{tikzcd}
+		\Grp(\Alg_{\CO}(\CC)) & \Alg_{\CO}(\CC) \\
+		\CC &
+		\CC ;
+		\arrow[from=1-1, to=1-2, "B_{\CO}", shift left]
+		\arrow[from=1-2, to=1-1, "\Omega_{\CO}", shift left]
+		\arrow[from=1-1, to=2-1, "\oblv_{\Grp}\circ \oblv_{\CO}" left]
+		\arrow[from=1-2, to=2-2, "\oblv_{\CO}"]
+		\arrow[from=2-1, to=2-2, "\Sigma", shift left]
+		\arrow[from=2-2, to=2-1, "\Omega", shift left]
+	\end{tikzcd}
+	\]
+	Since the vertical forgetful functors are conservative, there are equivalences
+$$	    
+\oblv_{\CO}\circ B_{\CO} \circ  \Omega_{\CO} (X)
+	    \simeq \Sigma \Omega X \simeq X
+$$
+and 
+$$
+\oblv_{\Grp}\circ \oblv_{\CO} \circ \Omega_{\CO} \circ B_{\CO} X 
+\simeq 
+\Omega \Sigma X
+\simeq
+X.
+$$
+\end{proof}
+
+
+
+
+We consider now the $\infty$-category $\Sp^{\geq r}_{\tame}$ of $r$-tame spectra.
+Let $\Sigma$ and $\Omega$ denote the suspension and loop functor in $\Sp$ respectively.
+Note that the category $\Sp^{\geq r}_{\tame}$ is not closed under $\Sigma$, so it's not an inverse of $\Omega$.
 However, it's easy to see we have the following lemma.
 \begin{lemma}
 \label{Relations between different tameness}
 	The adjunction
 	\[
-	\adj{\Sigma}{\Sp^{\geq r-1}_{\text{$(r-1)$-tame}}}{\Sp^{\geq r}_{\text{$r$-tame}}}{\Omega}
+	\adj{\Sigma}{\Sp^{\geq r-1}_{\tame}}{\Sp^{\geq r}_{\tame}}{\Omega}
 	\]
-	are mutally inverses.
+	are mutual inverses.
 \end{lemma} 
-
-Since $\Alg_{\Lie}(\Sp^{\geq r}_{\text{$r$-tame}})$ is Cartesian symmetric monoidal, the loop functor 
+Moreover, if we let $L_{r-1, \tame}$ and $L_{r, \tame}$ be $(r-1)$-localization and $r$-localization functors, respectively.
+It's easy to see there are equivalences
 $$
-\Omega: \Sp^{\geq r}_{\text{$r$-tame}}
+L_{r-1, \tame} \Omega X \simeq \Omega L_{r, \tame}X
+$$
+for an $r$-connective spectrum, and 
+$$
+L_{r, \tame} \Sigma X \simeq \Sigma L_{r-1, \tame}X
+$$
+for an $(r-1)$-connective spectrum.
+
+
+Since $\Alg_{\Lie}(\Sp^{\geq r}_{tame})$ is Cartesian symmetric monoidal, the loop functor 
+$$
+\Omega: \Sp^{\geq r}_{\tame}
 \to 
-\Sp^{\geq r-1}_{\text{$(r-1)$-tame}}
+\Sp^{\geq r-1}_{\tame}
 $$
 induces a functor
 \[
-\Omega_{\Lie}':\Alg_{\Lie}(\Sp^{\geq r}_{\text{$r$-tame}}) \to \Grp( \Alg_{\Lie}(\Sp^{\geq r-1}_{\text{$(r-1)$-tame}}) )
+\Omega_{\Lie}:\Alg_{\Lie}(\Sp^{\geq r}_{\tame}) \to \Grp( \Alg_{\Lie}(\Sp^{\geq r-1}_{\tame}) )
 \]
 which takes a $r$-tame Lie algebra $X$ to a $(r-1)$-tame Lie algebra $\Omega_{\Lie}X$ whose underlying spectrum is $\Omega X$.
 \begin{proposition}
 	\label{B and Omega are mutally inverses}
 	The functor 
 	\[
-	\Omega_{\spLie}': 
-	\Alg_{\spLie}(\Sp^{\geq r}_{\text{$r$-tame}}) \to \Grp( \Alg_{\spLie}(\Sp^{\geq r-1}_{\text{$(r-1)$-tame}}) )
+	\Omega_{\spLie}: 
+	\Alg_{\spLie}(\Sp^{\geq r}_{\tame}) \to \Grp( \Alg_{\spLie}(\Sp^{\geq r-1}_{\tame}))
 	\]
 	is an equivalence.
 \end{proposition}
 \begin{proof}
 	Let $B_{\spLie}$ denote the bar construction functor that is left adjoint to $\Omega_{\spLie}'$. Since the forgetful functor 	
-	$\Alg_{\spLie}(\Sp^{\geq r}_{\text{$r$-tame}}) \to \Sp^{\geq r}_{\text{$r$-tame}}$ preserves sifted colimits, the bar construction is computed in the underlying category $\Sp^{\geq r}_{\text{$(r)$-tame}}$ of $r$-tame spectra;
-	Let $X_{\bullet}$ be a simplicial object in $\Sp^{\geq r-1}_{\text{$(r-1)$-tame}}$, the geometric realization of is computed by first taking the geometric realization of $X_{\bullet}$ in $\Sp$ then applying the $r$-tame localization functor $L_{\text{$r$-tame}}$, but $|X_{\bullet}|\simeq \Sigma X$ which is already $r$-tame, hence we have $B_{\spLie}X\simeq \Sigma X$.
+	$\Alg_{\spLie}(\Sp^{\geq r}_{\tame}) \to \Sp^{\geq r}_{\tame}$ preserves sifted colimits, the bar construction is computed in the underlying category $\Sp^{\geq r}_{\tame}$ of $r$-tame spectra;
+	Let $X_{\bullet}$ be a simplicial object in $\Sp^{\geq r-1}_{\tame}$, the geometric realization of $X_{\bullet}$ is computed by first taking the geometric realization of $X_{\bullet}$ in $\Sp$ then applying the $r$-tame localization functor $L_{\tame}$, but $|X_{\bullet}|\simeq \Sigma X$ which is already $r$-tame, hence we have $B_{\spLie}X\simeq \Sigma X$.
 	Therefore we have a commuting diagram
 	\[
 	\begin{tikzcd}
-		\Grp( \Alg_{\spLie}(\Sp^{\geq r-1}_{\text{$(r-1)$-tame}}) ) & \Alg_{\spLie}(\Sp^{\geq r}_{\text{$r$-tame}})\\
-		\Sp^{\geq r-1}_{\text{$(r-1)$-tame}} &
-		\Sp^{\geq r}_{\text{$r$-tame}};
+		\Grp( \Alg_{\spLie}(\Sp^{\geq r-1}_{\tame}) ) & \Alg_{\spLie}(\Sp^{\geq r}_{\tame})\\
+		\Sp^{\geq r-1}_{\tame} &
+		\Sp^{\geq r}_{\tame};
 		\arrow[from=1-1, to=1-2, "B_{\spLie}", shift left]
 		\arrow[from=1-2, to=1-1, "\Omega_{\spLie}'", shift left]
 		\arrow[from=1-1, to=2-1]
@@ -178,7 +289,7 @@ which takes a $r$-tame Lie algebra $X$ to a $(r-1)$-tame Lie algebra $\Omega_{\L
 		\arrow[from=2-2, to=2-1, "\Omega", shift left]
 	\end{tikzcd}
 	\]
-	Hence $B_{\spLie}$ and $\Omega_{\spLie}'$ are mutally inverses because $\Sigma$ and $\Omega$ are mutually inverses.
+	Hence $B_{\spLie}$ and $\Omega_{\spLie}'$ are mutually inverses because $\Sigma$ and $\Omega$ are mutually inverses.
 \end{proof}
 
 %$$
@@ -450,7 +561,53 @@ arising from the simplicial resolution described above is an equivalence.
 	where the last equivalence follows from the fact that $X_{\bullet}$ is $G$-split.
 \end{proof}
 
+    As an application in homotopy theory, we prove the following folklore proposition that is well-known among seasoned homotopy theoriests.
+\begin{proposition}
+	\label{Coalgebra model for simply-connected spaces}
+	For $r\geq 2$, the functor $\Sigma^{\infty}:\Space^{\geq r}_{*} \to \Sp^{\geq r}$ is comonadic. In other words, there is an equivalence of $\infty$-categories:
+	\[
+	\phi: \Space^{\geq r}_{*} \to \coAlg_{\Sigma^{\infty}\Omega^{\infty}}(\Sp^{\geq r}).
+	\]
+ between the $\infty$-category of $r$-connective spaces and the $\infty$-category of $r$-connective $\Sigma^{\infty}\Omega^{\infty}$-coalgebra.
+\end{proposition}
+\begin{proof}
+By Corollary \ref{Cor of Barr-Beck-Lurie theorem}, it suffices to show there is an equivalence 
+$$
+X\to \Tot (\Omega^{\infty}\Sigma^{\infty})^{\bullet+1}X
+$$
+for every $X\in \Space_{*}^{\geq r}$. We prove this by induction on the Postnikov tower. For $X$ being an Eilenberg-Maclane space $K(A,n)\simeq \Omega^{\infty-n}HA$, its associated augmented cosimplicial object $(\Omega^{\infty}\Sigma^{\infty})^{\bullet+1}X$ splits, with the contracting homotopy induced by the counit $\Sigma^{\infty}\Omega^{\infty} \Omega^n HA\to \Omega^n HA$. For the inductive step, we have a principal fibration sequence
+\[
+K(\pi_n X,n) \to \tau_{\leq n}X \to \tau_{\leq n-1}X 
+\to 
+K(\pi_n X,n+1).
+\]
+By the principal fibration lemma \cite{Bousfield-KanYellow}, the functor $\Tot (\Omega^{\infty}\Sigma^{\infty})^{\bullet+1}$ preserves principal fibrations. Hence the vertical sequences in the following diagram are fiber sequences.
+\[
+\begin{tikzcd}
+	\tau_{\leq n}X & \Tot (\Omega^{\infty}\Sigma^{\infty})^{\bullet+1} (\tau_{\leq n}X)\\
+	\tau_{\leq n-1}X  & \Tot (\Omega^{\infty}\Sigma^{\infty})^{\bullet+1} (\tau_{\leq n-1}X)\\
+	K(\pi_n X,n+1)   & \Tot (\Omega^{\infty}\Sigma^{\infty})^{\bullet+1} K(\pi_n X,n+1)
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=1-2, to=2-2]
+	\arrow[from=2-1, to=3-1]
+	\arrow[from=3-1, to=3-2]
+	\arrow[from=2-1, to=3-1]
+	\arrow[from=2-2, to=3-2]
+\end{tikzcd}
+\]
+Observe that the bottom two horizontal arrows are equivalences by the inductive hypothesis, hence the induced map on the fibers is an equivalence. This completes the inductive step of the proof.
+\end{proof}
+
+
+
+
+
+
+
 \section{Construction of the Comparison Functor}
+\label{Construction of the Comparison Functor}
 In this section, we construct the comparison functor from divided power conilpotent commutative coalgebras in tame spectra to commutative coalgebras in tame spectra.
 $$
 \zeta:\coCAlg^{\divpow,\nil}(\Sp^{\geq r}_{\tame}) \to
@@ -470,6 +627,7 @@ Suppose $L:\CC \to \CD$ is a symmetric monoidal localization.
 and we let $j:\CD \to \CC$ denote the embedding that is right adjoint to $L$.
 We then have an adjunction on the following functor categories.
 \begin{proposition}
+\label{Prop A.4.2}
 There is an adjunction
 $$
     \adj{L\circ (-)\circ j}{\Fun(\CC, \CC)}{\Fun(\CD, \CD)}{j\circ (-)\circ L}.
@@ -478,16 +636,28 @@ $$
 \begin{proof}
     We need to show there are two pairs of adjunctions
     $$
-    \adj{L_{*}}{\Fun(\CC, \CC)}{\Fun(\CC, \CD)}{j^*}
+    \adj{L_{*}}{\Fun(\CC, \CC)}{\Fun(\CC, \CD)}{j_*}
     $$
     and
     $$
-    \adj{j_{*}}{\Fun(\CC, \CD)}{\Fun(\CD, \CD)}{L^*}.
+    \adj{j^{*}}{\Fun(\CC, \CD)}{\Fun(\CD, \CD)}{L^*},
     $$
-    It is then an easy exercise to check the triangle identities of both.
+    which is an easy exercise to check the triangle identities of both.
 \end{proof}
-Let $Q_{\CD}$ denote the comonad arising from the forgetfull-cofree adjunction 
-$$\adj{\oblv}{\coCAlg(\CD)}{\CD}{\cofree_{\CD}}.$$
+Let $Q_{\CC}$ and $Q_{\CD}$ denote the comonad arising from the forgetful-cofree adjunction 
+$$\adj{\oblv_{\CC}}{\coCAlg(\CC)}{\CC}{\cofree_{\CC}}$$
+and
+$$\adj{\oblv_{\CD}}{\coCAlg(\CD)}{\CD}{\cofree_{\CD}}$$
+\begin{lemma}
+    There is an equivalence of comonads
+    $$
+    L_* j^*Q_{\CC}\simeq Q_{\CD}
+    $$
+    on $\CD$.
+\end{lemma}
+
+
+
 We observe the functor $j_*L^*: \Fun(\CD,\CD) \to \Fun(\CC,\CC)$ is monoidal; indeed, for two endofunctors $F,G$ on $\CC$ we have
 \begin{align*}
     j_*L^*(F\circ G) & \simeq j\circ F \circ G \circ L\\
@@ -495,14 +665,14 @@ We observe the functor $j_*L^*: \Fun(\CD,\CD) \to \Fun(\CC,\CC)$ is monoidal; in
                      & \simeq j_*L^*(F)\circ j_*L^*(G)
 \end{align*}
 where the second last equivalence follows from $ L \circ j \simeq \id_{\CD}$.
-Hence $j_*L^*$ preserves monads and comonads. Furthermore, the left adjoint $j*L_*$ is oplax monoidal so it also preserves comnads. 
-There is an obvious equivalence
-$
-j^*L_*j_*L^*Q_{\CD}\simeq Q_{\CD}
-$
-which induces a functor $\LcoMod_{j_*L^*Q_\CD}(\CC) \to \LcoMod_{Q_\CD}(\CD)$.
+Hence $j_*L^*$ preserves monads and comonads. Furthermore, the left adjoint $j^*L_*$ is oplax monoidal so it also preserves comnads. 
+The counit map of the adjunction in Proposition \ref{Prop A.4.2} evaluating on any comonad $Q$ on $\CD$
+$$
+j^*L_*j_*L^*Q  \to  Q
+$$
+is an equivalence of comonads. Therefore, the functor $j_*L^*:\Comonad(\CD) \to \Comonad(\CC)$ is fully faithful and we record the following lemma.
 
-\begin{proposition}
+\begin{lemma}
 \label{Pullback diagram in Prop A4.2}
 The following diagram of $\infty$-categories
 \[
@@ -516,7 +686,7 @@ The following diagram of $\infty$-categories
 \end{tikzcd}
 \]
 is a pullback diagram.
-\end{proposition}
+\end{lemma}
 
 Now suppose there is a functor
 $$
@@ -543,14 +713,11 @@ $\Gamma:L\circ F_{\Com}\circ j \to Q_{\CD}$ by adjunction.
     to be the functor corresponding to $\Gamma$.
 \end{definition}
 
-To construct the comparison functor in our case, take $\CC=\Sp^{\geq r}$ and $\CD=\Sp^{\geq r}_{\tame}$. There is a comparison functor 
+To construct the comparison functor in our case, take $\CC=\Sp^{\geq r}$ and $\CD=\Sp^{\geq r}_{\tame}$. There is a comparison functor on coalgebras in $r$-connective spectra
 $$
-\coCAlg^{\divpow, \nil}(\Sp) \to \coCAlg(\Sp)
+\theta': \coCAlg^{\divpow, \nil}(\Sp^{\geq r}) \to \coCAlg(\Sp^{\geq r})
 $$
-which restricts to a comparison functor on coalgebras in $r$-connective spectra
-$$
-\theta': \coCAlg^{\divpow, \nil}(\Sp) \to \coCAlg(\Sp).
-$$
+by \cite{Francis-Gaitsgory}.
 Combining with the above discussion, we obtain the comparison functor
 \[
 \zeta:\coCAlg^{\divpow,\nil}(\Sp^{\geq r}_{\tame}) \to
@@ -760,27 +927,323 @@ The goal of this paper is to discuss coalgebras and the enveloping algebra funct
 %where both horizontal arrows are fully faithful and the bottom arrow is conservative by \cite{HA}[Corollary 5.2.6.18.]. Hence the top arrow is conservative as well.
 %\end{proof}
 
+\subsection{Computational proof of Proposition 4.1.1.}
+
+\todo[inline]{Above is an alternative approach.}
+Since $R_k$ is a PID, by the structure theorem of finitely generated modules over PIDs, we are further reduced to check the cases $V=R_k$ and $V=\BZ/p^m$ where $p$ is a prime not inverted in $R_k$. 
+
+\begin{lemma}
+	For $V=R_k$, we have
+\begin{enumerate}
+	\item If $n$ is odd,
+	 $$
+	 \pi_* \Sigma_{tame}^{\infty}K(V,n) =
+	 \begin{cases}
+		R_k & \text{if $*=n$,}\\
+		0 & \text{otherwise}.
+	 \end{cases}
+	 $$
+	\item If $n$ is even,
+	$$
+	 \pi_* \Sigma_{tame}^{\infty}K(V,n) =
+	 \begin{cases}
+		R_{in-r} & \text{if $*=in$,}\\
+		0 & \text{otherwise}.
+	 \end{cases}
+	 $$
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+Observe that $K(V,n)$ is the $R_k$-localization of $K(\BZ,n)$ and combine with Lemma \ref{htpy groups of tame spectra can be computed by homology}, we see that 
+	\begin{align*}
+		\pi_* \Sigma_{\tame}^{\infty}K(V, n) & = H_* K(V, n)\otimes R_{*-r}\\
+		& = H_* K(\BZ, n)\otimes R_{*-r}.
+	\end{align*}
+	Recall that the first $p$-torsion in the homology groups of $K(\BZ, n)$ is at degree $2p-2+n$, but $p$ is already invertible in $R_{k+2p-2}$. 
+	Hence, one has
+	$$
+	H_* K(\BZ,n)\otimes R_{*-r} = \big(H_* K(\BZ,n)/\text{torsions}\big) \otimes R_{*-r}
+	$$ and the result follows from the classical calculation of $H_* K(\BZ,n)/\text{torsions}$ \cite[Proposition 1.20]{Hatcher}. 
+\end{proof}
 
 
-\subsection{Ching-Harper}
-\begin{theorem}
-\cite{Ching-Harper}
-\label{Ching-Harper's Koszul duality}
-	Let $R$ be an $\E_{\infty}$-ring spectrum and $\CO$ an operad in the $\infty$-category $\Mod_R$ of $R$-module spectra with $\CO(1)=R$. Suppose $R$ and all $\CO(n)$ are connective. Then the restriction 
+We now consider the case for $V=\BZ/p$,
+where $p$ is a prime not inverted in $R_k$.
+For $p=2$, the only tame Eilenberg-Maclane space is $K(\BZ/2, r)$. The tame symmetric coalgebra on $\Sigma^r H\BZ/2$ is equivalent to itself, since higher tenosr power of $\Sigma^r H\BZ/2$ is trivial for degree reason. On the other hand, $\Sigma_{\tame}^{\infty}K(\BZ/2,r)\to \Sigma^r H\BZ/2$ is a tame equivalence.
+Hence the map
+$
+ \Sigma_{\tame}^{\infty}K(\BZ/2,r)\to \\Sym_{\tame} \Sigma^{r}H\BZ/2
+$
+is an equivalence.
+ 
+For $p$ an odd prime.
+First, we review the result of the classical computation of the cohomology of $K(\BZ/p,n)$ by Cartan in \cite{Cartan_I} and \cite{Cartan_II}; See also \cite[Chapter 6]{McCleary_SS}.
+Let $\beta$ denote the Bockstein operation and $P^i$ denote the $i$-th mod-$p$ Steenrod operations.
+The $\BF_p$-cohomology of $K(\BZ/p,n)$ is known classically, as the free graded commutative $\BF_p$-algebra generated by the set 
+$$
+\{
+St^I(\iota_n)=\beta^{\epsilon_0}P^{s_1}\cdots \beta^{\epsilon_m}P^{\epsilon_m}(\iota_n) |
+e(I)<n 
+\}
+$$
+where $I$ is an admissible sequence (cf. \cite[Theorem 4.46]{McCleary_SS}) of nonnegative integers $I = (\epsilon_0, s_1, \epsilon_1, \dots, s_m, \epsilon_m)$,  $\iota_n$ is the fundamental class of $K(\BZ/p,n)$ and $e(I)$ is the \emph{excess} computed as
+\[
+e(I):=2s_1p+2\epsilon_0-\abs{I}.
+\]
+
+Since the Steenrod operation $P^i$ has degree $2i(p-1)$, and the prime $p$ is inverted in $R_{k}$ for $k\geq 2p-3$, hence the generators of the form
+$$
+P^i(\iota_n), \text{ for } i\geq 1
+$$  
+live in degrees where $p$ has been inverted. Therefore, we obtain the following proposition.
+\begin{proposition}
+\label{F_p tame cohomology of K(Z/p,n)}
+	The cohomology $H^*(K(\BZ/p,n);\BF_p)\otimes R_{*-r}$ of the Eilenberg-Maclane space with coefficients in the tame ring system is given by $(r+2p-4)$-truncation of the free graded commutative $\BF_p$-algebra generated by 
+	$\iota_n$ and $\beta(\iota_n)$ tensoring with the tame ring system.
+\end{proposition}
+
+Next we claim the cohomology $H^*(K(\BZ/p,n);\BZ)\otimes R_{*-r}$ with coefficients in the tame ring system admits no summand of $\BZ/p^i$ for $i>1$;
+For this we need to analyze the Bockstein cohomology $BH^*(K(V,n))$ group of $K(V,n)$.
+
+
+We claim the Bockstein cohomology groups $BH^*(K(\BZ/p,n);\BF_p)$ are trivial in degree $[n, r+2p-4]$.
+By Proposition \ref{F_p tame cohomology of K(Z/p,n)}, we only need to consider the differential graded algebra generated by the classes $\iota_n$ and $\beta(\iota_n)$. 
+
+When $n$ is odd, the cohomology $H^*(K(\BZ/p,n);\BF_p)$ in degree $[n, r+2p-4]$ is a truncated $\BF_{p}$-DGA (cf. \cite[Section 10.1]{McCleary_SS})
+$$
+\Lambda_{\BF_p}(\iota_n)\otimes \BF_p[\beta(\iota_n)]
+$$
+with differential $d(\iota_n)=\beta(\iota_n)$ and $d(\beta(\iota_n))=\beta^2(\iota_n)=0$. Hence $\Lambda_{\BF_p}(\iota_n)\otimes \BF_p[\beta(\iota_n)]$ is acyclic, and the Bockstein cohomology groups $BH^*(K(\BZ/p,n);\BF_p)$ are trivial.
+
+When $n$ is even, the cohomology $H^*(K(\BZ/p,n);\BF_p)$ in degree $[n, r+2p-4]$ is a truncated $F_{p}$-algebra of the DGA
+$$
+ \BF_p[\iota_n]\otimes \Lambda_{\BF_p}(\beta(\iota_n))
+$$
+with the same differential as in the odd case. We claim that $BH^j(K(\BZ/p,n);\BF_p)$ is trivial for $j<pn$; indeed, we have $d\iota_n^m=m\cdot\iota_n^{m-1}$ so it is an isomorphism for $m<p$ and is zero for $m=p$. 
+Since we assume $n=r+k$ and $kp\geq 0$, it suffices to compare $rp$ with $r+2p-4$;
+\begin{equation*}
+    rp - (r+2p-4) = r(p-1) -2(p-1) + 2 = (r-2)(p-1)+2>0
+\end{equation*}
+as $r\geq 4$ and $p$ is an odd prime.
+
+\begin{proposition}
+[\cite{Hatcher} Theorem 3E.3]
+	Let $H_{n}(X;\BZ)$ be finitely generated for all $n$, then each $\BZ/p^{k}$ summand of $H^n(X;\BZ)$ with $k>1$ contributes $\BZ/p$ summands to both $BH^{n-1}(X;\BF_p)$ and $BH^{n}(X;\BF_p)$, where $BH^n(X;\BF_p)$ denotes the $n$-th Bockstein cohomology group.
+\end{proposition}
+The proposition above then imply there is no $\BZ/p^k$ summand in lower degree of $H^*K(\BZ/p,n)$.
+\begin{proposition}
+\label{integreal cohomology of Eilenberg-Maclane space}
+	Let $p$ be an odd prime.
+	The integral cohomology group 
+	$H^*K(\BZ/p,n)$ has no summand $\BZ/p^k$ for $k>1$ in degree less than $np$.
+\end{proposition}
+
+As a consequence of Proposition \ref{integreal cohomology of Eilenberg-Maclane space}, we can slice the long exact sequence 
+\[
+\cdots \to 
+H^{m}(X;\BZ)\xrightarrow{\cdot p} H^{m}(X;\BZ)
+\xrightarrow{\rho}
+H^{m}(X;\BZ/p)\xrightarrow{\tilde{\beta}}
+H^{m+1}(X;\BZ)
+\to
+\cdots
+\]
+in \cite[Section 3.E]{Hatcher}, into short exact sequences 
+\[
+0 \to H^{m}(X;\BZ)
+\xrightarrow{\rho}
+H^{m}(X;\BZ/p)
+\xrightarrow{\tilde{\beta}}
+H^{m+1}(X;\BZ)
+\to 
+0
+\]
+for $m<np$.
+Note that $\rho$ is injective, so we have 
+\begin{align*}
+    \operatorname{Im}\rho & \cong \ker (\tilde{\beta}:H^{m}(X;\BZ/p)\to H^{m+1}(X;\BZ))\\
+                        & \cong \ker (\beta:H^{m}(X;\BZ/p)\to H^{m+1}(X;\BZ/p))
+\end{align*}
+since $\beta = \rho\tilde{\beta}$.
+Hence $\operatorname{Im}\rho$ is generated by the class $\beta(\iota_n)$ and
+we conclude our computation in the following proposition.
+
+\begin{proposition}
+\label{tame homology of K(Z/p,n)}
+The cohomology of $K(\BZ/p, n)$ with coefficients in the tame ring system is given by
 	\[
-	\indec_{\CO}: \Alg_{\CO}(\Mod_R)^{\geq 1} \to \coAlg^{nil, dp}_{\Barconstruction(\CO)}(\Mod_R)^{\geq 1}
+	H^{m}(K(\BZ/p,n);\BZ)\otimes R_{m-r}\cong
+	\begin{cases}
+		$R_{m-r}\otimes\BZ/p$,  & \text{ for $m = l n +1$ in $[r, r+2p-4]$;} \\
+		$0$,        &\text{ otherwise.}
+	\end{cases}
 	\]
-	 is an equivalence on the full subcategory of $1$-connective objects.
+	for an integer $l\geq 1$.
+	
+	The homology of $K(\BZ/p, n)$ with coefficients in the tame ring system is then given by
+	\[
+	H_{m}(K(\BZ/p,n);\BZ)\otimes R_{m-r}\cong
+	\begin{cases}
+		$R_{m-r}\otimes\BZ/p$,  & \text{ for $m = l n$ in $[r, r+2p-4]$;} \\
+		$0$,        &\text{ otherwise.}
+	\end{cases}
+	\]
+	for an integer $l\geq 1$.
+\end{proposition}
+
+By Remark \ref{suspension tame sends Moore space to EM-space}, there are equivalences
+    \begin{align*}
+			\Sym_{\tame} \Sigma^n H\BZ_p & \simeq \Sym_{\tame} \Sigma^{\infty}_{\tame}M(\BZ/p,n)\\
+			&  \simeq L_{\tame}\Sym \Sigma^{\infty}  M(\BZ/p,n).
+	\end{align*}
+With this identification, we are reduced to show the map
+$$
+\Sigma^{\infty}K(\BZ/p,n) \to 
+	\Sym \Sigma^{\infty}  M(\BZ/p,n)
+$$
+induces an isomorphism on homology with coefficients in the tame ring system.
+
+We now recall the mod-$p$ homology of $\Sym \Sigma^{\infty} X$ for a spectrum $X\in \Sp$ from \cite[IX.2.1]{H_inf}. 
+For $I = (\epsilon_1, s_1, , \dots, \epsilon_m, s_m)$ a sequence of non-negative integers, it determines the homology operation 
+$Q^I =\beta^{\epsilon_1}Q^{s_1}\dots \beta^{\epsilon m}Q^{s_m}$ where $Q^s$ denotes the Dyer-Lashof operations with degree $|Q|=2s(p-1)$, see \cite{Cohen-Lada-May_homology} for more details.
+
+
+
+Let $A$ be a set of basis of $H_*(X;\BF_p)$ and let $\CM$ be the set of \emph{standard indecomposables} for $\Sym X$,
+\[
+\CM(X):=\{
+Q^I x | x \in A,  \text{ admissible and } e(I)+b(I) > \abs{x};
+\}
+\]
+where $b(I)=\epsilon_1$ and the \emph{excess} $e(I)$ (see \cite[I.2]{Cohen-Lada-May_homology} for more details) of $I$ is defined as 
+\[
+e(I):= 2s_1-\epsilon_1 - \sum_{j=2}^{m}[2s_j(p-1)-\epsilon_j].
+\]
+When $I$ is the empty sequence, we adopt the convention that $e(I)=\infty$, $b(I)=0$.
+We denote $\Free_{\BF_p}(\CM(X))$ the free commutative $\BF_p$-algebra generated by $\CM$.
+Since the homology of $\Sym X$ is also a commutative $\BF_p$-algebra, we have a canonical map
+\[
+\lambda: \Free_{\BF_p}(\CM(X)) \to
+H_{*} \Sym X.
+\]
+\begin{theorem}
+	\cite[IX.2.1]{H_inf}
+	The map 
+	\[
+\lambda: \Free_{\BF_p}(\CM(X)) \to
+H_{*} \Sym X.
+\]
+is an isomorphism of $\BF_p$-algebras.
 \end{theorem}
 
-Take $R=H\BZ$, we then obtain the following corollary.
+Back to the case $X=\Sigma^{\infty} M(\BZ/p,n)$, whose homology is $\BZ/p$ at degree $n$ and $0$ otherwise.
+Since the Dyer-Lashof operation $Q^s$ raises degree by $2s(p-1)$ \cite[I, Theorem 1.1]{Cohen-Lada-May_homology}, so $H_* (\Sigma^{\infty} M(\BZ/p,n); \BF_p)$ is generated by $\iota_n$ and $\beta \iota$ in the tame range. After running the same Bockstein argument as we did for the cohomology $H^* K(\BZ/p,n)$, we conclude the following analogue of Proposition \ref{tame homology of K(Z/p)}.
 \begin{corollary}
-	For $r\geq 1$, the Chevalley-Eilenberg functor 
-	\[
-	\widetilde{\operatorname{CE}}: \Alg_{\spLie}(\Mod_{H\BZ})^{\geq r} \to \coAlg^{nil, dp}_{\Com}(\Mod_{H\BZ})^{\geq r}
-	\]
-	restricts to an equivalence of $\infty$-categories on the full subcategory of $r$-connective objects.
+The homology $H_* (\Sigma^{\infty} M(\BZ/p,n); \BF_p)$ with coefficients in the tame ring system is given by the $(r+2p-3)$-truncation of the free graded commutative $F_{p}$-algebra generated by $\iota_n$
 \end{corollary}
+
+By Corollary \ref{htpy groups of tame spectra can be computed by homology}, 
+
+
+
+Since $\pi_* \Sym_{\tame} \Sigma^n H\BF_p$ is the free commutative $\BF_p$-algebra generated by an element in degree $n$, hence we have the following corollary.
+\begin{corollary}
+\label{base case}
+	The map $\Sigma^{\infty}K(\BZ/p,n) \to 
+	\Sym \Sigma^nH\BF_p$ is a tame equivalence.
+\end{corollary}
+
+For $p$ an odd prime and $I=(\epsilon_1, s_1, \dots, \epsilon_k, s_k)$ such that $\epsilon_j\in \{0,1\}$.
+We say $I$ is \emph{admissible} if $s_i\geq ps_{i+1}\epsilon_i$ for $1\leq i <k$. We write 
+$$
+P^I:=\beta^{\epsilon_0}P^{s_1}\beta^{\epsilon_1}\cdots P^{s_k}\beta^{\epsilon_k}.
+$$
+\begin{theorem}
+	[??]\todo{ref?}
+	The admissible monomials $P^I\in \CA^{*}$ form basis for the mod-$p$ Steenrod algebra $\CA^*$.
+\end{theorem}
+
+
+
+
+\begin{corollary}
+	There is an isomorphism of graded $\BF_p$-vector spaces
+	\[
+	\tau_{\leq r+2p-3}H^{*}( K(\BZ/p,n);\BF_p) 
+	\to
+	\tau_{\leq r+2p-3} (H\BF_p)^*\Sigma^nH\BF_p.
+	\]
+\end{corollary}
+
+
+
+
+
+Now observe that $H^{*}(K(\BZ/p,n);\BF_p)$ and $H_{*}(\Sym \Sigma^nH\BF_p;\BF_p)$ are isomorphic as DGAs.
+We can then run the Bockstein argument, and see that their integral cohomology doesn't contain $\BZ/p^k$ for $k>1$ below degree $np$.
+
+
+For the inductive step, recall that there is a principal fiber sequence
+\[
+K(\BZ/p^k,n)\to 
+K(\BZ/p^k,n+1)
+\xrightarrow{\beta} K(\BZ/p^{k+1},n+1)
+\]
+and hence we can write $K(\BZ/p^{k+1},n+1)\simeq \abs{\Barconstruction(K(\BZ/p^k,n+1),K(\BZ/p^k,n),*)}$.
+Note that 
+\begin{equation}
+\label{principal fiber seq for EM-spaces}
+	\Sigma^{\infty}_{+}K(\BZ/p^k,n)\to 
+\Sigma^{\infty}_{+}K(\BZ/p^k,n+1)
+\to 
+\Sigma^{\infty}_{+}
+K(\BZ/p^{k+1},n+1)
+\end{equation}
+is a principal fiber sequence of $\E_{\infty}$-rings,
+since $\Sigma^{\infty}_{+}$ is symmetric monoidal and preserves small colimits.
+
+\begin{theorem}
+	The map $\Sigma^{\infty}K(\BZ/p^k,n) \to 
+	\Sym \Sigma^nH\BZ/{p^k}$ is a tame equivalence for any $k\geq 1$.
+\end{theorem}
+\begin{proof}
+	The case for $k=1$ is theorem \ref{base case}.
+	For the inductive step, observe that 
+	\[
+		\Sigma^{\infty}_{+}K(\BZ/p^k,n)\to 
+\Sigma^{\infty}_{+}K(\BZ/p^k,n+1)
+\to 
+\Sigma^{\infty}_{+}
+K(\BZ/p^{k+1},n+1)
+\]
+is a cofiber sequence in $\Sp$ by the discussion above.
+Consider now the cofiber sequence in $\Sp$
+\[
+\Sigma^nH\BZ/{p^k}\to \Sigma^{n+1}H\BZ/{p^k}
+\to 
+\Sigma^{n+1}H\BZ/{p^{k+1}},
+\]
+apply the functor $\Sym$ and we obtain a cofiber sequence in $\CAlg(\Sp)$
+\[
+\Sym\Sigma^nH\BZ/{p^k}\to 
+\Sym\Sigma^{n+1}H\BZ/{p^k}
+\to 
+\Sym
+\Sigma^{n+1}H\BZ/{p^{k+1}}.
+\]
+The theorem now follows from the fact that the collection of tame equivalences is closed under colimits.
+
+\end{proof}
+
+To conclude, we record the following corollary, which completes the proof of Proposition \ref{Fully faithfulness of C_tame on EM spaces}.
+\begin{corollary}
+\label{Suspension of Eilenberg-Maclane spaces are symmetric algebra}
+	For any $R_k$-module $V$, the map 
+	$$\Sigma^{\infty}K(V,r+k) \to 
+	\Sym \Sigma^{r+k}HV$$ is a tame equivalence for any $k\geq 1$.
+\end{corollary}
+\subsection{Ching-Harper}
+
 
 
 % For our purpose, we are interested in the case when $F:\CC \to \CD$ is a localization functor.
@@ -813,7 +1276,7 @@ and it is an equivalence if we precompose $B_{tame}$ with the functor $\Omega_{\
 
 \begin{remark}
 \label{symmetric monoidal structure on Mod_Z tame}
-	Note that $\Sp^{\geq r}_{tame}$ admits a symmetric monoidal structure with the tensor product $X\hat{\otimes} Y$ given by the tame localization $L_{tame}(X\otimes Y)$ of the smash product of $X$ and $Y$. 
+	Note that $\Sp^{\geq r}_{tame}$ admits a symmetric monoidal structure with the tensor product $X\otimes Y$ given by the tame localization $L_{tame}(X\otimes Y)$ of the smash product of $X$ and $Y$. 
 	Moreover, the functor $L_{tame}:\Mod_{H\BZ}^{\geq r}\to (\Mod_{H\BZ}^{\geq r})_{tame}$ is symmetric monoidal; this follows from the fact that the composite map $M \otimes_{\BZ} N \to L_{tame}M\otimes_{\BZ} N \to L_{tame}M\otimes_{\BZ} L_{tame}N$ is a tame equivalence for any $M,N\in \Mod_{H\BZ}^{\geq r}$.
 \end{remark}
 
@@ -890,19 +1353,244 @@ We first show that if the underlying $\infty$-category is pointed with finite li
 \end{proof}
 
 
+\subsection{Original proof of trivial algebra C_tame S^{r-1}}
+The lemma below would be crucial to establish the essential surjectivity of $C_{\tame}$.
+
+\begin{lemma}
+% 	\label{Sigma S^n is a trivial coalgebra}
+	$C_{\tame} L_{\tame}S^{r-1}$ is a trivial coalgebra in $\coCAlg(\Sp^{\geq r-1}_{\tame})$.
+\end{lemma}
+\begin{proof}
+    
+	Using Proposition \ref{inductive construction of coalgebras}, we can build a commutative coalgebra $X$ in $\Sp$ by assembling compatible coalgebra structures of $X$ in $\coAlg_{\phi^n \Com}(\Sp)$ for each $n$. 
+	We prove by induction on $n$ that $\Sigma^{\infty}_{\tame}S^{r-1}$ is a trivial coalgebra in $\coAlg_{\phi^n \Com}(\Sp)$ after tame localization.
+	Assume $\Sigma^{\infty}_{\tame}S^{r-1}$ is a trivial $(\phi^n \Com)$-coalgebra, by Proposition \ref{inductive construction of coalgebras} and the vanishing of Tate diagonal in tame spectra, specifying a $(\phi^{n+1} \Com)$-coalgebra structure  on $\Sigma^{\infty}_{\tame}S^{r-1}$ is equivalent to a lift in the following diagram
+	\[
+	\begin{tikzcd}
+		& L_{\tame}(\Sigma^{\infty}_{\tame}S^{r-1} \otimes \cdots \otimes \Sigma^{\infty}_{\tame}S^{r-1})_{h\Sigma_n}\\
+		\Sigma^{\infty}_{\tame}S^{r-1} & L_{\tame}(\phi^{n-1}\Com(n)\otimes \Sigma^{\infty}_{\tame}S^{r-1} \otimes \cdots \otimes\Sigma^{\infty}_{\tame}S^{r-1})_{h\Sigma_n}
+		\arrow[from = 2-1, to = 1-2, dashed]
+		\arrow[from = 2-1, to = 2-2, "0" below]
+		\arrow[from = 1-2, to = 2-2].
+	\end{tikzcd}
+	\]
+	Let $F$ denote the fiber of the vertical map. We claim that the connectivity of $F$ is at least $r$, hence any lift is null-homotopic.
+	The connectivity of $L_{\tame}(\Sigma^{\infty}_{\tame}S^{r-1} \otimes \cdots \otimes \Sigma^{\infty}_{\tame}S^{r-1})_{h\Sigma_n}$ is $n(r-1)$, which is larger than $r+1$ (recall $r\geq 4$). Since the possible largest dimension of a non-degenerate simplex in $\phi^{n-1}\Com(n)$ (cf. \cite[Example 4.7]{Heuts_Goodwillie}) is $n-3$, the connectivity of 
+	$$
+	L_{\tame}(\phi^{n-1}\Com(n)\otimes \Sigma^{\infty}_{\tame}S^{r-1} \otimes \cdots \otimes\Sigma^{\infty}_{\tame}S^{r-1})_{h\Sigma_n}
+	$$
+	is at least $n(r-1)-(n-3) > r+1$. Hence the connectivity of $F$ is larger than $r$, and the lemma is proved.
+	
+\end{proof}
+
+\begin{remark}
+	The proof above is almost identical to the proof in \cite{Heuts_Goodwillie}[Lemma 6.17]. 
+	There he shows that $\Sigma^{\infty}S^{r-1}$ is a trivial coalgebra in $\coAlg^{nil, dp}_{\Com}(\tau_{p-1}\Sp^{\geq r-1})$,
+	where $\coAlg^{nil, dp}_{\Com}(\tau_{p-1}\Sp^{\geq r-1})$ denotes the $\infty$-category of conilpotent, divided power coalgebras $X$ in $\Sp$ with $(p-1)!$ inverted in $\Sp$ and with coherent structure maps $X\to (X^{\otimes k})_{h\Sigma_k}$ for $1\leq k \leq p-1$. 
+	The important ingredients of both proof are the inductive construction of coalgebras and the vanishing of Tate construction.
+\end{remark}
 
 
-%
-%
-%
-%
 
-%
-%
-%
-%
-%
-%
+\subsection{Tame localization for spectra}
+Let $m_p:\BS^n\to \BS^n$ denote the multiplication-by-$p$ map on $\BS^n$. A connective spectrum $X$ is $m_p$-local if 
+\[
+\map_{\Sp}(\BS^n,X) \xrightarrow{m_p^*} \map_{\Sp}(\BS^n,X)
+\]
+is a weak homotopy equivalence.
+\begin{lemma}
+\label{local w.r.t. multiplication-by-p map}
+	A spectrum $X$ is $m_p$-local if and only if $\pi_{n+k}(X)$ is uniquely $p$-divisible for $k\geq 0$.
+\end{lemma}
+\begin{proof}
+	We compute the induced map on the homotopy groups of $\map_{\Sp}(\BS^n,X)$. Note that for $k\geq 0$, one has
+	\begin{align*}
+		\pi_k\map_{\Sp}(\BS^n,X) & \cong \pi_0 \Omega^k\map_{\Sp}(\BS^n,X)\\
+		     					 & \cong \pi_0 \map_{\Sp}(\BS^{n+k},X)\\
+		     					 & \cong \pi_{n+k} (X),
+	\end{align*}
+	and $m_p^*$ induces a multiplication-by-$p$ map $ \pi_{n+k} (X) \xrightarrow{\cdot p} \pi_{n+k} (X)$. Therefore, $X$ is $m_p$-local if and only if $\pi_{n+k}X$ is uniquely $p$-divisible for all $k\geq 0$.
+	
+\end{proof}
+Let $\Sp_{m_p}$ denote the full subcategory of spectra whose homotopy groups are uniquely $p$-divisible above degree $n$.
+Note that the localization functor $L_{m_p}:\Sp \to \Sp_{m_p}$ exists by Proposition 5.5.4.15. of \cite{HTT}.
+Let's now compare $L_{m_p}$ with the Bousfield localization with respect to the homology theory $H_{*}(-;\BZ[\frac{1}{p}])$. A spectrum is $\BZ[\frac{1}{p}]$-local if and only if its homotopy groups are uniquely $p$-divisible \cite[Proposition 2.4]{BousfieldSpectra}. Therefore, a $\BZ[\frac{1}{p}]$-local spectrum is also $L_{m_p}$-local and we record the following useful lemma.
+\begin{lemma}
+\label{L-equivalence implies Z[1/p]-iso}
+	If $f:X\to Y$ is a $L_{m_{p}}$-equivalence of spectra, then it induces an isomorphism on 
+	$$
+	\pi_{*}(X)\otimes \BZ[\frac{1}{p}]
+	\to
+	\pi_{*}(Y)\otimes \BZ[\frac{1}{p}].
+	$$
+\end{lemma}
+
+The inverse is true if we restricts to connective spectra.
+\begin{lemma}
+\label{L-equivalence is equivalent to pi_* iso on n-conn spectra}
+	Let $f:X\to Y$ be a map between $n$-connective spectra, then $f$ is a $L_{m_{p}}$-equivalence if and only if it induces an isomorphism on 
+	$
+	\pi_{*}(X)\otimes \BZ[\frac{1}{p}]
+	\to
+	\pi_{*}(Y)\otimes \BZ[\frac{1}{p}].
+	$
+\end{lemma}
+\begin{proof}
+	Let $Z$ be a $L_{m_p}$-local spectrum and let $f$ be a $\BZ[\frac{1}{p}]$-equivalence. Consider the commutative diagram
+	\[
+	\begin{tikzcd}
+		\map_{\Sp}(Y,Z) & \map_{\Sp}(X,Z)\\
+		\map_{\Sp}(Y,\tau_{\geq n}Z) & \map_{\Sp}(X,\tau_{\geq n}Z)
+		\arrow[from=1-1, to=1-2]
+		\arrow[from=2-1, to=2-2]
+		\arrow[from=1-1, to=2-1,"\simeq"]
+		\arrow[from=1-2, to=2-2,"\simeq"]
+	\end{tikzcd}
+	\]
+	where the vertical maps are equivalences. Since the homotopy groups of $\tau_{\geq n}Z$ are uniquely $p$-divisible, it is $\BZ[\frac{1}{p}]$-local and hence the bottom map is an equivalence as well.
+\end{proof}
+
+
+
+\begin{proposition}
+\label{connectivity of local equivalences}
+	Let $g: X\to Y$ be a $n$-connective map in $\Sp$. Then every $L_g$-equivalence is $n$-connective.
+\end{proposition}
+\begin{proof}
+	Let $S=\{g\}$ and denote $\overline{S}$ the strongly saturated class of morphisms generated by $S$. Proposition 5.5.4.15. of \cite{HTT} then implies that  $\overline{S}= \{L_g\text{-equivalences}\}$, hence it suffices to show that $\overline{S}$ is contained in the class of $n$-connective maps in $\Sp$. Note that the class of $n$-connective maps is saturated in the sense of Definition 5.5.5.1 of \cite{HTT}. Since every strongly saturated class of morphisms in $\Sp$ is also saturated by Example 5.5.5.5. of \cite{HTT}, we have
+	$$
+	\{L_g\text{-equivalences}\}=\overline{S} \subseteq \tilde{S} \subseteq \{n\text{-connective maps}\}
+	$$
+	where $\tilde{S}$ is the collection of saturated morphisms generated by $S$.
+\end{proof}
+\begin{remark}
+	So in particular, every $L_{m_p}$-equivalence is $n$-connective.
+\end{remark}
+
+As a corollary, we deduce that $L_{m_p}$-localization commutes with taking $n$-connective cover.
+\begin{corollary}
+\label{L-localization commutes with connective cover}
+	The $L_{m_p}$-localization commutes with $n$-connective cover, that is, 
+	$$
+	L_{m_p}(\tau_{\geq n}X)\simeq \tau_{\geq n}(L_{m_p} X).
+	$$
+	for any $X\in \Sp$.
+\end{corollary}
+\begin{proof}
+	It suffices to show $\tau_{\geq n}X\to \tau_{\geq n}L_{m_{p}}X$ is a $L_{m_p}$-equivalence, as $\tau_{\geq n}L_{m_{p}}X$ is $L_{m_p}$-local. Consider the following ladder of fiber sequences
+	\[
+	\begin{tikzcd}
+		\tau_{\geq n}X & X & \tau_{\leq n-1}X    \\
+		\tau_{\geq n}L_{m_p}X & L_{m_p}X & \tau_{\leq n-1} L_{m_p}X\simeq \tau_{\leq n-1}X
+		\arrow[from=1-1, to=1-2]
+		\arrow[from=2-1, to=2-2]
+		\arrow[from=1-3, to=2-3]
+		\arrow[from=1-2, to=1-3]
+		\arrow[from=2-2, to=2-3]
+		\arrow[from=1-1, to=2-1]
+		\arrow[from=1-2, to=2-2]
+	\end{tikzcd}
+	\]
+	which induces a ladder of long exact sequences of homotopy groups. For each $k\geq n$, we have a commutative diagram
+	\[
+	\begin{tikzcd}
+		\pi_{k}(\tau_{\geq n}X)\otimes \BZ[\frac{1}{p}] & \pi_{k}(X) \otimes \BZ[\frac{1}{p}] \\
+		\pi_{k}(\tau_{\geq n}L_{m_p}X)\otimes \BZ[\frac{1}{p}]  & \pi_{k}(L_{m_p}X)\otimes \BZ[\frac{1}{p}] 
+		\arrow[from=1-1, to=1-2]
+		\arrow[from=2-1, to=2-2]
+		\arrow[from=1-1, to=2-1]
+		\arrow[from=1-2, to=2-2],
+	\end{tikzcd}
+	\]
+	where the horizontal maps are isomorphisms and the right vertical map is also an isomorphism by Lemma \ref{L-equivalence implies Z[1/p]-iso}, hence the left map is also an isomorphism.
+	The corollary then follows from Lemma \ref{L-equivalence is equivalent to pi_* iso on n-conn spectra}.
+\end{proof}
+
+
+We can now compute the homotopy groups of the $L_{m_p}$-localization on a spectrum.
+
+\begin{corollary}
+	The homotopy groups of $L_{m_p}X$ is given by
+	\[
+	\pi_* L_{m_p}X = \begin{cases}
+		\pi_*X & \text{if $*< n$}\\
+		\pi_*X\otimes \BZ[\frac{1}{p}] & \text{if $*\geq n$}.
+	\end{cases}
+	\]
+\end{corollary}
+\begin{proof}
+	Since $m_p$ is $n$-connective, the map $X \to L_{m_p}X$ is also $n$-connective by Proposition \ref{connectivity of local equivalences}. Since $L_{m_p}$ commutes with taking $n$-connective cover by Corollary \ref{L-localization commutes with connective cover}.
+	 Let's now assume $X$ is $n$-connective. We claim that $L_{m_p}X\simeq L_{\BZ[\frac{1}{p}]}X$, that is, $L_{m_p}X$ is the localization of $X$ with respect to the homology theory $H_{*}(-,\BZ[\frac{1}{p}])$.
+	
+	Indeed, the homotopy groups of $L_{m_{p}}X$ is uniquely $p$-divisible, so it's $L_{\BZ[\frac{1}{p}]}$-local and we have a unique factorization
+	\[
+	\begin{tikzcd}
+		X &   & L_{m_p}X\\
+		  & L_{\BZ[\frac{1}{p}]}X &
+	\arrow[from=1-1, to=1-3]
+	\arrow[from=1-1, to=2-2]
+	\arrow[from=2-2, to=1-3, dashed].
+	\end{tikzcd}
+	\]
+By Lemma \ref{L-equivalence is equivalent to pi_* iso on n-conn spectra}, the horizontal map is a  $L_{\BZ[\frac{1}{p}]}X$-equivalence
+	Hence the dashed diagonal map is also a $L_{\BZ[\frac{1}{p}]}$-equivalence and we have $L_{m_p}X\simeq L_{\BZ[\frac{1}{p}]}X$, which implies $\pi_*L_{m_p}X=\pi_*X\otimes \BZ[\frac{1}{p}]$ for $*\geq n$.
+\end{proof}
+ \begin{lemma}
+	A map $f:X \to Y$ of spectra is a $L_{m_p}$-equivalence if and only if 
+	\begin{enumerate}
+	 	\item $f$ is $n$-connective.
+		\item $f$ induces isomorphism on 
+	$$
+	\pi_{n+k}X\otimes \BZ[\frac{1}{p}]\to \pi_{n+k}Y\otimes \BZ[\frac{1}{p}]
+	$$
+	for $k\geq 0$.
+
+	\end{enumerate}
+	\end{lemma}
+\begin{proof}
+Note that $f$ is a $L_{m_p}$-equivalence if and only if  
+$$
+L_{m_p}X \to L_{m_p}Y
+$$
+is an equivalence. By our computation of the homotopy groups, this is equivalent to requiring that $f$ is $n$-connective and induces isomorphism on 
+	$
+	\pi_{n+k}X\otimes \BZ[\frac{1}{p}]\to \pi_{n+k}Y\otimes \BZ[\frac{1}{p}]
+	$
+	for $k\geq 0$.
+\end{proof}
+
+To obtain tame localization, we only need to assemble the multiplication maps for different primes.
+We define a map between wedges of sphere spectra
+\begin{equation}
+\label{f}
+	f: \bigvee_{p\in P}\BS^{s+2p-3} \to \bigvee_{p\in P}\BS^{s+2p-3}
+\end{equation}
+which can be seen as a diagonal matrix with primes on the diagonal. Combining with Lemma \ref{local w.r.t. multiplication-by-p map}, this allows us to give the following equivalent characterization of tame spectra.
+\begin{corollary}
+	A spectrum $X\in \Sp^{\geq s}$ is $s$-tame if and only if it is $f$-local.
+\end{corollary}
+
+\begin{definition}
+	A map of spectra $g:X\to Y$ in $\Sp^{\geq s}$ is a \emph{$s$-tame equivalence} if for any $s$-tame spectrum $Z$, the induced map
+	\[
+	\map_*(Y,Z) \xrightarrow{g^*} \map_*(X,Z)
+	\]
+	is an equivalence.
+\end{definition}
+
+
+
+\begin{proposition}
+	A map of spectra $g:X\to Y$ in $\Sp^{\geq s}$ is a $s$-tame equivalence if and only if it induces isomorphisms
+	\[
+	\pi_{s+j}(X)\otimes R_j \to \pi_{s+j}(Y) \otimes R_j
+	\]
+	for $j\geq 0$.
+\end{proposition}
+
+
+
+
 %
 %
 %The theory of associative monoid objects in a symmetric monoidal $\infty$-category is developed in great generality in \cite[chapter 4.1]{HA}. 
@@ -1412,5 +2100,281 @@ We first show that if the underlying $\infty$-category is pointed with finite li
 %	\]
 %\end{proof}
 %
+
+
+\subsection{Comonadicity}
+The main theorem of this note is an analogue of Proposition \ref{Coalgebra model for simply-connected spaces} in the setting of tame spaces.
+Before we give the proof of the main theorem, we make an important observation.
+We claim that the following composite:
+\[
+\coAlg_{\Sigma^{\infty}\Omega^{\infty}}(\Sp^{\geq r})
+\xrightarrow{\oblv}
+\Sp^{\geq r}
+\xrightarrow{L_{tame}}
+\Sp^{\geq r}_{tame}
+\]
+factors through the $\infty$-category $\coAlg_{\Sigma^{\infty}_{tame}\Omega^{\infty}}(\Sp^{\geq r}_{tame})$ of $\Sigma^{\infty}_{tame}\Omega^{\infty}$-coalgebras in $\Sp^{\geq r}_{tame}$;
+that is to say, the tame localization of a $\Sigma^{\infty}\Omega^\infty$-coalgebra admits a $\Sigma^{\infty}_{tame}\Omega^{\infty}$-coalgebra structure.
+Indeed, 
+for $X\in \Space_*^{\geq r}$, we have an equivalence $\Sigma^{\infty}_{tame}X \simeq \Sigma^{\infty}_{tame}L_{tame}X$, since $\Sigma^{\infty}_{tame}$ sends tame equivalences to equivalences of tame spectra. Then we obtain a commuting diagram
+\[
+\begin{tikzcd}
+\Space^{\geq r}_{*} & & \Sp^{\geq r}\\
+& \coAlg_{\Sigma^{\infty}\Omega^{\infty}}(\Sp^{\geq r})&\\
+\Space^{\geq r}_{tame}&  & \Sp^{\geq r}_{tame}
+\arrow[from=1-1,to=1-3, "\Sigma^{\infty}"]
+\arrow[from=1-1,to=2-2, "\simeq"]
+\arrow[from=2-2,to=1-3, "\oblv" below]
+\arrow[from=1-1, to=3-1, "L_{tame}"]
+\arrow[from=1-3, to=3-3, "L_{tame}"]
+\arrow[from=3-1, to=3-3, "\Sigma_{tame}^{\infty}"]
+\end{tikzcd}
+\]
+which implies $\Sigma^{\infty}_{tame}(L_{tame}X)\simeq  L_{tame}(\oblv\circ\phi(X))$. 
+Hence we obtain a factorization
+\[
+\begin{tikzcd}
+	\coAlg_{\Sigma^{\infty}\Omega^{\infty}}(\Sp^{\geq r}) &  & \Sp^{\geq r}_{tame}\\
+	 & \coAlg_{\Sigma^{\infty}_{tame}\Omega^{\infty}}(\Sp_{tame}^{\geq r}) &
+	 \arrow[from=1-1, to=1-3, "L_{tame}\circ \oblv"]
+	 \arrow[from=1-1, to=2-2, "L'_{tame}"]
+	 \arrow[from=2-2, to=1-3, "\oblv_{tame}"]	 
+\end{tikzcd}
+\]
+where $\oblv_{tame}$ denotes the forgetful functor sending a $\Sigma^{\infty}_{tame}\Omega^{\infty}$-coalgebra to its underlying tame spectrum. 
+
+\begin{lemma}
+	\label{Lemma for the main theorem}
+	Let $X\in \coAlg_{\Sigma^{\infty}\Omega^{\infty}}(\Sp^{\geq r})$. Then the induced map 	\[
+	\Tot (\Omega^{\infty}\Sigma^{\infty})^{\bullet} \Omega^{\infty}X
+	\to 
+	\Tot (\Omega^{\infty}\Sigma^{\infty}_{tame})^{\bullet} \Omega^{\infty}L_{tame}X
+	\]
+	on the totalization of cosimplicial spaces $(\Omega^{\infty}\Sigma^{\infty})^{\bullet} \Omega^{\infty}X$ and $(\Omega^{\infty}\Sigma^{\infty}_{tame})^{\bullet} \Omega^{\infty}L_{tame}X$
+	is a tame equivalence of spaces.
+\end{lemma}
+\begin{proof}
+	Since tame equivalences is closed under limits\todo{not true!!!}, it suffices to show 
+	\[
+	(\Omega^{\infty}\Sigma^{\infty})^{n} \Omega^{\infty}X
+	\to 
+    (\Omega^{\infty}\Sigma^{\infty}_{tame})^{n} \Omega^{\infty}L_{tame}X
+    \]
+    is a tame equivalence for each $n\geq 0$.
+    For $n=0$, this is obvious since $\Omega^{\infty}$ preserves tame equivalence. Suppose now 
+    $(\Omega^{\infty}\Sigma^{\infty})^{n-1} \Omega^{\infty}X
+	\to 
+    (\Omega^{\infty}\Sigma^{\infty}_{tame})^{n-1} \Omega^{\infty}L_{tame}X$ is a tame equivalence;
+    observe that $(\Omega^{\infty}\Sigma^{\infty})^{n} \Omega^{\infty}X
+	\to 
+    (\Omega^{\infty}\Sigma^{\infty}_{tame})^{n} \Omega^{\infty}L_{tame}X$ is also a tame equivalence as it is the composition of two tame equivalences
+    $$ \Omega^{\infty}\Sigma^{\infty}(\Omega^{\infty}\Sigma^{\infty})^{n-1} \Omega^{\infty}X
+	\to 
+    \Omega^{\infty}\Sigma^{\infty}(\Omega^{\infty}\Sigma^{\infty}_{tame})^{n-1} \Omega^{\infty}L_{tame}X
+    $$  
+    and 
+    $$\Omega^{\infty}\Sigma^{\infty}(\Omega^{\infty}\Sigma^{\infty}_{tame})^{n-1} \Omega^{\infty}L_{tame}X
+    \to \Omega^{\infty}\Sigma^{\infty}_{tame}(\Omega^{\infty}\Sigma^{\infty}_{tame})^{n-1} \Omega^{\infty}L_{tame}X.$$
+	\end{proof}
+
+\begin{theorem}
+	The adjoint pair $(\Sigma^{\infty}_{tame},\Omega^{\infty})$ is comonadic. That is, we have an equivalence of $\infty$-categories
+	\[
+	\Sigma^{\infty}_{tame}: \Space^{\geq r}_{tame} \to \coAlg_{\Sigma^{\infty}_{tame}\Omega^{\infty}}(\Sp^{\geq r}_{tame}).
+	\]
+\end{theorem}
+\begin{proof}
+
+
+
+%The functor $L'_{tame}$ preserves all colimits 
+%$$
+%L'_{tame}: \coAlg_{\Sigma^{\infty}\Omega^{\infty}}(\Sp^{\geq r}) \to \coAlg_{\Sigma^{\infty}_{tame}\Omega^{\infty}}(\Sp_{tame}^{\geq r})
+%$$ 
+%by $L'_{tame}$.
+
+
+We let $\CC'$ denote the full subcategory of $\coAlg_{\Sigma^{\infty}\Omega^{\infty}}(\Sp^{\geq r})$ spanned by coalgebras whose underlying spectra satisfying:
+\[
+\Tot (\Omega^\infty \Sigma^{\infty})^{\bullet} \Omega^{\infty}X 
+\text{ is a tame space.}
+\tag{$\ast$}
+\]
+Note that a $\Sigma^{\infty}\Omega^{\infty}$-coalgebra $Y$ is in $\CC'$ if and only if it is in the esential image of $\Space^{\geq r}_{tame}$ via $\phi$, since $\phi^{-1}(Y)\simeq \Tot (\Omega^\infty \Sigma^{\infty})^{\bullet} \Omega^{\infty}Y $.
+Hence, we have $\CC'\simeq \Space^{\geq r}_{tame}$.
+
+We claim the functor $L'_{tame}: \coAlg_{\Sigma^{\infty}\Omega^{\infty}}(\Sp^{\geq r}) \to \coAlg_{\Sigma^{\infty}_{tame}\Omega^{\infty}}(\Sp_{tame}^{\geq r})$ restricts to an equivalence on $\CC'$.
+%We first observe that $\CC'$ is equivalent to the $\infty$-category $\Space^{\geq r}_{tame}$ of tame spaces; note that $\phi$ is an equivalence and a $\Sigma^{\infty}\Omega^{\infty}$-coalgebra $\Sigma^{\infty}X$ is tame if and only if its corresponding space $\phi^{-1}(X)$ is tame.
+
+%$$
+%\map_{\Space^{\geq r}}(S^n,X)\simeq \map_{\coAlg_{\Sigma^{\infty}\Omega^\infty}}(\Sigma'^{\infty}S^n,\Sigma'^{\infty}X) \neq
+%\map_{\Sp}(\BS^n,\Sigma'^{\infty}X)
+%$$
+
+
+%We next claim that $\coAlg_{\Sigma^{\infty}_{tame}\Omega^{\infty}}(\Sp_{tame}^{\geq r})$ is a full subcategory of $\coAlg_{\Sigma^{\infty}\Omega^{\infty}}(\Sp^{\geq r})$ and $L'_{tame}: \coAlg_{\Sigma^{\infty}\Omega^{\infty}}(\Sp^{\geq r}) \to \coAlg_{\Sigma^{\infty}_{tame}\Omega^{\infty}}(\Sp_{tame}^{\geq r})$ is the reflective localization functor at the class of maps whose underlying maps in $\Sp^{\geq r}$ are tame equivalences.
+
+%Let $X\in \coAlg_{\Sigma^{\infty}\Omega^{\infty}}(\Sp^{\geq r})$ and $A\in \Sp^{\geq r}_{tame}$, then we have
+%\[
+%\begin{align*}
+%	\map_{\coAlg_{\Sigma^{\infty}\Omega^{\infty}}(\Sp^{\geq r})}(X,\cofree(A))  & \simeq  \map_{\Sp^{\geq r}}(X,A) \\
+%	& \simeq \map_{\Sp^{\geq r}_{tame}}(L_{tame}X,A) &\\
+%	& \simeq \map_{\coAlg_{\Sigma^{\infty}_{tame}\Omega^{\infty}}(\Sp_{tame}^{\geq r})}(L'_{tame}X,\cofree_{tame}(A))\\
+%	& \simeq \map_{\coAlg_{\Sigma^{\infty}_{tame}\Omega^{\infty}}(\Sp_{tame}^{\geq r})}(L'_{tame}X,L'_{tame}\cofree(A))
+%\end{align*}
+%\]
+%where $\cofree_{tame}:\Sp^{\geq r}_{tame}\to \coAlg_{\Sigma^{\infty}_{tame}\Omega^{\infty}}$ is the right adjoint to the forgetful functor. 
+
+Let $Y,Z\in \CC'$, we compute:
+\[
+\begin{aligned}
+	\map_{\CC'}(Y,Z) & \simeq \map_{\coAlg_{\Sigma^{\infty}\Omega^{\infty}}(\Sp^{\geq r})}\big(Y,Z\big) \\
+	& \simeq \map_{\coAlg_{\Sigma^{\infty}\Omega^{\infty}}(\Sp^{\geq r})}\big(Y,\Tot \cofree^{\bullet+1} Z\big)\\
+	& \simeq \Tot \map_{\coAlg_{\Sigma^{\infty}\Omega^{\infty}}(\Sp^{\geq r})}\big(Y, \cofree^{\bullet+1} Z\big)\\
+	& \simeq \Tot \map_{\Sp^{\geq r}}\big(Y, (\Sigma^{\infty}\Omega^{\infty})^{\bullet} Z\big)\\
+	& \simeq  \map_{\Sp^{\geq r}}\big(Y, \Tot (\Sigma^{\infty}\Omega^{\infty})^{\bullet} Z\big)\\
+	& \simeqexpl{$(\ast)$ and Lemma \ref{Lemma for the main theorem}}  \map_{\Sp^{\geq r}}\big(Y, \Tot (\Sigma^{\infty}_{tame}\Omega^{\infty})^{\bullet} L_{tame} Z\big)\\
+	& \simeq  \map_{\Sp^{\geq r}_{tame}}\big(L_{tame}Y, \Tot (\Sigma^{\infty}_{tame}\Omega^{\infty})^{\bullet} L_{tame} Z\big)\\
+	& \simeq \map_{\coAlg_{\Sigma^{\infty}_{tame}\Omega^{\infty}}(\Sp^{\geq r}_{tame})}\big(L'_{tame}Y,\Tot \cofree^{\bullet+1}_{tame} (L'_{tame}Z)\big)\\
+	& \simeq \map_{\coAlg_{\Sigma^{\infty}_{tame}\Omega^{\infty}}(\Sp^{\geq r}_{tame})}\big(L'_{tame}Y,L'_{tame}Z \big)
+\end{aligned}
+\]
+which implies that $L'_{tame}|_{\CC'}$ is fully faithful. It remains to show $L'_{tame}$ is essentially surjective. Let $X\in \coAlg_{\Sigma^{\infty}_{tame}\Omega^{\infty}} (\Sp_{tame}^{\geq r})$, we show that $X$ also admits a $\Sigma^{\infty}\Omega^{\infty}$-coalgebra structure. 
+This follows from the fully faithfulness of $L'_{tame}|_{\CC'}$; observe that the structure map $X\to \Sigma^{\infty}_{tame}\Omega^{\infty}X$ can be viewed as a map $\gamma_X:X \to \cofree_{tame}(X)$ of $\Sigma^{\infty}_{tame}\Omega^{\infty}$-coalgebras, but this corresponds to a $\Sigma^{\infty}\Omega^{\infty}$-coalgebra map $X \to \cofree (X)$ up to a contractible choice of ambiguity. 
+This concludes our proof $\Space^{\geq r}_{tame}\simeq \CC'\simeq \coAlg_{\Sigma^{\infty}_{tame}\Omega^{\infty}}(\Sp_{tame}^{\geq r})$.
+\end{proof}
+
+We now turn to the algebraic description of tame spaces. 
+Let $D(\BZ)$ denote the derived $\infty$-category of the abelian category $\Ab$ of abelian groups, there is an equivalence of $\infty$-categories $D(\BZ)\simeq \Mod_{H\BZ}$ by Remark 7.1.1.6 of \cite{HA}. Note that the objects of $D(\BZ)$ are projective, bounded below chain complexes of abelian groups.
+The $\infty$-category $(\Mod_{H\BZ})_{tame}$ of tame $H\BZ$-modules then can be identified with $D(\BZ)_{tame}^{\geq r}$, the full subcategory spanned by chain complexes $M_{*}$ satisfying the tame condition,
+$$
+M_{k}\simeq 0 \text{ for $k<r$ and } H_{r+j}(M_{*})\otimes R_{j}\cong H_{r+j}(M_{*}) \text{ for $j\geq 0$ }.
+$$
+
+A non-unital cocommutative coalgebra $C$ in $D(\BZ)$ is a chain complex $C$ equipped with maps $\gamma_n: C \to (C^{\otimes n})^{h\Sigma_n}$ for $n\geq 1$, such that it satisfies the usual coassociativity and cocommutativity conditions. 
+
+\begin{remark}
+	Note that $\Sp^{\geq r}_{tame}$ admits a symmetric monoidal structure with the tensor product $X\otimes_{tame} Y$ given by the tame localization $L_{tame}(X\otimes Y)$ of the smash product of $X$ and $Y$. Observe that the functor $L_{tame}:\Mod_{H\BZ}^{\geq r}\to (\Mod_{H\BZ}^{\geq r})_{tame}$ is symmetric monoidal; this follows from the fact that the map $M \otimes_{\BZ} N \to L_{tame}M\otimes_{\BZ} N \to L_{tame}M\otimes_{\BZ} L_{tame}N$ is a tame equivalence for any $M,N\in \Mod_{H\BZ}^{\geq r}$.
+\end{remark}
+
+
+%\begin{question}
+%    I understand that the goal is to show $\Sigma^{\infty}_{tame}\Omega^{\infty}$ agrees with the cofree commutative comonad on $\Sp^{\geq r}_{tame}$ and we indeed have 
+%    $$
+%    \Sigma^{\infty}_{tame}\Omega^{\infty}X\simeq L_{tame}\big(\Sym^{\geq 1}(X) \big),
+%    $$ since we invert primes fast enough to kill Tate construction; but I don't know how to show the cofree commutative coalgebra comonad is given by $L_{tame}\big(\Sym^{\geq 1}(X)\big)$.
+%\end{question}
+%
+%\begin{lemma}
+%	Let $X\in \Sp^{B\Sigma_n}$ be a $\Sigma_n$-spectrum whose underlying spectrum is uniquely $n!$-divisible, then 
+%	$$
+%	X^{t\Sigma_n}\simeq *.
+%	$$
+%\end{lemma}
+
+
+
+
+
+
+\begin{proposition}
+	Let $X\in \Sp^{\geq r}$, then the norm map	
+	
+	$$
+	(X^{\otimes n})_{h\Sigma_n} \xrightarrow{Nm} (X^{\otimes n})^{h\Sigma_n} 
+	$$
+	admits a retract after tame localization. 
+% 	THE FOLLOWING IS NOT KNOWN
+%	Moreover, the tame localization of $(X^{\otimes n})^{t\Sigma_n}$ vanishes, i.e. 
+%	$$
+%	L_{tame}(X^{\otimes n})^{t\Sigma_n}\simeq *.
+%	$$
+\end{proposition}
+\begin{proof}
+	Note we have a commutative diagram
+	\[
+	\begin{tikzcd}
+		(X^{\otimes n})_{h\Sigma_n} & (X^{\otimes n})^{h\Sigma_n}\\
+		(L_{tame}X^{\otimes n})_{h\Sigma_n} & (L_{tame}X^{\otimes n})^{h\Sigma_n}
+		\arrow[from=1-1, to=1-2, "Nm"]
+		\arrow[from=1-1, to=2-1]
+		\arrow[from=2-1, to=2-2, "\simeq"]
+		\arrow[from=1-2, to=2-2]
+	\end{tikzcd}
+	\]
+	where the left map is a tame equivalence and the bottom map is an equivalence by Lemma \ref{Tate vanishing for tame spectra}.
+After tame localization we then have 	
+\[
+	\begin{tikzcd}
+		L_{tame}(X^{\otimes n})_{h\Sigma_n} & L_{tame}(X^{\otimes n})^{h\Sigma_n}\\
+		L_{tame}(L_{tame}X^{\otimes n})_{h\Sigma_n} & L_{tame}(L_{tame}X^{\otimes n})^{h\Sigma_n}
+		\arrow[from=1-1, to=1-2, "Nm"]
+		\arrow[from=1-1, to=2-1, "\simeq"]
+		\arrow[from=2-1, to=2-2, "\simeq"]
+		\arrow[from=1-2, to=2-2]
+	\end{tikzcd}
+\]
+the retract is given by composite of the right map followed by the bottom and left maps.
+%	Observe that 
+%	$$
+%	L_{tame}(X^{\otimes n})_{h\Sigma_n} \xrightarrow{L_{tame}Nm} L_{tame}(X^{\otimes n})^{h\Sigma_n} 
+%	\to
+%	L_{tame}(X^{\otimes n})^{t\Sigma_n}
+%	$$
+%	is a cofiber sequence in $\Sp^{\geq r}_{tame}$, hence 
+%	$L_{tame}(X^{\otimes n})^{t\Sigma_n}$ is contractible.
+\end{proof}
+
+\clearpage
+\begin{question}
+	Let $G$ be a finite group and let $X\in \Fun(BG,\Sp)$. Do we have 
+	$$
+	L(X)^{hG}\simeq (LX)^{hG} \text{   ?}
+	$$
+	Note that we have a fiber sequence in $\Sp$
+	$$
+	(LX)_{hG} \to (LX)^{hG} \to (LX)^{tG}
+	$$
+	and a cofiber sequence in $\Sp_{tame}$
+	$$
+	L(X)_{hG} \to L(X)^{hG} \to L(X)^{tG}.
+	$$
+	Note that in the case I'm interested in, $(LX)^{tG}\simeq *$ and $L(X)_{hG}\simeq (LX)_{hG}$.
+	So we have a cofiber sequence in $\Sp_{tame}$
+	$$
+	(LX)^{hG} \to L(X)^{hG} \to L(X)^{tG}
+	$$
+	So it suffices to show $(-)^{tG}$ preserves tame equivalences, but this cannot be ture:
+	consider the 0-tame equivalence $\BS\to H\BZ$,
+	then $(\BS^{\otimes 2})^{tC_2}\simeq \BS^{\wedge}_{2}\to  (L_{tame}(\BS^{\otimes 2}))^{tC_2}\simeq *$, but $\pi_0 \BS^{\wedge}_2\neq 0$.
+\end{question}
+
+
+%\begin{proposition}
+%	The Goodwillie tower of $\Sigma^{\infty}\Omega^{\infty}$ splits after tame localization.
+%\end{proposition}
+%\begin{proof}
+%
+%	Note that we have a pullback diagram in $\Sp$
+%	\[	
+%	\begin{tikzcd}
+%		P_n\Sigma^{\infty}\Omega^{\infty} (X) 
+%		& (X^{\otimes n})^{h\Sigma_n}\\
+%		P_{n-1}\Sigma^{\infty}\Omega^{\infty} (X)  
+%		& (X^{\otimes n})^{t\Sigma_n}
+%		\arrow[from=1-1, to=1-2]
+%		\arrow[from=2-1, to=2-2]
+%		\arrow[from=1-1, to=2-1]
+%		\arrow[from=1-2, to=2-2].
+%	\end{tikzcd}
+%	\]
+%	For $n=1$, we have $P_1\Sigma^{\infty}\Omega^{\infty} (X)\simeq D_{1}\Sigma^{\infty}\Omega^{\infty} (X)\simeq X$.
+%	Suppose we have 
+%	$$
+%	L_{tame}P_{n-1}\Sigma^{\infty}\Omega^{\infty}(X)\simeq
+%	\bigoplus_{i=1}^{n-1} L_{tame} (X^{\otimes n})_{h\Sigma_n}.
+%	$$
+%	
+%\end{proof}
 
 

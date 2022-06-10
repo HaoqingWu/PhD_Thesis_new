@@ -119,7 +119,8 @@
   style = definition
 ]{quest}
 
-
+\newtheorem{thmx}{Theorem}
+\renewcommand{\thethmx}{\Alph{thmx}} % "letter-numbered" theorems
 % Shortcuts for some mathematical symbols.
 
 \RequirePackage{ifthen}
@@ -270,6 +271,7 @@
 \newcommand{\GSpU}{\operatorname{Sp^{G}_{\mathcal{U}}}} % the category of genuine G-spectra over a universe
 \newcommand{\SH}{\operatorname{SH}}
 \newcommand{\Mon}{\operatorname{Mon}}
+\newcommand{\CMon}{\operatorname{CMon}} % category of commutative monoids.
 \newcommand{\Monad}{\operatorname{Monad}}
 \newcommand{\Comonad}{\operatorname{Comonad}}
 \newcommand{\Gr}{\operatorname{Gr}}  % the associated graded functor

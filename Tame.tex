@@ -1,300 +1,234 @@
 \chapter{Tame Spaces and Tame Spectra}
-
-\section{Introduction}
-The homotopy theory without torsions is fairly simple, as it is the context of the rational homotopy theory.
-However, the homotopy theory of spaces localized at a prime $p$ is much more complicated than the rational case. 
-
-However, it turns out that we do know when the $p$-torsions appears in the homotopy group of spheres. A careful computation of the homology of Eilenberg-Maclane spaces and Serre spectral sequence would lead to the following famous theorem by Serre.
-\begin{theorem}[Serre]
-	For $n\geq 3$, the first $p$-torsion in the homotopy group $\pi_{k}(S^{n})$ appears in degree $ n+2p-3$.
-\end{theorem}
-
-The goal of this note is to answer the following two questions:
-\begin{enumerate}
-	\item Can we focus on studying those spaces which are equivalent to the spheres modulo \say{asymptotic behavior}?
-    \item Is this kind of spaces has an easy algebraic description?
-\end{enumerate}
-
-Dwyer \cite{Dwyer} call the spaces in the first question \emph{tame spaces}.
-He also showed the homotopy theory of tame spaces is equivalent to the homotopy theory of certain integral dg Lie algebras.
-
-Our goal is to use modern technology to upgrade Dwyer's algebraic model for tame spaces.
-We will show the \emph{tame homotoy type} of a space is completely characterize by its essential image under the free spectral Lie algebra functor. 
- In addition, we also provide a coalgebra model for tame spaces.
- \todo[inline]{Essentially, the tame homotopy type is completely determined by its essential image under these functors. Maybe we can do some computations with them?}
-
-
-
-Through out this note, We fix an integer $r\geq 3$ and a sequence of rings $R_{j}:=\BZ[\frac{1}{k}|k\leq \frac{j+3}{2}]$ for $j\geq 0$. The integer $r$ will serve as the lower bound for the connectivity of a space. 
+In this chapter, we give a modern treatment of Dwyer's tame spaces in \S \ref{Section Tame spaces}. We also extend the definition of tameness to spectra in \S \ref{Section: Tame spectra}.
+We prove that the $\infty$-category of $r$-tame spaces (resp. $r$-tame spectra) is a localization of the $\infty$-category of $r$-connective spaces (resp. $r$-connective spectra).
+We then discuss properties of these two category and prove an algebraic characterization of $r$-tame spectra.
 
 \section{Tame Spaces}
-
-\subsection{Tame localization}
+\label{Section Tame spaces}
+In this section, we first define the notion of a tame space.
+Then we explain how to obtain the $\infty$-category of $r$-tame spaces as a localization of the $\infty$-category $\Space_{*}^{\geq r}$ of $r$-connective spaces.
+Recall we have defined the tame ring system $\{R_{j}\}_{j \leq 0}$ in Definition \ref{tame ring system}.
 
 \begin{definition}
 	\label{Tame spaces}
-	Let $X\in \pSpace^{\geq r}$ be a $r$-connective space.
-	We say $X$ is \emph{tame} if 
+	Let $X\in \Space_{*}^{\geq r}$ be an $r$-connective space.
+	We say $X$ is \emph{$r$-tame} if for all $j\geq 0$, the $(r+j)$-th homotopy group $\pi_{r+j}(X)$ is uniquely $p$-divisible for all $p\leq \frac{j+3}{2}$. 
+	This is equivalent to saying that $\pi_{r+j}(X)$ is a $R_j$-module for each $j$, that is,
 	\[
 	\pi_{r+j}(X)\cong \pi_{r+j}(X)\otimes R_{j}.
 	\]
-	That is to say, the $(r+j)$-th homotopy group $\pi_{r+j}(X)$ of $X$ is uniquely $p$-divisible for $p\leq \frac{j+3}{2}$. We let $\Space^{\geq r}_{tame}$ denote the full subcategory spanned by $r$-connective tame spaces.
 \end{definition}
 
-\begin{remark}
-Note that the condition of being tame depends on the connectivity bound $r$ we choose, but we will mostly work in the context when $r$ is fixed.
-	For the rest of this section, we will avoid mentioning the lower bound of the connectivity of the tame spectrum as it will be clear from our notation.	
-	\end{remark}
-Given a space $X\in \pSpace^{\geq r}$, we hope to produce a space $X_{tame}$ that is in some sense the universal tame space associated to $X$.
-The theory of localization of Bousfield and Farjoun gives a modern way to streamline this procedure.
-\todo{We should give a brief introduction of Bousfield localization in the preliminaries}
+    \begin{remark}
+        The definition of tame spaces depends on an integer $r$.
+        It is clear from the definiton that,
+        for two integers $s\geq r \geq 3$, if a space $X$ is $r$-tame, then it is also $s$-tame. 
+    \end{remark}
+    
+    \begin{notation}
+        We let $\Space^{\geq r}_{\tame}$ denote the full subcategory of $\Space^{\geq r}_{*}$ spanned by $r$-tame spaces.
+       Note that we omit the $r$ from the subscript since the level of tameness will be clear from the superscript.
+       Moreover, we will simply call a space \emph{tame} if the level of tameness is clear from the context.
+    \end{notation}
+    
 
-To illurstrate this idea, we first give an equivalent characterization of a space being tame.
-Let's first recall a simple fact of localization with respect to the degree $p$ map.
-Let $g:S^n \xrightarrow{p}S^n$ be a map of degree $p$ for $n\geq r$. A space $X$ is said to be \emph{$g$-local} if $f$ induces a weak homotopy equivalence 
-\[
-\map_*(S^n,X) \to \map_*(S^n,X)
-\]
-on the mapping space. Observe that this is equivalent to requiring the multiplication by $p$ map
+    
+Given a space $X\in \Space^{\geq r}$, we want to produce a space $X_{tame}$ that is the universal tame space receiving a map from $X$. Moreover, we want this assignment to be functorial. The theory of localization, well-studied by Bousfield \cite{BousfieldSpaces}, \cite{BousfieldSpectra} and Farjoun \cite{Farjoun}, provides powerful machinery for doing so in the context of model categories.
+For localization of $\infty$-categories, we will follow \cite{HTT}.
+\begin{definition}
+    \cite[Definition 5.2.7.2.]{HTT}
+    A functor $F:\CC\to \CD$ between $\infty$-categories is a \emph{localization} if $F$ has a fully faithful right adjoint.
+\end{definition}
+In our case, we will construct a \emph{tame localization functor}
+$$
+L_{\tame}: \Space^{\geq r}_* \to \Space^{\geq r}_{\tame}
+$$
+so that the inclusion functor is a right adjoint.
+Our strategy for proving the existence of such a localization functor is to show the effect of inverting primes in homotopy groups is equivalent to inverting some maps in $\CS^{\geq r}_{*}$.
+
+To explain this idea, we now recall some terminology from Definition \ref{localization}. 
+Let $\CC$ be an $\infty$-category and $S$ a collection of morphisms in $\CC$.
+An object $Z$ is said to be \emph{$S$-local} if for every morphism $f:X\to Y$ in $S$, restricting along $f$ 
+$$
+\map_{\CC}(Y,Z) \to \map_{\CC}(X,Z)
+$$
+is a weak equivalence.
+A morphism $f:X\to Y$ in $\CC$ is an \emph{$S$-equivalence} if, for every $S$-local object $Z$, composition with $f$ induces a weak equivalence 
+$$
+\map_{\CC}(Y,Z) \to \map_{\CC}(X,Z).
+$$
+\begin{remark}
+    Let $L:\CC \to \CC$ be a localization of an $\infty$-category $\CC$, and let $S$ be the class of morphisms $f$ in $\CC$ such that $Lf$ is an equivalence.
+    By \cite[Proposition 5.5.4.2.]{HTT}, the full subcategory spanned by $S$-local objects is precisely the essential image $L\CC$ under $L$, and every $S$-equivalence in $\CC$ belongs to $S$. Moreover,  $L\CC$ is accessible if $\CC$ is accessible.
+\end{remark}
+
+% \begin{proposition}
+%     \cite[Proposition 5.5.4.2.]{HTT}
+%     Let $L:\CC \to \CC$ be a localization functor and $S$ be the class of morphisms $f$ in $\CC$ such that $Lf$ is an equivalence. Then
+%     \begin{enumerate}
+%         \item An object $C\in\CC$ is $S$-local if and only $C\in L\CC$.
+%         \item Every $S$-equivalence in $\CC$ belongs to $S$.
+%         \item Suppose that $\CC$ is accessible, then the following are equivalent:
+%         \begin{enumerate}[(i)]
+%             \item The $\infty$-category $L\CC$ is accessible.
+%             \item The functor $L\CC \to \CC$ is accessible.
+%             \item There exists a (small) subset $S_0\subset S$ such that every $S_0$-local object is $S$-local.
+%         \end{enumerate}
+        
+%     \end{enumerate}
+% \end{proposition}
+
+
+
+To understand the effect of inverting primes in homotopy groups, let's first consider the following simple case.
+Let $g:S^n \xrightarrow{p}S^n$ be a map of degree $p$.
+Observe that a space $X$ is $g$-local if and only if the multiplication-by-$p$ map on the homotopy groups
 \[
 \pi_{*}(X) \xrightarrow{\cdot p} \pi_{*}(X)
 \]
-to be an isomorphism for $*\geq n$. In other words, a space $X$ is $g$-local if and only if its homotopy groups $\pi_*(X)$ is uniquely $p$-divisible for degree large and equal to $n$.
+is an isomorphism in degrees $*\geq n$. In other words, a space $X$ is $g$-local if and only if its homotopy groups $\pi_*(X)$ are uniquely $p$-divisible in degrees large than or equal to $n$.
 
-Let $P$ denote the set of primes and fix a prime $q$, we consider the following composition 
+Let $P$ denote the set of all primes. For each prime $q$, we consider the following composition 
 \[
-\bigvee_{p \in P}S^{r+2p-3} \xrightarrow{\text{collapsing}} S^{r+2q-3} 
-\xrightarrow{\cdot q} S^{r+2q-3}
+ S^{r+2q-3} 
+\xrightarrow{\cdot q} S^{r+2q-3} \xrightarrow{\text{inclusion}}  \bigvee_{p \in P}S^{r+2p-3}.
 \]
-
-Assembling these maps together, we obtain a map
+There is a canonical map induced by the composite above
 \begin{equation}
-\label{f}
-	f: \bigvee_{p\in P}S^{r+2p-3} \to \bigvee_{p\in P}S^{r+2p-3}.
+\label{f map}
+	f: \bigvee_{p\in P}S^{r+2p-3} \to \bigvee_{p\in P}S^{r+2p-3},
 \end{equation}
-
-
-\begin{remark}
-	The map $f$ can be seen as a diagonal matrix with primes on the diagonal. \todo{how to elobrate this?}
-\end{remark}
+which can be thought of as a diagonal matrix with primes on the diagonal. 
 
 \begin{lemma}
+\label{tame is equivalent to f-local}
 	A space $X\in \pSpace^{\geq r}$ is tame if and only if it is $f$-local.
 \end{lemma}
 \begin{proof}
-	A space $X$ is $g$-local if and only if the map
+	A space $X$ is $f$-local if and only if the map
 	\[
-	\map_{*}(\bigvee_{p\in P}S^{r+2p-3},X) \xrightarrow{g^*} \map_{*}(\bigvee_{p\in P}S^{r+2p-3},X)
+	\map_{*}(\bigvee_{p\in P}S^{r+2p-3},X) \xrightarrow{f^*} \map_{*}(\bigvee_{p\in P}S^{r+2p-3},X)
 	\]
-	is a weak homotopy equivalence. This is equivalent to asking the homotopy groups $\pi_{r+j}(X)$ are uniquely $p$-divisible for those primes $p\leq \frac{j+3}{2}$ for every fixed $j\geq 0$. 	The lemma now follows from the following commuting diagram
+	is a weak equivalence. This is equivalent to asking that the homotopy groups $\pi_{r+j}(X)$ be uniquely $p$-divisible for all primes $p\leq \frac{j+3}{2}$ for every fixed $j\geq 0$. 	The lemma now follows from the following commuting diagram
 	\[	
 	\begin{tikzcd}
 		\pi_{r+j}(X) & \pi_{r+j}(X)\\
-		\pi_{j-(2p-2)}(\map_*(S^{r+2p-2},X)) & \pi_{j-(2p-2)}(\map_*(S^{r+2p-2},X))
+		\pi_{j-(2p-3)}(\map_*(S^{r+2p-3},X)) & \pi_{j-(2p-3)}(\map_*(S^{r+2p-3},X)),
 		\arrow[from=1-1, to=1-2,"\cdot p"]
 		\arrow[from=2-1, to=2-2,"\cdot p"]
 		\arrow[from=1-1, to=2-1]
-		\arrow[from=1-2, to=2-2].
+		\arrow[from=1-2, to=2-2]
 	\end{tikzcd}
 	\]
-	where the vertical arrows are isomorphisms.
+	where the vertical arrows are isomorphisms. Hence the top horizontal map is an isomorphhism if and only if the bottom horizontal map is an isomorphhism.
+	
 \end{proof}
 
-
-\begin{remark}
-By the theory of Bousfield localzation, we conclude that the tame localization functor $L_{tame}$ agrees with $L_f$.	
-\end{remark}
-
+The following proposition guarantees the existence of the localization of presentable $\infty$-categories.
+\begin{proposition}
+    \cite[Proposition 5.5.4.15.]{HTT}
+    \label{Prop 5.5.4.15. HTT}
+    Let $\mathcal{C}$ be a presentable $\infty$-category, and let $S$ be a (small) set of morphisms of $\CC$. Let $\bar{S}$ denote the strongly saturated (cf. \cite[Definition 5.5.4.5.]{HTT}) class of morphisms generated by $S$. If $\mathcal{C}^{\prime} \subseteq \CC$ denote the full subcategory of $\CC$ consisting of $S$-local objects, then 
+    \begin{enumerate}
+        \item For each object $C \in \mathcal{C}$, there exists a morphism $s: C \rightarrow C^{\prime}$ such that $C^{\prime}$ is $S$-local and $s$ belongs to $\bar{S}$.
+        \item The $\infty$-category $\mathcal{C}^{\prime}$ is presentable.
+        \item The inclusion $\mathrm{C}^{\prime} \subseteq \mathcal{C}$ has a left adjoint $L$.
+        \item For every morphism $f$ of $\mathcal{C}$, the following are equivalent:
+        \begin{enumerate}[(i)]
+            \item  The morphism $f$ is an $S$-equivalence.
+            \item The morphism $f$ belongs to $\bar{S}$.
+            \item The induced morphism $L f$ is an equivalence.
+        \end{enumerate}
+    \end{enumerate}
+\end{proposition}
+If $\CS^{\geq r}_{*}$ and $S= \{f\}$ in (\ref{f map}), we will also call an $S$-local space (resp. $S$-equivalence) $L_f$-local (resp. $L_f$-equivalence).
+The proposition above guarantees the existence of the tame localization functor. 
+\begin{corollary}
+\label{existence of tame localization}
+The tame localization functor
+$$
+L_{\tame}: \Space^{\geq r}_* \to \Space^{\geq r}_{\tame}
+$$
+exists. Moreover, the $\infty$-category $\Space^{\geq r}_{\tame}$ of tame spaces is a presentable $\infty$-category.
+\end{corollary}
 \begin{definition}
-	\label{Tame equivalences}
-	A map $g:X\to Y$ in $\Space^{\geq r}_{*}$ is a \emph{tame equivalence} if for any tame space $Z$, the induced map
-	\[
-	\map_*(B,Z) \xrightarrow{g^*} \map_*(A,Z)
-	\]
-	is an equivalence.
+    A morphism $g:X \to Y$ in $\Space^{\geq r}_*$ is said to be a \emph{tame equivalence} if it is an $L_f$-equivalence in the sense of Definition \ref{localization}.
 \end{definition}
 
-In the following, we give an explicit description of tame equivalences and show the functor $L_{tame}:\Space^{\geq r}_* \to \Space^{\geq r}_{tame}$ is an infinite composite of localization functors.
+For the rest of this section, we give an explicit characterization of tame equivalences by showing that the functor $L_{tame}:\Space^{\geq r}_* \to \Space^{\geq r}_{tame}$ is an infinite composite of localization functors.
 
-For every prime $p$, we let $f_p:S^{r+2p-3}\to S^{r+2p-3}$ denote the degree $p$ map. A space is $f_p$-local if and only if its homotopy groups are uniquely $p$-divisible above degree $r+2p-2$.
-
-By the theory of localization developed by Bousfield and Farjoun, we have a localization functor
+We first consider localization with respect to the multiplication-by-$p$ map $$
+m_p:S^{r+2p-3}\to S^{r+2p-3}$$ for a fixed prime $p$. 
+Note that a space $X\in \Space^{\geq r}_*$ is $L_{m_p}$-local if and only if $\pi_{*}X$ is uniquely $p$-divisible for $* \geq r+2p-3$.
+Let $\CS^{\geq r}_{m_p}$ denote the full subcategory of $\CS^{\geq r}_*$ spanned by spaces whose homotopy groups are uniquely $p$-divisible at and above degree $r+2p-3$.
+Proposition \ref{Prop 5.5.4.15. HTT} guarantees the existence of a localization functor
 \[
-L_{f_p}:\Space^{\geq r}_{*} \to \Space^{\geq r}_{*}.
+L_{m_p}:\Space^{\geq r}_{*} \to \CS^{\geq r}_{m_p}.
 \]
-A map is a \emph{$L_{f_p}$-equivalence} if the induced map
-\[
-	\map_*(Y,Z) \xrightarrow{f_{p}^*} \map_*(X,Z)
-\]
-is a homotopy equivalence for every $f_p$-local space $Z$. We now want to give an explicit identification of the space $L_{f_p}X$ under the localization functor $L_{f_p}$. For this, we need a few lemma.
+A map $g:X\to Y$ is a $L_{m_p}$-equivalence if and only if 
+$L_{m_p}g: L_{m_p}X \to L_{m_p}Y$ is an equivalence.
+We now show that $L_{m_p}$-localization does not change the homotopy groups below degree $r+2p-3$. 
+\begin{proposition}
+\label{connectivity of local equivalences of spaces}
+	If $g: X\to Y$ is a $n$-connective map in $\Space_*$, then every $L_g$-equivalence is $n$-connective.
+\end{proposition}
+\begin{proof}
+	Take $S=\{g\}$ and denote by $\overline{S}$ the strongly saturated class of morphisms generated by $S$. Proposition \ref{Prop 5.5.4.15. HTT} implies that  $\overline{S}= \{L_g\text{-equivalences}\}$, hence it suffices to show that $\overline{S}$ is contained in the class of $n$-connective maps. Note that the class of $n$-connective maps is saturated in the sense of \cite[Definition 5.5.5.1]{HTT}. Since every strongly saturated class of morphisms in a presentable $\infty$-category is also saturated \cite[Example 5.5.5.5.]{HTT}, we have 
+	$$
+	\{L_g\text{-equivalences}\}=\overline{S} \subseteq \tilde{S} \subseteq \{n\text{-connective maps}\}
+	$$
+	where $\tilde{S}$ denotes saturated class of morphisms generated by $S$.
+\end{proof}
 
-\begin{lemma}
-	If $g:A\to B$ is $n$-connective, then
+\begin{corollary}
+\label{L_g doesn't change lower hpty groups if g is n-conn}
+        If $g:A\to B$ is $n$-connective, then  the localization $L_g:\CS_*\to \CS_*$ doesn't change the homotopy groups of a space $X$ below degree $n$, i.e. 
 	\[
 	\pi_{i}(L_gX) \cong \pi_i(X)
 	\]
 	for $i< n$.
-\end{lemma}
-\begin{proof}
-	
-	
-	
-\end{proof}
-
-\begin{lemma}
-	The localization functor $L_{f_p}$ commutes with connective cover.
-\end{lemma}
-\begin{proof}
-	
-	
-	
-\end{proof}
-
-\begin{proposition}
-	Let $X\in \pSpace$, then we have 
-	\[
-	\pi_{i}(L_{f_p}X)= \begin{cases}
-		\pi_{i}(X) \otimes \BZ[\frac{1}{p}] &\text{for $i\geq n$},\\
-		\pi_{i}(X) &\text{for $i< n$.}
-	\end{cases}
-	\]
-\end{proposition}
-\begin{proof}
-	
-\end{proof}
-
-\begin{corollary}
-\label{Char of tame equivalence}
-	A map $g:X \to Y$ is a $L_{f_p}$-equivalence if and only if the induced maps on homotopy groups satisfies:
-	\begin{enumerate}
-		\item  $\pi_i(X) \to \pi_i (Y)$ is an isomorphism for $i <n$,
-		\item $\pi_i(X)\otimes \BZ[\frac{1}{p}] \to \pi_i(Y)\otimes \BZ[\frac{1}{p}]$ is an isomorphism for $i \geq n$.
-	\end{enumerate}
-	Moreover, $g:X\to Y$ is a tame equivalence if and only if it is a $L_{f_p}$-equivalence for every prime $p$.
 \end{corollary}
 
-We conclude this section by showing that the localization with respect to the map $f$ is equivalent to the localization with respect to the infinite composites of localizations.
-\begin{corollary}
-	\label{Characterization of tame localization}
-	Let $f$ be as in (\ref{f}), then we have
-	\[
-	L_f X \simeq \colim(X\to L_{f_2}X\to L_{f_3}L_{f_2}X\to \cdots)
-	\]	
-\end{corollary}
-\begin{proof}
-	We define $X_{\infty}:=\colim(X\to L_{f_2}X\to L_{f_3}L_{f_2}X\to \cdots)$. 
-	The space $X_\infty$ is tame. Indeed, for fixed $j$, we have
-	\[
-	\pi_{r+j}(X_{\infty})\cong \pi_{r+j}(L_{f_q}\cdots L_{f_2}X)\cong \pi_{r+j}(X) \otimes R_{j}
-	\]
-	where $q$ is the largest prime number less or equal to $\frac{j+3}{2}$. Moreover, the natural map $X\to X_{\infty}$ is a tame equivalence by Corollary \ref{Char of tame equivalence}. Therefore, the map $X\to X_{\infty}$ is a tame localization.
-\end{proof}
-\subsection{Tame spectra}
+We now compare $L_{m_p}$-localization with
+the Bousfield localization with respect to the homology theory $H_{*}(-;\BZ[\frac{1}{p}])$.
+In this case, we let $S'$ be the collection of morphisms that induce isomorphisms on homology with coefficients in $\BZ[\frac{1}{p}]$, or equivalently on $\pi_*(-)\otimes \BZ[\frac{1}{p}]$ by \cite[Proposition 4.3]{Bousfield96}, as we are working in $\CS^{\geq r}_*$.
+We will call an $S'$-local space \emph{$\BZ[\frac{1}{p}]$-local}.
+By \cite[Theorem 5.5]{Bousfield96}, 
+a space whose homotopy groups are uniquely $p$-divisible is $\BZ[\frac{1}{p}]$-local.
+Hence, any $\BZ[\frac{1}{p}]$-local space is also $L_{m_p}$-local, and any $L_{m_p}$-equivalence also induces isomorphisms on $\pi_*(-)\otimes \BZ[\frac{1}{p}]$.
 
-In this section, we discuss the tame homotopy theory for spectra. Again, we fix an integer $s\in \BZ_{\geq 0}$ and we will denote the $\infty$-category of $s$-connective spectra by $\Sp^{\geq s}$.
-\begin{definition}
-	An $s$-connective spectrum $X$ is \emph{$s$-tame} if 
-	\[
-	\pi_{s+j}(X)\cong \pi_{s+j}(X)\otimes R_{j}.
-	\]
-	We let $\Sp^{\geq s}_{tame}$ denote the full subcategory spanned by $s$-tame spectra.
-\end{definition}
-
-\begin{remark}
-	Note that unlike in the case of spaces, we could consider $0$-connective tame spectra in the stable case.
-	The key observation is that the first $p$-torsion in the homotopy group of the sphere spectrum $\BS$ appears at degree $2p-3$.
-\end{remark}
-
-\subsection{Tame equivalences in $\Sp$}
-We identify the existence of tame localization of spectra in this section. Moreover, we characterize tame equivalences as those maps inducing isomorphisms after tensoring with tame ring system.
-Let $m_p:\BS^n\to \BS^n$ denote the multiplication-by-$p$ map on $\BS^n$. A connective spectrum $X$ is $m_p$-local if 
-\[
-\map_{\Sp}(\BS^n,X) \xrightarrow{m_p^*} \map_{\Sp}(\BS^n,X)
-\]
-is a weak homotopy equivalence.
 \begin{lemma}
-\label{local w.r.t. multiplication-by-p map}
-	A spectrum $X$ is $m_p$-local if and only if $\pi_{n+k}(X)$ is uniquely $p$-divisible for $k\geq 0$.
-\end{lemma}
-\begin{proof}
-	We compute the induced map on the homotopy groups of $\map_{\Sp}(\BS^n,X)$. Note that for $k\geq 0$, one has
-	\begin{align*}
-		\pi_k\map_{\Sp}(\BS^n,X) & \cong \pi_0 \Omega^k\map_{\Sp}(\BS^n,X)\\
-		     					 & \cong \pi_0 \map_{\Sp}(\BS^{n+k},X)\\
-		     					 & \cong \pi_{n+k} (X),
-	\end{align*}
-	and $m_p^*$ induces a multiplication-by-$p$ map $ \pi_{n+k} (X) \xrightarrow{\cdot p} \pi_{n+k} (X)$. Therefore, $X$ is $m_p$-local if and only if $\pi_{n+k}X$ is uniquely $p$-divisible for all $k\geq 0$.
-\end{proof}
-Let $\Sp_{m_p}$ denote the full subcategory of spectra whose homotopy groups are uniquely $p$-divisible above degree $n$.
-Note that the localization functor $L_{m_p}:\Sp \to \Sp_{m_p}$ exists by Proposition 5.5.4.15. of \cite{HTT}.
-Let's now compare $L_{m_p}$ with the Bousfield localization with respect to the homology theory $H_{*}(-,\BZ[\frac{1}{p}])$. A spectrum is $\BZ[\frac{1}{p}]$-local if and only if its homotopy groups are uniquely $p$-divisible \cite[Proposition 2.4]{BousfieldSpectra}. Therefore, a $\BZ[\frac{1}{p}]$-local spectrum is also $L_{m_p}$-local and we record the following useful lemma.
-\begin{lemma}
-\label{L-equivalence implies Z[1/p]-iso}
-	If $f:X\to Y$ is a $L_{m_{p}}$-equivalence of spectra, then it induces an isomorphism on 
+\label{L-equivalence implies Z[1/p]-iso in spaces}
+	If $f:X\to Y$ is a $L_{m_{p}}$-equivalence of spaces, then it induces isomorphisms
 	$$
 	\pi_{*}(X)\otimes \BZ[\frac{1}{p}]
 	\to
 	\pi_{*}(Y)\otimes \BZ[\frac{1}{p}].
 	$$
+	Moreover, if $f:X\to Y$ is a map between $(r+2p-3)$-connective spaces, then $f$ is a $L_{m_p}$-equivalence if and only if it is a $\BZ[\frac{1}{p}]$-equivalence.
 \end{lemma}
+\begin{proof}
+    The first part is clear.
+    The second part follows from the fact that a $(r+2p-3)$-connective space is $L_{m_p}$-local if and only if it is $\BZ[\frac{1}{p}]$-local.
+\end{proof}
 
-The inverse is true if we restricts to connective spectra.
+Let $\tau_{\geq r+2p-3}X$ denote the $(r+2p-3)$-th connective cover of $X$.
+We claim that $L_{m_p}$-localization commutes with taking $(r+2p-3)$-th connective cover.
+
 \begin{lemma}
-\label{L-equivalence is equivalent to pi_* iso on n-conn spectra}
-	Let $f:X\to Y$ be a map between $n$-connective spectra, then $f$ is a $L_{m_{p}}$-equivalence if and only if it induces an isomorphism on 
-	$
-	\pi_{*}(X)\otimes \BZ[\frac{1}{p}]
-	\to
-	\pi_{*}(Y)\otimes \BZ[\frac{1}{p}].
-	$
+\label{m_p localization commutes with k-th connective cover}
+	The localization functor $L_{m_p}$ commutes with taking $(r+2p-3)$-th connective cover, i.e., there is an equivalence
+	$$
+	L_{m_p}(\tau_{\geq r+2p-3}X)\simeq \tau_{\geq r+2p-3}(L_{m_p} X)
+	$$
+	for any $X\in \CS^{\geq r}_*$.
 \end{lemma}
 \begin{proof}
-	Let $Z$ be a $L_{m_p}$-local spectrum and let $f$ be a $\BZ[\frac{1}{p}]$-equivalence. Consider the commutative diagram
+	It suffices to show the map $\tau_{\geq r+2p-3}X\to \tau_{\geq r+2p-3}L_{m_{p}}X$ is a $L_{m_p}$-equivalence, since $\tau_{\geq r+2p-3}L_{m_{p}}X$ is $L_{m_p}$-local. Consider the following commutative diagram of fiber sequences
 	\[
 	\begin{tikzcd}
-		\map_{\Sp}(Y,Z) & \map_{\Sp}(X,Z)\\
-		\map_{\Sp}(Y,\tau_{\geq n}Z) & \map_{\Sp}(X,\tau_{\geq n}Z)
-		\arrow[from=1-1, to=1-2]
-		\arrow[from=2-1, to=2-2]
-		\arrow[from=1-1, to=2-1,"\simeq"]
-		\arrow[from=1-2, to=2-2,"\simeq"]
-	\end{tikzcd}
-	\]
-	where the vertical maps are equivalences. Since the homotopy groups of $\tau_{\geq n}Z$ are uniquely $p$-divisible, it is $\BZ[\frac{1}{p}]$-local and hence the bottom map is an equivalence as well.
-\end{proof}
-
-
-
-\begin{proposition}
-\label{connectivity of local equivalences}
-	Let $g: X\to Y$ be a $n$-connective map in $\Sp$. Then every $L_g$-equivalence is $n$-connective.
-\end{proposition}
-\begin{proof}
-	Let $S=\{g\}$ and denote $\overline{S}$ the strongly saturated class of morphisms generated by $S$. Proposition 5.5.4.15. of \cite{HTT} then implies that  $\overline{S}= \{L_g\text{-equivalences}\}$, hence it suffices to show that $\overline{S}$ is contained in the class of $n$-connective maps in $\Sp$. Note that the class of $n$-connective maps is saturated in the sense of Definition 5.5.5.1 of \cite{HTT}. Since every strongly saturated class of morphisms in $\Sp$ is also saturated by Example 5.5.5.5. of \cite{HTT}, we have
-	$$
-	\{L_g\text{-equivalences}\}=\overline{S} \subseteq \tilde{S} \subseteq \{n\text{-connective maps}\}
-	$$
-	where $\tilde{S}$ is the collection of saturated morphisms generated by $S$.
-\end{proof}
-\begin{remark}
-	So in particular, every $L_{m_p}$-equivalence is $n$-connective.
-\end{remark}
-
-As a corollary, we deduce that $L_{m_p}$-localization commutes with taking $n$-connective cover.
-\begin{corollary}
-\label{L-localization commutes with connective cover}
-	The $L_{m_p}$-localization commutes with $n$-connective cover, that is, 
-	$$
-	L_{m_p}(\tau_{\geq n}X)\simeq \tau_{\geq n}(L_{m_p} X).
-	$$
-	for any $X\in \Sp$.
-\end{corollary}
-\begin{proof}
-	It suffices to show $\tau_{\geq n}X\to \tau_{\geq n}L_{m_{p}}X$ is a $L_{m_p}$-equivalence, as $\tau_{\geq n}L_{m_{p}}X$ is $L_{m_p}$-local. Consider the following ladder of fiber sequences
-	\[
-	\begin{tikzcd}
-		\tau_{\geq n}X & X & \tau_{\leq n-1}X    \\
-		\tau_{\geq n}L_{m_p}X & L_{m_p}X & \tau_{\leq n-1} L_{m_p}X\simeq \tau_{\leq n-1}X
+		\tau_{\geq r+2p-3}X & X & \tau_{\leq r+2p-4}X    \\
+		\tau_{\geq r+2p-3}L_{m_p}X & L_{m_p}X & \tau_{\leq r+2p-4} L_{m_p}X\simeq \tau_{\leq r+2p-4}X,
 		\arrow[from=1-1, to=1-2]
 		\arrow[from=2-1, to=2-2]
 		\arrow[from=1-3, to=2-3]
@@ -304,39 +238,44 @@ As a corollary, we deduce that $L_{m_p}$-localization commutes with taking $n$-c
 		\arrow[from=1-2, to=2-2]
 	\end{tikzcd}
 	\]
-	which induces a ladder of long exact sequences of homotopy groups. For each $k\geq n$, we have a commutative diagram
+	where the equivalence at the lower right corner follows from Corollary \ref{L_g doesn't change lower hpty groups if g is n-conn}.
+	Note that the diagram induces a ladder of long exact sequences of homotopy groups. For each $n\geq r+2p-3$, there is a commutative diagram
 	\[
 	\begin{tikzcd}
-		\pi_{k}(\tau_{\geq n}X)\otimes \BZ[\frac{1}{p}] & \pi_{k}(X) \otimes \BZ[\frac{1}{p}] \\
-		\pi_{k}(\tau_{\geq n}L_{m_p}X)\otimes \BZ[\frac{1}{p}]  & \pi_{k}(L_{m_p}X)\otimes \BZ[\frac{1}{p}] 
+		\pi_{n}(\tau_{\geq r+2p-3}X)\otimes \BZ[\frac{1}{p}] & \pi_{n}(X) \otimes \BZ[\frac{1}{p}] \\
+		\pi_{n}(\tau_{\geq r+2p-3}L_{m_p}X)\otimes \BZ[\frac{1}{p}]  & \pi_{n}(L_{m_p}X)\otimes \BZ[\frac{1}{p}] 
 		\arrow[from=1-1, to=1-2]
 		\arrow[from=2-1, to=2-2]
 		\arrow[from=1-1, to=2-1]
 		\arrow[from=1-2, to=2-2],
 	\end{tikzcd}
 	\]
-	where the horizontal maps are isomorphisms and the right vertical map is also an isomorphism by Lemma \ref{L-equivalence implies Z[1/p]-iso}, hence the left map is also an isomorphism.
-	The corollary then follows from Lemma \ref{L-equivalence is equivalent to pi_* iso on n-conn spectra}.
+	where the horizontal maps are isomorphisms and the right vertical map is also an isomorphism by Lemma \ref{L-equivalence implies Z[1/p]-iso in spaces}, hence the left map is also an isomorphism.
+	The lemma then follows from the second part of Lemma \ref{L-equivalence implies Z[1/p]-iso in spaces}.
+	
 \end{proof}
-
-
-We can now compute the homotopy groups of the $L_{m_p}$-localization on a spectrum.
-
-
+	
+We can now compute the homotopy groups of the $L_{m_p}$-localization of a space.
 \begin{corollary}
-	The homotopy groups of $L_{m_p}X$ is given by
+\label{computation of the htpy groups of L_m_p X}
+	The homotopy groups of $L_{m_p}X$ are given by
 	\[
 	\pi_* L_{m_p}X = \begin{cases}
-		\pi_*X & \text{if $*< n$}\\
-		\pi_*X\otimes \BZ[\frac{1}{p}] & \text{if $*\geq n$}.
+		\pi_*X & \text{if $*< r+2p-3$}\\
+		\pi_*X\otimes \BZ[\frac{1}{p}] & \text{if $*\geq r+2p-3$}.
 	\end{cases}
 	\]
 \end{corollary}
 \begin{proof}
-	Since $m_p$ is $n$-connective, the map $X \to L_{m_p}X$ is also $n$-connective by Proposition \ref{connectivity of local equivalences}. Since $L_{m_p}$ commutes with taking $n$-connective cover by Corollary \ref{L-localization commutes with connective cover}.
-	 Let's now assume $X$ is $n$-connective. We claim that $L_{m_p}X\simeq L_{\BZ[\frac{1}{p}]}X$, that is, $L_{m_p}X$ is the localization of $X$ with respect to the homology theory $H_{*}(-,\BZ[\frac{1}{p}])$.
+	Since the map $m_p$ is $(r+2p-3)$-connective, the map $X \to L_{m_p}X$ is also $(r+2p-3)$-connective. By Proposition \ref{connectivity of local equivalences of spaces}. Hence there are isomorphisms in homotopy groups
+	$$
+	\pi_* L_{m_p}X \cong \pi_* X
+	$$
+	for $*<r+2p-3$. 
+	Since $L_{m_p}$ commutes with taking $(r+2p-3)$-connective cover by Lemma \ref{m_p localization commutes with k-th connective cover}, we can assume $X$ is $(r+2p-3)$-connective. 
+	We claim that $L_{m_p}X\simeq L_{\BZ[\frac{1}{p}]}X$, that is, $L_{m_p}X$ is the localization of $X$ with respect to the homology theory $H_{*}(-;\BZ[\frac{1}{p}])$.
 	
-	Indeed, the homotopy groups of $L_{m_{p}}X$ is uniquely $p$-divisible, so it's $L_{\BZ[\frac{1}{p}]}$-local and we have a unique factorization
+	Indeed, the homotopy groups of $L_{m_{p}}X$ are uniquely $p$-divisible, so $L_{m_{p}}X$ is $L_{\BZ[\frac{1}{p}]}$-local and we have a unique factorization
 	\[
 	\begin{tikzcd}
 		X &   & L_{m_p}X\\
@@ -346,131 +285,158 @@ We can now compute the homotopy groups of the $L_{m_p}$-localization on a spectr
 	\arrow[from=2-2, to=1-3, dashed].
 	\end{tikzcd}
 	\]
-By Lemma \ref{L-equivalence is equivalent to pi_* iso on n-conn spectra}, the horizontal map is a  $L_{\BZ[\frac{1}{p}]}X$-equivalence
-	Hence the dashed diagonal map is also a $L_{\BZ[\frac{1}{p}]}$-equivalence and we have $L_{m_p}X\simeq L_{\BZ[\frac{1}{p}]}X$, which implies $\pi_*L_{m_p}X=\pi_*X\otimes \BZ[\frac{1}{p}]$ for $*\geq n$.
+By Lemma \ref{L-equivalence implies Z[1/p]-iso in spaces}, the horizontal map is an $L_{\BZ[\frac{1}{p}]}X$-equivalence.
+	Hence the dashed diagonal map is also an $L_{\BZ[\frac{1}{p}]}$-equivalence, which implies that $L_{m_p}X\simeq L_{\BZ[\frac{1}{p}]}X$. Therefore, we conclude that $\pi_*L_{m_p}X=\pi_*X\otimes \BZ[\frac{1}{p}]$ for $*\geq r+2p-3$.
+	
 \end{proof}
 
-\begin{lemma}
-	A map $f:X \to Y$ of spectra is a $L_{m_p}$-equivalence if and only if 
+\begin{corollary}
+\label{Char of tame equivalence in spaces}
+	A map $g:X \to Y$ is an $L_{m_p}$-equivalence if and only if the induced maps on homotopy groups satisfy:
 	\begin{enumerate}
-	 	\item $f$ is $n$-connective.
-		\item $f$ induces isomorphism on 
-	$$
-	\pi_{n+k}X\otimes \BZ[\frac{1}{p}]\to \pi_{n+k}Y\otimes \BZ[\frac{1}{p}]
-	$$
-	for $k\geq 0$.
-
+		\item  $\pi_i(X) \to \pi_i (Y)$ is an isomorphism for $i <r+2p-3$;
+		\item $\pi_i(X)\otimes \BZ[\frac{1}{p}] \to \pi_i(Y)\otimes \BZ[\frac{1}{p}]$ is an isomorphism for $i \geq r+2p-3$.
 	\end{enumerate}
-	\end{lemma}
+\end{corollary}
 \begin{proof}
 Note that $f$ is a $L_{m_p}$-equivalence if and only if  
 $$
 L_{m_p}X \to L_{m_p}Y
 $$
-is an equivalence. By our computation of the homotopy groups, this is equivalent to requiring that $f$ is $n$-connective and induces isomorphism on 
+is an equivalence. By our computation of the homotopy groups in Corollary \ref{computation of the htpy groups of L_m_p X}, this is equivalent to requiring that $f$ is $(r+2p-3)$-connective and induces isomorphisms on 
 	$
-	\pi_{n+k}X\otimes \BZ[\frac{1}{p}]\to \pi_{n+k}Y\otimes \BZ[\frac{1}{p}]
+	\pi_{n+r+2p-3}X\otimes \BZ[\frac{1}{p}]\to \pi_{n+r+2p-3}Y\otimes \BZ[\frac{1}{p}]
 	$
-	for $k\geq 0$.
-
-
+	for any $n\geq 0$.
 
 \end{proof}
 
-To obtain tame localization, we only need to assemble the multiplication maps for different primes.
-We define a map between wedges of sphere spectra
-\begin{equation}
-\label{f}
-	f: \bigvee_{p\in P}\BS^{s+2p-3} \to \bigvee_{p\in P}\BS^{s+2p-3}
-\end{equation}
-which can be seen as a diagonal matrix with primes on the diagonal. Combining with Lemma \ref{local w.r.t. multiplication-by-p map}, this allows us to give the following equivalent characterization of tame spectra.
+We conclude this section by showing that localization with respect to the map $f$ is equivalent to localization with respect to the infinite composite of localizations.
+\begin{proposition}
+	\label{Characterization of tame localization}
+	If $f$ is the map in (\ref{f map}), then there is an equivalence
+	\[
+	L_f X \simeq \colim(X\to L_{m_2}X\to L_{m_3}L_{m_2}X\to \cdots)
+	\]	
+	in $\CS^{\geq r}_*$. 
+\end{proposition}
+\begin{proof}
+	Let $X_{\infty}:=\colim(X\to L_{m_2}X\to L_{m_3}L_{m_2}X\to \cdots)$. 
+	The space $X_\infty$ is tame; indeed, for fixed $j$, we have
+	\[
+	\pi_{r+j}(X_{\infty})\cong \pi_{r+j}(L_{m_q}\cdots L_{m_2}X)\cong \pi_{r+j}(X) \otimes R_{j},
+	\]
+	where $q$ is the largest prime number less than or equal to $\frac{j+3}{2}$. 
+	Since there is also an isomorphism $\pi_{r+j}(L_f X)\cong \pi_{r+j}X\otimes R_j$, we conclude that the canonical map
+	$$
+	L_f X \to X_{\infty}
+	$$
+	is an equivalence.
+
+\end{proof}
+As a consequence, a map $g: X\to Y$ in $\CS^{\geq r}_{*}$ is a tame equivalence if and only if it is a $L_{m_p}$-equivalence for every prime $p$, which implies the following corollary.
 \begin{corollary}
-	A spectrum $X\in \Sp^{\geq s}$ is $s$-tame if and only if it is $f$-local.
+\label{char of tame equivalences for spaces}
+        A map $g: X\to Y$ between $r$-connective spaces is a tame equivalence if and only if the induced maps
+        $$
+        \pi_{r+j}X \otimes R_{j} 
+        \to
+        \pi_{r+j}Y \otimes R_{j}
+        $$
+        are isomorphisms for all $j\geq 0$.
 \end{corollary}
 
-%\begin{proof}
-%	A spectrum $X$ is $s$-tame if and only if, for every $j\geq 0$, $\pi_{s+j}X$ is uniquely $p$-divisible for $p\leq \frac{j+3}{2}$. By Lemma \ref{local w.r.t. multiplication-by-p map}, this is equivalent to requiring that $X$ 
-%	$$
-%	\bigvee_{p\in P_j}\BS^{s+2p-3} \to \bigvee_{p\in P_j}\BS^{s+2p-3}
-%	$$
-%	where $P_{j}=\{p\in \BZ_{\geq 0} | p \leq \frac{j+3}{2}\}$.
-%\end{proof}
+\begin{remark}
+	Let $s\leq r$ be non-negative integers.
+	If $X\to Y$ is an $r$-tame equivalence, then it's also an $s$-tame equivalence.
+\end{remark}
 
+We end this section with a basic example of tame equivalences.
+\begin{example}
+\label{odd sphere is tame equivalent to EM-space}
+For $r$ an odd number,
+the canonical map 
+$$
+S^r \to K(\BZ, r)
+$$
+is a tame equivalence since it is a rational equivalence.
+\end{example}
 
+\section{Tame spectra}
+\label{Section: Tame spectra}
 
+In this section, we introduce the notion of tame spectra.
+These spectra are defined analogously to tame spaces, that is, we impose divisibility conditions on their homotopy groups.
+Then we study the class of tame equivalences.
+Finally, we establish an algebraic characterization of the $\infty$-category of tame spectra.
 
+As opposed to the case of spaces, we allow $r$ to be any non-negative integer, and we denote the $\infty$-category of $r$-connective spectra by $\Sp^{\geq r}$.
 
 \begin{definition}
-	A map of spectra $g:X\to Y$ in $\Sp^{\geq s}$ is a \emph{$s$-tame equivalence} if for any $s$-tame spectrum $Z$, the induced map
+	A $r$-connective spectrum $X$ is \emph{$r$-tame} if the $(r+j)$-th homotopy group $\pi_{r+j}(X)$ is an $R_j$-module for $j\geq 0$, or equivalently, there are isomorphisms
 	\[
-	\map_*(Y,Z) \xrightarrow{g^*} \map_*(X,Z)
+	\pi_{r+j}(X)\cong \pi_{r+j}(X)\otimes R_{j}, \forall j.
 	\]
-	is an equivalence.
 \end{definition}
 
+\begin{notation}
+We let $\Sp^{\geq r}_{tame}$ denote the full subcategory of $\Sp^{\geq r}$ spanned by $r$-tame spectra.
+\end{notation}
 
+
+Let $f$ be the map 
+\begin{equation}
+\label{f for spectra}
+	f: \bigvee_{p\in P}\BS^{r+2p-3} \to \bigvee_{p\in P}\BS^{r+2p-3}
+\end{equation}
+defined by assembling the multiplication by different primes as we did for spaces in (\ref{f map}).
+\begin{definition}
+    A map $g:X \to Y$ between $r$-connective spectra is a \emph{tame equivalence} if it is an $L_f$-equivalence.
+\end{definition}
+
+We
+summarize the results regarding tame localization of spectra and tame equivalences below. 
 
 \begin{proposition}
-	A map of spectra $g:X\to Y$ in $\Sp^{\geq s}$ is a $s$-tame equivalence if and only if it induces isomorphisms
-	\[
-	\pi_{s+j}(X)\otimes R_j \to \pi_{s+j}(Y) \otimes R_j
-	\]
-	for $j\geq 0$.
+        \begin{enumerate}
+            \item A spectrum $X\in \Sp^{\geq r}$ is tame if and only if it is $L_f$-local.
+            \item The tame localization
+$$
+L_{\tame}: \Sp^{\geq r} \to \Sp^{\geq r}_{\tame}
+$$
+exists. Moreover, the $\infty$-category $\Sp^{\geq r}_{\tame}$ of tame spectra is presentable.
+\item  A map $g: X\to Y$ between $r$-connective spectra is a tame equivalence if and only if the induced maps
+        $$
+        \pi_{r+j}X \otimes R_{j} 
+        \to
+        \pi_{r+j}Y \otimes R_{j}
+        $$
+        are isomorphisms for all $j\geq 0$.
+        \end{enumerate}
 \end{proposition}
-
-
-
-
-
-\begin{remark}
-	Let $s\leq s'$ be non-negative integers.
-	If $X\to Y$ is a $s'$-tame equivalence, then it's also a $s$-tame equivalence.
-\end{remark}
-
-By work of Bousfield and Farjoun, there is a reflective localization $L_{tame}: \Sp^{\geq s} \to \Sp^{\geq s}_{tame}$
-
-
-\begin{remark}
-		The infinite loop space of a tame spectrum is a tame space. That is, $\Omega^{\infty}X$ is a tame space if $X$ is a tame spectrum.
-\end{remark}
-
-
-
-
-\begin{lemma}
-\label{Suspension preserves tame equivalence}
-	The functor $\Sigma^{\infty}:\Space^{\geq r}_{*} \to \Sp^{\geq r}$ sends $r$-tame equivalences of spaces to $r$-tame equivalences of spectra.
-\end{lemma}
 \begin{proof}
-	Let $f:X\to Y$ be a tame equivalence in $\Space^{\geq r}_{*}$. Note that $\Sigma^{\infty}f: \Sigma^{\infty}X \to \Sigma^{\infty}Y$ is a tame equivalence if, for every tame spectrum $Z$, the induced map
-	$$
-	\map_{\Sp^{\geq r}}(\Sigma^{\infty} Y, Z) \to 	\map_{\Sp^{\geq r}}(\Sigma^{\infty} X, Z)
-	$$
-	is a weak equivalence. Indeed, the map above is equivalent to 
-	$$
-	\map_{\Space^{\geq r}_{*}}(Y, \Omega^{\infty} Z) \to 	\map_{\Space^{\geq r}_{*}}(X, \Omega^{\infty} Z)
-	$$
-	which is a weak equivalence as $\Omega^{\infty}Z$ is a tame space and $f$ is a tame equivalence by assumption.
+    The proofs of these statements are completely analogous to those of Lemma \ref{tame is equivalent to f-local}, Corollary \ref{existence of tame localization} and Proposition \ref{char of tame equivalences for spaces}.
+    
 \end{proof}
-
-We give some closure properties for tame equivalences.
+We now state a closure property for tame equivalences in spectra.
 \begin{lemma}
 \label{closure property of tame equivalences}
-	\begin{enumerate}[(a)]
-		\item Let $K$ be a simplicial set and let $f:X\to Y$ be a point-wise $r$-tame equivalence in $\Fun(K,\Sp)$.
+
+		Let $K$ be a simplicial set, and let $f:X\to Y$ be a pointwise tame equivalence in $\Fun(K,\Sp^{\geq r})$.
 	Then the induced map on colimits 
 		$$
 		\colim_{K}X_k \to \colim_{K}Y_k
-		$$ is a $r$-tame equivalence.
+		$$ is a tame equivalence.
+		
 %		\item Conjecture: The collection of tame equivalences is closed under finite products and inverse limits. 
-	\end{enumerate}
+
 \end{lemma}
 
 \begin{proof}
-	For $(a)$, it suffices to show the induced map on colimits
+	It suffices to show the induced map on colimits
 	$\colim_{K}X_k \to \colim_{K}Y_k$ is an equivalence after applying $L_{tame}$.
-	Observe that if we view $L_{tame}$ as a functor from $\Sp^{\geq r}\to \Sp_{tame}^{\geq r}$, it preserves all colimits.
-	Hence the map $L_{tame}\colim_{K}X_k \to L_{tame}\colim_{K}Y_k$ is equivalent to the map 
+	Since $L_{tame}:\Sp^{\geq r}\to \Sp_{tame}^{\geq r}$ preserves all colimits,
+	the map $L_{tame}\colim_{K}X_k \to L_{tame}\colim_{K}Y_k$ is equivalent to the map 
 	$$
 	\colim_{K}L_{tame}X_k \to \colim_{K}L_{tame}Y_k
 	$$
@@ -513,6 +479,44 @@ We give some closure properties for tame equivalences.
 %which implies $(\lim_{K'}\pi_{r+j}X_k)\otimes R_j \to (\lim_{K'}\pi_{r+j}Y_k)\otimes R_j$ is an isomorphism for every $j\geq 0$, 
 \end{proof}
 
+
+We now discuss the relation between the $\infty$-category $\CS^{\geq r}_{\tame}$ of tame spaces and the $\infty$-category $\Sp^{\geq r}_{\tame}$ of tame spectra.
+Since there are isomorhpisms
+$$
+\pi_*(\Omega^{\infty}X) \cong \pi_* (X)
+$$
+for any spectrum $X$,
+		the infinite loop space of a tame spectrum is a tame space. 
+Therefore, the functor $\Omega^{\infty}:\Sp^{\geq r}\to 
+\CS^{\geq r}$ restricts to a functor
+$$
+\Omega^{\infty}: \Sp^{\geq r}_{\tame} 
+\to 
+\CS^{\geq r}_{\tame}.
+$$
+
+
+
+\begin{lemma}
+\label{Suspension preserves tame equivalence}
+	The suspension functor $\Sigma^{\infty}:\Space^{\geq r}_{*} \to \Sp^{\geq r}$ sends tame equivalences of spaces to tame equivalences of spectra.
+\end{lemma}
+\begin{proof}
+	Let $f:X\to Y$ be a tame equivalence in $\Space^{\geq r}_{*}$. By definition, $\Sigma^{\infty}f: \Sigma^{\infty}X \to \Sigma^{\infty}Y$ is a tame equivalence if, for every tame spectrum $Z$, the induced map
+	$$
+	\map_{\Sp^{\geq r}}(\Sigma^{\infty} Y, Z) \to 	\map_{\Sp^{\geq r}}(\Sigma^{\infty} X, Z)
+	$$
+	is a weak equivalence. Note that the map above is equivalent to the map
+	$$
+	\map_{\Space^{\geq r}_{*}}(Y, \Omega^{\infty} Z) \to 	\map_{\Space^{\geq r}_{*}}(X, \Omega^{\infty} Z)
+	$$
+	which is a weak equivalence as $\Omega^{\infty}Z$ is a tame space and $f$ is a tame equivalence by assumption.
+	
+\end{proof}
+
+
+
+
 %I can't prove the following proposition, neither that I think it is correct.
 %We now show that tame equivalences of spectra can also be detected on the homology level.
 %\begin{proposition}
@@ -531,34 +535,56 @@ We give some closure properties for tame equivalences.
 %\]
 %is symmetric monoidal.
 %\end{proposition}
+We now discuss some basic examples of tame equivalences in $\Sp^{\geq r}$.
+\begin{example}
+\label{C_tame of suspension of Eilenberg-Maclane space}
+For any integer $r\geq 0$, the $r$-truncation map
+$$
+\BS^{r} \to \Sigma^r H\BZ
+$$
+is an $r$-tame equivalence.
+	Indeed, the first $p$-torsion of the sphere spectrum $\BS$ appears in degree $2p-3$, hence its tame localization is the Eilenberg-MacLane spectrum $H\BZ$.
+	Moreover, if we assume $r\geq 3$ is an odd integer, then the canonical map
+	$$
+	S^{r} \to K(\BZ, r) 
+	$$
+	is an $r$-tame equivalence by Example \ref{odd sphere is tame equivalent to EM-space}. Then Lemma \ref{Suspension preserves tame equivalence} implies that 
+	$$
+	\BS^{r} \to 
+	\Sigma^{\infty}K(\BZ, r) 
+	$$
+	is a tame equivalence.
+	Combining these two observations, we conclude that the $r$-truncation map
+	$$
+	\Sigma^{\infty}K(\BZ, r) \to
+	\Sigma^{r} H\BZ
+	$$
+	is also a tame equivalence. Since $\Sigma^{r} H\BZ$ is $r$-tame, hence we have 
+	$$
+	L_{\tame}\Sigma^{\infty}K(\BZ, r)
+	\simeq
+	\Sigma^{r} H\BZ.
+	$$
+\end{example}
 
-
-
-	
-
-\subsection{Algebraic models for tame spaces}
-\begin{remark}
-	Since the first $p$-torsion of the sphere spectrum $\BS$ appears in degree $2p-3$, its tame localization is the Eilenberg-Maclane spectrum $H\BZ$.
-\end{remark}
-
-We now show that the class of $r$-tame equivalences is compatible with smashing with connective spectrum.
+We now show that the class of $r$-tame equivalences is closed under smashing with a connective spectrum. More generally, we have the following lemma.
 \begin{lemma}
 \label{Shift of tame equivalences}
 Let $r,s\geq 0$ and
-let $E$ be a $r$-connective spectrum and let $f:X\to Y$ be a $s$-tame equivalence in $\Sp^{\geq s}$. Then $E\otimes X \to E\otimes Y$ is a $(r+s)$-tame equivalence.
+let $E$ be an $r$-connective spectrum. If $f:X\to Y$ is an $s$-tame equivalence in $\Sp^{\geq s}$, then $E\otimes X \to E\otimes Y$ is an $(r+s)$-tame equivalence in $\Sp^{\geq (r+s)}$.
 \end{lemma}
 \begin{proof}
 Let $\CE$ be the full subcategory of $\Sp^{\geq r}$ spanned by spectra $F$ satisfying the condition that
 $$
 F\otimes X \to F\otimes Y
 $$
-is a $(r+s)$-tame equivalence whenever $X\to Y$ is a $s$-tame equivalence. Clearly, the shifted sphere spectrum $\Sigma^{r}\BS$ is in $\CE$. 
-The claim would follow if we can show $\CE$ is closed under colimits. Let $Z:K\to \CE$ be a diagram in $\CE$ so that its colimit $\colim_K Z_k$ in $\Sp^{\geq r}$ exists.
-Note that by Lemma \ref{closure property of tame equivalences} and the fact that smash product commutes with colimits, we have
+is an $(r+s)$-tame equivalence whenever $X\to Y$ is an $s$-tame equivalence. Clearly, the shifted sphere spectrum $\BS^{r}$ is in $\CE$. 
+Since $\Sp^{\geq r}$ is generated by $\BS^r$ under colimits, the claim will follow if we can show $\CE$ is closed under colimits. Let $Z:K\to \CE$ be a diagram in $\CE$ so that its colimit in $\Sp^{\geq r}$ exists.
+Note that by Lemma \ref{closure property of tame equivalences} and the fact that smash product commutes with colimits in $\Sp^{\geq r}$, we conclude that
 $$
 (\colim_K Z_k )\otimes X \to (\colim_K Z_k )\otimes Y
 $$
-is a $(r+s)$-tame equivalence.
+is an $(r+s)$-tame equivalence.
 
 %Fix some $j\geq 0$, we claim the map $\pi_{r+j}(E\otimes X)\otimes R_j \to \pi_{r+j}(E \otimes Y)\otimes R_j$ is an isomorphism. We let $F$ denote the fiber of the induced map $\tau_{\leq r+j}X \to \tau_{\leq r+j}Y$. Observe that $R_j$ is a flat, we have a long exact sequence
 %$$
@@ -572,20 +598,24 @@ is a $(r+s)$-tame equivalence.
 \label{symmetric monoidal structure on tame spectra}
 \begin{enumerate}
 
- 	\item If $X\to Y$ is a $s$-tame equivalence, then $X\otimes H\BZ \to Y\otimes H\BZ$ is also a $s$-tame equivalence. Hence, for every $k\geq 0$, the induced map on homology
+ 	\item As a direct consequence of Lemma \ref{Shift of tame equivalences}, if $X\to Y$ is an $s$-tame equivalence, then $X\otimes H\BZ \to Y\otimes H\BZ$ is also an $s$-tame equivalence. Hence, for every $k\geq 0$, the induced map on homology
  	\[
  	H_{s+k}(X)\otimes R_{k}
  	\to
  	H_{s+k}(Y)\otimes R_{k}
  	\]
  	is an isomorphism.
-	\item The lemma above implies that $s$-tame localization is compatible with the smash product in $\Sp$ in the sense of \cite[Definition 2.2.1.6.]{HA}. By \cite[Proposition 2.2.1.9.]{HA}, the $\infty$-category $\Sp^{\geq s}_{tame}$ of tame spectra admits a symmetric monoidal structure given by 
+	\item Lemma \ref{Shift of tame equivalences} above implies that $s$-tame localization is compatible with the smash product in $\Sp^{\geq s}$ in the sense of \cite[Definition 2.2.1.6.]{HA}. By \cite[Proposition 2.2.1.9.]{HA}, the $\infty$-category $\Sp^{\geq s}_{\tame}$ of tame spectra admits a symmetric monoidal structure given by 
 $$
-X\hat{\otimes} Y = L_{tame}(X\otimes Y).
+X\hat{\otimes} Y := L_{tame}(X\otimes Y).
 $$
-	\item The $\infty$-category $\Sp^{\geq s}$ of $s$-connective spectra is presentable, hence by \cite[Proposition 5.5.4.15.]{HTT}, the $\infty$-category $\Sp^{\geq s}_{tame}$ of tame spectra is also presentable.
+Moreover, the tame localization 
+$$
+L_{\tame}: \Sp^{\geq s} \to 
+\Sp^{\geq s}_{\tame}
+$$
+is symmetric monoidal, hence the tensor product $\hat{\otimes}$ preserves colimits in each variable.
 \end{enumerate}
-
 
 \end{remark}
 
@@ -597,77 +627,95 @@ $$
 	$$ 
 	is a $r$-tame equivalence.
 \end{corollary}
-	
-
-
 \begin{proof}
-	This is immediate from Lemma \ref{Shift of tame equivalences}, since $\BS \to H\BZ$ is a $0$-tame equivalence and $E$ is $r$-connective.
+	This is immediate from Lemma \ref{Shift of tame equivalences}, since $\BS \to H\BZ$ is a $0$-tame equivalence, and $E$ is $r$-connective.
 \end{proof}
 
-\begin{comment}
-I think this lemma is wrong...
-\begin{lemma}
-	The tame localization functor $L_{tame}:\Sp^{\geq r} \to \Sp^{\geq r}$ is symmetric monoidal.
-\end{lemma}
-\end{comment}
-
-One might ask whether $H\BZ$-module spectra are tame for all $r$. The answer to that question is false. For instance, $\Sigma H\BZ$ is a $1$-connective $H\BZ$-module but it's not $0$-tame as $\pi_{1}\Sigma H\BZ\cong \BZ$ is not uniquely $2$-divisible.
 
 
-We now give an algebraic characterization of tame spectra. We let $(\Mod^{\geq r}_{H\BZ})_{tame}$ denote the full subcategory of $\Sp^{\geq r}_{tame}$ spanned by $r$-connective tame $H\BZ$-modules.
+One might ask whether $H\BZ$-module spectra are $r$-tame for all $r$, but this is false. For instance, $\Sigma H\BZ$ is a $1$-connective $H\BZ$-module but it's not $0$-tame, as $\pi_{1}\Sigma H\BZ\cong \BZ$ is not uniquely $2$-divisible.
 
+We now give an algebraic characterization of tame spectra. 
+Let $\Mod_{H\BZ}$ denote the $\infty$-category of $H\BZ$-modules. Note that $\Mod_{H\BZ}$ can be identified with the derived $\infty$-category $D(\BZ)$ by \cite[Remark 7.1.1.16.]{HA}.
+We let $(\Mod^{\geq r}_{H\BZ})_{\tame}$ denote the full subcategory of $\Sp^{\geq r}_{\tame}$ spanned by $r$-connective $H\BZ$-modules whose underlying spectra are tame.
+
+We can now state and prove the main theorem of this section.
 \begin{theorem}
 	\label{algebraic description of tame spectra}
-	There is an equivalence of $\infty$-categories
+	The functor
 	$$
-	\Sp^{\geq r}_{tame} \xrightarrow{L_{tame}(-\otimes H\BZ)} (\Mod^{\geq r}_{H\BZ})_{tame}
+	L_{\tame}(-\otimes H\BZ):
+	\Sp^{\geq r}_{\tame} \to (\Mod^{\geq r}_{H\BZ})_{\tame}
 	$$
-	where the inverse is given by inclusion.
+	is an equivalence of $\infty$-categories.
 \end{theorem}
 \begin{proof}
-	Let $X\in \Sp^{\geq r}_{tame}$ be a tame spectrum. The map $X\otimes \BS \to X\otimes H\BZ$ is a $r$-tame equivalence by Corollary \ref{HZ commutes with tame localization}. Hence the composite $X \to X\otimes H\BZ \to L_{tame}(X\otimes H\BZ)$ is an equivalence as both $X$ and $L_{tame}(X\otimes H\BZ)$ are tame.
+	Let $X\in \Sp^{\geq r}_{\tame}$ be a tame spectrum. The map 
+	$$
+	X\otimes \BS \to X\otimes H\BZ
+	$$ is an $r$-tame equivalence by Corollary \ref{HZ commutes with tame localization}. Hence the composite 
+	$$
+	X \to X\otimes H\BZ \to L_{tame}(X\otimes H\BZ)
+	$$ is an equivalence as both $X$ and $L_{\tame}(X\otimes H\BZ)$ are tame.
 	
-	Similarly, let $Y\in (\Mod^{\geq r}_{H\BZ})_{tame}$ be a tame $H\BZ$-module. The composite $Y\otimes \BS \to  Y\otimes H\BZ \to L_{tame}(Y\otimes H\BZ)$ is a composite of two tame equivalences, and hence is an equivalence as both source and target are tame.
+	Conversely, let $Y\in (\Mod^{\geq r}_{H\BZ})_{\tame}$ be a tame $H\BZ$-module. The composite $Y\otimes \BS \to  Y\otimes H\BZ \to L_{\tame}(Y\otimes H\BZ)$ is a composite of two tame equivalences, and hence is an equivalence as both source and target are tame.
+	
+	Therefore, we have shown the inclusion 
+	$
+	(\Mod^{\geq r}_{H\BZ})_{\tame} 
+	\to 
+	\Sp^{\geq r}_{\tame}
+	$
+	is an inverse of $L_{\tame}(-\otimes H\BZ)$.
+	
 	\end{proof}
 	
 
-As a direct corollary, we see that the tame homotopy type is determined by homology with coefficients in the tame ring system.
+As a direct corollary, we see that the tame homotopy type of a spectrum is determined by its homology with coefficients in the tame ring system.
 \begin{corollary}
 \label{htpy groups of tame spectra can be computed by homology}
-	Let $X\in \Sp^{\geq r}_{tame}$ be a tame spectrum, then we have 
+	If $X\in \Sp^{\geq r}_{\tame}$ is a tame spectrum, then 
 	\[
-	\pi_{r+k}X = H_{r+k}X \otimes R_k
+	\pi_{r+k}X \cong H_{r+k}X \otimes R_k
 	\]
-	for every $k\geq 0$.
+	for every $k\geq 0$. Therefore, a map $g:X\to Y$ in $\Sp^{\geq r}_{\tame}$ between tame spectra is an equivalence if and only if the induced map on homology with coefficients in the tame ring system
+	$$
+	H_{r+k}(X)\otimes R_k \to H_{r+k}(Y)\otimes R_k
+	$$ 
+	is an isomorphism for all $k\geq 0$.    
 \end{corollary}
 	
 \begin{proof}
-	Using theorem \ref{algebraic description of tame spectra}, we calculate
+	Using Theorem \ref{algebraic description of tame spectra}, we compute
 	\begin{align*}
-		\pi_{r+k}X  &= \pi_{r+k}L_{tame}(X\otimes H\BZ)\\
-		& =\pi_{r+k}(X\otimes H\BZ)\otimes R_k\\
-		& = H_{r+k}(X)\otimes R_k
+		\pi_{r+k}X  &\cong \pi_{r+k}L_{\tame}(X\otimes H\BZ)\\
+		& \cong \pi_{r+k}(X\otimes H\BZ)\otimes R_k\\
+		& \cong H_{r+k}(X)\otimes R_k
 	\end{align*}
 \end{proof}
 
 \begin{corollary}
-		For any spectrum $X\in \Sp^{\geq r}$, we have the following observation:
+\label{homotopy groups of tame spectra are hmlg with coeff in tame ring system}
+		For any spectrum $X\in \Sp^{\geq r}$, 
 \begin{align*}
-	\pi_* L_{tame}X & = H_* L_{tame}X \otimes R_{*-r}\\
-		& = H_* X \otimes R_{*-r}.
+	\pi_{r+k} L_{tame}X & \cong H_{r+k} L_{tame}X \otimes R_{k}\\
+		& \cong H_{r+k} X \otimes R_{k}
 \end{align*}
-Hence, we have for any spectrum $X$,
-\[
-\pi_*X \otimes R_{*-r}\cong H_*X \otimes R_{*-r}.
-\]
+for any $k\geq 0$.
+
 \end{corollary}
 \begin{proof}
-	The first equality follows from corollary \ref{htpy groups of tame spectra can be computed by homology} and the second equality follows from the fact that tensoring with $H\BZ$ preserves $r$-tame equivalences.
+	The first isomorphism follows from corollary \ref{htpy groups of tame spectra can be computed by homology} and the second isomorphism follows from the fact that tensoring with $H\BZ$ preserves $r$-tame equivalences.
+	
 \end{proof}
 
-
 \begin{remark}
- As an immediate consequence, the functor $\Sigma^{\infty}_{tame}:\Space^{\geq r}_* \to \Sp^{\geq r}_{tame}$ sends any Moore space $M(V,r+k)$ for $V$ an $R_k$-module to a shift of  Eilenberg-Maclane spectrum $\Sigma^{r+k}HV$.
+\label{suspension tame sends Moore space to EM-space}
+ As an immediate consequence of Corollary \ref{homotopy groups of tame spectra are hmlg with coeff in tame ring system}, the functor $L_{\tame}\Sigma^{\infty}:\Space^{\geq r}_* \to \Sp^{\geq r}_{tame}$ sends a Moore space $M(V,r+k)$ for $V$ an $R_k$-module to a shifted  Eilenberg-Maclane spectrum $\Sigma^{r+k}HV$, i.e., 
+ $$
+ L_{\tame} \Sigma^{\infty}M(V, r+k) \simeq \Sigma^{r+k} HV.
+ $$
+ 
 \end{remark}
 %Recall that an $\infty$-category $\mathcal{C}$ has an \emph{essentially colimit dense subcategory} if there is an essentially small full subcategory $\mathcal{C}_{0} \subset \mathcal{C}$ such that $\CC$ is generated by $\CC_0$ under colimits. Note that the $\infty$-category $\Sp^{\geq s}_{tame}$ of $s$-tame spectra is generated by $\{L_{tame}\BS^{n}\}_{n\geq s}$ under colimits, hence $\Sp^{\geq s}_{tame}$ is essentially colimit dense.
 %The existence of the right adjoint of the forgetful functor 
@@ -686,343 +734,82 @@ Hence, we have for any spectrum $X$,
 %	The forgetful functor $\coCAlg(\Sp^{\geq s}_{tame})
 %\to \Sp^{\geq s}_{tame}$ admits a right adjoint which we will denote by $\cofree_{tame}$.
 %\end{corollary}
-
-	The following proposition is a folklore to many seasoned homotopy theoriests.
-\begin{proposition}
-	\label{Coalgebra model for simply-connected spaces}
-	For $r\geq 2$, the functor $\Sigma^{\infty}:\Space^{\geq r}_{*} \to \Sp^{\geq r}$ is comonadic. In other words, there is an equivalence of $\infty$-categories:
-	\[
-	\phi: \Space^{\geq r}_{*} \to \coAlg_{\Sigma^{\infty}\Omega^{\infty}}(\Sp^{\geq r}).
+\begin{notation}
+Since $\Sigma^{\infty}:\CS^{\geq r}_* \to \Sp^{\geq r}_{\tame}$ preserves tame equivalences by Lemma \ref{Suspension preserves tame equivalence}, we obtain a canonical lift by the universal property of the tame localization
+\[
+	\begin{tikzcd}
+		\CS^{\geq r}_* &   & \Sp^{\geq r}_{\tame}\\
+		  & \CS^{\geq r}_{\tame} &
+	\arrow[from=1-1, to=1-3, "L_{\tame}\Sigma^{\infty}"]
+	\arrow[from=1-1, to=2-2, "L_{\tame}" ]
+	\arrow[from=2-2, to=1-3, dashed].
+	\end{tikzcd}
 	\]
- between the $\infty$-category of $r$-connective spaces and the $\infty$-category of $r$-connective $\Sigma^{\infty}\Omega^{\infty}$-coalgebra.
-\end{proposition}
-\begin{proof}
-By Corollary \ref{Cor of Barr-Beck-Lurie theorem}, it suffices to show there is an equivalence 
+We let $\Sigma^{\infty}_{\tame}$ denote the resulting functor
 $$
-X\to \Tot (\Omega^{\infty}\Sigma^{\infty})^{\bullet+1}X
-$$
-for every $X\in \Space_{*}^{\geq r}$. We prove this by induction on the Postnikov tower. For $X$ being an Eilenberg-Maclane space $K(A,n)\simeq \Omega^{\infty-n}HA$, its associated augmented cosimplicial object $(\Omega^{\infty}\Sigma^{\infty})^{\bullet+1}X$ splits, with the contracting homotopy induced by the counit $\Sigma^{\infty}\Omega^{\infty} \Omega^n HA\to \Omega^n HA$. For the inductive step, we have a principal fibration sequence
-\[
-K(\pi_n X,n) \to \tau_{\leq n}X \to \tau_{\leq n-1}X 
+\Sigma^{\infty}_{\tame}:
+\CS^{\geq r}_{\tame}
 \to 
-K(\pi_n X,n+1).
-\]
-By the principal fibration lemma, the functor $\Tot (\Omega^{\infty}\Sigma^{\infty})^{\bullet+1}$ preserves principal fibrations. Hence the vertical sequences in the following diagram are fiber sequences.
-\[
-\begin{tikzcd}
-	\tau_{\leq n}X & \Tot (\Omega^{\infty}\Sigma^{\infty})^{\bullet+1} (\tau_{\leq n}X)\\
-	\tau_{\leq n-1}X  & \Tot (\Omega^{\infty}\Sigma^{\infty})^{\bullet+1} (\tau_{\leq n-1}X)\\
-	K(\pi_n X,n+1)   & \Tot (\Omega^{\infty}\Sigma^{\infty})^{\bullet+1} K(\pi_n X,n+1)
-	\arrow[from=1-1, to=1-2]
-	\arrow[from=1-1, to=2-1]
-	\arrow[from=2-1, to=2-2]
-	\arrow[from=1-2, to=2-2]
-	\arrow[from=2-1, to=3-1]
-	\arrow[from=3-1, to=3-2]
-	\arrow[from=2-1, to=3-1]
-	\arrow[from=2-2, to=3-2]
-\end{tikzcd}
-\]
-Observe that the bottom two horizontal arrows are equivalences by the inductive hypothesis, hence the induced map on the fibers is an equivalence. This completes the inductive step.
-\end{proof}
+\Sp^{\geq r}_{\tame}.
+$$
+\end{notation}
+
+
 
 We now establish a pair of adjoint functors between tame spaces and tame spectra.
-Observe that the infinite loop space of a $r$-tame spectrum is an $r$-tame space. For convenience, we write $\Sigma^{\infty}_{tame}$ as a short hand for the composite $L_{tame}\circ \Sigma^{\infty}$.
+
 \begin{proposition}
-	We have an adjoint pair
+	There is an adjoint pair
 	\[
-	\adj{\Sigma^{\infty}_{tame}}{\Space^{\geq r}_{tame}}{\Sp^{\geq r}_{tame}}{\Omega^{\infty}}
+	\adj{\Sigma^{\infty}_{\tame}}{\Space^{\geq r}_{\tame}}{\Sp^{\geq r}_{\tame}}{\Omega^{\infty}}
 	\]
 	% \coAlg_{\Sigma^{\infty}_{tame}\Omega^{\infty}}(\Sp)^{\geq r}
 \end{proposition}
 \begin{proof}
-	We first note that $\adj{\Sigma^{\infty}_{tame}}{\Space_{*}^{\geq r}}{\Sp^{\geq r}_{tame}}{\Omega^\infty}$ is an adjoint pair, where we abuse notation by writing $\Omega^{\infty}$ as the composite of $\Sp^{\geq r}_{tame}\hookrightarrow \Sp^{\geq r} \xrightarrow{\Omega^\infty} \Space^{\geq r}_{*}$; indeed, $\Sigma^{\infty}_{tame}$ is the composition of $L_{tame}$ and $\Sigma^\infty$, which are left adjoint to the inclusion functor $\Sp^{\geq r}_{tame}\hookrightarrow \Sp^{\geq r}$ and $\Omega^\infty$, respectively. The statement then follows from Proposition \ref{Restrict adjoints to full subcategory} and the fact that $\Space_{tame}^{\geq r}$ is a full subcategory of $\Space^{\geq r}$. 
+	We first note that $\adj{L_{\tame}\Sigma^{\infty}}{\Space_{*}^{\geq r}}{\Sp^{\geq r}_{tame}}{\Omega^\infty}$ is an adjoint pair, where we abuse notation by writing $\Omega^{\infty}$ for the composite  $$
+	\Sp^{\geq r}_{\tame}\hookrightarrow \Sp^{\geq r} \xrightarrow{\Omega^\infty} \Space^{\geq r}_{*}.
+	$$ 
+	Indeed, $\Sigma^{\infty}_{\tame}$ is equivalent to the composition of $L_{\tame}$ and $\Sigma^\infty$, which are left adjoint to the inclusion functor $\Sp^{\geq r}_{\tame}\hookrightarrow \Sp^{\geq r}$ and $\Omega^\infty$, respectively. The statement then follows from Proposition \ref{Restrict adjoints to full subcategory} and the fact that $\Space_{\tame}^{\geq r}$ is a full subcategory of $\Space_{*}^{\geq r}$. 
+	
 \end{proof}
 
-
-The main theorem of this note is an analogue of Proposition \ref{Coalgebra model for simply-connected spaces} in the setting of tame spaces.
-Before we give the proof of the main theorem, we make an important observation.
-We claim that the following composite:
-\[
-\coAlg_{\Sigma^{\infty}\Omega^{\infty}}(\Sp^{\geq r})
-\xrightarrow{\oblv}
-\Sp^{\geq r}
-\xrightarrow{L_{tame}}
-\Sp^{\geq r}_{tame}
-\]
-factors through the $\infty$-category $\coAlg_{\Sigma^{\infty}_{tame}\Omega^{\infty}}(\Sp^{\geq r}_{tame})$ of $\Sigma^{\infty}_{tame}\Omega^{\infty}$-coalgebras in $\Sp^{\geq r}_{tame}$;
-that is to say, the tame localization of a $\Sigma^{\infty}\Omega^\infty$-coalgebra admits a $\Sigma^{\infty}_{tame}\Omega^{\infty}$-coalgebra structure.
-Indeed, 
-for $X\in \Space_*^{\geq r}$, we have an equivalence $\Sigma^{\infty}_{tame}X \simeq \Sigma^{\infty}_{tame}L_{tame}X$, since $\Sigma^{\infty}_{tame}$ sends tame equivalences to equivalences of tame spectra. Then we obtain a commuting diagram
-\[
-\begin{tikzcd}
-\Space^{\geq r}_{*} & & \Sp^{\geq r}\\
-& \coAlg_{\Sigma^{\infty}\Omega^{\infty}}(\Sp^{\geq r})&\\
-\Space^{\geq r}_{tame}&  & \Sp^{\geq r}_{tame}
-\arrow[from=1-1,to=1-3, "\Sigma^{\infty}"]
-\arrow[from=1-1,to=2-2, "\simeq"]
-\arrow[from=2-2,to=1-3, "\oblv" below]
-\arrow[from=1-1, to=3-1, "L_{tame}"]
-\arrow[from=1-3, to=3-3, "L_{tame}"]
-\arrow[from=3-1, to=3-3, "\Sigma_{tame}^{\infty}"]
-\end{tikzcd}
-\]
-which implies $\Sigma^{\infty}_{tame}(L_{tame}X)\simeq  L_{tame}(\oblv\circ\phi(X))$. 
-Hence we obtain a factorization
-\[
-\begin{tikzcd}
-	\coAlg_{\Sigma^{\infty}\Omega^{\infty}}(\Sp^{\geq r}) &  & \Sp^{\geq r}_{tame}\\
-	 & \coAlg_{\Sigma^{\infty}_{tame}\Omega^{\infty}}(\Sp_{tame}^{\geq r}) &
-	 \arrow[from=1-1, to=1-3, "L_{tame}\circ \oblv"]
-	 \arrow[from=1-1, to=2-2, "L'_{tame}"]
-	 \arrow[from=2-2, to=1-3, "\oblv_{tame}"]	 
-\end{tikzcd}
-\]
-where $\oblv_{tame}$ denotes the forgetful functor sending a $\Sigma^{\infty}_{tame}\Omega^{\infty}$-coalgebra to its underlying tame spectrum. 
-
-\begin{lemma}
-	\label{Lemma for the main theorem}
-	Let $X\in \coAlg_{\Sigma^{\infty}\Omega^{\infty}}(\Sp^{\geq r})$. Then the induced map 	\[
-	\Tot (\Omega^{\infty}\Sigma^{\infty})^{\bullet} \Omega^{\infty}X
-	\to 
-	\Tot (\Omega^{\infty}\Sigma^{\infty}_{tame})^{\bullet} \Omega^{\infty}L_{tame}X
-	\]
-	on the totalization of cosimplicial spaces $(\Omega^{\infty}\Sigma^{\infty})^{\bullet} \Omega^{\infty}X$ and $(\Omega^{\infty}\Sigma^{\infty}_{tame})^{\bullet} \Omega^{\infty}L_{tame}X$
-	is a tame equivalence of spaces.
-\end{lemma}
-\begin{proof}
-	Since tame equivalences is closed under limits\todo{not true!!!}, it suffices to show 
-	\[
-	(\Omega^{\infty}\Sigma^{\infty})^{n} \Omega^{\infty}X
-	\to 
-    (\Omega^{\infty}\Sigma^{\infty}_{tame})^{n} \Omega^{\infty}L_{tame}X
-    \]
-    is a tame equivalence for each $n\geq 0$.
-    For $n=0$, this is obvious since $\Omega^{\infty}$ preserves tame equivalence. Suppose now 
-    $(\Omega^{\infty}\Sigma^{\infty})^{n-1} \Omega^{\infty}X
-	\to 
-    (\Omega^{\infty}\Sigma^{\infty}_{tame})^{n-1} \Omega^{\infty}L_{tame}X$ is a tame equivalence;
-    observe that $(\Omega^{\infty}\Sigma^{\infty})^{n} \Omega^{\infty}X
-	\to 
-    (\Omega^{\infty}\Sigma^{\infty}_{tame})^{n} \Omega^{\infty}L_{tame}X$ is also a tame equivalence as it is the composition of two tame equivalences
-    $$ \Omega^{\infty}\Sigma^{\infty}(\Omega^{\infty}\Sigma^{\infty})^{n-1} \Omega^{\infty}X
-	\to 
-    \Omega^{\infty}\Sigma^{\infty}(\Omega^{\infty}\Sigma^{\infty}_{tame})^{n-1} \Omega^{\infty}L_{tame}X
-    $$  
-    and 
-    $$\Omega^{\infty}\Sigma^{\infty}(\Omega^{\infty}\Sigma^{\infty}_{tame})^{n-1} \Omega^{\infty}L_{tame}X
-    \to \Omega^{\infty}\Sigma^{\infty}_{tame}(\Omega^{\infty}\Sigma^{\infty}_{tame})^{n-1} \Omega^{\infty}L_{tame}X.$$
-	\end{proof}
-
-\begin{theorem}
-	The adjoint pair $(\Sigma^{\infty}_{tame},\Omega^{\infty})$ is comonadic. That is, we have an equivalence of $\infty$-categories
-	\[
-	\Sigma^{\infty}_{tame}: \Space^{\geq r}_{tame} \to \coAlg_{\Sigma^{\infty}_{tame}\Omega^{\infty}}(\Sp^{\geq r}_{tame}).
-	\]
-\end{theorem}
-\begin{proof}
-
-
-
-%The functor $L'_{tame}$ preserves all colimits 
-%$$
-%L'_{tame}: \coAlg_{\Sigma^{\infty}\Omega^{\infty}}(\Sp^{\geq r}) \to \coAlg_{\Sigma^{\infty}_{tame}\Omega^{\infty}}(\Sp_{tame}^{\geq r})
-%$$ 
-%by $L'_{tame}$.
-
-
-We let $\CC'$ denote the full subcategory of $\coAlg_{\Sigma^{\infty}\Omega^{\infty}}(\Sp^{\geq r})$ spanned by coalgebras whose underlying spectra satisfying:
-\[
-\Tot (\Omega^\infty \Sigma^{\infty})^{\bullet} \Omega^{\infty}X 
-\text{ is a tame space.}
-\tag{$\ast$}
-\]
-Note that a $\Sigma^{\infty}\Omega^{\infty}$-coalgebra $Y$ is in $\CC'$ if and only if it is in the esential image of $\Space^{\geq r}_{tame}$ via $\phi$, since $\phi^{-1}(Y)\simeq \Tot (\Omega^\infty \Sigma^{\infty})^{\bullet} \Omega^{\infty}Y $.
-Hence, we have $\CC'\simeq \Space^{\geq r}_{tame}$.
-
-We claim the functor $L'_{tame}: \coAlg_{\Sigma^{\infty}\Omega^{\infty}}(\Sp^{\geq r}) \to \coAlg_{\Sigma^{\infty}_{tame}\Omega^{\infty}}(\Sp_{tame}^{\geq r})$ restricts to an equivalence on $\CC'$.
-%We first observe that $\CC'$ is equivalent to the $\infty$-category $\Space^{\geq r}_{tame}$ of tame spaces; note that $\phi$ is an equivalence and a $\Sigma^{\infty}\Omega^{\infty}$-coalgebra $\Sigma^{\infty}X$ is tame if and only if its corresponding space $\phi^{-1}(X)$ is tame.
-
-%$$
-%\map_{\Space^{\geq r}}(S^n,X)\simeq \map_{\coAlg_{\Sigma^{\infty}\Omega^\infty}}(\Sigma'^{\infty}S^n,\Sigma'^{\infty}X) \neq
-%\map_{\Sp}(\BS^n,\Sigma'^{\infty}X)
-%$$
-
-
-%We next claim that $\coAlg_{\Sigma^{\infty}_{tame}\Omega^{\infty}}(\Sp_{tame}^{\geq r})$ is a full subcategory of $\coAlg_{\Sigma^{\infty}\Omega^{\infty}}(\Sp^{\geq r})$ and $L'_{tame}: \coAlg_{\Sigma^{\infty}\Omega^{\infty}}(\Sp^{\geq r}) \to \coAlg_{\Sigma^{\infty}_{tame}\Omega^{\infty}}(\Sp_{tame}^{\geq r})$ is the reflective localization functor at the class of maps whose underlying maps in $\Sp^{\geq r}$ are tame equivalences.
-
-%Let $X\in \coAlg_{\Sigma^{\infty}\Omega^{\infty}}(\Sp^{\geq r})$ and $A\in \Sp^{\geq r}_{tame}$, then we have
-%\[
-%\begin{align*}
-%	\map_{\coAlg_{\Sigma^{\infty}\Omega^{\infty}}(\Sp^{\geq r})}(X,\cofree(A))  & \simeq  \map_{\Sp^{\geq r}}(X,A) \\
-%	& \simeq \map_{\Sp^{\geq r}_{tame}}(L_{tame}X,A) &\\
-%	& \simeq \map_{\coAlg_{\Sigma^{\infty}_{tame}\Omega^{\infty}}(\Sp_{tame}^{\geq r})}(L'_{tame}X,\cofree_{tame}(A))\\
-%	& \simeq \map_{\coAlg_{\Sigma^{\infty}_{tame}\Omega^{\infty}}(\Sp_{tame}^{\geq r})}(L'_{tame}X,L'_{tame}\cofree(A))
-%\end{align*}
-%\]
-%where $\cofree_{tame}:\Sp^{\geq r}_{tame}\to \coAlg_{\Sigma^{\infty}_{tame}\Omega^{\infty}}$ is the right adjoint to the forgetful functor. 
-
-Let $Y,Z\in \CC'$, we compute:
-\[
-\begin{aligned}
-	\map_{\CC'}(Y,Z) & \simeq \map_{\coAlg_{\Sigma^{\infty}\Omega^{\infty}}(\Sp^{\geq r})}\big(Y,Z\big) \\
-	& \simeq \map_{\coAlg_{\Sigma^{\infty}\Omega^{\infty}}(\Sp^{\geq r})}\big(Y,\Tot \cofree^{\bullet+1} Z\big)\\
-	& \simeq \Tot \map_{\coAlg_{\Sigma^{\infty}\Omega^{\infty}}(\Sp^{\geq r})}\big(Y, \cofree^{\bullet+1} Z\big)\\
-	& \simeq \Tot \map_{\Sp^{\geq r}}\big(Y, (\Sigma^{\infty}\Omega^{\infty})^{\bullet} Z\big)\\
-	& \simeq  \map_{\Sp^{\geq r}}\big(Y, \Tot (\Sigma^{\infty}\Omega^{\infty})^{\bullet} Z\big)\\
-	& \simeqexpl{$(\ast)$ and Lemma \ref{Lemma for the main theorem}}  \map_{\Sp^{\geq r}}\big(Y, \Tot (\Sigma^{\infty}_{tame}\Omega^{\infty})^{\bullet} L_{tame} Z\big)\\
-	& \simeq  \map_{\Sp^{\geq r}_{tame}}\big(L_{tame}Y, \Tot (\Sigma^{\infty}_{tame}\Omega^{\infty})^{\bullet} L_{tame} Z\big)\\
-	& \simeq \map_{\coAlg_{\Sigma^{\infty}_{tame}\Omega^{\infty}}(\Sp^{\geq r}_{tame})}\big(L'_{tame}Y,\Tot \cofree^{\bullet+1}_{tame} (L'_{tame}Z)\big)\\
-	& \simeq \map_{\coAlg_{\Sigma^{\infty}_{tame}\Omega^{\infty}}(\Sp^{\geq r}_{tame})}\big(L'_{tame}Y,L'_{tame}Z \big)
-\end{aligned}
-\]
-which implies that $L'_{tame}|_{\CC'}$ is fully faithful. It remains to show $L'_{tame}$ is essentially surjective. Let $X\in \coAlg_{\Sigma^{\infty}_{tame}\Omega^{\infty}} (\Sp_{tame}^{\geq r})$, we show that $X$ also admits a $\Sigma^{\infty}\Omega^{\infty}$-coalgebra structure. 
-This follows from the fully faithfulness of $L'_{tame}|_{\CC'}$; observe that the structure map $X\to \Sigma^{\infty}_{tame}\Omega^{\infty}X$ can be viewed as a map $\gamma_X:X \to \cofree_{tame}(X)$ of $\Sigma^{\infty}_{tame}\Omega^{\infty}$-coalgebras, but this corresponds to a $\Sigma^{\infty}\Omega^{\infty}$-coalgebra map $X \to \cofree (X)$ up to a contractible choice of ambiguity. 
-This concludes our proof $\Space^{\geq r}_{tame}\simeq \CC'\simeq \coAlg_{\Sigma^{\infty}_{tame}\Omega^{\infty}}(\Sp_{tame}^{\geq r})$.
-\end{proof}
-
-We now turn to the algebraic description of tame spaces. 
-Let $D(\BZ)$ denote the derived $\infty$-category of the abelian category $\Ab$ of abelian groups, there is an equivalence of $\infty$-categories $D(\BZ)\simeq \Mod_{H\BZ}$ by Remark 7.1.1.6 of \cite{HA}. Note that the objects of $D(\BZ)$ are projective, bounded below chain complexes of abelian groups.
-The $\infty$-category $(\Mod_{H\BZ})_{tame}$ of tame $H\BZ$-modules then can be identified with $D(\BZ)_{tame}^{\geq r}$, the full subcategory spanned by chain complexes $M_{*}$ satisfying the tame condition,
+Let $G$ be a finite group.
+For any preadditive $\infty$-category $\CC$ (see Definition \ref{preadditive}) with finite limits and colimits, there is a norm natural transformation constructed in \cite[Definition I.1.10]{Nikolaus-Scholze}:
 $$
-M_{k}\simeq 0 \text{ for $k<r$ and } H_{r+j}(M_{*})\otimes R_{j}\cong H_{r+j}(M_{*}) \text{ for $j\geq 0$ }.
+\operatorname{Nm}: (-)_{hG} \to (-)^{hG}
 $$
+from the homotopy orbits functor $(-)_{hG}:\Fun(BG,\CC)\to \CC$ to the homotopy fixed points functor $(-)^{hG}:\Fun(BG,\CC)\to \CC$.
+The \emph{Tate construction} of an object $X\in \Fun(BG,\CC)$ is then defined as the cofiber of the norm map:
+$$
+X^{tG} := \cofib(\operatorname{Nm}_X:(X)_{hG} \to (X)^{hG}).
+$$
+If $G=\Sigma_n$ and $\CC=\Sp$, then the norm map of a $\Sigma_n$-spectrum $X$
+$$
+\operatorname{Nm}_X: X_{h\Sigma_n} \to X^{h\Sigma_n}
+$$
+is an equivalence if $n!$ is invertible in the homotopy groups of $X$.
 
-A non-unital cocommutative coalgebra $C$ in $D(\BZ)$ is a chain complex $C$ equipped with maps $\gamma_n: C \to (C^{\otimes n})^{h\Sigma_n}$ for $n\geq 1$, such that it satisfies the usual coassociativity and cocommutativity conditions. 
-
-\begin{remark}
-	Note that $\Sp^{\geq r}_{tame}$ admits a symmetric monoidal structure with the tensor product $X\otimes_{tame} Y$ given by the tame localization $L_{tame}(X\otimes Y)$ of the smash product of $X$ and $Y$. Observe that the functor $L_{tame}:\Mod_{H\BZ}^{\geq r}\to (\Mod_{H\BZ}^{\geq r})_{tame}$ is symmetric monoidal; this follows from the fact that the map $M \otimes_{\BZ} N \to L_{tame}M\otimes_{\BZ} N \to L_{tame}M\otimes_{\BZ} L_{tame}N$ is a tame equivalence for any $M,N\in \Mod_{H\BZ}^{\geq r}$.
-\end{remark}
-
-
-%\begin{question}
-%    I understand that the goal is to show $\Sigma^{\infty}_{tame}\Omega^{\infty}$ agrees with the cofree commutative comonad on $\Sp^{\geq r}_{tame}$ and we indeed have 
-%    $$
-%    \Sigma^{\infty}_{tame}\Omega^{\infty}X\simeq L_{tame}\big(\Sym^{\geq 1}(X) \big),
-%    $$ since we invert primes fast enough to kill Tate construction; but I don't know how to show the cofree commutative coalgebra comonad is given by $L_{tame}\big(\Sym^{\geq 1}(X)\big)$.
-%\end{question}
-%
-%\begin{lemma}
-%	Let $X\in \Sp^{B\Sigma_n}$ be a $\Sigma_n$-spectrum whose underlying spectrum is uniquely $n!$-divisible, then 
-%	$$
-%	X^{t\Sigma_n}\simeq *.
-%	$$
-%\end{lemma}
-
-If $X$ is $r$-connective, then its $n$-th tensor power $X^{\otimes n}$ is $(rn)$-connective. Then the tame spectrum $L_{tame}(X^{\otimes n})$ is uniquely $(n!)$-divisible; indeed, the homotopy group $\pi_{nr}L_{tame}(X^{\otimes n})$ is uniquely divisible by any natural number $k\leq \lfloor \frac{nr-r+3}{2}\rfloor$, which would be satisfied since we require $r\geq 3$. (Concretely, we want $n\leq \frac{nr-r+3}{2}$ which is equivalent to $(r-2)(n-1)+1\geq 0$.)
-As a consequence, we record the following lemma:
+For any $X\in \Sp^{\geq r}$, we can identify $L_{\tame}X^{\otimes n}$ as an object in $\Fun(B\Sigma_n, \Sp^{\geq r}_{\tame})$.
+We end this chapter with the Tate vanishing property of tame spectra.
 \begin{lemma}
 \label{Tate vanishing for tame spectra}
+    The Tate construction of a tame spectrum vanishes, i.e., for all $X\in \Sp^{\geq r}$
 	$$
-	\big(L_{tame}(X^{\otimes n})\big)^{t\Sigma_n}\simeq *.
+	\big(L_{\tame}(X^{\otimes n})\big)^{t\Sigma_n}\simeq *
+	$$
+	for all $n\geq 2$. Therefore, 
+	$$
+	\big(L_{\tame}(X^{\otimes n})\big)_{h\Sigma_n}
+	\simeq
+	\big(L_{\tame}(X^{\otimes n})\big)^{h\Sigma_n}.
 	$$
 \end{lemma}
-
-
-
-
-\begin{proposition}
-	Let $X\in \Sp^{\geq r}$, then the norm map	
-	
-	$$
-	(X^{\otimes n})_{h\Sigma_n} \xrightarrow{Nm} (X^{\otimes n})^{h\Sigma_n} 
-	$$
-	admits a retract after tame localization. 
-% 	THE FOLLOWING IS NOT KNOWN
-%	Moreover, the tame localization of $(X^{\otimes n})^{t\Sigma_n}$ vanishes, i.e. 
-%	$$
-%	L_{tame}(X^{\otimes n})^{t\Sigma_n}\simeq *.
-%	$$
-\end{proposition}
 \begin{proof}
-	Note we have a commutative diagram
-	\[
-	\begin{tikzcd}
-		(X^{\otimes n})_{h\Sigma_n} & (X^{\otimes n})^{h\Sigma_n}\\
-		(L_{tame}X^{\otimes n})_{h\Sigma_n} & (L_{tame}X^{\otimes n})^{h\Sigma_n}
-		\arrow[from=1-1, to=1-2, "Nm"]
-		\arrow[from=1-1, to=2-1]
-		\arrow[from=2-1, to=2-2, "\simeq"]
-		\arrow[from=1-2, to=2-2]
-	\end{tikzcd}
-	\]
-	where the left map is a tame equivalence and the bottom map is an equivalence by Lemma \ref{Tate vanishing for tame spectra}.
-After tame localization we then have 	
-\[
-	\begin{tikzcd}
-		L_{tame}(X^{\otimes n})_{h\Sigma_n} & L_{tame}(X^{\otimes n})^{h\Sigma_n}\\
-		L_{tame}(L_{tame}X^{\otimes n})_{h\Sigma_n} & L_{tame}(L_{tame}X^{\otimes n})^{h\Sigma_n}
-		\arrow[from=1-1, to=1-2, "Nm"]
-		\arrow[from=1-1, to=2-1, "\simeq"]
-		\arrow[from=2-1, to=2-2, "\simeq"]
-		\arrow[from=1-2, to=2-2]
-	\end{tikzcd}
-\]
-the retract is given by composite of the right map followed by the bottom and left maps.
-%	Observe that 
-%	$$
-%	L_{tame}(X^{\otimes n})_{h\Sigma_n} \xrightarrow{L_{tame}Nm} L_{tame}(X^{\otimes n})^{h\Sigma_n} 
-%	\to
-%	L_{tame}(X^{\otimes n})^{t\Sigma_n}
-%	$$
-%	is a cofiber sequence in $\Sp^{\geq r}_{tame}$, hence 
-%	$L_{tame}(X^{\otimes n})^{t\Sigma_n}$ is contractible.
+    If $X$ is $r$-connective, then its $n$-th tensor power $X^{\otimes n}$ is $rn$-connective. We claim the homotopy groups of tame spectrum $L_{\tame}(X^{\otimes n})$ are uniquely $n!$-divisible, from which the conclusion follows. Indeed, since   
+    $$
+    nr-2n-r+3 = (r-2)(n-1)+1\geq 0
+    $$
+    for $r\geq 3$, it follows that all integer  $m\leq \lfloor \frac{nr-r+3}{2}\rfloor$. 
+    Therefore, $\pi_{*}L_{\tame}(X^{\otimes n})$ is uniquely $k$-divisible for all $k\leq n$ in all degrees.
+    
 \end{proof}
-
-\clearpage
-\begin{question}
-	Let $G$ be a finite group and let $X\in \Fun(BG,\Sp)$. Do we have 
-	$$
-	L(X)^{hG}\simeq (LX)^{hG} \text{   ?}
-	$$
-	Note that we have a fiber sequence in $\Sp$
-	$$
-	(LX)_{hG} \to (LX)^{hG} \to (LX)^{tG}
-	$$
-	and a cofiber sequence in $\Sp_{tame}$
-	$$
-	L(X)_{hG} \to L(X)^{hG} \to L(X)^{tG}.
-	$$
-	Note that in the case I'm interested in, $(LX)^{tG}\simeq *$ and $L(X)_{hG}\simeq (LX)_{hG}$.
-	So we have a cofiber sequence in $\Sp_{tame}$
-	$$
-	(LX)^{hG} \to L(X)^{hG} \to L(X)^{tG}
-	$$
-	So it suffices to show $(-)^{tG}$ preserves tame equivalences, but this cannot be ture:
-	consider the 0-tame equivalence $\BS\to H\BZ$,
-	then $(\BS^{\otimes 2})^{tC_2}\simeq \BS^{\wedge}_{2}\to  (L_{tame}(\BS^{\otimes 2}))^{tC_2}\simeq *$, but $\pi_0 \BS^{\wedge}_2\neq 0$.
-\end{question}
-
-
-%\begin{proposition}
-%	The Goodwillie tower of $\Sigma^{\infty}\Omega^{\infty}$ splits after tame localization.
-%\end{proposition}
-%\begin{proof}
-%
-%	Note that we have a pullback diagram in $\Sp$
-%	\[	
-%	\begin{tikzcd}
-%		P_n\Sigma^{\infty}\Omega^{\infty} (X) 
-%		& (X^{\otimes n})^{h\Sigma_n}\\
-%		P_{n-1}\Sigma^{\infty}\Omega^{\infty} (X)  
-%		& (X^{\otimes n})^{t\Sigma_n}
-%		\arrow[from=1-1, to=1-2]
-%		\arrow[from=2-1, to=2-2]
-%		\arrow[from=1-1, to=2-1]
-%		\arrow[from=1-2, to=2-2].
-%	\end{tikzcd}
-%	\]
-%	For $n=1$, we have $P_1\Sigma^{\infty}\Omega^{\infty} (X)\simeq D_{1}\Sigma^{\infty}\Omega^{\infty} (X)\simeq X$.
-%	Suppose we have 
-%	$$
-%	L_{tame}P_{n-1}\Sigma^{\infty}\Omega^{\infty}(X)\simeq
-%	\bigoplus_{i=1}^{n-1} L_{tame} (X^{\otimes n})_{h\Sigma_n}.
-%	$$
-%	
-%\end{proof}
-
-
-
-
-
-\clearpage
