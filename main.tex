@@ -1,18 +1,22 @@
 \documentclass[a4paper, 11pt]{book}
 
 \usepackage{setspace} % pacakage for setting line spaces
-
 \usepackage[utf8]{inputenc}
 \usepackage{sfmath}
-
+% \usepackage[UTF8]{ctex}
+\usepackage{CJKutf8}
 % \usepackage{notation}
+\usepackage[french, english]{babel}
+\usepackage[autolanguage]{numprint} % for the \nombre command
+\usepackage[T1]{fontenc}
+
 \usepackage{verbatim}
 \usepackage{bbm}
 \input{WHQ.tex}
 
 \usepackage{hyperref}
 \renewcommand{\familydefault}{\sfdefault}
-\setstretch{1.25}
+\setstretch{1.2}
 \title{A Hopf Algebra model for tame spaces}
 \author{Haoqing Wu}
 \date{\today}
@@ -20,7 +24,9 @@
 \begin{document}
 \maketitle
 % \input{content/frontmatter/abstract}
+\input{dedication}
 \input{acknowledgements}
+\input{abstract}
 \tableofcontents
 \input{Introduction}
 \input{Tame}
@@ -32,9 +38,6 @@
 
 \input{Appendix}
 
-
-Seems the coalgebra model doesn't work, since the functor $\Sigma^{\infty}_{tame}$ is not necessarily conservative.
-However, there seems to be a Hopf algebra model for this.
 
 
 

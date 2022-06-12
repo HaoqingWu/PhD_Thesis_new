@@ -749,7 +749,7 @@ Moreover, by an argument dual to the proof of Proposition \ref{free resolutino o
 \begin{proposition}
 Let $X$ be a divided power, conilpotent $\CQ$-coalgebra, then it can be resolved as the totalization of the cosimplicial object $(\cofree_{\CQ}\circ \oblv_{\CQ})^{\bullet + 1}X$, i.e. 
 \begin{equation}
-\label{(3.5)}
+\label{(3.6)}
     X \simeq
 \Tot (\cofree_{\CQ}\circ \oblv_{\CQ})^{\bullet + 1}X
 \simeq \Tot \Cobar(\CQ, \CQ, X)^{\bullet}.
@@ -980,9 +980,9 @@ $$
 which restricts to the equivalence $L_{\tame}F_{\Com}\simeq Q_{\tame}$.
 By the discussion in Appendix \ref{Construction of the Comparison Functor}, there is a map of comonads on $\Sp^{\geq r}_{\tame}$
 $$
-\Gamma: L_{\tame}_* j^* F_{\Com} \to Q_{\tame}.
+\Gamma: (L_{\tame})_{*} j^{*} F_{\Com} \to Q_{\tame}.
 $$
-which is induced from the natural transformation from colimits to limits.
+which is the unique map that makes the diagram in Remark \ref{F_Com to Q_C} commute.
 The map of comonads $\Gamma$ then induces a comparison functor 
 $$
 \zeta:\coCAlg^{\divpow,\nil}(\Sp^{\geq r}_{\tame}) \to
@@ -993,11 +993,11 @@ The following proposition now follows immediately from Proposition \ref{Cofreee 
 \label{all coalgebras are equivalent}
 	The comparison functor $\zeta$ is an equivalence of $\infty$-categories.
 \end{proposition}
-% \begin{proof}
-% Since the forgetful functor $\Comonad(\Sp^{\geq r}_{\tame}) \to \End(\Sp^{\geq r}_{\tame})$ is conservative,
-% it suffices to show the underlying endofunctor of $L_{\tame}F_{\Com}$ and $Q_{\tame}$ are equivalent, which follows from Proposition \ref{Cofreee commutative comonad} and the definition of $L_{\tame}F_{\Com}$.
+\begin{proof}
+Since the forgetful functor $\Comonad(\Sp^{\geq r}_{\tame}) \to \End(\Sp^{\geq r}_{\tame})$ is conservative,
+it suffices to show the $\Gamma$ induces an equivalence between the underlying endofunctors of $L_{\tame}F_{\Com}$ and $Q_{\tame}$. For $X\in \Sp^{\geq r}_{\tame}$, the map $\Gamma$ is obtained from the projection $L_{\tame}F_{\Com}X \to X$ to the first factor, which agrees with the canonical projection $Q_{\tame}X\to X$ by \ref{Cofreee commutative comonad}. Hence $\Gamma$ is an equivalence.
 
-% \end{proof}
+\end{proof}
 
 
 
@@ -1209,7 +1209,7 @@ Note also that there is a map of monads
 \label{suspension morphism}
     \sigma: F_{\CO}\to \Omega F_{\CO}\Sigma, 
 \end{equation}
-which will be called the \emph{suspension morphism}.  
+which will be called the \emph{suspension morphism}. \todo{still need to ask Gijs how to construct this in general}
 The suspension morphism $\sigma$ induces a functor
 $$
 \sigma^*: \Alg_{\bf{\Sigma}^{-1} \CO }(\CC) \to \Alg_{\CO }(\CC)
@@ -1659,7 +1659,7 @@ We now define the Chevalley-Eilenberg functor for tame spectral Lie algebras. Fi
     The desired equivalence follows from the fact that $L_{\tame}$ is symmetric monoidal and preserves colimits.
 \end{proof}
 
-As a consequence, taking $\CO=\spLie$ allows us to identify the bar construction of the monad $L_{\tame}F_{\spLie}$ as the comonad $L_{\tame}F_\Com$. Explicitly, the comonad $L_{\tame}F_\Com$ on a tame spectrum $X$ is given by
+As a consequence, taking $\CO=\spLie$ allows us to identify the bar construction of the monad $L_{\tame}F_{\spLie}$ as the comonad $L_{\tame}F_{\Com}$. Explicitly, the comonad $L_{\tame}F_{\Com}$ on a tame spectrum $X$ is given by
 $$
 X \mapsto \coprod_{n\geq 1} L_{\tame} (X^{\otimes n})_{h\Sigma_n}.
 $$
