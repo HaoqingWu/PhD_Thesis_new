@@ -1,4 +1,4 @@
-\chapter{Higher Algebra Backgrounds}
+\chapter{Higher Algebra Preliminaries}
 
 In this appendix, we recall some notions and results from \cite{HTT} and \cite{HA} that are used repeatedly in this thesis.
 
@@ -21,7 +21,21 @@ we say that $X$ is a \emph{group} in $\CC$ \cite[Definition 5.2.6.2.]{HA} if bot
 \end{align*}
 are equivalences. 
 We will denote the $\infty$-category of groups in $\CC$ as $\Grp(\CC)$.
-By \cite[Remark 5.2.6.5.]{HA}, this is equivalent to the definition of \emph{groupoid objects} in \cite[Definition 6.1.2.7.]{HTT}.
+\begin{definition}
+	\cite[Definition 6.1.2.7.]{HTT}
+	A simplicial object $U_{\bullet}$ in $\CD$ is a \textit{groupoid object} if for every $n\geq 0$ and every partition $[n]=S\cup S'$ such that $S\cap S'=\{s\}$, the diagram
+	\[
+	\begin{tikzcd}
+		U([n]) \arrow[r] \arrow[d] & U(S) \arrow[d]\\
+		U(S') \arrow[r]    & U(\{s\}) 
+	\end{tikzcd}
+	\]
+	is a pullback square in the $\infty$-category $\CC$.
+\end{definition}
+\begin{remark}
+By \cite[Remark 5.2.6.5.]{HA}, the notion of group in an $\infty$-category is equivalent to the definition of \emph{groupoid objects} in \cite[Definition 6.1.2.7.]{HTT}. For a groupoid object $X_{\bullet}$, we write $X_1$ for the corresponding group object.
+\end{remark}
+
 
 We now give another characterization of group objects in terms of presheaves on $\CC$.
 Since the Yoneda embedding preserves limits, it induces a functor
@@ -74,17 +88,9 @@ Let $\CC$ and $\CD$ be $\infty$-categories with finite products. Suppose $F:\CC 
 %%%%
 
 
-\begin{definition}
-	\cite[Definition 6.1.2.7.]{HTT}
-	A simplicial object $U_{\bullet}$ in $\CD$ is a \textit{groupoid object} if for every $n\geq 0$ and every partition $[n]=S\cup S'$ such that $S\cap S'=\{s\}$, the diagram
-	\[
-	\begin{tikzcd}
-		U([n]) \arrow[r] \arrow[d] & U(S) \arrow[d]\\
-		U(S') \arrow[r]    & U(\{s\}) 
-	\end{tikzcd}
-	\]
-	is a pullback square in the $\infty$-category $\CC$.
-\end{definition}
+
+
+
 
 
 %%%%
@@ -197,7 +203,7 @@ $$
 if $\CC$ is additive. Moreover, if $\CC$ is stable, we have the following corollary regarding the $\infty$-category $\Alg_{\CO}(\CC)$ of $\CO$-algebras in $\CC$.
 \begin{corollary}
     Let $\CC$ be a presentably stable $\infty$-category.
-    Let $B_{\CO}(M)$ denote the bar construction of a monoid $M$ in $\Alg_{\CO}(\CC)$.
+    Let $B_{\CO}(M)$ denote the bar construction of a monoid $M$ (with respect to the monoid structure) in $\Alg_{\CO}(\CC)$.
     Then the pair of adjoint functors
 $$
 \adj{B_{\CO}}{\Grp(\Alg_{\CO}(\CC))}{\Alg_{\CO}(\CC)}{\Omega_{\CO}}
@@ -236,7 +242,7 @@ is an equivalence.
 	Since the vertical forgetful functors are conservative, there are equivalences
 $$	    
 \oblv_{\CO}\circ B_{\CO} \circ  \Omega_{\CO} (X)
-	    \simeq \Sigma \Omega (\oblv_{\CO}X \simeq \oblv_{\CO} X
+	    \simeq \Sigma \Omega (\oblv_{\CO}X) \simeq \oblv_{\CO} X
 $$
 for any $X\in  \Alg_{\CO}(\CC)$,
 and 
@@ -369,7 +375,7 @@ Let $\BZ^{\operatorname{disc}}$ denote the groupoid with objects the integers an
 \end{definition}
 
 \begin{remark}
-	We can also extend the definitions above to the category $\Fil^{+}(\CC)$ (resp. $\Gr^{+}(\CC)$) of \emph{non-negatively filtered} (resp. \emph{non-negatively graded}) objects by restricting to the category $\BZ_{\geq 0}$ (resp. $\BZ^{\operatorname{disc}}_{\geq 0}$ of non-negative integers.
+	We can also extend the definitions above to the category $\Fil^{+}(\CC)$ (resp. $\Gr^{+}(\CC)$) of \emph{non-negatively filtered} (resp. \emph{non-negatively graded}) objects by restricting to the category $\BZ_{\geq 0}$ (resp. $\BZ^{\operatorname{disc}}_{\geq 0}$) of non-negative integers.
 \end{remark}
 
 The natural inclusion $ \BZ^{\operatorname{disc}}\hookrightarrow \BZ$ induces a forgetful functor
@@ -378,7 +384,7 @@ $
 $
 We denote by
 $$
-(-)_*: \Graded(\CC) \to \Fil(\CC)
+U: \Graded(\CC) \to \Fil(\CC)
 $$ the left Kan extension along the inclusion $ \BZ^{\operatorname{disc}}\hookrightarrow \BZ$; explicitly, the filtered object $X_*$ evaluated at $n$ is given by $\bigoplus_{k\leq n} X_k$.
 
 We can also define the \emph{associated graded} of a filtered object 
@@ -404,7 +410,7 @@ We also have the following obvious observation.
 \begin{lemma}
 	The composite 
 	\[
-	\Graded(\CC) \xrightarrow{(-)_*} 
+	\Graded(\CC) \xrightarrow{U} 
 	\Fil(\CC)
 	\xrightarrow{\Graded(-)} 
 	\Graded(\CC) 
@@ -415,6 +421,7 @@ We also have the following obvious observation.
 The following remark from \cite{Brantner-Mathew} equips the categories of both filtered objects and graded objects with symmetric monoidal structure.
 \begin{remark}
 \cite[Definition 2.5]{Brantner-Mathew}
+\label{BM def 2.5}
 Suppose that $\CC$ is (nonunital) presentably symmetric monoidal $\infty$-category in which tensor product commutes with colimits.
 Using Day convolution, one can equip both $\Fil(\CC)$ and $\Graded(\CC)$ with the structure of presentably (nonunital) symmetric monoidal $\infty$-categories. Furthermore, the associated graded functor $\Graded : \Fil(\CC) \to \Graded(\CC)$ is (nonunital) symmetric monoidal (cf. \cite[Sec. 2.23]{Glasman}).
 \end{remark}
@@ -537,7 +544,7 @@ For an $\CO$-algebra $X$, there exists a canonical filtered object $X_{*}$ so th
 In practice, the category $\CD$ often admits all geometric realizations for simplicial objects. In this case, we have a technically convenient criteria for determining monadicity of a functor. We learn the proof of the following corollary from Heuts.
 \begin{corollary}[\cite{HeutsSurvey}]
 \label{Cor of Barr-Beck-Lurie theorem}
-Suppose $\adj{F}{\CC}{\CD}{G}$ an adjoint pair and that $\CD$ admits colimits of $G$-split simplicial objects. Then this pair is monadic if and only if for every object $X$ of $\CD$, the map
+If $\adj{F}{\CC}{\CD}{G}$ an adjoint pair and that $\CD$ admits colimits of $G$-split simplicial objects. Then this pair is monadic if and only if for every object $X$ of $\CD$, the map
 $$
 \abs{(FG)^{\bullet+1}X} \to X
 $$
@@ -571,8 +578,9 @@ arising from the simplicial resolution described above is an equivalence.
 		\abs{X_{\bullet}} \ar[r] & X_{-1}  .
 	\end{tikzcd}
 	\]
+	
 	We claim the bottom horizontal arrow is an equivalence.
-	Note that two vertical morphisms are equivalences by our assumption. We claim that the top horizontal map is an equivalence as well. Indeed, if we view $(FG)^{p+1} X_{q}$ as an bisimplicial object, then 
+	Note that two vertical morphisms are equivalences by our assumption. We claim that the top horizontal map is an equivalence as well. Indeed, if we view $(FG)^{p+1} X_{q}$ as a bisimplicial object, then 
 	$$
 	\abs{(FG)^{\bullet+1} \abs{X_{\bullet}}} 
 	\simeq 
@@ -645,7 +653,7 @@ $$
 \coCAlg(\Sp^{\geq r}_{\tame}).
 $$
 
-We fix a pre-additive, presentable, symmetric monoidal $\infty$-category $\CC$ in which the tensor product is compatible with colimits. in this section.
+We fix a pre-additive, presentable, symmetric monoidal $\infty$-category $\CC$ in which the tensor product is compatible with colimits. 
 Consider the comonad $K$ on $\CC$ given by 
 $$
 K(X) := \prod_n (X^{\otimes n})_{h\Sigma n}.
@@ -658,11 +666,11 @@ $$
 \end{definition}
 \begin{remark}
 \label{Remark A4.2}
-If $\CC=\Sp^{\geq}_{\tame}$, then there is an equivalence of $\infty$-categories 
+If $\CC=\Sp^{\geq r}_{\tame}$, then there is an equivalence of $\infty$-categories 
 $$
-\coCAlg^{\divpow}(\Sp^{\geq}_{\tame})
+\coCAlg^{\divpow}(\Sp^{\geq r}_{\tame})
 \to 
-\coCAlg(\Sp^{\geq}_{\tame})
+\coCAlg(\Sp^{\geq r}_{\tame})
 $$
 by Lemma \ref{Tate vanishing for tame spectra}.
 \end{remark}
@@ -673,25 +681,28 @@ When $\CC=\Sp$, there is a comparison functor
 $$
 \coCAlg^{\divpow, \nil}(\Sp) \to  \coCAlg^{\divpow}(\Sp)
 $$
-(see \cite[Section 3.5]{Francis-Gaitsgory} or \cite{Heuts_Koszul}), and hence it induces a comparison functor
-$$
-\coCAlg^{\divpow, \nil}(\Sp^{\geq r}) \to  \coCAlg^{\divpow}(\Sp^{\geq r})
-$$
+(see \cite[Section 3.5]{Francis-Gaitsgory} or \cite{Heuts_Koszul}), which induces a comparison functor
+\begin{equation}
+\label{comparison functor for r-conn Sp}
+    \coCAlg^{\divpow, \nil}(\Sp^{\geq r}) \to  \coCAlg^{\divpow}(\Sp^{\geq r})
+\end{equation}
 since colimits in $\Sp^{\geq r}$ are computed in $\Sp$.
 \end{remark}
 
 By Remark \ref{Remark A4.2}, it suffices to construct a comparison functor
 $$
-\zeta':\coCAlg^{\divpow, \nil}(\Sp^{\geq}_{\tame})
+\zeta':\coCAlg^{\divpow, \nil}(\Sp^{\geq r}_{\tame})
 \to 
-\coCAlg^{\divpow}(\Sp^{\geq}_{\tame}).
+\coCAlg^{\divpow}(\Sp^{\geq r}_{\tame}).
 $$
-The crux for this construction is the following theorem by Heine.
+For the rest of this section, we explain how to obtain $\zeta'$ given (\ref{comparison functor for r-conn Sp}).
+The crux for this construction is the following theorem by Heine, which allows us to identify maps between comonads with functors between comodules
 \begin{theorem}
 \label{Monads-Alg correspondence}
 \cite[Theorem 5.1]{Heine_Monads}
 Let $\CC$ be a presentable $\infty$-category, then the $\infty$-category of comonads on $\CC$ is a localization of the over category $\Pr^{L}_{/\CC}$ that assigns a comonad $Q$ to $\LcoMod_{Q}(\CC)$.
 \end{theorem}
+
 
 Suppose $L:\CC \to \CD$ is a symmetric monoidal localization
 and we let $j:\CD \to \CC$ denote the embedding that is right adjoint to $L$.
@@ -711,9 +722,9 @@ There is an adjunction
     $$
     and
     $$
-    \adj{j^{*}}{\Fun(\CC, \CD)}{\Fun(\CD, \CD)}{L^*},
+    \adj{j^{*}}{\Fun(\CC, \CD)}{\Fun(\CD, \CD)}{L^*}.
     $$
-    which is an easy exercise to check the triangle identities of both.
+    It is an easy exercise to check the triangle identities of both.
 \end{proof}
 
 
@@ -723,9 +734,9 @@ We observe the functor $j_*L^*: \Fun(\CD,\CD) \to \Fun(\CC,\CC)$ is monoidal; in
                      & \simeq j\circ F \circ L \circ j \circ  G \circ L \\
                      & \simeq j_*L^*(F)\circ j_*L^*(G)
 \end{align*}
-where the second last equivalence follows from $ L \circ j \simeq \id_{\CD}$.
-Hence $j_*L^*$ preserves monads and comonads. Furthermore, the left adjoint $j^*L_*$ is oplax monoidal so it also preserves comnads. 
-The counit map of the adjunction (\ref{map above A.2})  evaluating on any comonad $Q$ on $\CD$
+where the second-to-last equivalence follows from $ L \circ j \simeq \id_{\CD}$.
+Hence $j_*L^*$ preserves monads and comonads. Furthermore, the left adjoint $j^*L_*$ is oplax monoidal, so it also preserves comnads. 
+The counit map of adjunction (\ref{map above A.2})  evaluated on any comonad $Q$ on $\CD$
 \begin{equation}
 \label{map above A.2}
     j^*L_*j_*L^*Q  \to  Q
@@ -734,14 +745,26 @@ is an equivalence of comonads. Therefore, the functor $j_*L^*:\Comonad(\CD) \to 
 % , and (\ref{map above A.2}) corresponds to a map
 % $j_*L^* Q_{\CD} \to Q_{\CD}$.
 
-Let $Q_{\CC}$ and $Q_{\CD}$ denote the comonad arising from the forgetful-cofree adjunction 
+Let $Q_{\CC}$ and $Q_{\CD}$ denote the comonads arising from the forgetful-cofree adjunction 
 $$\adj{\oblv_{\CC}}{\coCAlg^{\divpow}(\CC)}{\CC}{\cofree_{\CC}}$$
 and
 $$
 \adj{\oblv_{\CD}}{\coCAlg^{\divpow}(\CD)}{\CD}{\cofree_{\CD}}.
 $$
+For every $X\in\CD$,
+there is a natural map
+$$
+Q_{\CC}(X)= \prod_{n} (X^{\otimes n})_{h\Sigma_n,\CC} \to 
+Q_{\CD}(X)= \prod_{n} (X^{\otimes n})_{h\Sigma_n,\CD}
+$$
+where we use $(X^{\otimes n})_{h\Sigma_n,\CC}$ (resp. $(X^{\otimes n})_{h\Sigma_n,\CD}$) to indicate the homotopy orbits is computed in $\CC$ (resp. $\CD$).
+Therefore, we obtain a map of comonads 
+\begin{equation}
+\label{LQ_Cj to Q_D}
+    LQ_{\CC}j \to Q_{\CD}.
+\end{equation}
 
-Note that there is a map of comonads 
+Consider now the composite of comonads
 \begin{equation}
 \label{A.3}
     Q_{\CC} \to 
@@ -749,9 +772,9 @@ Note that there is a map of comonads
     \to 
     j\circ Q_{\CD} \circ L
 \end{equation}
-where the first map is the unit of the adjunction (\ref{A4.2 adjunction}) and the second map is induced from the universal property of $\CQ_\CD$.
+where the first map is the unit of adjunction (\ref{A4.2 adjunction}), and the second map (\ref{LQ_Cj to Q_D}).
 
-Since $\CC$ is preadditive, the comonad $F_{\Com}$ is equivalent to the symmetric algebra functor $\Sym_{\CC}$, hence there is a natural transformation 
+Since $\CC$ is preadditive, the comonad $F_{\Com}$ is equivalent to the symmetric algebra functor $\Sym_{\CC}$, hence there is a natural transformation
 $$
 \Sym_{\CC} \to \id_{\CC}
 $$
@@ -792,18 +815,18 @@ $$
 $$
 by the adjunction (\ref{A4.2 adjunction}).
 
-Apply Theorem \ref{Monads-Alg correspondence}, we define the comparison functor as follows.
+Applying Theorem \ref{Monads-Alg correspondence}, we define the comparison functor as follows.
 \begin{definition}
     The comparison functor
     \[
     \zeta': \coCAlg^{\divpow,\nil}(\CD) :=\LcoMod_{L\circ F_{\Com}}(\CD) \to \coCAlg^{\divpow}(\CD):=\LcoMod_{Q_{\CD}}
     \]
-    is defined as the functor corresponding to $\Gamma$.
+    is the functor corresponding to $\Gamma$ under the correspondence of Theorem \ref{Monads-Alg correspondence}.
 \end{definition}
 
 To construct the comparison functor in the case of tame spectra, we let $\CC=\Sp^{\geq r}$ and $\CD=\Sp^{\geq r}_{\tame}$. There is a comparison functor on coalgebras in $r$-connective spectra
 $$
-\coCAlg^{\divpow, \nil}(\Sp^{\geq r}) \to  \coCAlg(\Sp^{\geq r})
+\coCAlg^{\divpow, \nil}(\Sp^{\geq r}) \to  \coCAlg^{\divpow}(\Sp^{\geq r})
 $$
 by Remark \ref{Remark A4.3}.
 Combining with the discussion above, we obtain the comparison functor

@@ -8,7 +8,7 @@ In \S \ref{(co)Operads in Infinity-Categories}, we define $\infty$-operads and $
 
 In \S \ref{Algebras over Operads}, we discuss algebras over an $\infty$-operad and some relevant constructions which will be useful in the proof of the main theorems. 
 
-In \S \ref{Coalgebras over cooperads and Koszul Duality}, we explain the bar-cobar duality bewtween connected $\infty$-operads and cooperads. We then define divided power, conilpotent coalgebras over a $\infty$-cooperad and define the Koszul duality functor $\indec_{\CO}$.
+In \S \ref{Coalgebras over cooperads and Koszul Duality}, we explain the bar-cobar duality between connected $\infty$-operads and cooperads. We then define divided power, conilpotent coalgebras over a $\infty$-cooperad and define the Koszul duality functor $\indec_{\CO}$.
 
 In \S \ref{Commutative coalgebras in tame spectra}, we define the $\infty$-category of commutative coalgebras in an $\infty$-category. In the case of tame spectra, we prove that it is equivalent to the $\infty$-category of divided power, conilpotent coalgebras.
 
@@ -108,14 +108,14 @@ Given two symmetric sequences $X$ and $Y$ in $\CC$, we will write $X\circ Y$ for
 
 \begin{remark}
 \label{formula for composition product}
-For some category $\CC$, e.g. $\CC=\operatorname{Set}, \Sp$ etc. with a point-set model, there is a concrete formula for the composition product (cf. \cite[Section 4.1.2.]{BrantnerPhD})
+For some categories $\CC$, e.g.,  $\CC=\operatorname{Set}, \Sp$ etc. with a point-set model, there is a concrete formula for the composition product (cf. \cite[Section 4.1.2.]{BrantnerPhD})
 $$
 A\circ B (J) \cong \coprod_{n\geq 0} \big(
-\coprod_{J = J_1 \coprod \cdots \coprod J_n} A(J) \otimes 
+\coprod_{J = J_1 \coprod \cdots \coprod J_n} A(\underline{n}) \otimes 
 B(J_1)\otimes \cdots \otimes B(J_n)
-\big)_{h\Sigma_n}
+\big)_{h\Sigma_n},
 $$
-where the second coproduct runs over all partitions of $J$. 
+where $\underline{n}$ denotes the finite set with $n$ elements and the second coproduct runs over all partitions of $J$. 
 \end{remark}
 
 \begin{remark}
@@ -136,7 +136,7 @@ By Remark \ref{formula for composition product}, we obtain a functor which has a
 \end{align*}
 where $\Sigma_n$ acts on the $n$-th tensor power of $X$ via permutation.
 By our definition of the composition products, this assignment is lax monoidal with respect to the composition product in $\SSeq(\CC)$ and composition of functors in $\Fun(\CC,\CC)$.
-We call the the endofunctor $F_A$ as the \emph{Schur functor associated to the symmetric sequence $A$}.
+We call the the endofunctor $F_A$ the \emph{Schur functor associated to the symmetric sequence $A$}.
 \end{remark}
 
 We can now define $\infty$-operads (resp. $\infty$-cooperads) as associative algebras (resp. coalgebras) with respect to the composition products in $\SSeq{\CC}$.
@@ -147,8 +147,8 @@ We can now define $\infty$-operads (resp. $\infty$-cooperads) as associative alg
 
 \begin{remark}
 \label{Schur functor and operads}
-As a consequence Remark \ref{Schur functor}, the Schur functor $F_\CO$ associated to an operad $\CO$ is a monad on $\CC$.
-If additionally we assume $\CC$ is preadditive (Definition \ref{preadditive})
+As a consequence of Remark \ref{Schur functor}, the Schur functor $F_\CO$ associated to an operad $\CO$ is a monad on $\CC$.
+If additionally we assume $\CC$ is preadditive (Definition \ref{preadditive}),
 then the Schur functor $F_\CQ$ associated to a cooperad $\CQ$ is a comonad on $\CC$. See \cite[Remark 2.21]{ChingBar} for more details.
 \end{remark}
 
@@ -167,9 +167,9 @@ then the Schur functor $F_\CQ$ associated to a cooperad $\CQ$ is a comonad on $\
 	\end{align*}
 	which is the Schur functor of the symmetric sequence $\Com:=(1_\CC,1_\CC,\dots)$, where $1_\CC$ is the tensor unit of $\CC$.
 	Since $\Com$ is clearly an associative algebra in $\SSeq(\CC)$ with respect to the 
-	composition product, $\Com$ is called \emph{commutative operad} in $\CC$ and hence
+	composition product, $\Com$ is called the \emph{commutative operad} in $\CC$, and
 	$\Sym$ is a monad on $\CC$.
-	If we additionally assume $\CC$ is preadditive, then $\Sym$ associated to the symmetric sequence $\Com$ defines a comonad on $\CC$ and we will abuse notation by writing $\Com$ for the commutative cooperad in $\CC$.
+	If we additionally assume $\CC$ is preadditive, then $\Sym$ associated to the symmetric sequence $\Com$ defines a comonad on $\CC$, and we will abuse notation by writing $\Com$ for the commutative cooperad in $\CC$.
 % Not necessairly anymore
 % 	Similarly, the \emph{non-unital symmetric algebra functor} $\Sym^{\geq 1}:\CC \to \CC$ given by $X\mapsto \amalg_{n\geq 1} (X^{\otimes n})_{h\Sigma_n}$ defines a non-unital $\infty$-operad in $\CC$ which we will denote by $\Com_{nu}$.
 \end{example}
@@ -236,7 +236,7 @@ From now on, whenever we say $\infty$-operads (resp. $\infty$-cooperads) we mean
 
 \subsection{Truncations of $\infty$-operads}
 % \todo{I'm still expecting Gijs' paper for more details to cite in this subsection}
-The goal of this subsection is to set up the prerequisites to state Proposition \ref{inductive construction of coalgebras}  \cite[Theorem 4.12]{Heuts_Koszul} which we will use in the proof of Theorem \ref{2nd Main Theorem}. 
+The goal of this subsection is to set up the prerequisites to state Proposition \ref{inductive construction of coalgebras}  \cite[Theorem 4.12]{Heuts_Koszul}, which we will use in the proof of Theorem \ref{2nd Main Theorem}. 
 We discuss various notions of truncations of $\infty$-(co)operads, for which we follow the upcoming paper by Heuts \cite{Heuts_Koszul} closely. The upshot of these truncations is to produce natural filtrations on algebras (resp. coalgebras) over operads (resp. cooperads). 
 
 
@@ -279,9 +279,9 @@ $
 $
 
 \begin{lemma}
-	\cite{Hadrianphdthesis}[Lemma 2.16]
-	If $\CC$ is a pointed symmetric monoidal $\infty$-category with colimits.
-	Then the restriction functor
+	\cite[Lemma 2.16]{Hadrianphdthesis}
+	If $\CC$ is a pointed symmetric monoidal $\infty$-category with colimits,
+	then the restriction functor
 $$
 (-)_{\leq n}: \SSeq(\CC) \to 
 \SSeq_{\leq n}(\CC)
@@ -333,7 +333,7 @@ The lemma above has an immediate corollary.
     \to 
     \Opd(\CC)
     $$
-    which is right adjoint to $\rho_{n}$. On the other hand, the functor $\rho_n:\Opd(\CC) \to \operatorname{Op}_{\leq n}(\CC)$ preserves limits and filtered colimits (since they are computed in the underlying $\infty$-category of symmetric sequences) hence by the adjoint functor theorem \cite[Corollary 5.5.2.9.]{HTT}, it admits a left adjoint 
+    which is right adjoint to $\rho_{n}$. On the other hand, the functor $\rho_n:\Opd(\CC) \to \operatorname{Op}_{\leq n}(\CC)$ preserves limits and filtered colimits (since they are computed in the underlying $\infty$-category of symmetric sequences), hence by the adjoint functor theorem \cite[Corollary 5.5.2.9.]{HTT}, it admits a left adjoint 
     $$
     \varphi_n: \operatorname{Op}_{\leq n}(\CC)
     \to 
@@ -514,6 +514,7 @@ $$
 for each $n\geq 1$ and homotopy coherent data that keeps track of the associativity.
 
 \begin{definition}
+\label{Def 3.2.2.}
 Let $F:\CC\to \CC$ be an endofunctor.
 	We define the $\infty$-category $\Alg_{F}(\CC)$ of \emph{$F$-algebras in $\CC$} to be the pullback of the following diagram in $\Cat_{\infty}$
 \[
@@ -530,8 +531,12 @@ Let $F:\CC\to \CC$ be an endofunctor.
 	\arrow[from=2-1, to= 2-2, "(F\text{,} id)"].
 \end{tikzcd}
 \]
-That is, $\Alg_{F}(\CC)$ is the subcategory of objects $X$ equipped with a morphism $F(X)\to X$.
+That is, $\Alg_{F}(\CC)$ has as objects $X$ of $\CC$ equipped with a morphism $F(X)\to X$.
 \end{definition}
+
+\begin{remark}
+Our notation might cause potential confusion when $F$ is a monad $T$, since we write $\Alg_T(\CC)$ for the $\infty$-category of left modules over $T$. Note that this is different from the pullback definition in Definition \ref{Def 3.2.2.}. 
+\end{remark}
 
 Proposition \ref{Operad as a colimits} motivates us to ask the following question: Can we write an $\CO$-algebra, as the limit of $\varphi_k\CO$-algebras as in the case of Postnikov decomposition of a simply-connected space? 
 
@@ -576,7 +581,7 @@ Theorem \ref{Thm 4.1 of Heuts Koszul Duality paper} has the following informal i
 \section{Koszul Duality and Divided Power Conilpotent  Coalgebras }
 \label{Coalgebras over cooperads and Koszul Duality}
 In this section, we discuss Koszul duality for operads in the sense of \cite{Ginzburg-Kapranov} and define divided power, conilpotent coalgebras over an $\infty$-cooperad. 
-We will assume $\CC$ is a presentably, stable, symmetric monoidal $\infty$-category in this section.
+We will assume $\CC$ is a presentably stable, symmetric monoidal $\infty$-category in this section.
 
 We first discuss bar-cobar duality between $\infty$-operads and $\infty$-cooperads. The general form of bar-cobar duality is exhibited in the form of associative algebras and coassociative coalgebras in a nice $\infty$-category in \cite{HA}.
 \begin{proposition}
@@ -643,7 +648,7 @@ The trivial $\CO$-algebra functor admits a left adjoint $\cot_{\CO}:\CC\rightarr
 The functor $\cot_{\CO}$ is called the \emph{cotangent fiber functor} in \cite{Heuts_Koszul}. 
 \begin{remark}
 Informally, a trivial $\CO$-algebra $X$ is an $\CO$-algebra whose structure map 
-$X\to F_{\CO}(X)$ factors through $X$ itself.
+$F_{\CO}(X)\to X$ factors through $X$ itself.
 \end{remark}
 
 \begin{remark}
@@ -691,7 +696,7 @@ in which the left adjoints are above their right adjoints and both horizontal co
 The following corollary of the Barr-Beck-Lurie theorem \cite[Theorem 4.7.3.5.]{HA} says that any $\CO$-algebra $X$ is canonically equivalent to the geomectric realization of a simplicial object of $\CO$-algebras.
 \begin{proposition}
 \label{free resolutino of O-algebras}
-Let $X$ be an $\CO$-algebra, then it can be resolved as the geometric realization of the simplicial objects $(\Free_{\CO}\circ \oblv_{\CO})_{\bullet + 1}X$, i.e., 
+If $X$ is an $\CO$-algebra, then it can be resolved as the geometric realization of the simplicial objects $(\Free_{\CO}\circ \oblv_{\CO})_{\bullet + 1}X$, i.e., 
 \begin{equation}
 \label{(3.5)}
     X \simeq
@@ -895,7 +900,7 @@ then the cofree comonad $Q$ is given by $F$.
     By a dual statement of \cite[Proposition 3.1.3.3]{HA} in the special case where $\CA$ is the trivial $\infty$-operad, $\CB$ and $\CO$ are the commutative $\infty$-operad $\Fin_{*}$, such a operadic limit exists.
     The lemma then follows from the dual version of \cite[Example 3.1.1.17]{HA}, which says that a diagram $p:\Fin_{*} \to \CC$ is an operadic limit diagram if it remains as a limit diagram in $\CC$ after tensoring with any object $Y\in\CC$. 
     In our case, this means that $\prod_{n\geq 1} (X^{\otimes n})^{h\Sigma_n}$ is an operadic limit diagram if 
-    $\prod_{n\geq 1} (X^{\otimes n})^{h\Sigma_n} \otimes Y$ is a limit diagram for any $Y\in \CC$, which is the condition of $\gamma$ being an equivalence.
+    $\prod_{n\geq 1} (X^{\otimes n})^{h\Sigma_n} \otimes Y$ is a limit diagram for any $Y\in \CC$, which is the condition required for $\gamma$ being an equivalence.
     
 \end{proof}
 
@@ -934,7 +939,7 @@ We first claim that the canonical map
     $$
     by Proposition \ref{Tate vanishing for tame spectra}.
     
-	Fix an integer $k$ and consider the $k$-truncation of $\gamma$. There exists a maximum integer $l(k)$ such that $X^{\otimes (l+1)}$ is $(k+1)$-connective.
+	Fix an integer $k$, and consider the $k$-truncation of $\gamma$. There exists a maximum integer $l(k)$ such that $X^{\otimes (l+1)}$ is $(k+1)$-connective.
 	Hence the $k$-truncation of $\gamma$ can be identified as a map
 	$$
 	\tau_{\leq k} \gamma: \bigoplus_{n\geq 1}^{l(k)}
@@ -960,10 +965,13 @@ F_{\Com}(X) := \coprod_{n\geq 1} (X^{\otimes n})_{h\Sigma_n}.
 $$
 Note that $F_{\Com}$ restricts to a comonad on the $\infty$-category $\Sp^{\geq r}$ of $r$-connective spectra, since colimits in $\Sp^{\geq r}$ are computed in $\Sp$.
 Applying the localization functor $L_{\tame}$, we obtain a comonad $L_{\tame}F_{\Com}$ on $\Sp_{\tame}^{\geq r}$, given by 
+\pagebreak
 $$
 L_{\tame} F_{\Com}(X) := \coprod_{n\geq 1} L_{\tame}(X^{\otimes n})_{h\Sigma_n}.
 $$
 as $L_{\tame}$ is colimit-preserving and symmetric monoidal.
+
+
 \begin{definition}
 \label{Def of tame dp, nil coalgebras}
     The $\infty$-category of \emph{divided power, conilpotent coalgebras in tame spectra} is defined to be the $\infty$-category of left comodules over the comonad $L_{\tame}F_{\Com}$
@@ -977,7 +985,7 @@ $$
 \Gamma: L_{\tame}F_{\Com}\to 
 Q_{\tame},
 $$
-which restricts to the equivalence $L_{\tame}F_{\Com}\simeq Q_{\tame}$.
+which gives rise to an equivalence $L_{\tame}F_{\Com}\simeq Q_{\tame}$.
 By the discussion in Appendix \ref{Construction of the Comparison Functor}, there is a map of comonads on $\Sp^{\geq r}_{\tame}$
 $$
 \Gamma: (L_{\tame})_{*} j^{*} F_{\Com} \to Q_{\tame}.
@@ -995,7 +1003,7 @@ The following proposition now follows immediately from Proposition \ref{Cofreee 
 \end{proposition}
 \begin{proof}
 Since the forgetful functor $\Comonad(\Sp^{\geq r}_{\tame}) \to \End(\Sp^{\geq r}_{\tame})$ is conservative,
-it suffices to show the $\Gamma$ induces an equivalence between the underlying endofunctors of $L_{\tame}F_{\Com}$ and $Q_{\tame}$. For $X\in \Sp^{\geq r}_{\tame}$, the map $\Gamma$ is obtained from the projection $L_{\tame}F_{\Com}X \to X$ to the first factor, which agrees with the canonical projection $Q_{\tame}X\to X$ by \ref{Cofreee commutative comonad}. Hence $\Gamma$ is an equivalence.
+it suffices to show the $\Gamma$ induces an equivalence between the underlying endofunctors of $L_{\tame}F_{\Com}$ and $Q_{\tame}$. For $X\in \Sp^{\geq r}_{\tame}$, the map $\Gamma$ is obtained from the projection $L_{\tame}F_{\Com}X \to X$ to the first factor (see Appendix \ref{Construction of the Comparison Functor}), which agrees with the canonical projection $Q_{\tame}X\to X$ by \ref{Cofreee commutative comonad}. Hence $\Gamma$ is an equivalence since it is an equivalence between the underlying endorfunctors.
 
 \end{proof}
 
@@ -1042,7 +1050,7 @@ We first need to provide some background on partition posets.
 Consider the set $\mathbf{P}(n)$ of partitions (i.e., equivalence relations) on the finite set $\{1, \cdots, n \}$. Note that $\mathbf{P}(n)$ is a poset with minimal element the trivial partition and maximal element the discrete partition.
 Write $\mathbf{P}^{+}(n)$ (resp. $\mathbf{P}^{-}(n)$ ) for the subposet of $\mathbf{P}(n)$ obtained by deleting the minimal (resp. maximal) partition.
 
-	The Goodwillie derivative $\partial_* \id$ of the identity functor $\id: \pSpace \to \pSpace$ forms a symmetric sequence in $\Sp$, i.e. each $\partial_n \id$ is a $\Sigma_n$-spectrum in the naive sense. In \cite{JohnsonDerivative} and \cite{Arone-Mahowald}, it was shown that
+	The Goodwillie derivative $\partial_* \id$ of the identity functor $\id: \pSpace \to \pSpace$ forms a symmetric sequence in $\Sp$, i.e., each $\partial_n \id$ is a $\Sigma_n$-spectrum in the naive sense. In \cite{JohnsonDerivative} and \cite{Arone-Mahowald}, it was shown that
 	$$
 	\partial_n \id \simeq \BD(\Sigma^{\infty} K_n),
 	$$
@@ -1062,7 +1070,7 @@ Write $\mathbf{P}^{+}(n)$ (resp. $\mathbf{P}^{-}(n)$ ) for the subposet of $\mat
 	\end{proposition}
 	
 	\begin{remark}
-    The classical Koszul duality between the Lie operad and commutative cooperad in (graded) abelian groups is studied in \cite{Ginzburg-Kapranov} and \cite{Loday-Vallette};
+    Classical Koszul duality between the Lie operad and the commutative cooperad $\Com$ in (graded) abelian groups is studied in \cite{Ginzburg-Kapranov} and \cite{Loday-Vallette};
     there is an equivalence of operads in (graded) abelian groups
     \[
     \Lie[-1] \simeq \Com^{\vee}
@@ -1100,7 +1108,7 @@ The mismatch of degrees between the spectral Lie operad $\BL$ and the Lie operad
 	$$
 	(\mathbf{\Sigma^{-1}} \CO ) (n)= \BS^{n}\otimes\Sigma^{-1} \CO(n)
 	$$
-	where $\Sigma_n$ acts on $\BS^{n}$ by permuting the $n$ factors of $\BS^{1}$ and $\Sigma_n$ acts on $\mathbf{\Sigma^{-1}} \CO(n)$ via the its action on $\CO(n)$.
+	where $\Sigma_n$ acts on $\BS^{n}$ by permuting the $n$ factors of $\BS^{1}$, and $\Sigma_n$ acts on $\mathbf{\Sigma^{-1}} \CO(n)$ via the its action on $\CO(n)$.
 \end{definition}
 
 We now state some results concerning shifts of monads and $\infty$-operads without proof. We refer the reader to \cite[Section 2.2.4.]{Hadrianphdthesis} and \cite{Camarena_mod2_free_spectral_Lie_algebra} for more details.
@@ -1127,7 +1135,7 @@ $$
 \Omega':
 \Alg_{\CO}(\CC) \to \Alg_{\bf{\Sigma}^{-1} \CO }(\CC)
 $$
-for the inverse of $\Sigma'$
+for the inverse of $\Sigma'$,
 which fits into a commutative diagram
 \[
     \begin{tikzcd}
@@ -1173,7 +1181,7 @@ The commutativity of (\ref{trivial commutes with shifts}) follows from the fact 
     & \simeq \Sigma \cot_{\bf{\Sigma}^{-1} \CO}.
 \end{align*}
 
-The commutativity of (\ref{trivial commutes with shifts}) says that a trivial $\CO$-algebra under $\Omega'$ is a equivalent to a trivial $\bf{\Sigma}^{-1} \CO$-algebra, and the commutativity of (\ref{diagram of equivalences in shifting}) says that there is an equivalence $\Omega_{\bf{\Sigma}^{-1} \CO}X \simeq \Omega'\circ \Omega_{\CO}(\Sigma' X)$ for $X\in \Alg_{\bf{\Sigma}^{-1} \CO}(\CC)$.
+The commutativity of (\ref{trivial commutes with shifts}) says that applying $\Omega'$ to a trivial $\CO$-algebra gives rise to a trivial $\bf{\Sigma}^{-1} \CO$-algebra, and the commutativity of (\ref{diagram of equivalences in shifting}) says that there is an equivalence $\Omega_{\bf{\Sigma}^{-1} \CO}X \simeq \Omega'\circ \Omega_{\CO}(\Sigma' X)$ for $X\in \Alg_{\bf{\Sigma}^{-1} \CO}(\CC)$.
 Therefore, we obtain the following lemma.
 \begin{lemma}
 \label{transition of triviality}
@@ -1182,7 +1190,7 @@ If $\Omega_{\CO}(\Sigma' Y)$ is a trivial $\CO$-algebra, then
 $\Omega_{\bf{\Sigma}^{-1} \CO}Y$ is a trivial $\bf{\Sigma}^{-1} \CO$-algebra.
 \end{lemma}
 \begin{proof}
-    By the assumption, $\Omega_{\CO}(\Sigma' Y)$ is a trivial $\CO$-algebra.
+    By the assumption, $\Omega_{\CO}(\Sigma' Y)$ is a trivial $\CO$-algebra, i.e. $\Omega_{\CO}(\Sigma' Y)\simeq \trivial_{\CO}Y$.
     Moreover, by the commutativity of (\ref{trivial commutes with shifts}) and (\ref{diagram of equivalences in shifting}), there are equivalences 
     $$
     \Omega_{\bf{\Sigma}^{-1} \CO}Y \simeq \Omega' \Omega_{\CO}(\Sigma' Y)
@@ -1202,30 +1210,57 @@ $\Omega_{\bf{\Sigma}^{-1} \CO}Y$ is a trivial $\bf{\Sigma}^{-1} \CO$-algebra.
 % is an equivalence of $\infty$-categories.
 % We abuse notation by still writing $\Omega_{\CO}$ as the composition above.
 % Therefore, we have a commutative diagram of equivalences
+\begin{construction}
+[Suspension morphism]
 
-
-Note also that there is a map of monads 
+Consider the commutative diagram
+\[
+\begin{tikzcd}
+     \Alg_{\CO}(\CC) &   & \CC\\
+                     & \Alg_{\CO}(\CC) &
+    \arrow[from = 1-1, to = 1-3, "\oblv_{\CO}\circ \Omega_{\CO}"]
+    \arrow[from = 1-1, to = 2-2, "\Omega_{\CO}" ]
+    \arrow[from = 2-2, to = 1-3, "\oblv_{\CO}"].
+\end{tikzcd}
+\]
+The forgetful functor $\oblv_{\CO}$ is monadic and it corresponds to the monad $F_{\CO}$. Since the functor $\oblv_{\CO}\circ \Omega_{\CO}$ is conservative and preserves sifted colimits, it is also monadic by the Barr-Beck-Lurie theorem \cite[Theorem 4.7.3.5.]{HA}. Moreover, the monad induced from the right adjoint $\oblv_{\CO}\circ \Omega_{\CO}$ is exactly $F_{\bf{\Sigma}^{-1} \CO}$. 
+Therefore, we obtain a functor 
+$$
+\sigma^{*}: \Alg_{\bf{\Sigma}^{-1} \CO }(\CC) 
+\to 
+\Alg_{\CO}(\CC)
+$$
+which is the dashed arrow in the following commutative diagram
+\[
+\begin{tikzcd}
+     \Alg_{\CO}(\CC) &   & \CC \\
+                     &   &      \\
+                     & \Alg_{\bf{\Sigma}^{-1} \CO }(\CC)  & \\
+                     &   & \\
+                     & \Alg_{ \CO }(\CC) 
+    \arrow[from = 1-1, to = 1-3, "\oblv_{\CO}\circ \Omega_{\CO}"]
+    \arrow[from = 1-1, to = 3-2, "\Omega'"]
+    \arrow[from = 3-2, to = 1-3, "\oblv_{\bf{\Sigma}^{-1} \CO }"]
+    \arrow[from = 1-1, to = 5-2, "\Omega_{\CO}" left , bend right]
+    \arrow[from = 5-2, to = 1-3, "\oblv_{\CO}" right , bend right]
+    \arrow[from = 3-2, to = 5-2, "\sigma^{*}", dashed]
+    .
+\end{tikzcd}
+\]
+By the dual statement of Theorem \ref{Monads-Alg correspondence}, the functor 
+$$
+\sigma^{*}:
+ \Alg_{\bf{\Sigma}^{-1} \CO }(\CC)\to \Alg_{\CO}(\CC)
+$$
+induces a map of monads
 \begin{equation}
 \label{suspension morphism}
     \sigma: F_{\CO}\to \Omega F_{\CO}\Sigma, 
 \end{equation}
-which will be called the \emph{suspension morphism}. \todo{still need to ask Gijs how to construct this in general}
-The suspension morphism $\sigma$ induces a functor
-$$
-\sigma^*: \Alg_{\bf{\Sigma}^{-1} \CO }(\CC) \to \Alg_{\CO }(\CC)
-$$
-by restriction. 
-One then observes that there is a factorization 
-\[
-\begin{tikzcd}
-     \Alg_{\CO}(\CC) &   & \Alg_{\CO}(\CC)\\
-                     & \Alg_{\bf{\Sigma}^{-1} \CO }(\CC)  &
-    \arrow[from = 1-1, to = 1-3, "\Omega_{\CO}"]
-    \arrow[from = 1-1, to = 2-2, "\Omega'"]
-    \arrow[from = 2-2, to = 1-3, "\sigma^*"]
-\end{tikzcd}
-\]
-where $\oblv_{\bf{\Sigma}^{-1}\CO}\circ \Omega' X \simeq \Omega X$ and $\oblv_{\CO}( \sigma^* X)\simeq X$.
+which we will refer as the \emph{suspension morphism}.
+\end{construction}
+
+
 
 
 
@@ -1492,7 +1527,9 @@ is a localization.
 	\map_{\Alg_{F_\CO}(\CC)}(M, g'N),
 	$$
 	induced from $\eta'$,
-	is an equivalence for any $M\in \Alg_{F_\CO}(\CC)$ and $N\in \Alg_{f_{!}(F_\CO)}(\CD)$. First observe that $f'$ sends free $F_\CO$-algebras to free $f_{!}(F_\CO)$-algebras, i.e.
+	is an equivalence for any $M\in \Alg_{F_\CO}(\CC)$ and $N\in \Alg_{f_{!}(F_\CO)}(\CD)$. 
+	
+	First observe that $f'$ sends free $F_\CO$-algebras to free $f_{!}(F_\CO)$-algebras, i.e.
 	$$
 	f'(\Free_{F_{\CO}} X)\simeq \Free_{f_{!}(F_\CO)} f(X)
 	$$
@@ -1645,7 +1682,7 @@ We now define the Chevalley-Eilenberg functor for tame spectral Lie algebras. Fi
      \simeq
      L_{\tame}|\Barconstruction(\id, \CO , \id)_{\bullet}|.
     $$
-    Since $L_{\tame}$ preserves colimits, we are reduced to checking that
+    Since $L_{\tame}$ preserves colimits, the proof is reduced to checking that
     $$
     L_{\tame} (\underbrace{\CO \circ \cdots \circ \CO}_{\text{$n$-fold}} )
     \simeq 
@@ -1739,11 +1776,11 @@ $$
 
 
 
-Consider the functor $\trivial_{\spLie}:\Sp^{\geq r}_{\tame}\to \Alg_{\spLie}(\Sp^{\geq r}_{\tame})$ and $$
-\indec_{\BL}:\Alg_{\BL}(\Sp^{\geq r+1}_{\tame})
-\to
-\coAlg^{\divpow, \nil}_{\Com}(\Sp^{\geq r+1}_{\tame}).
-$$
+% Consider the functor $\trivial_{\spLie}:\Sp^{\geq r}_{\tame}\to \Alg_{\spLie}(\Sp^{\geq r}_{\tame})$ and $$
+% \indec_{\BL}:\Alg_{\BL}(\Sp^{\geq r+1}_{\tame})
+% \to
+% \coAlg^{\divpow, \nil}_{\Com}(\Sp^{\geq r+1}_{\tame}).
+% $$
 
 
 
@@ -1764,56 +1801,78 @@ We now show that the Chevalley-Eilenberg functor $\widetilde{\operatorname{CE}}$
 	L_{\tame}\indec_{\BL}(L)\hat{\otimes} 
 	L_{\tame}\indec_{\BL}(L') 
 	\]
-	is an equivalence for $L,L' \in \Alg_{\spLie}(\Sp^{\geq r}_{\tame}$). 
+	is an equivalence for $L,L' \in \Alg_{\BL}(\Sp^{\geq r}_{\tame}$). 
 	By Remark \ref{Formula for computing CE_tame(L)}, the proof reduces to showing that the natural map 
 	\[
     c:	\indec_{\BL}(L \times L') 
 	\to 
 	\indec_{\BL}(L)\otimes \indec_{\BL}(L') 
 	\]
-	is a tame equivalence when we regard $L,L'$ as objects in $\Alg_{\spLie}(\Sp)$.
+	is a tame equivalence when we regard $L,L'$ as objects in $\Alg_{\BL}(\Sp)$.
 
-	For a spectral Lie algebra $X$, we let $X_*$ denote its canonical filtration from Theorem \ref{Canonical grading on an O-algebra}. At degree $n$,
-	the associated graded of the canonical filtration admits an explicit description 
+	For a spectral Lie algebra $X$, we let $X_*$ denote its canonical filtration from Theorem \ref{Canonical grading on an O-algebra}. 
+	Note that $\indec_{\BL}$ induces a functor 
 	$$
-	\Free_{\BL}((B\BL(n)\otimes X^{\otimes n})_{h\Sigma_n}.
-	$$
-	If $f: X \to Y $ is a map between filtered spectral Lie algebras, then
-	postcomposing with $\indec_{\BL}$ induces a map on their canonical filtrations
-	$$
-	\indec_{\BL}: X_* \to Y_*. 
-	$$
-	
-	Since $X\simeq \colim X_*$ and $\indec_{\BL}$ preserves colimits, it suffices to show $c$ induces an equivalence on the canonical filtrations, i.e.
-	$$
-	\indec_{\BL}(L_* \times L'_*)
+	(\indec)_*: \Fil^{+}(\Alg_{\BL}(\Sp))
 	\to 
-	\indec_{\BL}(L_*) \otimes \indec_{\BL}(L'_*).
+	\Fil^{+}(\coCAlg^{\divpow,\nil}(\Sp))
+	$$
+	by postcomposing with $\indec_{\BL}$.
+	Since $X\simeq \colim X_*$ and $\indec_{\BL}$ preserves colimits, it suffices to show $c$ induces an equivalence on the canonical filtrations, i.e.,
+	$$
+	(\indec_{\BL})_*(L_* \times L'_*)
+	\to 
+	(\indec_{\BL})_*(L_*) \otimes (\indec_{\BL})_*(L'_*).
 	$$
 	Note also that the associated graded functor $\Graded$ is conservative by Lemma \ref{Ass-gr is conservative}, hence the proof further reduces to proving that the induced map on associated gradeds
     \[
     \nu:
-	\indec_{\BL}( \Graded(L \times L')_{*} )
+	\Graded (\indec_{\BL})_*( (L \times L')_{*} )
 	\to 
-	\indec_{\BL}(\Graded(L_*))\otimes \indec_{\BL}(\Graded(L'_*))
+	\Graded ((\indec_{\BL})_*(L_*)\otimes (\indec_{\BL})_*(L'_*))
 	\]
 	is an equivalence.
-	Since
+	
+	Since $\Graded$ is symmetric monoidal by Remark \ref{BM def 2.5}, and it commutes with $(\indec_{\BL})_*$ (since $\Graded$ is defined using colimits), there are equivalences
 	$$
-	\indec_{\BL}\big(
-	\Free_{\spLie}((B\spLie(n)\otimes X^{\otimes n})_{h\Sigma_n} )
-	\big)
+	\Graded (\indec_{\BL})_*( (L \times L')_{*} )
+	\simeq \indec_{\BL}^{\Graded} (\Graded (L\times L')_{*})
+	$$
+	and 
+	$$
+	\Graded ((\indec_{\BL})_*(L_*)\otimes (\indec_{\BL})_*(L'_*)) 
 	\simeq 
-	(X^{\otimes n})_{h\Sigma_n}
-	\simeq
-	\Sym^n(X)
+	\indec^{\Graded}_{\BL}(\Graded(L_*)) \otimes 
+	\indec^{\Graded}_{\BL}(\Graded(L'_*))
 	$$
-	for any $X\in \Sp$.
-	Hence the map $\nu$ is equivalent to the natural map
+	where $\indec^{\Graded}_{\BL}$ denotes the induced functor on associated graded. Hence we can identify $\nu$ as the map
+	$$
+	\indec_{\BL}^{\Graded} (\Graded (L\times L')_{*}) 
+	\to 
+	\indec^{\Graded}_{\BL}(\Graded(L_*)) \otimes 
+	\indec^{\Graded}_{\BL}(\Graded(L'_*)).
+	$$
+	
+	By theorem \ref{Canonical grading on an O-algebra}, the associated graded of the canonical filtration of a spectral Lie algebra $X$ has the form 
+	$$
+	\Free_{\BL}((B\BL(n)\otimes X^{\otimes n})_{h\Sigma_n} \simeq \Free_{\BL}(X^{\otimes n})_{h\Sigma_n}
+	$$
+	where the latter equivalence comes from the fact that $B\BL\simeq \Com$. 
+	Hence, there are equivalences
+	\begin{align*}
+	\oblv_{\BL}\indec_{\BL}
+	\Free_{\BL}(X^{\otimes n})_{h\Sigma_n}
+	&\simeq 
+	\cot_{\BL}\circ \Free_{\BL}(X^{\otimes n})_{h\Sigma_n}  \\	    
+	&\simeq (X^{\otimes n})_{h\Sigma_n} \\
+	& = \Sym^n(X).
+	\end{align*}
+
+	Therefore, the map $\oblv(\nu)$ is equivalent to the natural map
 	$$
 	\Sym (L\times L') \to \Sym(L) \otimes \Sym(L'),
 	$$
-	which is a tame equivalence since the symmetric coalgebra functor $\Sym$ is the cofree coalgebra functor which preserves products and the tensor product in $\Sp^{\geq r}_{\tame}$ is the product in $\coCAlg^{\divpow,\nil}(\Sp^{\geq r}_{\tame})\simeq \coCAlg(\Sp^{\geq r}_{\tame})$.
+	which is a tame equivalence since the symmetric coalgebra functor $\Sym$ is the cofree coalgebra comonad which preserves products and the tensor product in $\Sp^{\geq r}_{\tame}$ is the product in $\coCAlg^{\divpow,\nil}(\Sp^{\geq r}_{\tame})\simeq \coCAlg(\Sp^{\geq r}_{\tame})$.
 
 \end{proof}
 

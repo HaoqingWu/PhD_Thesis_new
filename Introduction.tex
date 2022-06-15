@@ -3,18 +3,18 @@
 \section{A Brief History of Algebraic Models for Spaces}
 
 Algebraic topology is the study of classification of topological spaces up to certain equivalence relations via algebraic invariants. 
-The homotopy groups $\pi_* X$ of a space $X$ is one of these invariants.
-For $n=1$, $\pi_1(X)$ is called the \emph{fundamental group} of $X$. For $n\geq 2$, $\pi_n(X)$ are abelian groups. 
+The homotopy groups $\pi_* X$ of a space $X$ are among those invariants.
+For $n=1$, $\pi_1(X)$ is called the \emph{fundamental group} of $X$. For $n\geq 2$, $\pi_n(X)$ is an abelian group. 
 
 Spheres are the building blocks in topology, since the category of spaces is generated under (homotopy) colimits by $S^n$ for $n\geq 0$. Perhaps surprisingly, we only know very little about the homotopy groups of spheres. 
 
-To motivate the study of algebraic models of spaces, we now survey some important results about the homotopy groups of the spheres $\pi_m(S^n)$ for $m,n \geq 1$.
-From our first course of topology, we know that the fundamental group of the circle $S^1$ is isomorphic to the group of integers $\BZ$. Moreover, $\pi_1( S^1)$ is the only non-vanishing homotopy group of $S^1$, i.e. $S^1$ is an Eilenberg-Maclane space of type $K(\BZ,1)$.
+To motivate the study of algebraic models of spaces, we now survey some important results about the homotopy groups of spheres $\pi_m(S^n)$ for $m,n \geq 1$.
+From our first course of topology, we know that the fundamental group of the circle $S^1$ is isomorphic to the group of integers $\BZ$. Moreover, $\pi_1( S^1)$ is the only non-vanishing homotopy group of $S^1$, i.e., $S^1$ is an Eilenberg-Maclane space of type $K(\BZ,1)$.
 
 In 1930's, Hurewicz showed that, if $X$ simply-connected,  the lowest non-vanishing homology group of a space $X$ is isomorphic to the lowest non-vanishing homotopy group. Hurewicz's theorem then implies the following theorem, which states that any map from a low dimensional sphere to a higher dimensional sphere is null-homotopic.
 \begin{theorem}
     [Hurewicz]
-    The homotopry group $\pi_m(S^n)$ is zero for $m<n$ and is isomorphic to $\BZ$ if $m=n$.
+    The homotopy group $\pi_m(S^n)$ is zero for $m<n$ and is isomorphic to $\BZ$ if $m=n$.
 \end{theorem}
 \clearpage
 
@@ -54,7 +54,7 @@ In the 1950's, Serre used his spectral sequence to compute $\pi_m(S^n)$ modulo t
     \]
 \end{theorem}
 
-Serre's theorem initiated the study of the homotopy theory of spaces modulo torsion, which is the subject called the \emph{rational homotopy theory}. A simply-connected space $X$ is \emph{rational} if its homotopy groups $\pi_* X$ are vector spaces over $\BQ$.
+Serre's theorem initiated the study of the homotopy theory of spaces modulo torsion, which is the subject called \emph{rational homotopy theory}. A simply-connected space $X$ is \emph{rational} if its homotopy groups $\pi_* X$ are vector spaces over $\BQ$.
 Quillen \cite{Quillen_RHT} showed that rational homotopy theory has a complete algebraic description. 
 We shall now use the modern language of $\infty$-categories from \cite{HTT} to explain Quillen's theorem in more detail.
 
@@ -103,7 +103,7 @@ is fully faithful.
 
 One natural question to ask is what other subcategories of spaces admit concrete algebraic descriptions as in the case of rational spaces.
 We will now survey some results that answer this question.
-Recall that we obtain the $\infty$-category $\CS^{\geq 2}_{\BQ}$ by formally inverting rational equivalences in $\CS^{\geq 2}_{*}$. This technique is called \emph{localization}, and it can be streamlined in a general setting as follows.
+Recall that we obtain the $\infty$-category $\CS^{\geq 2}_{\BQ}$ by formally inverting rational equivalences in $\CS^{\geq 2}_{*}$. This technique is called \emph{localization}, and it can be formulated in a general setting as follows.
 \begin{definition}
 \label{localization}
 Let $\CC$ be an $\infty$-category and let $S$ be a (small) collection of morphisms in $\CC$. 
@@ -117,7 +117,7 @@ $$
 $$
 is an equivalence for every $S$-local object $X$.
 \end{definition}
-Let $\CC'$ be the full subcategory of $\CC$ spanned by $S$-local objects. $\CC'$ is called a \emph{localization} of $\CC$ if the embedding functor $\CC' \hookrightarrow \CC$ admits a left adjoint.
+Let $\CC'$ be the full subcategory of $\CC$ spanned by $S$-local objects. The $\infty$-category $\CC'$ is called a \emph{localization} of $\CC$ if the embedding functor $\CC' \hookrightarrow \CC$ admits a left adjoint.
 \begin{proposition}
 \cite[Proposition 5.5.4.15.]{HTT}
 \label{Prop 5.5.4.15. HTT2}
@@ -166,7 +166,7 @@ In number theory, one can recover the ring of integers $\BZ$ by the following pu
 \[
 \begin{tikzcd}
 \BZ & \prod_{p} \BZ^{\wedge}_{p}  \\
-\BQ & (\prod_{p} \BZ^{\wedge}_{p}) \otimes \BQ
+\BQ & (\prod_{p} \BZ^{\wedge}_{p}) \otimes \BQ,
         \arrow[from=1-1, to=1-2]
 		\arrow[from=2-1, to=2-2]
 		\arrow[from=1-1, to=2-1]
@@ -187,15 +187,15 @@ X_\BQ & (\prod_{p} X^{\wedge}_{p}) \otimes \BQ.
 
 One might then hope to construct the integral model for nilpotent spaces by assembling Sullivan's cochain model for rational spaces and Mandell's cochain model for $p$-complete spaces. However, the difficulty lies in how to assemble information from $\E_{\infty}$-rings over fields of different characteristics.
 
-Mandell's theorem suggests that we need structures more than just commutativity to capture the whole information of integral homotopy.
-We now introduce the recent results of Yuan \cite{Yuan} concerning the integral homotopy type.
+Mandell's theorem suggests that we need structures beyond just commutativity to capture all the information of integral homotopy.
+We now introduce recent results of Yuan \cite{Yuan} concerning the integral homotopy type.
 
 For each prime $p$, Nikolaus-Scholze \cite{Nikolaus-Scholze} showed that any $\E_{\infty}$-ring $A$ admits a \emph{Frobenius action} $\varphi_{A}:A \to A^{tC_{p}}$, where $(-)^{tC_p}$ denotes the Tate construction of a $C_p$-spectrum.
 Yuan \cite{Yuan} then defines a $p$-complete $\E_\infty$-ring to be \emph{$p$-perfect} by imposing conditions on the Frobenius action and showed that the $\infty$-category $\CAlg_p^{\operatorname{perf}}$ of $p$-perfect $\E_\infty$-rings
 admits an $S^1$-action.
 A canonical example of a $p$-perfect $\E_{\infty}$-ring is the $p$-complete sphere spectrum $\BS^{\wedge}_p$.
 
-Yuan defined the $\infty$-category $\CAlg_{p}^{\varphi=1}$ of \emph{$p$-Frobenius fixed $\E_{\infty}$-rings} as the $S^1$-fixed points of $\CAlg_p^{\operatorname{perf}}$, and refer to a lift $A_{\varphi=1}\in \CAlg_{p}^{\varphi=1}$ of a
+Yuan defined the $\infty$-category $\CAlg_{p}^{\varphi=1}$ of \emph{$p$-Frobenius fixed $\E_{\infty}$-rings} as the $S^1$-fixed points of $\CAlg_p^{\operatorname{perf}}$, and referred to a lift $A_{\varphi=1}\in \CAlg_{p}^{\varphi=1}$ of a
 $p$-perfect $\E_{\infty}$-ring $A$ as the \emph{$F_p$-trivialization} of $A$.
 % $\CAlg_{p}^{\varphi=1}$ and the mapping
 % spectrum $(\BS^{\wedge}_{p})_{\varphi=1}^X$ is a $p$-Frobenius fixed $\infty$-ring.
@@ -210,7 +210,7 @@ Yuan then constructed a new algebraic model for simply-connected $p$-complete sp
     $ that sends $X$ to $(\BS^{\wedge}_{p})_{\varphi=1}^{X}$ is fully faithful.
 \end{theorem}
 
-It turns out that the cochain of $X$ with coefficient in the $p$-Frobenius fixed $\E_\infty$-ring $(\BS^{\wedge}_{p})_{\varphi=1}$ can be assembled for different primes $p$ and give rise to an algebraic model for the integral homotopy type.
+It turns out that the cochains of $X$ with coefficient in the $p$-Frobenius fixed $\E_\infty$-ring $(\BS^{\wedge}_{p})_{\varphi=1}$ can be assembled for different primes $p$ and give rise to an algebraic model for the integral homotopy type.
 
 An $\E_{\infty}$-ring $A$ is called \emph{Frobenius fixed} if its $p$-completion $A^{\wedge}_{p}$ admits $F_p$-trivialization for each prime $p$. Let $\CAlg^{\varphi=1}$ denote the $\infty$-category of Frobenius fixed $\E_\infty$-rings.
 \begin{theorem}
@@ -228,11 +228,11 @@ Since the prerequisites to understand the exact statement are substantial, we gi
 
 For each prime $p$, there is a sequence of homology thoeries $$K(0), K(1), K(2), \dots, K(\infty)$$ 
 on $p$-local spaces, called the \emph{Morava K-theories}. 
-For certain $n$, these homology theories are well-known. For instance, $K(0)$ is the rational homology theory, $K(1)$ is the mod-$p$ complex K-theory and $K(\infty)$ is the mod-$p$ homology theory.
+For certain $n$, these homology theories are well-known. For instance, $K(0)$ is rational homology theory, $K(1)$ is mod-$p$ complex K-theory and $K(\infty)$ is mod-$p$ homology theory.
 These homology theories are the fundamental objects in \emph{chromatic homotopy theory}.
 
 A $p$-local finite complex $V$ is of \emph{type $n$} if $K_*(m)V$ vanishes for $m<n$ and is non-zero for $m=n$.
-By the famous periodicity theorem of Hopkins-Smith \cite{Hopkins-Smith}, any $p$-local finite complex $V$ of type $n$ admits a \emph{$v_n$-self map} $v:\Sigma^d V\to V$ so that $K_*(m)v$ is an isomoprhism for $m=n$ and $K_*(m)v$ is the zero map for $m\neq n$.
+By the famous periodicity theorem of Hopkins-Smith \cite{Hopkins-Smith}, any $p$-local finite complex $V$ of type $n$ admits a \emph{$v_n$-self map} $v:\Sigma^d V\to V$ so that $K_*(m)v$ is an isomorphism for $m=n$ and $K_*(m)v$ is the zero map for $m\neq n$.
 Hence, for any $p$-local space $X$, the $v_n$-self map $v$ acts invertibly on the homotopy groups of the mapping space $\map_*(V,X)$ and one can define the \emph{$v_n$-periodic homotopy groups} of $X$ as
 $$
 v^{-1}\pi_*(X;V):= \BZ[v^{\pm 1}]\otimes_{\BZ[v] }\pi_* \map_*(V,X).
@@ -252,10 +252,10 @@ We will give the definition of the $\infty$-category of spectral Lie algebras in
 
 We now introduce the algebraic model for Dwyer's tame homotopy theory \cite{Dwyer}, which is also the main topic of this thesis.
 All the localizations we have seen so far are obtained by first inverting a set of primes for all spaces. For rational spaces, we invert all the primes at all degrees of the homotopy groups.
-What if we only invert more primes as the degree of the homotopy groups increases?
-The motivation of doing so was inspired by the following theorem of Serre.
+What if we progressively invert more primes as the degree of the homotopy groups increases?
+The motivation for doing so was inspired by the following theorem of Serre.
 \begin{theorem}[Serre]
-	For $n\geq 3$, the first $p$-torsion in the homotopy group $\pi_{k}(S^{n})$ appears at degree $ n+2p-3$.
+	For $n\geq 3$, the first $p$-torsion in the homotopy group $\pi_{k}(S^{n})$ appears in degree $ n+2p-3$.
 \end{theorem}
 
 A \emph{ring system} $R_*$ is a sequence of subrings $R_j$ of $\BQ$ for $j\geq 0$ such that  $R_m$ is a subring of $R_n$ if $m<n$. In this thesis, we will be interested in only one ring system, defined as follows.
@@ -270,21 +270,21 @@ In other words, $R_j$ is the smallest subring of $\BQ$ in which $p$ is inverted 
 
 Let $r\geq 3$ be an integer. 
 Dwyer \cite{Dwyer} defined the tame model structure on the category $\CS^{\geq r}_*$ of pointed $r$-connective spaces, in which a map $f$ is a weak equivalence if $\pi_{r+j}(f)\otimes R_j$ is an isomorphism for all $j\geq 0$.
-On the algebraic side, he defined the tame model structure on the category $\Alg_{\Lie}(\Ch_\BZ)^{\geq r-1}$ of $(r-1)$-connective dg Lie algebras over the integer $\BZ$, in which a map $f$ is a weak equivalence if the induced maps on homology groups with coefficient in the tame ring system are isomorphisms, that is, $H_{r+j-1}(f)\otimes R_j$ is an isomorphism for all $j\geq 0$.
+On the algebraic side, he defined the tame model structure on the category $\Alg_{\Lie}(\Ch_\BZ)^{\geq r-1}$ of $(r-1)$-connective dg Lie algebras over the integers $\BZ$, in which a map $f$ is a weak equivalence if the induced maps on homology groups with coefficients in the tame ring system are isomorphisms, that is, $H_{r+j-1}(f)\otimes R_j$ is an isomorphism for all $j\geq 0$.
 There seems to exist no direct homotopy functor that connects these two categories on the model category level.
-Dwyer then defined the notion of \emph{Lazard algebras}, which are Lie algebras with just enough extra structure so that the Baker-Campbell-Hausdorff formula makes sense. He equipped the category of simplicial Lazard algebras with a model structure and proved that it is the intermediate category of a zig-zag of Quillen equivalences between $\CS^{\geq r}_*$ and $\Alg_{\Lie}(\Ch_\BZ)^{\geq r-1}$.
+Dwyer then defined the notion of \emph{Lazard algebras}, which are Lie algebras with just enough extra structure so that the Baker-Campbell-Hausdorff formula makes sense. He equipped the category of simplicial Lazard algebras with a model structure and proved that it is the intermediate category in a zig-zag of Quillen equivalences between $\CS^{\geq r}_*$ and $\Alg_{\Lie}(\Ch_\BZ)^{\geq r-1}$.
 \begin{theorem}
 \cite{Dwyer}
 With the model structures described above,
 there is a zig-zag of Quillen equivalences between $\CS^{\geq r}_*$ and $\Alg_{\Lie}(\Ch(\BZ))^{\geq r-1}$.
 \end{theorem}
 
-We end this section by stating a result of Anick \cite{AnickHopf} which motivates us to consider the Hopf algebra model for tame spaces.
-Let $p$ be a prime number and let $R=\BZ[{\frac{1}{(p-1)!}}]$. 
+We end this section by stating a result of Anick \cite{AnickHopf} which motivated us to consider the Hopf algebra model for tame spaces.
+Let $p$ be a prime number, and let $R=\BZ[{\frac{1}{(p-1)!}}]$. 
 A free differential graded (dg) Lie algebra is \emph{$r$-mild}  if it is generated in the range of dimension from $r$ to $rp-1$. Denote the category of free $r$-mild dg Lie algebras over $R$  by $\Alg_{\Lie}(\Ch_{r}(R))$. Anick introduced a notion of \emph{Hopf algebra up to homotopy} (Hah) \cite[Definition 4.1]{AnickHopf}, which is a generalization of dg cocommutative Hopf algebras with the usual structure diagrams commuting up to homotopy. Let $\Hah_{r}(R)$ denote the category of $r$-mild Hah over $R$.
 
 \begin{theorem}[\cite{AnickHopf} Theorem 4.8]
-The universal enveloping algebra functor $U:\Alg_{\Lie}(\Ch_{r}(R))\rightarrow \Hah_{r}(R)$ induces an equivalence on their homotopy categroies:
+The universal enveloping algebra functor $U:\Alg_{\Lie}(\Ch_{r}(R))\rightarrow \Hah_{r}(R)$ induces an equivalence on their homotopy categories:
 $$
 \Ho(\Alg_{\Lie}(\Ch_{r}(R)) )\simeq \Ho(\Hah_{r}(R)).
 $$
@@ -319,7 +319,7 @@ U:\Alg_{\spLie}(\Sp^{\geq r}_{\tame}) \to \Hopfalgebra(\Sp^{\geq r}_{\tame}),
 $$ 
 where the target is the $\infty$-category of Hopf algebras in $\Sp^{\geq r}_{\tame}$. 
 
-In chapter 4, we prove a new Hopf algebra model for tame spaces.
+In chapter 4, we establish a new Hopf algebra model for tame spaces.
 \begin{thmx}
 \label{Theorem C}
 There is an equivalence of $\infty$-categories 
@@ -329,7 +329,7 @@ $$
 \Hopfalgebra(\Sp^{\geq r-1}_{\tame}).
 $$
 \end{thmx}
-Using the Hopf algebra model, we prove the following theorem which can be seen as a Milnor-Moore theorem for tame spectra.
+Using the Hopf algebra model, we prove the following theorem, which can be seen as a Milnor-Moore theorem for tame spectra.
 \begin{thmx}
 The universal enveloping algebra functor $U$ is an equivalence of $\infty$-categories.
 \end{thmx}
@@ -340,7 +340,7 @@ Assembling these three theorems, we then recover Dwyer's Lie algebra model for t
 
 
 \section{Conventions and Notation}
-Throughout this paper, we will freely use the language of $\infty$-categories (i.e. quasi-categories) developed in \cite{HTT} and higher alegebras from \cite{HA}.
+Throughout this paper, we will freely use the language of $\infty$-categories (i.e. quasi-categories) developed in \cite{HTT} and higher algebra from \cite{HA}.
 We will try our best to provide explicit references to the relevant results in these books.
 
 \subsection{Conventions}
@@ -363,7 +363,9 @@ We will try our best to provide explicit references to the relevant results in t
 	\item $\Fin^{nu}$ is the category of non-empty finite sets.
 	\item $\Fin$ is the category of (possibly empty) finite sets. 
 	\item Let $\CC$ and $\CD$ be $\infty$-categories. We let $\Fun(\CC,\CD)$ denote the $\infty$-category of functors from $\CC$ to $\CD$.
-	\item $\CS_{*}$ is the $\infty$-category of spaces and $\Sp$ is the $\infty$-category of spectra.
+	\item Let $f:K \to \CC$ be a map of simplicial sets.
+	We denote $\CC_{/f}$ the slice category defined below \cite[Proposition 1.2.9.2.]{HTT}.
+	\item $\CS_{*}$ is the $\infty$-category of pointed spaces and $\Sp$ is the $\infty$-category of spectra.
 	\item $\Cat_{\infty}$ is the $\infty$-category of (small) $\infty$-categories.
 	\item $\Pr^{L}$ is the $\infty$-category of presentable $\infty$-categories with colimit-preserving functors as morphisms \cite[Definition 5.5.3.1.]{HTT}.
 	Let $\CC,\CD \in \Pr^L$. We let $\Fun^L(\CC,\CD)$ (resp. $\Fun^{R}(\CC, \CD)$) denote  the $\infty$-category of functors from $\CC$ to $\CD$ that are left adjoints (resp. right adjoints).
@@ -372,7 +374,6 @@ We will try our best to provide explicit references to the relevant results in t
 	If $\CC$ is a symmetric monoidal $\infty$-category, we let $\CAlg(\CC)$ denote the 
 	$\infty$-category of commutative algebras in $\CC$.
 	\item 
-	Informally, a monad (resp. comonad) (See \cite[Definition 4.7.3.2.]{HA}) $T$ on $\CC$ is an associative (resp. coassociative) algebra object in the $\infty$-category of endofunctors on $
-	CC$. 
+	Informally, a monad (resp. comonad) ( \cite[Definition 4.7.3.2.]{HA}) $T$ on $\CC$ is an associative (resp. coassociative) algebra object in the $\infty$-category of endofunctors on $CC$. 
 	$\LMod_{T}(\CC)$ denotes the $\infty$-category of left modules over the monad $T$ as defined in \cite[Section 4.2]{HA}. Dually, $\LcoMod_{\CQ}(\CC)$ denotes the $\infty$-category of left comodules over the comonad $\CQ$.
 \end{itemize}
