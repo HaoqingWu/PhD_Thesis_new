@@ -17,7 +17,7 @@ In this last chapter, we prove Theorem \ref{Theorem B} and Theorem \ref{Theorem 
 %	\item By Proposition \ref{Identification of tame Lie algebras}, the $\infty$-category $\Alg_{\Lie}(\Sp^{\geq r-1}_{(r-1)\text{-}\tame})$ of tame Lie algebras can be identified with the full subcategory of $\Alg_{\Lie}(\Mod_{H\BZ})^{\geq r-1}$ spanned by Lie algebras whose underlying $H\BZ$-modules are tame.
 %\end{enumerate}
 %\end{remark}
-concerning a new Hopf algebra model for $r$-tame spaces. Note that every space $X$ is a commutative coalgebra in $\Space_*$ via the diagonal $X\to X\wedge X$. Since the functors $\Sigma^{\infty}$ and $L_{\tame}$ are symmetric monoidal, the functor
+concerning a new Hopf algebra model for $r$-tame spaces. Note that every pointed space $X$ is a commutative coalgebra in $\Space_*$ via the diagonal $X\to X\times X \to X\wedge X$. Since the functors $\Sigma^{\infty}$ and $L_{\tame}$ are symmetric monoidal, the functor
 $$
 \Sigma^{\infty}_{\tame}: \Space^{\geq r}_{\tame}  \to \Sp^{\geq r}_{\tame}
 $$
@@ -87,19 +87,19 @@ we suspected that the functor
 	$$
 	for all $j\geq 0$.
 	
-	However, we do not have a Whitehead theorem for tame spaces, as we need more conditions on the cokernel $\coker(h_{r+j}, X)$ of the Hurewicz map
+	However, we do not have a Whitehead theorem for tame spaces, as we need more conditions on the cokernel $\coker(h_{r+j, X})$ of the Hurewicz map
 	$$
 	h_{r+j,X}: \pi_{r+j}X\otimes R_j \to 
 	H_{r+j}X\otimes R_j.
 	$$
 	\begin{proposition}
 	\cite[Proposition 1.1]{Felix-LemaireII}
-	If $f:X \to Y$ is a map between $r$-tame spaces, then the following are equivalent:
+	If $f:X \to Y$ is a map between $r$-connective spaces, then the following are equivalent:
 \begin{enumerate}
     \item $f$ is a tame equivalence.
     \item For all $j\geq 0$, 
     $$
-    H_{r+j}f \otimes R_j
+    H_{r+j}f \otimes R_j: 
     H_{r+j}X \otimes R_j
 	\to 
 	H_{r+j}Y \otimes R_j
@@ -114,7 +114,7 @@ we suspected that the functor
 	
 	Taking a step back, we prove that $C_{\operatorname{tame}}$ is fully faithful when restricted to the full subcategory of tame Eilenberg-Maclane spaces.
 We then show that the functors $\Omega$ and $\Grp(C_{\operatorname{tame}})$ are both equivalences of $\infty$-categories. 
-The crux of the latter case is that the loop of a $r$-tame space splits into a product of tame Eilenberg-Maclane spaces, and therefore we can conclude that $\Grp(C_{\operatorname{tame}})$ is fully faithful.
+The crux of the latter is that the loop of a $r$-tame space splits into a product of tame Eilenberg-Maclane spaces, and therefore we can conclude that $\Grp(C_{\operatorname{tame}})$ is fully faithful.
 
 The second goal of this final chapter is to connect the Hopf algebra model for tame spaces with tame spectral Lie algebras defined in \S \ref{Lie Algebras in Tame Spectra}.
 
@@ -155,9 +155,9 @@ The following is the precise statement of Theorem \ref{Theorem C}.
 \label{FIRST_MAIN_THEOREM}
 	The universal enveloping algebra functor
 	$$
-	U: \Alg_{\spLie}(\Sp^{\geq r}_{\text{$r$-tame}})  
+	U: \Alg_{\spLie}(\Sp^{\geq r}_{\tame})
 	\to
-	\Hopfalgebra(\Sp_{\tame})
+	\Hopfalgebra(\Sp^{\geq r}_{\tame})
 	$$
 	is an equivalence of $\infty$-categories.
 \end{theorem}
@@ -224,7 +224,7 @@ is an equivalence. Here we abuse notation by writing $\Sym_{\tame} \Sigma^{n}HV$
 Since both $\Sigma^{\infty}_{\tame}\Omega^{\infty}$ and $\Sym_{\tame}$ preserves filtered colimits, we can reduce to the case of $V$ being a finitely generated $R_k$-module. 
 
 Let $M(V,n)$ be the Moore space of type $(V,n)$.
-By Remark \ref{suspension tame sends Moore space to EM-space}, $L_{\tame}\Sigma^{\infty}$ sends a tame Moore space to a tame Eilenberg-Maclane spectrum, i.e., 
+By Remark \ref{suspension tame sends Moore space to EM-space}, $L_{\tame}\Sigma^{\infty}$ sends $M(V,n)$ to a tame Eilenberg-Maclane spectrum, i.e., 
 $$
 L_{\tame}\Sigma^{\infty} M(V,n) \simeq  \Sigma^n H V.
 $$
@@ -300,8 +300,9 @@ Combining Lemma \ref{Lemma 4.1.2.} and Lemma \ref{Sym commutes with Sigma infini
 & \simeq \Sigma_{\tame}^{\infty} \Sym_{\tame}L_{\tame} M(V,n)\\
 & \simeq   \Sym_{\tame} \Sigma_{\tame}^{\infty}L_{\tame}M(V,n)\\
 & \simeq   \Sym_{\tame} L_{\tame} \Sigma^{\infty}M(V,n)\\
-& \simeq \Sym_{\tame} \Sigma^n HV.
+& \simeq \Sym_{\tame} \Sigma^n HV,
 \end{align*}
+where the last equivalence follows from Remark \ref{suspension tame sends Moore space to EM-space}.
 Hence $\gamma$ can be identified as the unique map that lifts $\Sigma^{\infty}_{\tame}K(V,n) \to \Sigma^n HV$ through the projection
 $$
 \Sym_{\tame} \Sigma^n HV \to \Sigma^n HV,
@@ -428,39 +429,47 @@ For $r\geq 4$,
 \begin{lemma}
 \label{conservativity of forgetful functor (general)}
 	Let $\CC$ be a Cartesian symmetric monoidal $\infty$-category and let $L:\CC\to \CC'$ be a localization functor that preserves finite products.
-	Then 
-	\begin{enumerate}
-		\item the forgetful functor
+	Then both forgetful functors 
 	\[
 	\Grp(\CC)\to \CC
 	\]
-	is conservative;
-	\item the forgetful functor
+	and 
 	\[
 	\Grp(\CC')\to \CC'
 	\]
-	is also conservative.
-	\end{enumerate}
+	are conservative.
+% 	\begin{enumerate}
+% 		\item the forgetful functor
+% 	\[
+% 	\Grp(\CC)\to \CC
+% 	\]
+% 	is conservative;
+% 	\item the forgetful functor
+% 	\[
+% 	\Grp(\CC')\to \CC'
+% 	\]
+% 	is also conservative.
+% 	\end{enumerate}
 \end{lemma}
 \begin{proof}
 	Since the category of groups is a full subcategory of monoids, it suffices to prove the forgetful functor $\Mon(\CC)\to \CC$ is conservative.
-	The first statement then follows from \cite{HA}[Proposition 2.4.2.5] and \cite{HA}[Lemma 3.2.2.6.].
+	The statements then follows from \cite[Proposition 2.4.2.5]{HA} and \cite[Lemma 3.2.2.6.]{HA}.
 	
-	For the second statement, consider the commutative diagram
-	\[
-\begin{tikzcd}
-	\Mon(\CC') & \CC'\\
-	\Mon(\CC) & 
-	\CC	
-	\arrow[from=1-1, to= 1-2, "\oblv_{\Mon}"]
-%	\arrow[from=1-2, to= 1-1, shift left, "R"]
-	\arrow[from=1-1, to=2-1]
-	\arrow[from=1-2, to=2-2]
-	\arrow[from=2-1, to= 2-2, "\oblv_{\Mon}"]
-%	\arrow[from=2-2, to= 2-1, shift left, "R'"]
-\end{tikzcd}
-\]
-where both vertical arrows are fully faithful (hence conservative) and the bottom arrow is conservative by the first statement. Hence the top arrow is conservative as well.
+% 	For the second statement, consider the commutative diagram
+% 	\[
+% \begin{tikzcd}
+% 	\Mon(\CC') & \CC'\\
+% 	\Mon(\CC) & 
+% 	\CC	
+% 	\arrow[from=1-1, to= 1-2, "\oblv_{\Mon}"]
+% %	\arrow[from=1-2, to= 1-1, shift left, "R"]
+% 	\arrow[from=1-1, to=2-1]
+% 	\arrow[from=1-2, to=2-2]
+% 	\arrow[from=2-1, to= 2-2, "\oblv_{\Mon}"]
+% %	\arrow[from=2-2, to= 2-1, shift left, "R'"]
+% \end{tikzcd}
+% \]
+% where both vertical arrows are fully faithful (hence conservative) and the bottom arrow is conservative by the first statement. Hence the top arrow is conservative as well.
 \end{proof}
 
 Applying Lemma \ref{conservativity of forgetful functor (general)} to the case of tame spaces, we have the following corollary.
@@ -506,8 +515,6 @@ Applying Lemma \ref{conservativity of forgetful functor (general)} again, we hav
 Recall that in rational homotopy theory, any rational H-space splits as a product of Eilenberg-Maclane spaces.
 Our proof of the Hopf algebra model of tame spaces will be based on an analogous splitting result for tame H-spaces. 
 The following proposition was already proved in \cite[Proposition 1.7]{Scheerer-Tanre} using Dwyer's Lie algebra model for tame spaces. 
-
-
 \begin{proposition}
 \label{Decomp of tame H-spaces}
 	Let $X$ be an $r$-tame $\E_1$-space. Then $X$ is equivalent to a product of Eilenberg-Maclane spaces, that is, 
@@ -517,9 +524,9 @@ The following proposition was already proved in \cite[Proposition 1.7]{Scheerer-
 \end{proposition}
 \pagebreak
 \begin{proof}
-We first assume $X$ is of finite type, i.e., all its homology groups are finitely generated. If $X$ is rational, then the result follows from rational homotopy theory. Hence we can further reduce to the case when $X$ is $p$-local for every some $p$.
+We first assume $X$ is of finite type, i.e., all its homotopy groups are finitely generated abelian groups. If $X$ is rational, then the result follows from rational homotopy theory. Otherwise, we can assume $X$ is $p$-local for every some prime $p$.
 
-If $X$ is both tame and $p$-local, then $X$ is $(r+2p-4)$-truncated, since $X$ is of finite type and  $\pi_{n}X$ is uniquely $p$-divisible for $n \geq r+2p-3$. If $p=2$, then $X$ is an Eilenberg-MacLane space $K(\pi_r X, r)$ ($2$ is inverted at degree $r+1$), hence we can assume $p$ is an odd prime. 
+Observe that if $X$ is both tame and $p$-local, then $X$ is $(r+2p-4)$-truncated; since $X$ is $p$-local and $\pi_{n}X$ is uniquely $p$-divisible for $n \geq r+2p-3$. Note also that if $p=2$, then $X$ is an Eilenberg-MacLane space $K(\pi_r X, r)$ ($2$ is inverted at degree $r+1$), hence we can assume $p$ is an odd prime. 
 
 We proceed by induction on the Postnikov tower of $X$.
 The base case is obvious. 	
@@ -533,7 +540,7 @@ K(\pi_{n+1}X,n+1)\to
 K(\pi_{n+1}X,n+2).
 $$
 We want to show that the $k$-invariant $[k_n]\in H^{n+2}(\tau_{\leq n}X; \pi_{n+1}X)$ vanishes. 
-Note that $k_n$ is a map of $H$-spaces, hence it represents a primitive element in the $p$-local Hopf algebra $H^*(\tau_{\leq n}X; \pi_{n+1}X)$ \cite[Theorem 3.2]{D.Kahn}. 
+Note that $k_n$ represents a primitive element in the $p$-local Hopf algebra $H^*(\tau_{\leq n}X; \pi_{n+1}X)$ (\cite[Theorem 3.2]{D.Kahn}).
 We claim $[k_n]$ is also indecomposable.
 A primitive element in a $p$-local commutative Hopf algebra is decomposable if and only if it's a $p$-th power \cite[Proposition 4.21]{Milnor-Moore}.
 However, $[k_n]$ cannot be a $p$-th power for degree reasons. As
@@ -542,16 +549,17 @@ $n<r+2p-3$, whence
 n-rp<r+2p-3-rp< (2-r)(p-1)<0.
 \]
 	
-By the inductive hypothesis, the cohomology of $\tau_n X$ is a direct sum of cohomology groups of Eilenberg-Maclane spaces, i.e., 
+By the inductive hypothesis, the cohomology of $\tau_{\leq n} X$ is a product of Eilenberg-Maclane spaces. By the K\"{u}nneth formula, 
+it suffices to show 
 $$
-H^{n+2}(\tau_{\leq n} X; \pi_{n+1}X)\cong
-\bigoplus_{i = r}^{n} H^{n+2}(K(\pi_i X, i); \pi_{n+1}X).
+H^{n+2}(K(\pi_i X, i); \pi_{n+1}X) = 0
 $$
+for $r\leq i \leq n$.
 Cartan \cite{Cartan_I} shows that if $R$ is a $p$-local ring, all cohomology classes  $[\alpha]\in H^{*}(K(A,k);R)$ are decomposable in degree $k<*<k+2(p-1)$. 
 Since $n+2 < i + 2(p-1)$ for any $r\leq i \leq n$,
 $[k_n]=0$ for degree reasons.
 
-A general tame $\E_1$-space $X$, it can be written as a filtered colimits of tame $\E_1$-spaces of finite type
+Now a general tame $\E_1$-space $X$ can be written as a filtered colimits of tame $\E_1$-spaces of finite type
 $$
 X\simeq \colim_{\alpha} X_{\alpha}.
 $$
@@ -583,12 +591,44 @@ $RC_{\tame} X$ is given by the totalization
 $$
 RC_{\tame} X \simeq \Tot (\Omega^{\infty} \Sigma^{\infty}_{\tame})^{\bullet +1}  X.
 $$
-Then for any $l<k$, we have
+Let $Q:= \Omega^{\infty} \Sigma^{\infty}_{\tame}$. Recall that $\Tot (\Omega^{\infty} \Sigma^{\infty}_{\tame})^{\bullet +1}  X$ can be written as the inverse limit 
 $$
-\map_{\CS^{\geq r}_{\tame}}(S^l, \Tot (\Omega^{\infty} \Sigma^{\infty}_{\tame})^{\bullet +1}  X) \simeq 
-\Tot \map_{\CS^{\geq r}_{\tame}}(S^l,  (\Omega^{\infty} \Sigma^{\infty}_{\tame})^{\bullet +1}  X) \simeq *
+\lim_n \Tot^n Q^{\bullet + 1} X,
 $$
-since $\Omega^{\infty}\Sigma^{\infty}_{\tame}$ preserves connectivity.
+where $\Tot^n Q^{\bullet + 1} X$ denotes the limit of the diagram over $Q^{\bullet + 1} X|_{\Delta_{\leq n}}$.
+Let $T$ be a set with $n$ elements and $\CP(T)$ be the poset of subsets of $T$. 
+We define a diagram $\CF$ over $\CP(T)$ by
+$$
+\CF(S):= Q^{|T-S| + 1} X.
+$$
+By the appendix of \cite{Arone-Kankaanrinta98},
+$$
+\fib(\Tot^{n} Q^{\bullet + 1}X \to 
+\Tot^{n-1} Q^{\bullet + 1}X) 
+\simeq 
+\Omega^{n-1}F_n(X)
+$$
+is $nk$-connective. Hence, the lemma follows from the Milnor exact sequence
+$$
+0 \to {\lim}^{1}_n \pi_{m+1}\Tot^{n} Q^{\bullet + 1}X \to \pi_m \Tot Q^{\bullet + 1}X 
+\to 
+\lim_n \pi_m \Tot^n Q^{\bullet + 1}X
+\to 
+0.
+$$ 
+% Then for any $r \leq l<k$, we have
+% \begin{align*}
+%     \pi_l \Tot (\Omega^{\infty} \Sigma^{\infty}_{\tame})^{\bullet +1}  X 
+%     & \cong  
+%     \pi_0
+%     \map_{\Space_{*}}(S^l, \Tot (\Omega^{\infty} \Sigma^{\infty}_{\tame})^{\bullet +1}  X)\\
+%     & \simeq 
+%     \
+% \end{align*}
+  
+% \Tot \map_{\CS^{\geq r}_{\tame}}(S^l,  (\Omega^{\infty} \Sigma^{\infty}_{\tame})^{\bullet +1}  X) \simeq *
+
+% since $\Omega^{\infty}\Sigma^{\infty}_{\tame}$ preserves connectivity.
 
 \end{proof}
 
@@ -617,7 +657,7 @@ $$
 \end{theorem}
 \begin{proof}
 First, we prove the functor $G_{\tame}$ is fully faithful.
-Since both $C_{tame}$ and $R$ preserve finite products, there is a pair of adjunctions
+Since both $C_{tame}$ and $R$ preserve finite products, they lift to a pair of adjunction
 \begin{equation}
 \label{adj on grps}
 	\adj{G_{tame}}{\Grp(\CS^{\geq r-1}_{\tame})}{\Hopfalgebra(\Sp^{\geq r-1}_{\tame})}{R'}.
@@ -767,20 +807,24 @@ gives an equivalence
 $$
 \tildeCE: \Alg_{\spLie}(\Mod_{H\BZ})^{\geq r-1} \to \coCAlg^{\divpow, \nil}(\Mod_{H\BZ})^{\geq r-1}
 $$
-of $\infty$-categories. The $\infty$-category $\Alg_{\spLie}(\Mod_{H\BZ})^{\geq r-1}$ is generated by the free Lie algebra $\Free_{\spLie}(\Sigma^{r-1} H\BZ)$ (in $\Mod_{H\BZ}$) under colimits,
- it follows that the $\infty$-category $\coCAlg^{\divpow, \nil}(\Mod_{H\BZ})^{\geq r-1}$ is generated under colimits by the trivial commutative coalgebra $\trivial_{\Com}(\Sigma^{r-1}H \BZ)$, since we have an equivalence of functors
+of $\infty$-categories. The $\infty$-category $\Alg_{\spLie}(\Mod_{H\BZ})^{\geq r-1}$ is generated by the free Lie algebra $\Free_{\spLie}(\Sigma^{r-1} H\BZ)$ (in $\Mod_{H\BZ}$) under colimits.
+ It follows that the $\infty$-category $\coCAlg^{\divpow, \nil}(\Mod_{H\BZ})^{\geq r-1}$ is generated under colimits by the trivial commutative coalgebra $\trivial_{\Com}(\Sigma^{r-1}H \BZ)$, since we have an equivalence of functors
 $$
 \tildeCE \circ \Free_{\spLie} \simeq \trivial_{\Com}.
 $$
 
 Since $\coCAlg(\Sp^{\geq r}_{\tame})$ is
-a localization of $\coCAlg^{\divpow, \nil}(\Mod_{H\BZ}^{\geq r-1})$ by Corollary \ref{Identification of tame commutative coalgebras in Mod_HZ},
+a localization of $\coCAlg^{\divpow, \nil}(\Mod_{H\BZ}^{\geq r-1})$ by Remark \ref{Identification of tame commutative coalgebras in Mod_HZ},
 it is generated under colimits by the trivial tame coalgebra 
 $$
 \trivial_{\Com,\tame}(\Sigma^{r-1}H \BZ),
 $$ 
 where $\trivial_{\Com,\tame}$ denotes the composite $L_{\tame}\circ \trivial_{\Com}$.
-Hence it suffices to show that the essential image of $L_{\tame}S^{r-1}$ under $C_{\tame}$ is equivalent to the trivial coalgebra $\trivial_{\Com,tame}(\Sigma^{r-1}H \BZ)$, which is the content of Lemma \ref{Sigma S^n is a trivial coalgebra}.
+Hence it suffices to show 
+$$
+C_{\tame} L_{\tame}S^{r-1}\simeq
+\trivial_{\Com,tame}(\Sigma^{r-1}H \BZ),
+$$ which is the content of Lemma \ref{Sigma S^n is a trivial coalgebra}.
 
 \end{proof}
 
@@ -987,7 +1031,7 @@ The restriction along $\sigma$ fits in a factorization
 	\arrow[from=2-2, to=1-3, "\sigma^*" below].
 \end{tikzcd}
 \]
-We claim $\sigma:F_{\BL}\to F_{\Omega \BL \Sigma}$ factors through the identity monad after tame localization, which would complete the proof of Proposition \ref{Triviality of loop of an O-algebra},
+We claim $\sigma:F_{\BL}\to F_{\Omega \BL \Sigma}$ factors through the identity monad as the augmentation of $F_{\BL}$ followed by the unit of $F_{\Omega \BL \Sigma}$, after tame localization, which would complete the proof of Proposition \ref{Triviality of loop of an O-algebra},
 since the restriction along $F_\BL \to \id$ is indeed the trivial Lie algebra functor. 
 % For convenience, we abuse notation by writing $\BS^k$ for $L_{\tame}\BS^k$ for $k\geq r$.
 
@@ -1001,7 +1045,7 @@ $$
 \to 
 \Omega \BL \Sigma (\BS^{k_1}\oplus \cdots \oplus \BS^{k_n}).
 $$
-factors through $\BS^{k_1}\oplus \cdots \oplus \BS^{k_n}$ after tame localization.
+factors as the coaugmentation of $\BL$ follows by the augmentation of $\Omega \BL \Sigma$ on $\BS^{k_1}\oplus \cdots \oplus \BS^{k_n}$ after tame localization.
 \begin{theorem}
     [Hilton-Milnor Theorem, \cite{Brantner-Heuts}, \cite{Arone-Kankaanrinta98}]
     For any collection of spheres $\BS^{k_1}, \dots, \BS^{k_n}$, there is an equivalence
@@ -1035,7 +1079,7 @@ $$
 Observe that this map can be further factored by first applying the suspension morphism component wise, then applying the ``diagonal embedding'' $\BS^{-n}\to \BS^{-1}$. This can be summarized as the diagram below
 \[
 \begin{tikzcd}
-     F(\BS^{k_1 -1}, \cdots, \BS^{k_n -1})) & \Omega F(\Sigma \BS^{k_1 -1}, \cdots, \Sigma\BS^{k_n -1})\\
+     F(\BS^{k_1 -1}, \cdots, \BS^{k_n -1}) & \Omega F(\Sigma \BS^{k_1 -1}, \cdots, \Sigma\BS^{k_n -1})\\
      &     \Omega^{n} F(\Sigma \BS^{k_1 -1}, \cdots, \Sigma\BS^{k_n -1}).
      \arrow[from = 1-1, to = 1-2, "\sigma"]
      \arrow[from = 1-1, to = 2-2]

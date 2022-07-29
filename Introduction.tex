@@ -59,7 +59,7 @@ Quillen \cite{Quillen_RHT} showed that rational homotopy theory has a complete a
 We shall now use the modern language of $\infty$-categories from \cite{HTT} to explain Quillen's theorem in more detail.
 
 Let $\CS^{\geq 2}_*$ denote the $\infty$-category of pointed, simply-connected spaces and let $\Space^{\geq 2}_{\BQ}$ denote the full subcategory of $\CS^{\geq 2}_*$ spanned by rational spaces.
-A map $f:X\to Y$ in $\CS^{\geq 2}_*$ is a \emph{rational equivalence} if it induces isomorhpisms on rational homotopy groups
+A map $f:X\to Y$ in $\CS^{\geq 2}_*$ is a \emph{rational equivalence} if it induces isomorphisms on rational homotopy groups
 \[
 \pi_*(f): \pi_*X \otimes \BQ \to \pi_*Y \otimes \BQ;
 \]
@@ -67,7 +67,7 @@ or equivalently, if it induces isomorphisms on rational homology groups
 \[
 H_*(f): H_*(X;\BQ)  \to H_*(Y;\BQ).
 \]
-For any space $X\in \CS^{\geq 2}*$, there exists a map $\eta:X\to X_{\BQ}$ such that
+For any space $X\in \CS^{\geq 2}_*$, there exists a map $\eta:X\to X_{\BQ}$ such that
 \begin{enumerate}
     \item $X_{\BQ}$ is a rational space;
     \item $\eta$ is a rational equivalence.
@@ -91,7 +91,7 @@ Moreover, every $\CA_{PL}(X)$ is equivalent to a \emph{minimal model} $\Lambda_X
 From a modern prospective, Sullivan's functor $\CA_{PL}$ is essentially equivalent to the rational cochain functor $C^*(-;\BQ)$, and $C^*(X;\BQ)$ has a $\E_\infty$-algebra structure coming from the chain-level cup products. Sullivan's theorem can then be rephrased in the language of $\infty$-categories as follows.
 \begin{theorem}
     \cite{Sullivan}
-    Let $\CS^{\geq 2, \operatorname{fin}}_{\BQ}$ be the $\infty$-category of simply-connected spaces of finite type, and let  $\CAlg(\Ch_{\BQ})$ be the $\infty$-category of $\E_{\infty}$-algebras over $\BQ$.
+    Let $\CS^{\geq 2, \operatorname{fin}}_{\BQ}$ be the $\infty$-category of simply-connected rational spaces of finite type, and let  $\CAlg(\Ch_{\BQ})$ be the $\infty$-category of $\E_{\infty}$-algebras over $\BQ$.
     The cochain functor 
 $$
 C^*(-;\BQ): \CS^{\geq 2, \operatorname{fin}}_{\BQ}
@@ -159,8 +159,9 @@ $$
 Unfortunately, this is not the case due to the following theorem proved again by Mandell.
 \begin{theorem}
     \cite{Mandell_Cochain}
-    The integral cochain functor $C^*(-;\BZ)$ is faithful but not full.
+    The integral cochain functor $C^*(-;\BZ)$ (as a functor between ordinary categories) is faithful but not full.
 \end{theorem}
+
 The next best hope is to find a way to assemble information from rationalization and $p$-completions.
 In number theory, one can recover the ring of integers $\BZ$ by the following pullback square:
 \[
@@ -292,7 +293,6 @@ $$
 % Fix some integer $n$. 
 % Let $R$ be the subring of $\BQ$ which contains $\frac{1}{p}$ for all $p<n$. He defined the notion of \emph{Hopf algebras up to homotopy} .
 
-
 \section{Outline of the Thesis}
 The main objectives of the thesis are four-fold.
 In chapter 2, we will streamline the discussion of tame homotopy theory using the modern language of $\infty$-categories.
@@ -305,8 +305,8 @@ Secondly, we define the $\infty$-category $\Sp^{\geq r}_{\tame}$ of \emph{$r$-ta
 The $\infty$-category $\Sp^{\geq r}_{\tame}$ of tame spectra appears to have a nice algebraic description.
 Let $(\Mod_{H\BZ}^{\geq r})_{\tame}$ be the $\infty$-category of $r$-connective $H\BZ$-modules whose underlying spectra are tame.
 \begin{thmx}
-\label{Theorem B}
-There is an equivalence of $\infty$-categories
+\label{Theorem A}
+There is an symmetric monoidal equivalence of $\infty$-categories
 $$
 \Sp^{\geq r}_{\tame} \simeq (\Mod_{H\BZ}^{\geq r})_{\tame}.
 $$
@@ -321,7 +321,7 @@ where the target is the $\infty$-category of Hopf algebras in $\Sp^{\geq r}_{\ta
 
 In chapter 4, we establish a new Hopf algebra model for tame spaces.
 \begin{thmx}
-\label{Theorem C}
+\label{Theorem B}
 There is an equivalence of $\infty$-categories 
 $$
 \Space^{\geq r}_{\tame} 
@@ -329,10 +329,12 @@ $$
 \Hopfalgebra(\Sp^{\geq r-1}_{\tame}).
 $$
 \end{thmx}
-Using the Hopf algebra model, we prove the following theorem, which can be seen as a Milnor-Moore theorem for tame spectra.
+Using the Hopf algebra model, we prove a Milnor-Moore theorem for tame spectra which has already been observed by Hess \cite[Theorem 6.6]{HessMildandTame}.
 \begin{thmx}
+\label{Theorem C}
 The universal enveloping algebra functor $U$ is an equivalence of $\infty$-categories.
 \end{thmx}
+
 
 Assembling these three theorems, we then recover Dwyer's Lie algebra model for tame spaces.
 
@@ -352,7 +354,9 @@ We will try our best to provide explicit references to the relevant results in t
     \item If $\CD$ is an $\infty$-category, we denote by $\CD^{\simeq}$ the \emph{core} of $\CD$, i.e. the largest Kan subcomplex contained in $\CD$.  
     \item Let $n$ be a non-negative integer. 
     We will call a space (or spectrum) $X$ \emph{$n$-connective} if $\pi_i(X)=0$ for $i <n$. Dually, we will call a space $X$ (or spectrum) is $n$-truncated if $\pi_i(X)=0$ for $i >n$.
+    \item Let $X$ be a space or spectrum, we denote $\tau_{\leq k}X$ (resp. $\tau_{\geq k}X$) for the $k$-truncation (resp. $k$-connective cover) of $X$.
     \item A map $f: X \to Y$ between spaces or spectra is $n$-connective (resp. $n$-truncated) if the (homotopy) fibers of $f$ are $n$-connective (resp. $n$-truncated).
+    \item We always assume spaces are pointed in this thesis.
 \end{itemize}
 
 \subsection{Notation}
@@ -368,12 +372,20 @@ We will try our best to provide explicit references to the relevant results in t
 	\item $\CS_{*}$ is the $\infty$-category of pointed spaces and $\Sp$ is the $\infty$-category of spectra.
 	\item $\Cat_{\infty}$ is the $\infty$-category of (small) $\infty$-categories.
 	\item $\Pr^{L}$ is the $\infty$-category of presentable $\infty$-categories with colimit-preserving functors as morphisms \cite[Definition 5.5.3.1.]{HTT}.
-	Let $\CC,\CD \in \Pr^L$. We let $\Fun^L(\CC,\CD)$ (resp. $\Fun^{R}(\CC, \CD)$) denote  the $\infty$-category of functors from $\CC$ to $\CD$ that are left adjoints (resp. right adjoints).
+	\item
+    	Let $\CC,\CD \in \Pr^L$. We let $\Fun^L(\CC,\CD)$ (resp. $\Fun^{R}(\CC, \CD)$) denote  the $\infty$-category of colimit-preserving functors from $\CC$ to $\CD$ that are left adjoints (resp. right adjoints).
+    	
+    \item For every pair of $\infty$-categories $\CC$ and $\CD$, we let $\Fun(\CC, \CD)$ denote the $\infty$-category of functors from $\CC$ to $\CD$.
+    
+    \item If $F:\CC \to \CC'$ is a functor between $\infty$-categories, then we denote
+    $F_*: \Fun(\CD, \CC) \to \Fun(\CD,\CC')$ and $F^*: \Fun(\CC',\CD) \to \Fun(\CC, \CD)$ the functor induced by post-composing and pre-composing with $F$, respectively.
+    
+     
 	\item $\mathds{1}$ denotes the trivial $\infty$-operad, which is the unit object in the monoidal category of $\infty$-operads with respect to the composition product.
 	\item If $\CC$ is a monoidal $\infty$-category. We let $\Alg(\CC)$ denote the $\infty$-category of associative algebras in $\CC$.
 	If $\CC$ is a symmetric monoidal $\infty$-category, we let $\CAlg(\CC)$ denote the 
 	$\infty$-category of commutative algebras in $\CC$.
 	\item 
-	Informally, a monad (resp. comonad) ( \cite[Definition 4.7.3.2.]{HA}) $T$ on $\CC$ is an associative (resp. coassociative) algebra object in the $\infty$-category of endofunctors on $CC$. 
+	Informally, a monad (resp. comonad) ( \cite[Definition 4.7.3.2.]{HA}) $T$ on $\CC$ is an associative (resp. coassociative) algebra object in the $\infty$-category of endofunctors on $\CC$. 
 	$\LMod_{T}(\CC)$ denotes the $\infty$-category of left modules over the monad $T$ as defined in \cite[Section 4.2]{HA}. Dually, $\LcoMod_{\CQ}(\CC)$ denotes the $\infty$-category of left comodules over the comonad $\CQ$.
 \end{itemize}

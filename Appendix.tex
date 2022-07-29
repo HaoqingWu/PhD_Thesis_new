@@ -85,19 +85,11 @@ Let $\CC$ and $\CD$ be $\infty$-categories with finite products. Suppose $F:\CC 
 	$$ between the $\infty$-categories of simplicial objects.
 	Then $(1)$ follows from the fact that $F$ send monoids to monoids and $\Mon(\CC)$ is a full subcategory of $\Fun(\Delta^{op},\CC)$; and $(2)$ follows from the fact that $\Grp(\CC)$ is a full subcategory of $\Mon(\CC)$.
 \end{proof}
-%%%%
 
 
 
 
-
-
-
-%%%%
-
-
-
-
+% I hide the proof of the Proposition below, since it's obvious.
 
 \begin{proposition}
 \label{Restrict adjoints to full subcategory}
@@ -107,30 +99,30 @@ Let $\CC$ and $\CD$ be $\infty$-categories with finite products. Suppose $F:\CC 
 	\adj{F^0}{\CC^0}{\CD}{G}.
 	$$
 \end{proposition}
-\begin{proof}
-    By Proposition 5.2.2.8 of \cite{HTT}, the pair of adjoint functors gives a unit natural transformation
-    \[
-    id_{\CC} \to G\circ F
-    \]
-    such that for every pair of objects $c\in \CC$ and $d\in \CD$ the composite
-    \[
-    \map_{\CD}(F(c),d) \to \map_\CC(G\circ F(c),G(d)) \to \map_{\CC}(c,G(d))
-    \]
-    is an equivalence .
-	The assumptions then give a natural transformation $id_{\CC^{0}}\to G\circ F$.
-	For every $c'\in \CC^0$ and $d\in \CD$, the composite 
-	\[
-	\map_{\CD}(F(c'),d) \to \map_{\CC^0}(G\circ F(c'),G(d)) \to \map_{\CC^{0}}(c',G(d))
-	\] 
-	is an equivalence, since one observes that
-	$$
-	\map_{\CC^0}(G\circ F(c'),G(d))\simeq \map_{\CC}(G\circ F(c'),G(d))
-	$$
-	and 
-	$$
-	\map_{\CC^0}(c',G(d))\simeq \map_{\CC}(G\circ F(c'),G(d)).
-	$$
-	\end{proof}
+%     \begin{proof}
+%     By Proposition 5.2.2.8 of \cite{HTT}, the pair of adjoint functors gives a unit natural transformation
+%     \[
+%     id_{\CC} \to G\circ F
+%     \]
+%     such that for every pair of objects $c\in \CC$ and $d\in \CD$ the composite
+%     \[
+%     \map_{\CD}(F(c),d) \to \map_\CC(G\circ F(c),G(d)) \to \map_{\CC}(c,G(d))
+%     \]
+%     is an equivalence .
+% 	The assumptions then give a natural transformation $id_{\CC^{0}}\to G\circ F$.
+% 	For every $c'\in \CC^0$ and $d\in \CD$, the composite 
+% 	\[
+% 	\map_{\CD}(F(c'),d) \to \map_{\CC^0}(G\circ F(c'),G(d)) \to \map_{\CC^{0}}(c',G(d))
+% 	\] 
+% 	is an equivalence, since one observes that
+% 	$$
+% 	\map_{\CC^0}(G\circ F(c'),G(d))\simeq \map_{\CC}(G\circ F(c'),G(d))
+% 	$$
+% 	and 
+% 	$$
+% 	\map_{\CC^0}(c',G(d))\simeq \map_{\CC}(G\circ F(c'),G(d)).
+% 	$$
+% 	\end{proof}
 
 \begin{definition}
 \cite[Definition 2.1]{Gepner-Moritz-Nikolaus}
@@ -147,7 +139,9 @@ Let $\CC$ and $\CD$ be $\infty$-categories with finite products. Suppose $F:\CC 
     \item Any stable $\infty$-category is preadditive.
     \item The $\infty$-category $\Sp^{\geq r}$ of $r$-connective spectra is preadditive;
     indeed, the coproduct of $X,Y\in \Sp^{r}$ is computed in $\Sp$ and the product of $X,Y\in \Sp^{r}$ is computed by $\tau_{\geq r} (X\oplus Y)\simeq X\oplus Y$, where $\oplus$ denotes the direct sum in $\Sp$.
-    \item The $\infty$-category $\Sp^{\geq r}_{\tame}$ of $r$-tame spectra is preadditive; the product of $X,Y\in \Sp^{\geq r}_{\tame}$ is computed in $\Sp^{\geq r}$ and the coproduct is computed by $L_{\tame}(X\oplus Y) \simeq X\oplus Y$.
+    \item Any product-preserving localization of a stable $\infty$-category is preadditive.
+    Therefore, 
+    the $\infty$-category $\Sp^{\geq r}_{\tame}$ of $r$-tame spectra is preadditive; the product of $X,Y\in \Sp^{\geq r}_{\tame}$ is computed in $\Sp^{\geq r}$ and the coproduct is computed by $L_{\tame}(X\oplus Y) \simeq X\oplus Y$.
 \end{enumerate}
 
 \end{example}
@@ -366,7 +360,7 @@ The main reference for this section is \cite{Brantner-Mathew}.
 	$$
 \end{definition}
 
-Let $\BZ^{\operatorname{disc}}$ denote the groupoid with objects the integers and isomorphisms.
+Let $\BZ^{\operatorname{disc}}$ denote the groupoid with objects the integers and identity morphisms.
 \begin{definition}
 	The $\infty$-category of \emph{graded objects in $\CC$} is defined as the functor category 
 	$$
@@ -541,14 +535,14 @@ For an $\CO$-algebra $X$, there exists a canonical filtered object $X_{*}$ so th
 	\end{enumerate}
 \end{theorem}
 
-In practice, the category $\CD$ often admits all geometric realizations for simplicial objects. In this case, we have a technically convenient criteria for determining monadicity of a functor. We learn the proof of the following corollary from Heuts.
+In practice, the category $\CD$ often admits all geometric realizations for simplicial objects. In this case, we have a technically convenient criteria for determining monadicity of a functor. We learned the proof of the following corollary from Heuts.
 \begin{corollary}[\cite{HeutsSurvey}]
 \label{Cor of Barr-Beck-Lurie theorem}
 If $\adj{F}{\CC}{\CD}{G}$ an adjoint pair and that $\CD$ admits colimits of $G$-split simplicial objects. Then this pair is monadic if and only if for every object $X$ of $\CD$, the map
 $$
 \abs{(FG)^{\bullet+1}X} \to X
 $$
-arising from the simplicial resolution described above is an equivalence.
+is an equivalence.
 \end{corollary}
 \begin{proof}
 	Suppose this pair is monadic, then it satisfies the conditions of Theorem \ref{Barr-Beck-Lurie theorem}. 
@@ -654,10 +648,12 @@ $$
 $$
 
 We fix a pre-additive, presentable, symmetric monoidal $\infty$-category $\CC$ in which the tensor product is compatible with colimits. 
-Consider the comonad $K$ on $\CC$ given by 
-$$
-K(X) := \prod_n (X^{\otimes n})_{h\Sigma n}.
-$$
+Consider the following lax monoidal functor 
+\begin{align*}
+    \SSeq(\CC) & \to \Fun(\CC, \CC)\\
+    \CO &\mapsto (X \mapsto \prod_{n\geq 1} (\CO(n) \otimes X^{\otimes n})_{h\Sigma_n}).
+\end{align*}
+Let $K$ be the image of the commutative cooperad under the above functor, one can consider the $K$-comodules in $\CC$ (\cite[\S 3.5]{Francis-Gaitsgory}).
 \begin{definition}
     We define the \emph{$\infty$-category of divided power commutative coalgebras} in $\CC$ as 
 $$
@@ -672,14 +668,14 @@ $$
 \to 
 \coCAlg(\Sp^{\geq r}_{\tame})
 $$
-by Lemma \ref{Tate vanishing for tame spectra}.
+by Lemma \ref{Tate vanishing for tame spectra}. Moreover, $K$ defines a cooperad on $\coCAlg(\Sp^{\geq r}_{\tame})$.
 \end{remark}
 
 \begin{remark}
 \label{Remark A4.3}
 When $\CC=\Sp$, there is a comparison functor
 $$
-\coCAlg^{\divpow, \nil}(\Sp) \to  \coCAlg^{\divpow}(\Sp)
+\coAlg^{\divpow, \nil}_{\Com}(\Sp) \to  \coCAlg^{\divpow}(\Sp)
 $$
 (see \cite[Section 3.5]{Francis-Gaitsgory} or \cite{Heuts_Koszul}), which induces a comparison functor
 \begin{equation}
@@ -700,42 +696,13 @@ The crux for this construction is the following theorem by Heine, which allows u
 \begin{theorem}
 \label{Monads-Alg correspondence}
 \cite[Theorem 5.1]{Heine_Monads}
-Let $\CC$ be a presentable $\infty$-category, then the $\infty$-category of comonads on $\CC$ is a localization of the over category $\Pr^{L}_{/\CC}$ that assigns a comonad $Q$ to $\LcoMod_{Q}(\CC)$.
+Let $\CC$ be a presentable $\infty$-category, then there is a localization
+$$\Comonad(\CC) \to \operatorname{Pr}^{L}_{/\CC}$$
+that sends $Q$ to $\LcoMod_{Q}(\CC)$,
+where $\Pr^{L}_{/\CC}$ denotes the $\infty$-category of presentable $\infty$-categories over $\CC$.
 \end{theorem}
 
-
-Suppose $L:\CC \to \CD$ is a symmetric monoidal localization
-and we let $j:\CD \to \CC$ denote the embedding that is right adjoint to $L$.
-We then have an adjunction on the $\infty$-category of endofunctors.
-\begin{proposition}
-\label{Prop A.4.2}
-There is an adjunction
-\begin{equation}
-\label{A4.2 adjunction}
-    \adj{L\circ (-)\circ j}{\Fun(\CC, \CC)}{\Fun(\CD, \CD)}{j\circ (-)\circ L}.
-\end{equation}
-\end{proposition}
-\begin{proof}
-    We need to show there are two pairs of adjunctions
-    $$
-    \adj{L_{*}}{\Fun(\CC, \CC)}{\Fun(\CC, \CD)}{j_*}
-    $$
-    and
-    $$
-    \adj{j^{*}}{\Fun(\CC, \CD)}{\Fun(\CD, \CD)}{L^*}.
-    $$
-    It is an easy exercise to check the triangle identities of both.
-\end{proof}
-
-
-We observe the functor $j_*L^*: \Fun(\CD,\CD) \to \Fun(\CC,\CC)$ is monoidal; indeed, for two endofunctors $F,G$ on $\CC$ we have
-\begin{align*}
-    j_*L^*(F\circ G) & \simeq j\circ F \circ G \circ L\\
-                     & \simeq j\circ F \circ L \circ j \circ  G \circ L \\
-                     & \simeq j_*L^*(F)\circ j_*L^*(G)
-\end{align*}
-where the second-to-last equivalence follows from $ L \circ j \simeq \id_{\CD}$.
-Hence $j_*L^*$ preserves monads and comonads. Furthermore, the left adjoint $j^*L_*$ is oplax monoidal, so it also preserves comnads. 
+As a consequence of Corollary \ref{j_*L^* is monoidal}, the functor $j_*L^*$ preserves monads and comonads. Furthermore, the left adjoint $j^*L_*$ is oplax monoidal, so it also preserves comonads. 
 The counit map of adjunction (\ref{map above A.2})  evaluated on any comonad $Q$ on $\CD$
 \begin{equation}
 \label{map above A.2}
@@ -778,7 +745,7 @@ Since $\CC$ is preadditive, the comonad $F_{\Com}$ is equivalent to the symmetri
 $$
 \Sym_{\CC} \to \id_{\CC}
 $$
-induced from the coagumentation.
+induced from the coaugmentation.
 
 \begin{remark}
 \label{F_Com to Q_C}
@@ -787,7 +754,7 @@ $$
 \theta: F_{\Com} \to 
 Q_{\CC},
 $$
-then $\theta$ must be the canonical map.
+then $\theta$ must be the canonical map obtained by the universal property of $Q_{\CC}$.
     More concretely, if $X\in \CC$, then the map $F_{\Com}(X) \to 
 Q_{\CC}(X)$ is the unique map (up to contractible ambiguity) that makes the following diagram commute
 \[
@@ -835,6 +802,10 @@ Combining with the discussion above, we obtain the comparison functor
 \coCAlg^{\divpow}(\Sp^{\geq r}_{\tame})\simeq
 \coCAlg(\Sp^{\geq r}_{\tame}).
 \]
+
+
+
+
 
 
 
