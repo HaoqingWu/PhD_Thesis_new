@@ -10,11 +10,11 @@ In \S \ref{Algebras over Operads}, we discuss algebras over an $\infty$-operad a
 
 In \S \ref{Coalgebras over cooperads and Koszul Duality}, we explain the bar-cobar duality between connected $\infty$-operads and cooperads. We then define divided power, conilpotent coalgebras over a $\infty$-cooperad and define the Koszul duality functor $\indec_{\CO}$.
 
-In \S \ref{Commutative coalgebras in tame spectra}, we define the $\infty$-category of commutative coalgebras in an $\infty$-category. In the case of tame spectra, we prove that it is equivalent to the $\infty$-category of divided power, conilpotent coalgebras.
-
 In \S \ref{The spectral Lie operad}, we define the spectral Lie operad and introduce shifting of an $\infty$-operad and relevant properties.
 
-In \S \ref{Section: Induced Monads}, we explain how to produce monads on $\Sp^{\geq r}$ and $\Sp^{\geq r}_{\tame}$ from certain monads on $\Sp$.
+In \S \ref{Section: Induced Monads}, we explain how to produce monads and comonads on $\Sp^{\geq r}$ and $\Sp^{\geq r}_{\tame}$ from certain monads and comonads on $\Sp$.
+
+In \S \ref{Commutative coalgebras in tame spectra}, we define the $\infty$-category of commutative coalgebras in an $\infty$-category. In the case of tame spectra, we prove that it is equivalent to the $\infty$-category of divided power, conilpotent coalgebras.
 
 In \S \ref{Lie Algebras in Tame Spectra}, we define spectral Lie algebras and tame spectral Lie algebras. We then use Koszul duality between the spectral Lie operad and commutative operad to define the Chevalley-Eilenberg functor as a functor from the $\infty$-category of tame spectral Lie algebras to the $\infty$-category of divided power, conilpotent commuative coalgebras in tame spectra.
 
@@ -862,208 +862,7 @@ $$
 is an equivalence.
 \end{proposition}
 
-\section{Commutative Coalgebras in Tame Spectra}
-\label{Commutative coalgebras in tame spectra}
 
-In this section, we define and study the $\infty$-category of commutative coalgebras in the category of $r$-tame spectra. 
-The main aim is to show the $\infty$-category of divided power, conilpotent commutative coalgebras is equivalent to the $\infty$-category of commutative coalgebras in $\Sp^{\geq r}_{\tame}$.
-We start by collecting some results from \cite{LurieEllipticI}.
-
-\begin{definition}
-    Let $\mathcal{C}$ be a symmetric monoidal $\infty$-category. The $\infty$-category $\coCAlg(\CC)$ of commutative coalgebras in $\CC$ is defined to be
-    $
-    \coCAlg(\CC):= \CAlg(\CC^{op})^{op}.
-    $
-\end{definition}
-
-
-
-\begin{proposition}
-\label{Cor 3.1.5. Ellip}
-\cite[Corollary 3.1.5]{LurieEllipticI}
-	Let $\mathcal{C}$ be a symmetric monoidal $\infty$-category. Suppose that the $\infty$-category $\mathcal{C}$ is presentable and that the tensor product functor $\otimes: \mathcal{C} \times \mathcal{C} \rightarrow \mathcal{C}$ preserves colimits separately in each variable. Then the forgetful functor $\coCAlg(\mathcal{C}) \rightarrow \mathcal{C}$ admits a right adjoint $\cofree: \mathcal{C} \rightarrow \coCAlg(\mathcal{C})$.
-\end{proposition}
-
-
-\begin{corollary}
-The forgetful functor 
-$$
-\oblv_{\coCAlg}:\coCAlg(\Sp_{\tame}^{\geq r})\to \Sp^{\geq r}_{\tame}
-$$ admits a right adjoint functor, which we will denote by $\cofree_{\tame}$.
-\end{corollary}
-\begin{proof}
-	 Note that $\Sp^{\geq r}_{\tame}$ is presentable as it's a localization of the presentable $\infty$-category $\Sp^{\geq r}$. 
-	 Since the tensor product $\hat{\otimes}$ in $\Sp_{\tame}^{\geq r}$ preserves colimits separately in each variable by Remark \ref{symmetric monoidal structure on tame spectra}, the existence of the cofree commutative coalgebra functor is ensured by Proposition \ref{Cor 3.1.5. Ellip}.
-\end{proof}
-
-Since the monad $F_{\Com}$ associated to the commutative operad has underlying endofunctor
-$$
-F_{\Com}(X) := \coprod_{n\geq 1} (X^{\otimes n})_{h\Sigma_n},
-$$ hence $F(X):= \prod_{n\geq 1} (X^{\otimes n})^{h\Sigma_n}$ defines a comonad on $\CC$.
-For a general symmetric monoidal $\infty$-category $\CC$, we do not know any explicit identification of the cofree comonad $Q:=\oblv_{\coCAlg}\circ \cofree$. 
-However, we do know an explicit formula for the comonad $Q_{\tame}:=\oblv_{\coCAlg}\circ \cofree_{\tame}$ in the $\infty$-category of tame spectra. 
-To explain this, we need the following lemma which can be deduced from \cite[Proposition 3.1.3.3]{HA} and \cite[Example 3.1.1.17]{HA}.
-\begin{lemma}
-\label{Cofree commutative coalgebra}
-Let $\CC$ be a presentable symmetric monoidal $\infty$-category.
-Define $F$ to be the endofunctor on $\CC$
-$$
-F(X):= \prod_{n\geq 1} (X^{\otimes n})^{h\Sigma_n}.
-$$
-If the canonical map 
-$$
-\gamma: \big( \prod_{n\geq 1} (X^{\otimes n})^{h\Sigma_n} \big) \otimes Y \to 
-\prod_{n\geq 1} (X^{\otimes n} \otimes Y)^{h\Sigma_n}
-$$
-is an equivalence for any $Y\in \CC$ with trivial $\Sigma_n$-action, for all $n$,
-then the cofree comonad $Q$ is given by $F$.
-\end{lemma}
-\begin{proof}
-    By \cite[Definition 3.1.3.1.]{HA} the cofree coalgebra of an obejct $X$ in $\CC$ is defined as a operadic limit diagram (cf. \cite[Definition 3.1.1.2.]{HA}) $p:\Fin_{*} \to \CC$.
-    By a dual statement of \cite[Proposition 3.1.3.3]{HA} in the special case where $\CA$ is the trivial $\infty$-operad, $\CB$ and $\CO$ are the commutative $\infty$-operad $\Fin_{*}$, such a operadic limit exists.
-    The lemma then follows from the dual version of \cite[Example 3.1.1.17]{HA}, which says that a diagram $p:\Fin_{*} \to \CC$ is an operadic limit diagram if it remains as a limit diagram in $\CC$ after tensoring with any object $Y\in\CC$. 
-    In our case, this means that $\prod_{n\geq 1} (X^{\otimes n})^{h\Sigma_n}$ is an operadic limit diagram if 
-    $\big( \prod_{n\geq 1} (X^{\otimes n})^{h\Sigma_n} \big) \otimes Y$ is a limit diagram for any $Y\in \CC$, which is the condition required for $\gamma$ being an equivalence.
-    
-\end{proof}
-
-We now prove that the $\infty$-category of tame spectra satisfies the conditions of Lemma
-\ref{Cofree commutative coalgebra}, therefore we obtain a simple description of the comonad $Q_{\tame}$.
-We write $\Sym_{\tame}$ for the symmetric algebra functor on $\Sp^{\geq r}_{\tame}$, which is given explicitly by
-$$
-\Sym_{\tame}(X) :=\bigoplus_{n\geq 1} L_{\tame}(X^{\otimes n})_{h\Sigma_n} .
-$$
-\begin{proposition}
-\label{Cofreee commutative comonad}
-	The cofree commutative comonad on the $\infty$-category $\Sp^{\geq r}_{\tame}$ of tame spectra is given by
-	 $$
-	 Q_{\tame}(X) \simeq \bigoplus_{n\geq 1} L_{\tame}(X^{\otimes n})_{h\Sigma_n}
-	 \simeq
-	 \Sym_{\tame}(X)
-	 $$
-	 for any $X \in \Sp^{\geq r}_{\tame}$.
-\end{proposition}
-\begin{proof}
-    We first claim that the canonical map 
-    $$
-	\gamma: \bigoplus_{n\geq 1} (L_{\tame}X^{\otimes n})_{h\Sigma_n}
-	\to 
-	\prod_{n\geq 1} (L_{\tame}X^{\otimes n})^{h\Sigma_n}
-	$$
-	is an equivalence for any $X \in \Sp^{\geq r}_{\tame}$.
-% 	Since both the $\infty$-categories $\coCAlg^{\divpow,\nil}(\Sp^{\geq r}_{\tame})$ and $\coCAlg(\Sp^{\geq r}_{\tame})$ are comonadic over $\Sp^{\geq r}_{\tame}$, it suffices to check their correspoding comonads are equivalent.
-% 	$$
-% 	\adj{U}{\coCAlg^{\nil}(\Sp^{\geq r}_{\tame})}{\Sp^{\geq r}_{\tame}}{\cofree^{\nil}}
-% 	$$
-% 	agrees with the comonad $F_{\Com}$. Indeed, we have a natural map
-    Note that the target is equivalent to 
-    $$
-    \prod_{n\geq 1} (L_{\tame} X^{\otimes n})_{h\Sigma_n},
-    $$
-    by Proposition \ref{Tate vanishing for tame spectra}.
-    
-    We now show that $\gamma$ is an equivalence after applying $k$-truncation functor $\tau_{\leq k}$ for each integer $k\geq r$.
-	There exists a maximum integer $l(k)$ such that $X^{\otimes (l+1)}$ is $(k+1)$-connective.
-	Hence the $k$-truncation of $\gamma$ can be identified as a map
-	$$
-	\tau_{\leq k} \gamma: \bigoplus_{n\geq 1}^{l(k)}
-	\tau_{\leq k} (L_{\tame}X^{\otimes n})_{h\Sigma_n}
-	\to 
-	\bigoplus_{n\geq 1}^{l(k)}
-	\tau_{\leq k} (L_{\tame}X^{\otimes n})_{h\Sigma_n}
-	$$
-	 which is an equivalence for every $k$. Hence, $\gamma$ is an equivalence.
-	 Since tensor product commutes with colimits in $\Sp^{\geq r}_{\tame}$, $F(X):=\prod_{n\geq 1} (L_{\tame} X^{\otimes n})^{h\Sigma_n}$ satisfies the condition of Lemma
-    \ref{Cofree commutative coalgebra}, and thus the comonad $Q_{\tame}$ is given by 
-    $$
-    Q_{\tame}(X) \simeq  \Sym_{\tame}(X).
-    $$
-	\end{proof}
-We now define the $\infty$-category of divided power, conilpotent coalgebras in $\Sp_{\tame}^{\geq r}$. Note that $\Sp_{\tame}^{\geq r}$ is a non-unital symmetric monoidal $\infty$-category, so there is no commutative cooperad in $\Sp_{\tame}^{\geq r}$. However, we can define a comonad which comes from the commutative cooperad in $\Sp$ via tame localization.
-
-By example \ref{Symmetric algebra}, the Schur functor $F_{\Com}$ associated to the commutative cooperad in $\Sp$ is a comonad and is given by
-$$
-F_{\Com}(X) := \coprod_{n\geq 1} (X^{\otimes n})_{h\Sigma_n}.
-$$
-Note that $F_{\Com}$ restricts to a comonad on the $\infty$-category $\Sp^{\geq r}$ of $r$-connective spectra, since colimits in $\Sp^{\geq r}$ are computed in $\Sp$.
-Applying the localization functor $L_{\tame}$, we obtain a comonad $L_{\tame}F_{\Com}$ on $\Sp_{\tame}^{\geq r}$, given by 
-$$
-L_{\tame} F_{\Com}(X) := \coprod_{n\geq 1} L_{\tame}(X^{\otimes n})_{h\Sigma_n}.
-$$
-as $L_{\tame}$ is colimit-preserving and symmetric monoidal.
-
-
-\begin{definition}
-\label{Def of tame dp, nil coalgebras}
-    The $\infty$-category of \emph{divided power, conilpotent coalgebras in tame spectra} is defined to be the $\infty$-category of left comodules over the comonad $L_{\tame}F_{\Com}$
-    \[
-    \coCAlg^{\divpow, \nil}(\Sp_{\tame}^{\geq r}):= \operatorname{LcoMod}_{L_{\tame}F_{\Com}}(\Sp_{\tame}^{\geq r}).
-    \]
-\end{definition}
-We now want to show these two $\infty$-categories of coalgebras in tame spectra are actually equivalent. 
-Since the underlying endofunctors of $Q_{\tame}$ and $L_{\tame}F_{\Com}$ are equivalent, it suffices to show there is a natural transformation of comonads
-$$
-\Gamma: L_{\tame}F_{\Com}\to 
-Q_{\tame},
-$$
-which gives rise to an equivalence $L_{\tame}F_{\Com}\simeq Q_{\tame}$.
-By the discussion in Appendix \ref{Construction of the Comparison Functor}, there is a map of comonads on $\Sp^{\geq r}_{\tame}$
-$$
-\Gamma: (L_{\tame})_{*} j^{*} F_{\Com} \to Q_{\tame}.
-$$
-which is the unique map that makes the diagram in Remark \ref{F_Com to Q_C} commute.
-The map of comonads $\Gamma$ then induces a comparison functor 
-$$
-\zeta:\coCAlg^{\divpow,\nil}(\Sp^{\geq r}_{\tame}) \to
-\coCAlg(\Sp^{\geq r}_{\tame}).
-$$
-The following proposition now follows immediately from Proposition \ref{Cofreee commutative comonad}.
-\begin{proposition}
-\label{all coalgebras are equivalent}
-	The comparison functor $\zeta$ is an equivalence of $\infty$-categories.
-\end{proposition}
-\begin{proof}
-Since the forgetful functor $\Comonad(\Sp^{\geq r}_{\tame}) \to \End(\Sp^{\geq r}_{\tame})$ is conservative,
-it suffices to show the $\Gamma$ induces an equivalence between the underlying endofunctors of $L_{\tame}F_{\Com}$ and $Q_{\tame}$. For $X\in \Sp^{\geq r}_{\tame}$, the map $\Gamma$ is obtained from the projection $L_{\tame}F_{\Com}X \to X$ to the first factor (see Appendix \ref{Construction of the Comparison Functor}), which agrees with the canonical projection $Q_{\tame}X\to X$ by \ref{Cofreee commutative comonad}. Hence $\Gamma$ is an equivalence since it is an equivalence between the underlying endorfunctors.
-
-\end{proof}
-
-
-
-
-%Combining the two adjunctions, we obtain a diagram:
-%\[
-%\begin{tikzcd}
-%\CC \arrow[r,shift left=1,"\free_{\CO}"]  & \Alg_{\CO}(\CC) \arrow[r,shift left=1,"\TAQ_{\CO}"] \arrow[l,shift left=1,"\oblv_{\CO}"]  & \CC \arrow[l,shift left=1,"\trivial_{\CO}"] 
-%\end{tikzcd}
-%\]
-%where left adjoints are on top and both composites are equivalent to $id_{\CC}$.
-%% Denote $F_{\CO}:\CC\rightarrow \CC$ its associated monad.
-%\subsection{Conilpotent coalgebras over a cooperad}
-%Let $\CP$ be a connected cooperad.
-%Let $F_{\CP}$ be the comonad associated to $\CP$. We denote the category of coalgebras over $F_{\CP}$ by $\coAlg^{nil,dp}_{\CP}(\CC)$. An object $X\in \coAlg^{nil,dp}_{\CP}(\CC)$ is equipped with a structure map:
-%$$
-%X\rightarrow \bigoplus_{n\geq 1}\big( \CP(n)\otimes X^{\otimes n}\big)_{h\Sigma_n}.
-%$$
-%We will refer to $\coAlg^{nil,dp}_{\CP}(\CC)$ \textit{the category of conilpotent divided power $\CP$-coalgebras}. 
-%Dual to the algebra case, we have a diagram of two pair of adjoint functors:
-%\[
-%\begin{tikzcd}
-%\CC \arrow[r,shift left=1,"\cofree^{nil,dp}_{\CP}"]  & \coAlg^{nil,dp}_{\CP}(\CC) \arrow[r,shift left=1,"\Prim^{nil,dp}_{\CP}"] \arrow[l,shift left=1,"\oblv^{nil,dp}_{\CP}"]  & \CC \arrow[l,shift left=1,"\trivial^{nil,dp}_{\CP}"] 
-%\end{tikzcd}
-%\]
-%where functors at the bottom are left adjoints and both composites are equivalent to $id_\CC$.
-%The adjective conilpotent stands for the direct sum and the adjective divided power corresponds to coinvariants in $F_{\CP}$.
-%
-%
-%
-%\begin{theorem}[\cite{Francis-Gaitsgory}, \cite{HeutsSurvey}]
-%The functor $\TAQ_{\CO}$ factors as 
-%$$
-%\Alg_{\CO}(\CC) \xrightarrow{B_\CO} \coAlg^{nil,dp}_{\Barconstruction(\CO)}(\CC)\xrightarrow{\oblv_{\Barconstruction (\CO)}} \CC.
-%$$	
-%
-%\end{theorem}
 \section{The spectral Lie operad}
 \label{The spectral Lie operad}
 In this section, we introduce an operad in $\Sp$ which will be central to this thesis. 
@@ -1387,9 +1186,10 @@ The underlying symmetric sequence of the spectral Lie operad $\spLie:= \mathbf{\
 \end{remark}
 
 
-\section{Induced Monads}
+
+\section{Induced Monads and Comonads}
 \label{Section: Induced Monads}
-Since neither the spectral Lie operad $\spLie$ nor the shifted spectral Lie operad $\BL$ is an operad in $\Sp^{\geq r}$ or $\Sp^{\geq r}_{\tame}$, we need to make additional work to let them act on $\Sp^{\geq r}$ and $\Sp^{\geq r}_{\tame}$.
+% Since neither the spectral Lie operad $\spLie$ nor the shifted spectral Lie operad $\BL$ is an operad in $\Sp^{\geq r}$ or $\Sp^{\geq r}_{\tame}$, we need to make additional work to let them act on $\Sp^{\geq r}$ and $\Sp^{\geq r}_{\tame}$.
 The goal for this section is to explain how to produce monads on $\Sp^{\geq r}$ and $\Sp^{\geq r}_{\tame}$ from certain monads on $\Sp$.
 
 We start by proving a general fact regarding how localizations interact with endofunctors.
@@ -1471,7 +1271,6 @@ $FG(X) \to FG(Y) \to F\circ LG(Y)$ is a $L$-equivalence since both $F$ and $G$ p
 Hence, we conclude that both $\Fun_L(\CC,\CC)$ and $\Fun_L(\CD,\CD)$ are closed under composition.
 \end{remark}
 
-
 For $F\in \Fun_{L}(\CC,\CC)$, the right adjoint $j_*L^*$ sends any functor of the form $j^*L_*F$ to a functor in $\Fun_L(\CC,\CC)$; indeed, this follows from the following equivalence
 $$
 j_*L^*j^*L_* F \simeq j_*L_*F
@@ -1527,7 +1326,6 @@ As a consequence, if $F\in \Fun_{L}(\CC,\CC)$ is a monad, then
 $j^*L_*(F)$ is a monad on $\CD$. For simplicity, we will abuse notation by writing $LF$ for the monad $j^*L_*(F)$.
 \end{remark}
 
-
 Let $\{\CO(k)\}_{k \geq 1}$ be a symmetric sequence in $\Sp$ such that the connectivity of $\CO(k)$ is $1-k$ for each $k$. 
 For $r \geq 1$, let $X$ be an $r$-connective spectrum.
  Since $(\CO(k) \otimes X^{\otimes k})_{h\Sigma_k}$ is still $r$-connective, the Schur functor associated to $\CO$ 
@@ -1567,11 +1365,16 @@ We say an endofunctor $F:\Sp^{\geq r} \to \Sp^{\geq r}$ is \emph{coanalytic} ove
 	We write $\coAn_{\Sp}(\Sp^{\geq r})$ for the full sbucategory of $\Fun(\Sp^{\geq r},\Sp^{\geq r})$ spanned by coanalytic functors over $\Sp$.
 \end{definition}
 As a consequence of Lemma \ref{1-connective operad is closed under composition product}, the composition of two coanalytic functors is again a coanalytic functor, hence the monoidal structure on $\Fun(\Sp^{\geq r}, \Sp^{\geq r})$ restricts to one on $\coAn_{\Sp}(\Sp^{\geq r})$.
-Moreover, if $\CO$ is an operad in $\SSeq(\Sp)^{\geq 1}$, then $F_{\CO}$ restricts to a monad on $\Sp^{\geq r}$.
+Moreover, if $\CO$ is an operad (resp. cooperad) in $\SSeq(\Sp)^{\geq 1}$, then $F_{\CO}$ restricts to a monad (resp. comonad) on $\Sp^{\geq r}$.
 
 \begin{example}
 	The shifted free Lie algebra monad $F_{\BL}$ is a coanalytic functor on $\Sp^{\geq r}$ over $\Sp$, since $\BL(n)$ is a wedge of $\BS^{1-n}$.
 	Similarly, $F_{\spLie}$ is a coanalytic functor on $\Sp^{\geq r}$.
+\end{example}
+
+\begin{example}
+    The free commutative comonad $F_{\Com}$ is a coanalytic functor
+    $\Sp^{\geq r}$ over $\Sp$, since $\Com(n)$ is $\BS$.
 \end{example}
 
 \begin{remark}
@@ -1579,12 +1382,215 @@ Moreover, if $\CO$ is an operad in $\SSeq(\Sp)^{\geq 1}$, then $F_{\CO}$ restric
 	Since tame equivalences are closed under tensor products and colimits,
 	we conclude that coanalytic functors on $\Sp^{\geq r}$ over $\Sp$ preserve tame equivalences. 
 \end{remark}
-Combining Lemma \ref{j^*L_* is monoidal when restricted to Fun_L} and the remark above, we end this section with the following proposition.
+Combining Lemma \ref{j^*L_* is monoidal when restricted to Fun_L} and Remark \ref{coanalytic functors preserve tame equivalences}, we end this section with the following proposition.
 \begin{proposition}
 \label{Induced Monads}
-Let $\CO$ be an $\infty$-operad whose underlying symmetric sequence is in $\SSeq(\Sp)^{\geq 1}$.
-Then we obtain an induced monad $L_{\tame} F_{\CO}$ on the $\infty$-category $\Sp^{\geq r}_{\tame}$ of tame spectra.
+If $\CO$ (resp. $\CQ$) be an $\infty$-operad (resp. $\infty$-cooperad) whose underlying symmetric sequence is in $\SSeq(\Sp)^{\geq 1}$.
+Then we obtain an induced monad $L_{\tame} F_{\CO}$ (resp. comonad $L_{\tame} F_{\CQ}$) on the $\infty$-category $\Sp^{\geq r}_{\tame}$ of tame spectra.
 \end{proposition}
+
+\section{Commutative Coalgebras in Tame Spectra}
+\label{Commutative coalgebras in tame spectra}
+
+In this section, we define and study the $\infty$-category of commutative coalgebras in the category of $r$-tame spectra. 
+The main aim is to show the $\infty$-category of divided power, conilpotent commutative coalgebras is equivalent to the $\infty$-category of commutative coalgebras in $\Sp^{\geq r}_{\tame}$.
+We start by collecting some results from \cite{LurieEllipticI}.
+
+\begin{definition}
+    Let $\mathcal{C}$ be a symmetric monoidal $\infty$-category. The $\infty$-category $\coCAlg(\CC)$ of commutative coalgebras in $\CC$ is defined to be
+    $
+    \coCAlg(\CC):= \CAlg(\CC^{op})^{op}.
+    $
+\end{definition}
+
+
+
+\begin{proposition}
+\label{Cor 3.1.5. Ellip}
+\cite[Corollary 3.1.5]{LurieEllipticI}
+	Let $\mathcal{C}$ be a symmetric monoidal $\infty$-category. Suppose that the $\infty$-category $\mathcal{C}$ is presentable and that the tensor product functor $\otimes: \mathcal{C} \times \mathcal{C} \rightarrow \mathcal{C}$ preserves colimits separately in each variable. Then the forgetful functor $\coCAlg(\mathcal{C}) \rightarrow \mathcal{C}$ admits a right adjoint $\cofree: \mathcal{C} \rightarrow \coCAlg(\mathcal{C})$.
+\end{proposition}
+
+
+\begin{corollary}
+The forgetful functor 
+$$
+\oblv_{\coCAlg}:\coCAlg(\Sp_{\tame}^{\geq r})\to \Sp^{\geq r}_{\tame}
+$$ admits a right adjoint functor, which we will denote by $\cofree_{\tame}$.
+\end{corollary}
+\begin{proof}
+	 Note that $\Sp^{\geq r}_{\tame}$ is presentable as it's a localization of the presentable $\infty$-category $\Sp^{\geq r}$. 
+	 Since the tensor product $\hat{\otimes}$ in $\Sp_{\tame}^{\geq r}$ preserves colimits separately in each variable by Remark \ref{symmetric monoidal structure on tame spectra}, the existence of the cofree commutative coalgebra functor is ensured by Proposition \ref{Cor 3.1.5. Ellip}.
+\end{proof}
+
+Since the monad $F_{\Com}$ associated to the commutative operad has underlying endofunctor
+$$
+F_{\Com}(X) := \coprod_{n\geq 1} (X^{\otimes n})_{h\Sigma_n},
+$$ hence $F(X):= \prod_{n\geq 1} (X^{\otimes n})^{h\Sigma_n}$ defines a comonad on $\CC$.
+For a general symmetric monoidal $\infty$-category $\CC$, we do not know any explicit identification of the cofree comonad $Q:=\oblv_{\coCAlg}\circ \cofree$. 
+However, we do know an explicit formula for the comonad $Q_{\tame}:=\oblv_{\coCAlg}\circ \cofree_{\tame}$ in the $\infty$-category of tame spectra. 
+To explain this, we need the following lemma which can be deduced from \cite[Proposition 3.1.3.3]{HA} and \cite[Example 3.1.1.17]{HA}.
+\begin{lemma}
+\label{Cofree commutative coalgebra}
+Let $\CC$ be a presentable symmetric monoidal $\infty$-category.
+Define $F$ to be the endofunctor on $\CC$
+$$
+F(X):= \prod_{n\geq 1} (X^{\otimes n})^{h\Sigma_n}.
+$$
+If the canonical map 
+$$
+\gamma: \big( \prod_{n\geq 1} (X^{\otimes n})^{h\Sigma_n} \big) \otimes Y \to 
+\prod_{n\geq 1} (X^{\otimes n} \otimes Y)^{h\Sigma_n}
+$$
+is an equivalence for any $Y\in \CC$ with trivial $\Sigma_n$-action, for all $n$,
+then the cofree comonad $Q$ is given by $F$.
+\end{lemma}
+\begin{proof}
+    By \cite[Definition 3.1.3.1.]{HA} the cofree coalgebra of an obejct $X$ in $\CC$ is defined as a operadic limit diagram (cf. \cite[Definition 3.1.1.2.]{HA}) $p:\Fin_{*} \to \CC$.
+    By a dual statement of \cite[Proposition 3.1.3.3]{HA} in the special case where $\CA$ is the trivial $\infty$-operad, $\CB$ and $\CO$ are the commutative $\infty$-operad $\Fin_{*}$, such a operadic limit exists.
+    The lemma then follows from the dual version of \cite[Example 3.1.1.17]{HA}, which says that a diagram $p:\Fin_{*} \to \CC$ is an operadic limit diagram if it remains as a limit diagram in $\CC$ after tensoring with any object $Y\in\CC$. 
+    In our case, this means that $\prod_{n\geq 1} (X^{\otimes n})^{h\Sigma_n}$ is an operadic limit diagram if 
+    $\big( \prod_{n\geq 1} (X^{\otimes n})^{h\Sigma_n} \big) \otimes Y$ is a limit diagram for any $Y\in \CC$, which is the condition required for $\gamma$ being an equivalence.
+    
+\end{proof}
+
+We now prove that the $\infty$-category of tame spectra satisfies the conditions of Lemma
+\ref{Cofree commutative coalgebra}, therefore we obtain a simple description of the comonad $Q_{\tame}$.
+We write $\Sym_{\tame}$ for the symmetric algebra functor on $\Sp^{\geq r}_{\tame}$, which is given explicitly by
+$$
+\Sym_{\tame}(X) :=\bigoplus_{n\geq 1} L_{\tame}(X^{\otimes n})_{h\Sigma_n} .
+$$
+\begin{proposition}
+\label{Cofreee commutative comonad}
+	The cofree commutative comonad on the $\infty$-category $\Sp^{\geq r}_{\tame}$ of tame spectra is given by
+	 $$
+	 Q_{\tame}(X) \simeq \bigoplus_{n\geq 1} L_{\tame}(X^{\otimes n})_{h\Sigma_n}
+	 \simeq
+	 \Sym_{\tame}(X)
+	 $$
+	 for any $X \in \Sp^{\geq r}_{\tame}$.
+\end{proposition}
+\begin{proof}
+    We first claim that the canonical map 
+    $$
+	\gamma: \bigoplus_{n\geq 1} (L_{\tame}X^{\otimes n})_{h\Sigma_n}
+	\to 
+	\prod_{n\geq 1} (L_{\tame}X^{\otimes n})^{h\Sigma_n}
+	$$
+	is an equivalence for any $X \in \Sp^{\geq r}_{\tame}$.
+% 	Since both the $\infty$-categories $\coCAlg^{\divpow,\nil}(\Sp^{\geq r}_{\tame})$ and $\coCAlg(\Sp^{\geq r}_{\tame})$ are comonadic over $\Sp^{\geq r}_{\tame}$, it suffices to check their correspoding comonads are equivalent.
+% 	$$
+% 	\adj{U}{\coCAlg^{\nil}(\Sp^{\geq r}_{\tame})}{\Sp^{\geq r}_{\tame}}{\cofree^{\nil}}
+% 	$$
+% 	agrees with the comonad $F_{\Com}$. Indeed, we have a natural map
+    Note that the target is equivalent to 
+    $$
+    \prod_{n\geq 1} (L_{\tame} X^{\otimes n})_{h\Sigma_n},
+    $$
+    by Proposition \ref{Tate vanishing for tame spectra}.
+    
+    We now show that $\gamma$ is an equivalence after applying $k$-truncation functor $\tau_{\leq k}$ for each integer $k\geq r$.
+	There exists a maximum integer $l(k)$ such that $X^{\otimes (l+1)}$ is $(k+1)$-connective.
+	Hence the $k$-truncation of $\gamma$ can be identified as a map
+	$$
+	\tau_{\leq k} \gamma: \bigoplus_{n\geq 1}^{l(k)}
+	\tau_{\leq k} (L_{\tame}X^{\otimes n})_{h\Sigma_n}
+	\to 
+	\bigoplus_{n\geq 1}^{l(k)}
+	\tau_{\leq k} (L_{\tame}X^{\otimes n})_{h\Sigma_n}
+	$$
+	 which is an equivalence for every $k$. Hence, $\gamma$ is an equivalence.
+	 Since tensor product commutes with colimits in $\Sp^{\geq r}_{\tame}$, $F(X):=\prod_{n\geq 1} (L_{\tame} X^{\otimes n})^{h\Sigma_n}$ satisfies the condition of Lemma
+    \ref{Cofree commutative coalgebra}, and thus the comonad $Q_{\tame}$ is given by 
+    $$
+    Q_{\tame}(X) \simeq  \Sym_{\tame}(X).
+    $$
+	\end{proof}
+We now define the $\infty$-category of divided power, conilpotent coalgebras in $\Sp_{\tame}^{\geq r}$. Note that $\Sp_{\tame}^{\geq r}$ is a non-unital symmetric monoidal $\infty$-category, so there is no commutative cooperad in $\Sp_{\tame}^{\geq r}$. However, we can define a comonad which comes from the commutative cooperad in $\Sp$ via tame localization.
+
+By example \ref{Symmetric algebra}, the Schur functor $F_{\Com}$ associated to the commutative cooperad in $\Sp$ is a comonad and is given by
+$$
+F_{\Com}(X) := \coprod_{n\geq 1} (X^{\otimes n})_{h\Sigma_n}.
+$$
+Note that $F_{\Com}$ restricts to a comonad on the $\infty$-category $\Sp^{\geq r}$ of $r$-connective spectra, since colimits in $\Sp^{\geq r}$ are computed in $\Sp$.
+By Proposition \ref{Induced Monads}, we obtain a comonad $L_{\tame}F_{\Com}$ on $\Sp_{\tame}^{\geq r}$, given by 
+$$
+L_{\tame} F_{\Com}(X) := \coprod_{n\geq 1} L_{\tame}(X^{\otimes n})_{h\Sigma_n}.
+$$
+as $L_{\tame}$ is colimit-preserving and symmetric monoidal.
+
+
+\begin{definition}
+\label{Def of tame dp, nil coalgebras}
+    The $\infty$-category of \emph{divided power, conilpotent coalgebras in tame spectra} is defined to be the $\infty$-category of left comodules over the comonad $L_{\tame}F_{\Com}$
+    \[
+    \coCAlg^{\divpow, \nil}(\Sp_{\tame}^{\geq r}):= \operatorname{LcoMod}_{L_{\tame}F_{\Com}}(\Sp_{\tame}^{\geq r}).
+    \]
+\end{definition}
+We now want to show these two $\infty$-categories of coalgebras in tame spectra are actually equivalent. 
+Since the underlying endofunctors of $Q_{\tame}$ and $L_{\tame}F_{\Com}$ are equivalent, it suffices to show there is a natural transformation of comonads
+$$
+\Gamma: L_{\tame}F_{\Com}\to 
+Q_{\tame},
+$$
+which gives rise to an equivalence $L_{\tame}F_{\Com}\simeq Q_{\tame}$.
+By the discussion in Appendix \ref{Construction of the Comparison Functor}, there is a map of comonads on $\Sp^{\geq r}_{\tame}$
+$$
+\Gamma: (L_{\tame})_{*} j^{*} F_{\Com} \to Q_{\tame}.
+$$
+which is the unique map that makes the diagram in Remark \ref{F_Com to Q_C} commute.
+The map of comonads $\Gamma$ then induces a comparison functor 
+$$
+\zeta:\coCAlg^{\divpow,\nil}(\Sp^{\geq r}_{\tame}) \to
+\coCAlg(\Sp^{\geq r}_{\tame}).
+$$
+The following proposition now follows immediately from Proposition \ref{Cofreee commutative comonad}.
+\begin{proposition}
+\label{all coalgebras are equivalent}
+	The comparison functor $\zeta$ is an equivalence of $\infty$-categories.
+\end{proposition}
+\begin{proof}
+Since the forgetful functor $\Comonad(\Sp^{\geq r}_{\tame}) \to \End(\Sp^{\geq r}_{\tame})$ is conservative,
+it suffices to show the $\Gamma$ induces an equivalence between the underlying endofunctors of $L_{\tame}F_{\Com}$ and $Q_{\tame}$. For $X\in \Sp^{\geq r}_{\tame}$, the map $\Gamma$ is obtained from the projection $L_{\tame}F_{\Com}X \to X$ to the first factor (see Appendix \ref{Construction of the Comparison Functor}), which agrees with the canonical projection $Q_{\tame}X\to X$ by \ref{Cofreee commutative comonad}. Hence $\Gamma$ is an equivalence since it is an equivalence between the underlying endorfunctors.
+
+\end{proof}
+
+
+
+
+%Combining the two adjunctions, we obtain a diagram:
+%\[
+%\begin{tikzcd}
+%\CC \arrow[r,shift left=1,"\free_{\CO}"]  & \Alg_{\CO}(\CC) \arrow[r,shift left=1,"\TAQ_{\CO}"] \arrow[l,shift left=1,"\oblv_{\CO}"]  & \CC \arrow[l,shift left=1,"\trivial_{\CO}"] 
+%\end{tikzcd}
+%\]
+%where left adjoints are on top and both composites are equivalent to $id_{\CC}$.
+%% Denote $F_{\CO}:\CC\rightarrow \CC$ its associated monad.
+%\subsection{Conilpotent coalgebras over a cooperad}
+%Let $\CP$ be a connected cooperad.
+%Let $F_{\CP}$ be the comonad associated to $\CP$. We denote the category of coalgebras over $F_{\CP}$ by $\coAlg^{nil,dp}_{\CP}(\CC)$. An object $X\in \coAlg^{nil,dp}_{\CP}(\CC)$ is equipped with a structure map:
+%$$
+%X\rightarrow \bigoplus_{n\geq 1}\big( \CP(n)\otimes X^{\otimes n}\big)_{h\Sigma_n}.
+%$$
+%We will refer to $\coAlg^{nil,dp}_{\CP}(\CC)$ \textit{the category of conilpotent divided power $\CP$-coalgebras}. 
+%Dual to the algebra case, we have a diagram of two pair of adjoint functors:
+%\[
+%\begin{tikzcd}
+%\CC \arrow[r,shift left=1,"\cofree^{nil,dp}_{\CP}"]  & \coAlg^{nil,dp}_{\CP}(\CC) \arrow[r,shift left=1,"\Prim^{nil,dp}_{\CP}"] \arrow[l,shift left=1,"\oblv^{nil,dp}_{\CP}"]  & \CC \arrow[l,shift left=1,"\trivial^{nil,dp}_{\CP}"] 
+%\end{tikzcd}
+%\]
+%where functors at the bottom are left adjoints and both composites are equivalent to $id_\CC$.
+%The adjective conilpotent stands for the direct sum and the adjective divided power corresponds to coinvariants in $F_{\CP}$.
+%
+%
+%
+%\begin{theorem}[\cite{Francis-Gaitsgory}, \cite{HeutsSurvey}]
+%The functor $\TAQ_{\CO}$ factors as 
+%$$
+%\Alg_{\CO}(\CC) \xrightarrow{B_\CO} \coAlg^{nil,dp}_{\Barconstruction(\CO)}(\CC)\xrightarrow{\oblv_{\Barconstruction (\CO)}} \CC.
+%$$	
+%
+%\end{theorem}
 
 
 \section{Lie Algebras in Tame Spectra}
@@ -1770,18 +1776,13 @@ where the horizontal functors are fully faithful.
 
 \end{proof}
 
-By an argument dual to the proof of Corollary \ref{Identification of tame Lie algebras}, we obtain the analogous result for tame commutative coalgebras in $\Sp^{\geq r}_{\tame}$. 
-\begin{corollary}
-\label{Identification of tame dp,nil coalgebras}
-    The $\infty$-category $\coCAlg(\Sp^{\geq r}_{\tame})$ can be identified with the full subcategory of $\coCAlg^{\divpow, \nil}(\Sp)^{\geq r}$ spanned by commutative divided power, conilpotent coalgebras whose underlying spectra are tame.
-\end{corollary}
 
 We now give an algebraic characterization of tame spectral Lie algebras and tame commutative coalgebras.
-We first define Lie algebras in $\Mod_{H\BZ}$ for which we need the following result from Haugseng.
+We first define Lie algebras in $\Mod_{H\BZ}$, for which we need the following result from Haugseng.
 \begin{lemma}
 \label{induced maps on SSeq}
 \cite[Corollary 4.2.9.]{Haugsengsymseq}
-Let $\CC$ and $\CD$ be preadditive symmetric monoidal $\infty$-categories whose tensor products compatible with colimits. Let
+Let $\CC$ and $\CD$ be preadditive symmetric monoidal $\infty$-categories whose tensor products are compatible with colimits. Let
 $$
 f: \CC \to \CD
 $$
@@ -1793,7 +1794,10 @@ $$
 $$
 \end{lemma}	
 Since the functor 
-$(-\otimes H\BZ):\Sp \to \Mod_{H\BZ}$ satisfies the condition of Lemma \ref{induced maps on SSeq}, $\spLie\otimes H\BZ$ is an operad in $\Mod_{H\BZ}$.
+$(-\otimes H\BZ):\Sp \to \Mod_{H\BZ}$ satisfies the condition of Lemma \ref{induced maps on SSeq}, we conclude that the symmetric sequence
+$$
+(\spLie\otimes H\BZ)(n) := \spLie(n)\otimes H\BZ
+$$ defines an operad in $\Mod_{H\BZ}$.
 \begin{definition}
 We define the $\infty$-category of Lie algebras in $H\BZ$-modules by 
 $$
@@ -1825,7 +1829,7 @@ L_{\tame}(\spLie(n)\otimes H\BZ \underset{\BZ}{\otimes} M^{\underset{\BZ}{\otime
 $$
 by Proposition \ref{Lifting localization to algebra category}, we conclude that $\Alg_{\spLie}((\Mod_{H\BZ}^{\geq r})_{\tame})$ is the full subcategory of 
 $\Alg_{\spLie}(\Mod^{\geq r}_{H\BZ})$ consisting of Lie algebras in $\Mod^{\geq r}_{H\BZ}$ whose underlying spectra are tame.
-Therefore, we can identify $\Alg_{\spLie}((\Mod_{H\BZ}^{\geq r})_{\tame})$ as the tame Dwyer's tame Lie algebras model in \cite{Dwyer}.
+Therefore, we can identify $\Alg_{\spLie}((\Mod_{H\BZ}^{\geq r})_{\tame})$ as Dwyer's tame Lie algebras in \cite{Dwyer}.
 \end{remark}
 
 Recall from Theorem \ref{algebraic description of tame spectra} that we have a symmetric monoidal equivalence
@@ -1842,6 +1846,12 @@ $$
 $$
 \end{lemma}
 % By the same proof as in Corollary \ref{Identification of tame Lie algebras}, we obtain the following corollaries.
+
+By an argument dual to the proof of Corollary \ref{Identification of tame Lie algebras}, we obtain the analogous result for tame commutative coalgebras in $\Sp^{\geq r}_{\tame}$. 
+\begin{corollary}
+\label{Identification of tame dp,nil coalgebras}
+    The $\infty$-category $\coCAlg(\Sp^{\geq r}_{\tame})$ can be identified with the full subcategory of $\coCAlg^{\divpow, \nil}(\Sp)^{\geq r}$ spanned by commutative divided power, conilpotent coalgebras whose underlying spectra are tame.
+\end{corollary}
 
 \begin{remark}
 \label{Identification of tame commutative coalgebras in Mod_HZ}
