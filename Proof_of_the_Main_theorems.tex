@@ -524,9 +524,9 @@ The following proposition was already proved in \cite[Proposition 1.7]{Scheerer-
 \end{proposition}
 \pagebreak
 \begin{proof}
-We first assume $X$ is of finite type, i.e., all its homotopy groups are finitely generated abelian groups. If $X$ is rational, then the result follows from rational homotopy theory. Otherwise, we can assume $X$ is $p$-local for every some prime $p$.
+We first assume $X$ is of finite type, i.e., all its homotopy groups are finitely generated abelian groups. If $X$ is rational, then the result follows from rational homotopy theory. Otherwise, we can assume the homotopy groups of $X$ is $p$-torsion for some prime $p$.
 
-Observe that if $X$ is both tame and $p$-local, then $X$ is $(r+2p-4)$-truncated; since $X$ is $p$-local and $\pi_{n}X$ is uniquely $p$-divisible for $n \geq r+2p-3$. Note also that if $p=2$, then $X$ is an Eilenberg-MacLane space $K(\pi_r X, r)$ ($2$ is inverted at degree $r+1$), hence we can assume $p$ is an odd prime. 
+Observe that if $X$ is both tame and $p$-torsion, then $X$ is $(r+2p-4)$-truncated; since $X$ is $p$-torsion and $\pi_{n}X$ is uniquely $p$-divisible for $n \geq r+2p-3$. Note also that if $p=2$, then $X$ is an Eilenberg-MacLane space $K(\pi_r X, r)$ (as $2$ is inverted at degree $r+1$), hence we can assume $p$ is an odd prime. 
 
 We proceed by induction on the Postnikov tower of $X$.
 The base case is obvious. 	
@@ -540,7 +540,7 @@ K(\pi_{n+1}X,n+1)\to
 K(\pi_{n+1}X,n+2).
 $$
 We want to show that the $k$-invariant $[k_n]\in H^{n+2}(\tau_{\leq n}X; \pi_{n+1}X)$ vanishes. 
-Note that $k_n$ represents a primitive element in the $p$-local Hopf algebra $H^*(\tau_{\leq n}X; \pi_{n+1}X)$ (\cite[Theorem 3.2]{D.Kahn}).
+Note that $k_n$ represents a primitive element in the $p$-local Hopf algebra $H^*(\tau_{\leq n}X; \pi_{n+1}X)$ (cf. \cite[Theorem 3.2]{D.Kahn}).
 We claim $[k_n]$ is also indecomposable.
 A primitive element in a $p$-local commutative Hopf algebra is decomposable if and only if it's a $p$-th power \cite[Proposition 4.21]{Milnor-Moore}.
 However, $[k_n]$ cannot be a $p$-th power for degree reasons. As
@@ -1054,7 +1054,7 @@ factors as the coaugmentation of $\BL$ follows by the augmentation of $\Omega \B
     \to 
     \sideset{}{'}\prod_{\omega \in \Lie_n} \Omega \BL (\Sigma \omega(\BS^{k_1 }, \cdots, \BS^{k_n })),
     $$
-    where $\prod'$ denotes the weak product (filtered colimits of finite products) and $\Lie_n$ denotes the ordered set of Lie words with $n$ generators, i.e., every $\omega\in \Lie_n$ is a basis element of the free Lie algebra on $n$ generators.
+    where $\prod'$ denotes the weak product (i.e., filtered colimits of finite products) and $\Lie_n$ denotes the ordered set of Lie words with $n$ generators, i.e., every $\omega\in \Lie_n$ is a basis element of the free Lie algebra on $n$ generators.
 \end{theorem}
 
 Using the Hilton-Milnor theorem, we can describe the suspension morphism $\sigma$ on the underlying spectra as
@@ -1153,6 +1153,8 @@ factors through $\BS^{k}$ after tame localization, for which we need the followi
  			\simeq *.
  			$$
  			if $n\neq p^l$ for some $l$.
+ 			If $n=p^l$ then $\big(\BL(n)\otimes X^{\otimes n}
+ 			\big)_{h\Sigma_n}$ has only $p$-primary torsion.
  		\item if $k$ is even, then 
  			$$
  			\big(\BL(n)\otimes X^{\otimes n}
@@ -1160,6 +1162,8 @@ factors through $\BS^{k}$ after tame localization, for which we need the followi
  			\simeq *.
  			$$
  			if $n$ is not equal to $p^l$ or $2p^j$ for $l, j>0$.
+ 			If $n=p^l$ or $n = 2p^l$ then $\big(\BL(n)\otimes X^{\otimes n}
+ 			\big)_{h\Sigma_n}$ has only $p$-primary torsion.
  	\end{enumerate} 	
  \end{theorem}
  \begin{lemma}
@@ -1179,15 +1183,14 @@ after tame localization.
 \begin{proof}
 	The lemma follows from Theorem \ref{odd spheres}; indeed, for $n=p^l$ or $n=2p^l$ and $l>0$, the connectivity of
 	\[
-	L_{\tame}\big(
+	\big(
 	\BL(n)\otimes (\BS^{k})^{\otimes n}
 	\big)_{h\Sigma_n}
 	\]
 	is at least $kn-n+1$, which is larger than $r+2p-3$ (note that $k\leq r$), hence 
-	$L_{\tame}\big(
+	$\big(
 	\BL(n)\otimes (\BS^{k})^{\otimes n}
-	\big)_{h\Sigma_n}$ is contractible for $n>1$.
-	
+	\big)_{h\Sigma_n}$ has only $p$-primary torsion and is contractible after tame localization for $n>1$.
 	\end{proof}
 
  

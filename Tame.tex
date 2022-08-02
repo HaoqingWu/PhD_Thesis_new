@@ -61,7 +61,7 @@ $$
 $$
 \begin{remark}
     Let $L:\CC \to L\CC \hookrightarrow \CC$ be a localization of an $\infty$-category $\CC$, and let $S$ be the class of morphisms $f$ in $\CC$ such that $Lf$ is an equivalence.
-    By \cite[Proposition 5.5.4.2.]{HTT}, the full subcategory spanned by $S$-local objects is precisely the essential image $L\CC$ under $L$, and every $S$-equivalence in $\CC$ belongs to $S$. Moreover,  $L\CC$ is accessible if $\CC$ is accessible.
+    By \cite[Proposition 5.5.4.2.]{HTT}, the full subcategory spanned by $S$-local objects is precisely the essential image $L\CC$ under $L$, and every $S$-equivalence in $\CC$ belongs to $S$. 
 \end{remark}
 
 % \begin{proposition}
@@ -426,6 +426,13 @@ exists. Moreover, the $\infty$-category $\Sp^{\geq r}_{\tame}$ of tame spectra i
     
 \end{proof}
 
+\begin{remark}
+We remark that tame localization of $\Sp^{\geq r}$ is no longer prestable \cite[Definition C.1.2.1.]{SAG}, since the tame localization is no longer compatible with the suspension $\Sigma$ in $\Sp$.
+This is contrast to many usual localizations of the $\infty$-category of spectra.
+\end{remark}
+
+
+
 Let $\CC$ be a presentable $\infty$-category and let $S$ be a collection of morphisms in $\CC$.
 We now state a closure property $S$-equivalences in $\CC$. In particular, the lemma below implies that the collection of tame equivalences is closed under colimits.
 \begin{lemma}
@@ -640,7 +647,7 @@ is an $r$-tame equivalence.
  	H_{r+k}(Y)\otimes R_{k}
  	\]
  	is an isomorphism.
-	\item Lemma \ref{Shift of tame equivalences} above implies that $r$-tame localization is compatible with the smash product in $\Sp^{\geq r}$ in the sense of \cite[Definition 2.2.1.6.]{HA}. By \cite[Proposition 2.2.1.9.]{HA}, the $\infty$-category $\Sp^{\geq r}_{\tame}$ of tame spectra admits a (nonunital) symmetric monoidal structure given by 
+	\item Lemma \ref{Shift of tame equivalences} above implies that $r$-tame localization is compatible with the smash product in $\Sp^{\geq r}$ in the sense of \cite[Definition 2.2.1.6.]{HA}. By \cite[Proposition 2.2.1.9.]{HA}, the $\infty$-category $\Sp^{\geq r}_{\tame}$ of tame spectra admits a (non-unital) symmetric monoidal structure given by 
 $$
 X\hat{\otimes} Y := L_{\tame}(X\otimes Y).
 $$
@@ -945,7 +952,7 @@ We end this chapter with the Tate vanishing property of tame spectra.
 	$$
 \end{lemma}
 \begin{proof}
-    If $X$ is $r$-connective, then its $n$-th tensor power $X^{\otimes n}$ is $rn$-connective. We claim that the homotopy groups of the tame spectrum $L_{\tame}(X^{\otimes n})$ are uniquely $n!$-divisible, from which the conclusion follows. Indeed, since   
+    If $X$ is $r$-connective, then its $n$-th tensor power $X^{\otimes n}$ is $nr$-connective. We claim that the homotopy groups of the tame spectrum $L_{\tame}(X^{\otimes n})$ are uniquely $n!$-divisible, from which the conclusion follows. Indeed, since   
     $$
     nr-2n-r+3 = (r-2)(n-1)+1\geq 0
     $$

@@ -135,7 +135,7 @@ To any symmetric sequence $A$ in $\CC$,  we can then identify $A\circ X$ as an o
 By Remark \ref{formula for composition product}, we obtain a functor which has an explicit description as follows
 \begin{align*}
 		F_{(-)}: \SSeq(\CC) & \rightarrow \Fun(\CC,\CC)\\
-	A        & \mapsto \big( X\mapsto  A(X):=(\coprod_{n\geq 0} A(n)\otimes X^{\otimes n})_{h\Sigma_n}\big).
+	A        & \mapsto \big( X\mapsto  A(X):=\coprod_{n\geq 0} (A(n)\otimes X^{\otimes n})_{h\Sigma_n}\big).
 \end{align*}
 where $\Sigma_n$ acts on the $n$-th tensor power of $X$ via permutation.
 By our definition of the composition products, this assignment is monoidal with respect to the composition product in $\SSeq(\CC)$ (see \cite[\S 3.1 ]{Francis-Gaitsgory}) and composition of functors in $\Fun(\CC,\CC)$.
@@ -583,7 +583,7 @@ is an equivalence of $\infty$-categories.
 \end{theorem}
 
 \begin{remark}
-Heuts stated Theorem \ref{Thm 4.1 of Heuts Koszul Duality paper} for a stable $\infty$-category, but a careful examination of the proof shows that the theorem holds for a presentably symmetric monoidal $\infty$-category $\CC$, which is our assumption throughout this chapter.
+Heuts stated Theorem \ref{Thm 4.1 of Heuts Koszul Duality paper} for a stable $\infty$-category, but a careful examination of the proof shows that the theorem holds for a presentably pointed symmetric monoidal $\infty$-category $\CC$, which is our assumption throughout this chapter.
 \end{remark}
 
 \begin{remark}
@@ -836,16 +836,16 @@ $$
 
 
 
-We also have the following decomposition result for divided power conilpotent $\CQ$-coalgebras, which will be used in the proof of the essential surjectivity of the functor $C_{\operatorname{tame}}$. Let $\CQ$ be a connected $\infty$-cooperad.
+We also have the following decomposition result for divided power, conilpotent $\CQ$-coalgebras, which will be used in the proof of the essential surjectivity of the functor $C_{\operatorname{tame}}$. Let $\CQ$ be a connected $\infty$-cooperad.
 \begin{proposition}
-\cite[Theorem 4.12]{Heuts_Koszul}
+\cite[Theorem 4.13]{Heuts_Koszul}
 \label{inductive construction of coalgebras}
     For $n\geq 2$, the following commutative square of $\infty$-categories 
 \[
 \begin{tikzcd}
 %%%% The nodes %%%%%%%%%
-	\coAlg_{\varphi^n \CQ}(\CC) & 
-	\coAlg_{D^n_{\CQ}}(\CC)\\
+	\coAlg^{\nil, \divpow}_{\varphi^n \CQ}(\CC) & 
+	\coAlg^{\nil, \divpow}_{D^n_{\CQ}}(\CC)\\
 	\coAlg_{\varphi^{n-1} \CQ}(\CC) & 
 	\coAlg_{D^n_{\varphi^{n-1}\CQ}}(\CC)
 %%%% Now the arrows %%%%
@@ -897,7 +897,7 @@ Write $\mathbf{P}^{+}(n)$ (resp. $\mathbf{P}^{-}(n)$ ) for the subposet of $\mat
     \[
     \Lie[-1] \simeq \Com^{\vee}
     \]
-    where $\Com^{\vee}$ denotes the linear dual of the commutative cooperad and $\Lie[-1](n)_p:=\Lie(n)_{p+1}$.
+    where $\Com^{\vee}$ denotes the linear dual of the commutative cooperad and $\Lie[-1](n)_p:=\Lie(n)_{p+n-1}$.
     \end{remark}
     
 	\begin{definition}
@@ -1294,10 +1294,11 @@ $$
 \end{lemma}
 \begin{proof}
 By \cite[Proposition 2.2.1.9.]{HA}, it suffices to check the monoidal structure is compatible with the localization functor $j^*L_*$ in the sense of \cite[Definition 2.2.1.6.]{HA};
-	Suppose there is a natural transformation 
+	Suppose for $F, F' \ in \Fun_{L}(\CC, \CC)$ there is a natural transformation 
 $$
 T: F \to F'
 $$
+
 that is an equivalence after applying $j^*L_*$. 
 It suffices to check
 $$
@@ -1324,6 +1325,8 @@ Therefore, the left arrow is an equivalence and the proof is now complete.
 \label{j^*L_* is monoidal on Fun_L}
 As a consequence, if $F\in \Fun_{L}(\CC,\CC)$ is a monad, then 
 $j^*L_*(F)$ is a monad on $\CD$. For simplicity, we will abuse notation by writing $LF$ for the monad $j^*L_*(F)$.
+Similarly, if $G\in \Fun_{L}(\CC,\CC)$ is a comonad, then 
+$j^*L_*(G)$ is a monad on $\CD$.
 \end{remark}
 
 Let $\{\CO(k)\}_{k \geq 1}$ be a symmetric sequence in $\Sp$ such that the connectivity of $\CO(k)$ is $1-k$ for each $k$. 
@@ -1385,7 +1388,7 @@ Moreover, if $\CO$ is an operad (resp. cooperad) in $\SSeq(\Sp)^{\geq 1}$, then 
 Combining Lemma \ref{j^*L_* is monoidal when restricted to Fun_L} and Remark \ref{coanalytic functors preserve tame equivalences}, we end this section with the following proposition.
 \begin{proposition}
 \label{Induced Monads}
-If $\CO$ (resp. $\CQ$) be an $\infty$-operad (resp. $\infty$-cooperad) whose underlying symmetric sequence is in $\SSeq(\Sp)^{\geq 1}$.
+If $\CO$ (resp. $\CQ$) is an $\infty$-operad (resp. $\infty$-cooperad) whose underlying symmetric sequence is in $\SSeq(\Sp)^{\geq 1}$.
 Then we obtain an induced monad $L_{\tame} F_{\CO}$ (resp. comonad $L_{\tame} F_{\CQ}$) on the $\infty$-category $\Sp^{\geq r}_{\tame}$ of tame spectra.
 \end{proposition}
 
@@ -1419,7 +1422,7 @@ $$
 $$ admits a right adjoint functor, which we will denote by $\cofree_{\tame}$.
 \end{corollary}
 \begin{proof}
-	 Note that $\Sp^{\geq r}_{\tame}$ is presentable as it's a localization of the presentable $\infty$-category $\Sp^{\geq r}$. 
+	 Note that $\Sp^{\geq r}_{\tame}$ is presentable as it's an accessible localization of the presentable $\infty$-category $\Sp^{\geq r}$. 
 	 Since the tensor product $\hat{\otimes}$ in $\Sp_{\tame}^{\geq r}$ preserves colimits separately in each variable by Remark \ref{symmetric monoidal structure on tame spectra}, the existence of the cofree commutative coalgebra functor is ensured by Proposition \ref{Cor 3.1.5. Ellip}.
 \end{proof}
 
